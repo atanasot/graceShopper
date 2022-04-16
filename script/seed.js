@@ -10,29 +10,30 @@ const {
  *      match the models, and populates the database.
  */
 async function seed() {
-  await db.sync({ force: true }); // clears db and matches models to tables
-  console.log("db synced!");
+  try {
+    await db.sync({ force: true }); // clears db and matches models to tables
+    console.log("db synced!");
 
-  // Creating Users
-  const users = await Promise.all([
-    User.create({ username: "cody", password: "123" }),
-    User.create({ username: "murphy", password: "123" }),
-  ]);
+    // Creating Users
+    const users = await Promise.all([
+      User.create({ username: "cody", password: "123" }),
+      User.create({ username: "murphy", password: "123" }),
+    ]);
 
-  // Creating Products - Wine
-  const wines = await Promise.all([
-    Wine.create({
-      name: "Duckhorn",
-      year: 2017,
-      region: "California",
-      type: "Red",
-      style: "Cabernet Sauvignon",
-      abv: 14.5,
-      imgURL: "/wine1_demo.jpeg",
-      price: 154.99,
-      inventoryCount: 100,
-    }),
-  ]);
+    // Creating Products - Wine
+    const wines = await Promise.all([
+      Wine.create({
+        name: "Duckhorn",
+        year: 2017,
+        region: "California",
+        type: "Red",
+        style: "Cabernet Sauvignon",
+        abv: 14.5,
+        imgURL: "/wine1_demo.jpeg",
+        price: 154.99,
+        inventoryCount: 100,
+      }),
+    ]);
 
   // Creating Products - Beer
   const beer = await Promise.all([
@@ -49,15 +50,18 @@ async function seed() {
       inventoryCount: 100,
     }),
   ]);
-
-  console.log(`seeded ${users.length} users`);
-  console.log(`seeded successfully`);
-  return {
-    users: {
-      cody: users[0],
-      murphy: users[1],
-    },
-  };
+    
+    console.log(`seeded ${users.length} users`);
+    console.log(`seeded successfully`);
+    return {
+      users: {
+        cody: users[0],
+        murphy: users[1],
+      },
+    };
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 /*
