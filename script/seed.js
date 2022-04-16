@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { User, Wine },
+  models: { User, Wine, Beer },
 } = require("../server/db");
 
 /**
@@ -35,6 +35,22 @@ async function seed() {
       }),
     ]);
 
+  // Creating Products - Beer
+  const beer = await Promise.all([
+    Beer.create({
+      name: "KBS - Hazelnut",
+      brand: "Founders Brewing Company",
+      state: "Michigan",
+      country: "USA",
+      type: "Ale",
+      style: "Stout",
+      ABV: 12,
+      imgURL: "/2022_KBS_Hazelnut_Featured.jpg",
+      price: 17.5,
+      inventoryCount: 100,
+    }),
+  ]);
+    
     console.log(`seeded ${users.length} users`);
     console.log(`seeded successfully`);
     return {
