@@ -33,24 +33,68 @@ async function seed() {
         price: 154.99,
         inventoryCount: 100,
       }),
+      Wine.create({
+        name: "Josh Cellars",
+        year: 2019,
+        region: "California",
+        type: "Red",
+        style: "Cabernet Sauvignon",
+        abv: 13.5,
+        imgURL: "/2019_JoshCellars_Cabernet.jpeg",
+        price: 17.99,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "Silver Oak",
+        year: 2017,
+        region: "California",
+        type: "Red",
+        style: "Cabernet Sauvignon",
+        abv: 14.2,
+        imgURL: "/2017_SilverOaks_Cabernet.jpeg",
+        price: 89.99,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "Goldeneye",
+        year: 2018,
+        region: "California",
+        type: "Red",
+        style: "Pinot Noir",
+        abv: 14.5,
+        imgURL: "/2018_Goldeneye_Pinot.jpeg",
+        price: 58.99,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "Chandon de Brialles",
+        year: 2019,
+        region: "France",
+        type: "Red",
+        style: "Pinot Noir",
+        abv: 13.5,
+        imgURL: "/2019_ChandondeBrialles.jpeg",
+        price: 249.99,
+        inventoryCount: 100,
+      }),
     ]);
 
-  // Creating Products - Beer
-  const beer = await Promise.all([
-    Beer.create({
-      name: "KBS - Hazelnut",
-      brand: "Founders Brewing Company",
-      state: "Michigan",
-      country: "USA",
-      type: "Ale",
-      style: "Stout",
-      ABV: 12,
-      imgURL: "/2022_KBS_Hazelnut_Featured.jpg",
-      price: 17.5,
-      inventoryCount: 100,
-    }),
-  ]);
-    
+    // Creating Products - Beer
+    const beer = await Promise.all([
+      Beer.create({
+        name: "KBS - Hazelnut",
+        brand: "Founders Brewing Company",
+        state: "Michigan",
+        country: "USA",
+        type: "Ale",
+        style: "Stout",
+        ABV: 12,
+        imgURL: "/2022_KBS_Hazelnut_Featured.jpg",
+        price: 17.5,
+        inventoryCount: 100,
+      }),
+    ]);
+
     console.log(`seeded ${users.length} users`);
     console.log(`seeded successfully`);
     return {
