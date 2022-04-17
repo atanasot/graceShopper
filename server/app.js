@@ -12,12 +12,15 @@ app.use(express.json())
 
 // auth and api routes
 app.use('/auth', require('./auth'))
-app.use('/api', require('./api'))
 
 app.get('/', (req, res)=> res.sendFile(path.join(__dirname, '..', 'public/index.html')));
 
 // static file-serving middleware
 app.use(express.static(path.join(__dirname, '..', 'public')))
+
+app.use('/api/wines', require('./db/routes/wines'));
+app.use('/api/beers', require('./db/routes/beers'));
+
 
 // any remaining requests with an extension (.js, .css, etc.) send 404
 app.use((req, res, next) => {
@@ -41,3 +44,5 @@ app.use((err, req, res, next) => {
   console.error(err.stack)
   res.status(err.status || 500).send(err.message || 'Internal server error.')
 })
+
+module.exports = app;
