@@ -78,9 +78,9 @@ async function seed() {
         inventoryCount: 100,
       }),
     ]);
-
+    
     // Creating Products - Beer
-    const beer = await Promise.all([
+    await Promise.all([
       Beer.create({
         name: "KBS - Hazelnut",
         brand: "Founders Brewing Company",
@@ -91,6 +91,54 @@ async function seed() {
         ABV: 12,
         imgURL: "/2022_KBS_Hazelnut_Featured.jpg",
         price: 17.5,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "All Day Vacay",
+        brand: "Founders Brewing Company",
+        state: "Michigan",
+        country: "USA",
+        type: "Ale",
+        style: "Wheat Beer",
+        ABV: 4.6,
+        imgURL: "/2020_All_Day_Vacay_Featured.jpg",
+        price: 17.99,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Vanilla Java Porter",
+        brand: "Atwater Brewery",
+        state: "Michigan",
+        country: "USA",
+        type: "Ale",
+        style: "Porter",
+        ABV: 5,
+        imgURL: "/porter.jpg",
+        price: 18.99,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Detroit Pale Ale",
+        brand: "Atwater Brewery",
+        state: "Michigan",
+        country: "USA",
+        type: "Ale",
+        style: "Pale Ale",
+        ABV: 5,
+        imgURL: "/paleAle.png",
+        price: 16.99,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Dirty Blonde",
+        brand: "Atwater Brewery",
+        state: "Michigan",
+        country: "USA",
+        type: "Ale",
+        style: "Wheat Beer",
+        ABV: 4.5,
+        imgURL: "/dirtyBlonde.jpg",
+        price: 16.99,
         inventoryCount: 100,
       }),
     ]);
