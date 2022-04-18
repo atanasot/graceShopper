@@ -77,8 +77,65 @@ async function seed() {
         price: 249.99,
         inventoryCount: 100,
       }),
+      Wine.create({
+        name: "Susana Balboa",
+        year: 2018,
+        region: "Argentina",
+        type: "Red",
+        style: "Bordeaux",
+        abv: 13.5,
+        imgURL: "/2018_Susana_Bourdeax.jpeg",
+        price: 43.99,
+        price: 43.99,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "Lemelson Theas",
+        year: 2018,
+        region: "Washington",
+        type: "Red",
+        style: "Pinot Noir",
+        abv: 13.8,
+        imgURL: "/2018_Lemelson_Theas_Pinot.jpeg",
+        price: 34.99,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "Hartford Court Russian River",
+        year: 2019,
+        region: "California",
+        type: "Red",
+        style: "Pinot Noir",
+        abv: 14.5,
+        imgURL: "/2019_Hartford_Pinot.jpeg",
+        price: 40.99,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "Chateau Lestage",
+        year: 2016,
+        region: "France",
+        type: "Red",
+        style: "Bourdeaux",
+        abv: 14.0,
+        imgURL: "/2016_Chateau_Lestage_Bordeaux.jpeg",
+        price: 45.99,
+        inventoryCount: 100,
+      }),
+
+      Wine.create({
+        name: "Marques de Caceres",
+        year: 2017,
+        region: "Spain",
+        type: "Red",
+        style: "Bourdeaux",
+        abv: 14.0,
+        imgURL: "/2017_Marques_Red.jpeg",
+        price: 20.99,
+        inventoryCount: 100,
+      }),
     ]);
-    
+
     // Creating Products - Beer
     await Promise.all([
       Beer.create({
