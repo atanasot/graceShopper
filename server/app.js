@@ -18,8 +18,8 @@ app.get('/', (req, res)=> res.sendFile(path.join(__dirname, '..', 'public/index.
 // static file-serving middleware
 app.use(express.static(path.join(__dirname, '..', 'public')))
 
-app.use('/api/wines', require('./db/routes/wines'));
-app.use('/api/beers', require('./db/routes/beers'));
+app.use('/api/wines', require('./api/routes/wines'));
+app.use('/api/beers', require('./api/routes/beers'));
 
 
 // any remaining requests with an extension (.js, .css, etc.) send 404
