@@ -1,9 +1,7 @@
 const app = require('express').Router();
-// const { Wine } = require('.././models/Wine');
 const { models: {Wine }} = require('../index');
 app.get('/', async(req,res,next)=>{
     try {
-        console.log('-------get route');
         res.send(await Wine.findAll()); 
     }
     catch(ex) {
