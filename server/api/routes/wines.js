@@ -1,5 +1,5 @@
 const app = require('express').Router();
-const { models: {Wine }} = require('../index');
+const { models: {Wine }} = require('../../db/index');
 app.get('/', async(req,res,next)=>{
     try {
         res.send(await Wine.findAll()); 

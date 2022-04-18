@@ -1,5 +1,5 @@
 const app = require('express').Router();
-const { models: {Beer }} = require('../index');
+const { models: {Beer }} = require('../../db/index');
 
 app.get('/', async(req,res,next)=>{
     try {
