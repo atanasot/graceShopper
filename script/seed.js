@@ -77,8 +77,65 @@ async function seed() {
         price: 249.99,
         inventoryCount: 100,
       }),
+      Wine.create({
+        name: "Catena Zapata Adrianna White Bones Chardonnay",
+        year: 2019,
+        region: "Mendoza, Argentina",
+        type: "White",
+        style: "Chardonnay",
+        abv: 12.6,
+        imgURL: "/Catena_Zapata_Adrianna_White_Bones_Chardonnay_2019.jpg",
+        price: 129.99,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "Sine Qua Non Aperta",
+        year: 2018,
+        region: "California",
+        type: "White",
+        style: "Other White Blends",
+        abv: 12.5,
+        imgURL: "/Sine_Qua_Non_Aperta_2018.jpg",
+        price: 299.99,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "Marc Colin Montrachet Grand Cru",
+        year: 2019,
+        region:
+          "Puligny-Montrachet, Cote de Beaune, Cote d'Or, Burgundy, France",
+        type: "White",
+        style: "Chardonnay",
+        abv: 12.5,
+        imgURL: "/Marc_Colin_Montrachet_Grand_Cru_2019.jpg",
+        price: 1799.99,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "R. Lopez de Heredia Rioja White Vina Tondonia Gran Reserva",
+        year: 2001,
+        region: "Rioja, Spain",
+        type: "White",
+        style: "Other White Blends ",
+        abv: 12.5,
+        imgURL:
+          "/R_Lopez_de_Heredia_Rioja_White_Vina_Tondonia_Gran_Reserva.jpg",
+        price: 499.99,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "Christian Moreau Chablis Les Clos Grand Cru",
+        year: 2019,
+        region: "Chablis, Burgundy, France",
+        type: "White",
+        style: "Chardonnay",
+        abv: 13,
+        imgURL: "Christian_Moreau_Chablis_Les_Clos_Grand_Cru_2019.jpg",
+        price: 129.99,
+        inventoryCount: 100,
+      }),
     ]);
-    
+
     // Creating Products - Beer
     await Promise.all([
       Beer.create({
