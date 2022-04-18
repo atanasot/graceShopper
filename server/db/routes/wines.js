@@ -4,8 +4,7 @@ const { models: {Wine }} = require('../index');
 app.get('/', async(req,res,next)=>{
     try {
         console.log('-------get route');
-        res.send(await Wine.findAll());
-       
+        res.send(await Wine.findAll()); 
     }
     catch(ex) {
         next(ex);

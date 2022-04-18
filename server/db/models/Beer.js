@@ -32,7 +32,8 @@ const Beer = db.define("beer", {
       "Wheat Beer",
       "Pale Ale",
       "Porter",
-      "Stout"
+      "Stout",
+      "IPA"
     ),
     defaultValue: "Pale Lager",
   },
