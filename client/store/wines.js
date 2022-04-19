@@ -17,7 +17,9 @@ const _fetchWines = (wines) => ({ type: LOAD_WINES, wines });
 
 export const fetchWines = () => {
   return async (dispatch) => {
-    const wines = await axios.get("/api/wines").data;
+    const wines = (await axios.get("/api/wines")).data;
+    //console.log("Loading wines");
+    //console.log(wines.data);
     dispatch(_fetchWines(wines));
   };
 };

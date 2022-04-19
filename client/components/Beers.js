@@ -5,7 +5,7 @@ const Beers = ({ beers }) => {
   return (
     <ul>
       {beers.map((beer) => (
-        <li>{beer.name}</li>
+        <li key={beer.id}>{beer.name}</li>
       ))}
     </ul>
   );

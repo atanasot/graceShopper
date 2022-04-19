@@ -17,7 +17,7 @@ const _fetchBeers = (beers) => ({ type: LOAD_BEERS, beers });
 
 export const fetchBeers = () => {
   return async (dispatch) => {
-    const beers = await axios.get("/api/beers").data;
+    const beers = (await axios.get("/api/beers")).data;
     dispatch(_fetchBeers(beers));
   };
 };
