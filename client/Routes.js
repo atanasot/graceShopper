@@ -7,6 +7,8 @@ import Cart from "./components/Cart";
 import About from "./components/About";
 import { me } from "./store";
 import Beers from "./components/Beers";
+import Wines from "./components/Wines";
+import WineDescription from "./components/WineDescription";
 
 /**
  * COMPONENT
@@ -34,6 +36,8 @@ class Routes extends Component {
             <Route path="/cart" component={Cart} />
             <Route path="/about" component={About} />
             <Route path="/beer" component={Beers} />
+            <Route path="/wine" component={Wines} />
+            <Route path="/wine/:id" component={WineDescription} />
           </Switch>
         )}
       </div>
