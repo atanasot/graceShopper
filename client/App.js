@@ -1,15 +1,30 @@
-import React from 'react'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Navbar from "./components/Navbar";
+import Routes from "./Routes";
+import { fetchBeers, fetchWines } from "./store";
 
-import Navbar from './components/Navbar'
-import Routes from './Routes'
+class App extends Component {
+  componentDidMount() {
+    this.props.fetchBeers();
+    this.props.fetchWines();
+  }
 
-const App = () => {
-  return (
-    <div>
-      <Navbar />
-      <Routes />
-    </div>
-  )
+  render() {
+    return (
+      <div>
+        <Navbar />
+        <Routes />
+      </div>
+    );
+  }
 }
 
-export default App
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchBeers: () => dispatch(fetchBeers()),
+    fetchWines: () => dispatch(fetchWines()),
+  };
+};
+
+export default connect((state) => state, mapDispatchToProps)(App);
