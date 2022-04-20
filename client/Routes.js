@@ -33,7 +33,8 @@ class Routes extends Component {
             <Route path="/about" component={About} />
             <Route path="/beer" component={Beers} />
             <Route path="/wine" component={Wines} />
-            <Route path="/wine/:id" component={WineDescription} />
+            <Route path="/wines/:id" component={WineDescription} />
+            <Route path="/beers/:id" component={BeerDescription} />
           </Switch>
         ) : (
           <Switch>
@@ -44,8 +45,8 @@ class Routes extends Component {
             <Route path="/about" component={About} />
             <Route path="/beer" component={Beers} />
             <Route path="/wine" component={Wines} />
-            <Route path="/beer/:id" component={BeerDescription} />
-            <Route path="/wine/:id" component={WineDescription} />
+            <Route path="/beers/:id" component={BeerDescription} />
+            <Route path="/wines/:id" component={WineDescription} />
           </Switch>
         )}
       </div>
