@@ -6,10 +6,22 @@ class BeerDescription extends Component {
   constructor() {
     super();
   }
+
+ 
   render() {
-    return <p>Beer Description will be inserted here</p>;
+    return (
+      <div>
+        <p>Beer Description will be inserted here</p>
+        <button>Add to Cart</button>
+      </div>
+    )
   }
 }
+
+// add mapDispatchToProps and thunks from the redux store
+// thunks: 
+// button.onClick => (add the beer to the lineItem model)
+// addBeer()
 
 
 export default connect(null)(BeerDescription);
