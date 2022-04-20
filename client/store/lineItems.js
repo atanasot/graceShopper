@@ -1,5 +1,7 @@
 import axios from "axios"
 
+// make a backend route /api/lineItems
+
 /**
  * ACTION TYPES
  */
@@ -22,14 +24,18 @@ const _deleteBeer = (beer) => ({type: DELETE_BEER, beer})
 // beer here represented as {id : quantity}
 export const addBeer = (beer) => {
     return async(dispatch) => {
-        const response = await axios.post('/api/beers', beer)
+        const response = await axios.post('/api/lineItems', beer)
         dispatch(_addBeer(response.data))
     }
 }
 
 export default function lineItems (state = {}, action) {
     if (action.type === ADD_QTY) {
-        return Object.assign({}, action.beer)
+        return {...state, ...action.beer}
+        
+    }
+    if (action.type === DELETE_BEER) {
+        return
     }
     return state
 }
@@ -38,4 +44,4 @@ export default function lineItems (state = {}, action) {
 
 // need to add more cases
 // add wines as well
-// lineItem -- {id : quantity}
+// lineItem -- {id : 14, quantity: 2}
