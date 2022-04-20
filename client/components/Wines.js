@@ -8,6 +8,7 @@ const Wines = ({ wines }) => {
       <ul>
         {wines.map((wine) => (
           <li key={wine.id}>
+            <img src={window.location.origin + `/${wine.imgURL}`} />
             <Link to={`/wine/${wine.id}`}>{wine.name}</Link>
           </li>
         ))}
