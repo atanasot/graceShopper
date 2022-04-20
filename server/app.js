@@ -20,6 +20,7 @@ app.use(express.static(path.join(__dirname, '..', 'public')))
 
 app.use('/api/wines', require('./api/routes/wines'));
 app.use('/api/beers', require('./api/routes/beers'));
+app.use('/api/orders', require('./api/routes/orders'));
 
 
 // any remaining requests with an extension (.js, .css, etc.) send 404
