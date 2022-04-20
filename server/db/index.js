@@ -6,15 +6,19 @@ const User = require("./models/User");
 const Wine = require("./models/Wine");
 const Beer = require("./models/Beer");
 const Order = require("./models/Order");
+const LineItem = require("./models/LineItem");
 
 //associations could go here!
 Order.belongsTo(User);
 User.hasMany(Order);
-Wine.belongsTo(Order);
-Order.hasMany(Wine);
-Beer.belongsTo(Order);
-Order.hasMany(Beer);
-Order.hasOne(Order, { foreignKey: "cartId" });
+LineItem.belongsTo(Order);
+Order.hasMany(LineItem);
+LineItem.belongsTo(Wine);
+Wine.hasMany(LineItem);
+LineItem.belongsTo(Beer);
+Beer.hasMany(LineItem);
+
+
 
 module.exports = {
   db,
@@ -23,5 +27,6 @@ module.exports = {
     Wine,
     Beer,
     Order,
+    LineItem
   },
 };

@@ -10,6 +10,7 @@ import Beers from "./components/Beers";
 import Wines from "./components/Wines";
 import WineDescription from "./components/WineDescription";
 import Profile from "./components/Profile";
+import BeerDescription from "./components/BeerDescription";
 
 /**
  * COMPONENT
@@ -43,6 +44,7 @@ class Routes extends Component {
             <Route path="/about" component={About} />
             <Route path="/beer" component={Beers} />
             <Route path="/wine" component={Wines} />
+            <Route path="/beer/:id" component={BeerDescription} />
             <Route path="/wine/:id" component={WineDescription} />
           </Switch>
         )}
