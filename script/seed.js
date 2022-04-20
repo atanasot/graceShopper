@@ -275,7 +275,7 @@ async function seed() {
         style: "Stout",
         ABV: 12.0,
         imgURL: "/kentuckyBrunch.jpg",
-        price: 20.00,
+        price: 20.0,
         inventoryCount: 100,
       }),
       Beer.create({
@@ -287,7 +287,7 @@ async function seed() {
         style: "Pale Lager",
         ABV: 12.0,
         imgURL: "/oldTownLager.jpg",
-        price: 20.00,
+        price: 20.0,
         inventoryCount: 100,
       }),
       Beer.create({
@@ -299,7 +299,7 @@ async function seed() {
         style: "Dunkel",
         ABV: 7.8,
         imgURL: "/kellerbierDunkel.jpg",
-        price: 13.00,
+        price: 13.0,
         inventoryCount: 100,
       }),
       Beer.create({
@@ -311,7 +311,7 @@ async function seed() {
         style: "Stout",
         ABV: 4.8,
         imgURL: "/oysterStout.jpg",
-        price: 8.00,
+        price: 8.0,
         inventoryCount: 100,
       }),
       Beer.create({

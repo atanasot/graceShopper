@@ -9,6 +9,7 @@ import { me } from "./store";
 import Beers from "./components/Beers";
 import Wines from "./components/Wines";
 import WineDescription from "./components/WineDescription";
+import Profile from "./components/Profile";
 import BeerDescription from "./components/BeerDescription";
 
 /**
@@ -26,12 +27,17 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route path="/home" component={Home} />
-            <Redirect to="/home" />
+            <Route path="/" exact component={Home} />
+            <Route path="/profile" exact component={Profile} />
+            <Route path="/cart" component={Cart} />
+            <Route path="/about" component={About} />
+            <Route path="/beer" component={Beers} />
+            <Route path="/wine" component={Wines} />
+            <Route path="/wine/:id" component={WineDescription} />
           </Switch>
         ) : (
           <Switch>
-            <Route path="/" exact component={Login} />
+            <Route path="/" exact component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/cart" component={Cart} />

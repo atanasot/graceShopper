@@ -5,13 +5,21 @@ import { Link } from "react-router-dom";
 const Wines = ({ wines }) => {
   return (
     <div>
-      <ul>
-        {wines.map((wine) => (
-          <li key={wine.id}>
-            <Link to={`/wine/${wine.id}`}>{wine.name}</Link>
-          </li>
-        ))}
-      </ul>
+      <div>
+        <ul className="products">
+          {wines.map((wine) => (
+            <li key={wine.id}>
+              <img
+                src={`./images/${wine.imgURL}`}
+                alt=""
+                width="80"
+                height="200"
+              />
+              <Link to={`/wine/${wine.id}`}>{wine.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
