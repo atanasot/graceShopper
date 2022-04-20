@@ -64,7 +64,7 @@ li {
 
 .drop a {
   text-decoration: none;
-  color: black;
+  color: rgb(0, 0, 0);
 }
 
 #main li:nth-child(1):hover ul div {
@@ -131,4 +131,13 @@ nav {
   font-family: impact,fantasy;
   letter-spacing: 3px;
 }
+
+.products{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-decoration: none;
+  }
+  
 /*# sourceMappingURL=style.css.map */

@@ -58,7 +58,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
             </ul>
           </li>
         </ul>
-        <Link to="/home" className="title">
+        <Link to="/" className="title">
           ALWAYS THE WEEKEND
         </Link>
         <ul id="main" className="navbar-right">
