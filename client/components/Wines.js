@@ -15,7 +15,7 @@ const Wines = ({ wines }) => {
                 width="80"
                 height="200"
               />
-              <Link to={`/wine/${wine.id}`}>{wine.name}</Link>
+              <Link to={`/wines/${wine.id}`}>{wine.name}</Link>
             </li>
           ))}
         </ul>
