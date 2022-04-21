@@ -4,23 +4,48 @@ import { connect } from "react-redux";
 import { addBeer } from "../store/lineItems";
 
 class BeerDescription extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    //console.log(props, "INSIDE CONSTRUCTOR")
+    this.state = {
+      beerId: this.props.beer.id ? this.props.beer.id : '',
+      quantity: 1
+    }
+    this.addToCart = this.addToCart.bind(this)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.beer.id && this.props.beer.id) {
+      this.setState({
+        beerId: this.props.beer.id,
+        quantity: 1
+      });
+    }
+  }
+
+  addToCart () {
+    const lineItem = {
+      beerId: this.state.beerId,
+      quantity: this.state.quantity
+    }
+    this.props.addBeer(lineItem)
   }
 
   render() {
     const { beer } = this.props;
+    const {addToCart} = this
     return (
       <div>
         <p>Beer Description will be inserted here</p>
         <p>{beer.name}</p>
-        <button onClick={() => console.log('clicked')}>Add to Cart</button>
+        <button onClick={() => addToCart()}>Add to Cart</button>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state, otherProps) => {
+ // console.log(state, "INSIDE mapStateToProps")
   const beer =
     state.beers.find((beer) => beer.id === otherProps.match.params.id * 1) ||
     {};
@@ -34,9 +59,5 @@ const mapDispatchToProps = (dispatch) => {
     addBeer: (beer) => dispatch(addBeer(beer)),
   };
 };
-// add mapDispatchToProps and thunks from the redux store
-// thunks:
-// button.onClick => (add the beer to the lineItem model)
-// addBeer()
 
 export default connect(mapStateToProps, mapDispatchToProps)(BeerDescription);
