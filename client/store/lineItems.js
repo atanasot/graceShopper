@@ -16,7 +16,7 @@ const ADD_BEER = "ADD_BEER";
  */
 
 const _addBeer = (beer) => ({ type: ADD_QTY, beer });
-const _addWine = (wine) => ({ type: ADD_WINE_QTY, wine });
+const _addWine = (wine) => ({ type: ADD_QTY, wine });
 
 const _addBeerToLocalStorage = (beer) => ({ type: ADD_BEER, beer });
 
@@ -51,7 +51,7 @@ export default function (state = [], action) {
   switch (action.type) {
     case ADD_QTY:
       return [...state, action.beer];
-    case ADD_WINE_QTY:
+    case ADD_QTY:
       return [...state, action.wine];
     case ADD_BEER:
       return [...state, action.beer];

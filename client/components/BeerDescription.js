@@ -8,42 +8,30 @@ class BeerDescription extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      beerId: this.props.beer.id ? this.props.beer.id : "",
+      wineId: this.props.beer.id ? this.props.beer.id : "",
       quantity: 1,
-      price: this.props.beer.price ? this.props.beer.price : "",
-      cart: JSON.parse(window.localStorage.getItem("cart")) || [],
     };
-    this.addToLocalStorage = this.addToLocalStorage.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidUpdate(prevProps) {
     if (!prevProps.beer.id && this.props.beer.id) {
       this.setState({
-        beerId: this.props.beer.id,
+        wineId: this.props.beer.id,
         quantity: 1,
-        price: this.props.beer.price,
       });
     }
   }
 
-  addToLocalStorage() {
-    let cart = this.state.cart;
-    cart.push({
+  addToCart() {
+    const lineItem = {
       beerId: this.state.beerId,
       quantity: this.state.quantity,
-      price: this.state.price,
-    });
-    this.setState({ cart: cart });
-
-    window.localStorage.setItem("cart", JSON.stringify(cart));
-
-    console.log(localStorage);
-    let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
-    console.log(loadedStorage);
+    };
+    this.props.addBeer(lineItem);
   }
 
   render() {
-    //console.log(this.state);
     const { beer } = this.props;
     const { addToCart } = this;
     return (
@@ -51,22 +39,27 @@ class BeerDescription extends Component {
         <p>
           <Link to="/beer">Go back</Link>
         </p>
-        <p>Beer Description will be inserted here</p>
+        <p>Wine Description will be inserted here</p>
         <p>{beer.name}</p>
-        <button onClick={() => this.addToLocalStorage()}>Add to Cart</button>
+        <button onClick={() => addToCart()}>Add to Cart</button>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state, otherProps) => {
-  //console.log(state, "INSIDE mapStateToProps");
   const beer =
-    state.beers.find((beer) => beer.id === otherProps.match.params.id * 1) ||
+    state.wines.find((beer) => beer.id === otherProps.match.params.id * 1) ||
     {};
   return {
     beer,
   };
 };
 
-export default connect(mapStateToProps)(BeerDescription);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addBeer: (beer) => dispatch(addBeer(beer)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BeerDescription);
