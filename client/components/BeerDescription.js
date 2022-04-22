@@ -7,12 +7,13 @@ import { Link } from "react-router-dom";
 class BeerDescription extends Component {
   constructor(props) {
     super(props);
-    //console.log(props, "INSIDE CONSTRUCTOR")
     this.state = {
       beerId: this.props.beer.id ? this.props.beer.id : "",
       quantity: 1,
+      price: this.props.beer.price ? this.props.beer.price : "",
+      cart: JSON.parse(window.localStorage.getItem("cart")) || [],
     };
-    this.addToCart = this.addToCart.bind(this);
+    this.addToLocalStorage = this.addToLocalStorage.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -20,19 +21,29 @@ class BeerDescription extends Component {
       this.setState({
         beerId: this.props.beer.id,
         quantity: 1,
+        price: this.props.beer.price,
       });
     }
   }
 
-  addToCart() {
-    const lineItem = {
+  addToLocalStorage() {
+    let cart = this.state.cart;
+    cart.push({
       beerId: this.state.beerId,
       quantity: this.state.quantity,
-    };
-    this.props.addBeer(lineItem);
+      price: this.state.price,
+    });
+    this.setState({ cart: cart });
+
+    window.localStorage.setItem("cart", JSON.stringify(cart));
+
+    console.log(localStorage);
+    let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
+    console.log(loadedStorage);
   }
 
   render() {
+    //console.log(this.state);
     const { beer } = this.props;
     const { addToCart } = this;
     return (
@@ -42,14 +53,14 @@ class BeerDescription extends Component {
         </p>
         <p>Beer Description will be inserted here</p>
         <p>{beer.name}</p>
-        <button onClick={() => addToCart()}>Add to Cart</button>
+        <button onClick={() => this.addToLocalStorage()}>Add to Cart</button>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state, otherProps) => {
-  // console.log(state, "INSIDE mapStateToProps")
+  //console.log(state, "INSIDE mapStateToProps");
   const beer =
     state.beers.find((beer) => beer.id === otherProps.match.params.id * 1) ||
     {};
@@ -58,10 +69,4 @@ const mapStateToProps = (state, otherProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addBeer: (beer) => dispatch(addBeer(beer)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(BeerDescription);
+export default connect(mapStateToProps)(BeerDescription);
