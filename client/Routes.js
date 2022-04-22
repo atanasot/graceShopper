@@ -13,6 +13,7 @@ import Profile from "./components/Profile";
 import BeerDescriptionBeforeLogin from "./components/BeerDescriptionBeforeLogin";
 import BeerDescription from "./components/BeerDescription";
 import WineDescriptionBeforeLogin from "./components/WineDescriptionBeforeLogin";
+import Checkout from "./components/Checkout";
 
 /**
  * COMPONENT
@@ -37,6 +38,7 @@ class Routes extends Component {
             <Route path="/wine" component={Wines} />
             <Route path="/wines/:id" component={WineDescription} />
             <Route path="/beers/:id" component={BeerDescription} />
+            <Route path="/checkout" component={Checkout} />
           </Switch>
         ) : (
           <Switch>
@@ -49,6 +51,7 @@ class Routes extends Component {
             <Route path="/wine" component={Wines} />
             <Route path="/beers/:id" component={BeerDescriptionBeforeLogin} />
             <Route path="/wines/:id" component={WineDescriptionBeforeLogin} />
+            <Route path="/checkout" component={Checkout} />
           </Switch>
         )}
       </div>

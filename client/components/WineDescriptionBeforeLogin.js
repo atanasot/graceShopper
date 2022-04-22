@@ -8,7 +8,7 @@ class WineDescriptionBeforeLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      beerId: this.props.wine.id ? this.props.wine.id : "",
+      wineId: this.props.wine.id ? this.props.wine.id : "",
       name: this.props.wine.name,
       quantity: 1,
       price: this.props.wine.price ? this.props.wine.price : "",
