@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const { STRING, ENUM, DECIMAL, INTEGER } = Sequelize;
+const { STRING, ENUM, DECIMAL, INTEGER, TEXT } = Sequelize;
 const db = require("../db");
 
 const Wine = db.define("wine", {
@@ -35,6 +35,9 @@ const Wine = db.define("wine", {
   },
   inventoryCount: {
     type: INTEGER,
+  },
+  description: {
+    type: TEXT,
   },
 });
 
