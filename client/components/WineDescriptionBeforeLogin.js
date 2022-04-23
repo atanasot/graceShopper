@@ -13,6 +13,9 @@ class WineDescriptionBeforeLogin extends Component {
       quantity: 1,
       price: this.props.wine.price ? this.props.wine.price : "",
       cart: JSON.parse(window.localStorage.getItem("cart")) || [],
+      description: this.props.wine.description
+        ? this.props.wine.description
+        : "",
     };
     this.addToLocalStorage = this.addToLocalStorage.bind(this);
   }
@@ -54,7 +57,7 @@ class WineDescriptionBeforeLogin extends Component {
         <p>
           <Link to="/wine">Go back</Link>
         </p>
-        <p>Wine Description will be inserted here</p>
+        <p>{wine.description}</p>
         <p>{wine.name}</p>
         <button onClick={() => this.addToLocalStorage()}>Add to Cart</button>
       </div>
