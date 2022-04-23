@@ -39,7 +39,7 @@ class WineDescription extends Component {
         <p>
           <Link to="/wine">Go back</Link>
         </p>
-        <p>Wine Description will be inserted here</p>
+        <p>{wine.description}</p>
         <p>{wine.name}</p>
         <button onClick={() => addToCart()}>Add to Cart</button>
       </div>
