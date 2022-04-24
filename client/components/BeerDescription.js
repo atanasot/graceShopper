@@ -8,8 +8,9 @@ class BeerDescription extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      wineId: this.props.beer.id ? this.props.beer.id : "",
+      beerId: this.props.beer.id ? this.props.beer.id : "",
       quantity: 1,
+      price: this.props.beer.id ? this.props.beer.price : ''
     };
     this.addToCart = this.addToCart.bind(this);
   }
@@ -17,8 +18,9 @@ class BeerDescription extends Component {
   componentDidUpdate(prevProps) {
     if (!prevProps.beer.id && this.props.beer.id) {
       this.setState({
-        wineId: this.props.beer.id,
+        beerId: this.props.beer.id,
         quantity: 1,
+        price: this.props.price,
       });
     }
   }
@@ -27,7 +29,9 @@ class BeerDescription extends Component {
     const lineItem = {
       beerId: this.state.beerId,
       quantity: this.state.quantity,
+      price: this.state.price,
     };
+    //console.log(lineItem)
     this.props.addBeer(lineItem);
   }
 
@@ -39,7 +43,7 @@ class BeerDescription extends Component {
         <p>
           <Link to="/beer">Go back</Link>
         </p>
-        <p>Wine Description will be inserted here</p>
+        <p>Beer Description will be inserted here</p>
         <p>{beer.name}</p>
         <button onClick={() => addToCart()}>Add to Cart</button>
       </div>
@@ -49,7 +53,7 @@ class BeerDescription extends Component {
 
 const mapStateToProps = (state, otherProps) => {
   const beer =
-    state.wines.find((beer) => beer.id === otherProps.match.params.id * 1) ||
+    state.beers.find((beer) => beer.id === otherProps.match.params.id * 1) ||
     {};
   return {
     beer,

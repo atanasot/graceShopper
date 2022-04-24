@@ -14,6 +14,7 @@ import BeerDescriptionBeforeLogin from "./components/BeerDescriptionBeforeLogin"
 import BeerDescription from "./components/BeerDescription";
 import WineDescriptionBeforeLogin from "./components/WineDescriptionBeforeLogin";
 import Checkout from "./components/Checkout";
+import {fetchLineItemsFromCart} from './store/lineItems'
 
 /**
  * COMPONENT
@@ -23,9 +24,18 @@ class Routes extends Component {
     this.props.loadInitialData();
   }
 
+  componentDidUpdate(prevProps) {
+    if (!prevProps.isLoggedIn && this.props.isLoggedIn) {
+      // this should load the products that are in the cart 
+      console.log('user logged in')
+      this.props.fetchLineItemsFromCart()
+
+    }
+  }
+
   render() {
     const { isLoggedIn } = this.props;
-
+    //console.log(isLoggedIn)
     return (
       <div>
         {isLoggedIn ? (
@@ -75,6 +85,9 @@ const mapDispatch = (dispatch) => {
     loadInitialData() {
       dispatch(me());
     },
+    fetchLineItemsFromCart: () => {
+      return dispatch(fetchLineItemsFromCart())
+    }
   };
 };
 
