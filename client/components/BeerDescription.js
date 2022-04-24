@@ -10,7 +10,7 @@ class BeerDescription extends Component {
     this.state = {
       beerId: this.props.beer.id ? this.props.beer.id : "",
       quantity: 1,
-      price: this.props.beer.id ? this.props.beer.price : ''
+      price: this.props.beer.id ? this.props.beer.price : "",
     };
     this.addToCart = this.addToCart.bind(this);
   }
@@ -20,7 +20,7 @@ class BeerDescription extends Component {
       this.setState({
         beerId: this.props.beer.id,
         quantity: 1,
-        price: this.props.price,
+        price: this.props.beer.price,
       });
     }
   }
@@ -31,7 +31,6 @@ class BeerDescription extends Component {
       quantity: this.state.quantity,
       price: this.state.price,
     };
-    //console.log(lineItem)
     this.props.addBeer(lineItem);
   }
 

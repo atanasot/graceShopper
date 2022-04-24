@@ -10,7 +10,7 @@ class WineDescription extends Component {
     this.state = {
       wineId: this.props.wine.id ? this.props.wine.id : "",
       quantity: 1,
-      price: this.props.wine.id ? this.props.wine.price : ''
+      price: this.props.wine.id ? this.props.wine.price : "",
     };
     this.addToCart = this.addToCart.bind(this);
   }
@@ -20,7 +20,7 @@ class WineDescription extends Component {
       this.setState({
         wineId: this.props.wine.id,
         quantity: 1,
-        price: this.props.wine.price
+        price: this.props.wine.price,
       });
     }
   }
@@ -29,7 +29,7 @@ class WineDescription extends Component {
     const lineItem = {
       wineId: this.state.wineId,
       quantity: this.state.quantity,
-      price: this.state.price
+      price: this.state.price,
     };
     this.props.addWine(lineItem);
   }
