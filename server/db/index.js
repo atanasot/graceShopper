@@ -17,6 +17,7 @@ LineItem.belongsTo(Wine);
 Wine.hasMany(LineItem);
 LineItem.belongsTo(Beer);
 Beer.hasMany(LineItem);
+LineItem.belongsTo(User) // added this so that cart ca be associeted with user
 
 
 

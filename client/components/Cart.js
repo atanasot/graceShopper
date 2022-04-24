@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
+// Notes for whoever is doing the Cart Componnet: ? Kenny?
+// 1. For a logged in user: Connect to redux store
+// 2. look at the thunk that i created in store -> lineItems.js to display all items in the cart
+
 const Cart = () => {
   const loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
   const subtotal = loadedStorage
