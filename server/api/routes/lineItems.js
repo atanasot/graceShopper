@@ -1,6 +1,6 @@
 const app = require("express").Router();
 const {
-  models: { LineItem, User, Wine, Beer },
+  models: { LineItem, User},
 } = require("../../db/index");
 
 app.get("/", async (req, res, next) => {

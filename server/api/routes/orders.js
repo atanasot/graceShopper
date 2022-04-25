@@ -1,8 +1,25 @@
 const app = require("express").Router();
 const {
-  models: { Order, User},
+  models: { Order, User, LineItem},
 } = require("../../db/index");
-const LineItem = require("../../db/models/LineItem");
+
+// get a history of orders
+app.get('/', async(req, res, next) => {
+    try {
+        const user = await User.findByToken(req.headers.authorization);
+        res.send(
+            await Order.findAll({
+                where: {
+                    userId: user.id,
+                }
+            })
+        )
+    } catch (err) {
+        next (err)
+    }
+})
+
+
 
 app.post("/", async (req, res, next) => {
 try{
@@ -33,4 +50,32 @@ try{
 }
 });
 //TBD: On Frontend need to send authorization, productID and quantity to backend
+
+app.post('/', async(req, res, next) => {
+    try {
+        const user = await User.findByToken(req.headers.authorization);
+
+        const lineItems = await LineItem.findAll({
+            where: {
+                userId: user.id
+            }
+        })
+        // for each lineItem, calculate total (do for each or a for loop)
+        const total = lineItems.reduce((acc, lineItem) => {
+            acc += ((lineItem.price * 1) * lineItem.quantity)
+        }, 0)
+        res.status(201).send(await Order.create({
+            total: total,
+            lineItems: lineItems.length,
+            isCart: true,
+            userId: user.id
+        }))
+        // return entire updated order ????
+
+    } catch (err) {
+        next(err)
+    }
+})
+
+
 module.exports = app;
