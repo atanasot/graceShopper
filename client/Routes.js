@@ -15,6 +15,7 @@ import BeerDescription from "./components/BeerDescription";
 import WineDescriptionBeforeLogin from "./components/WineDescriptionBeforeLogin";
 import Checkout from "./components/Checkout";
 import {fetchLineItemsFromCart} from './store/lineItems'
+import Orders from './components/Orders'
 
 /**
  * COMPONENT
@@ -48,6 +49,7 @@ class Routes extends Component {
             <Route path="/wine" component={Wines} />
             <Route path="/wines/:id" component={WineDescription} />
             <Route path="/beers/:id" component={BeerDescription} />
+            <Route path="/orders" component={Orders} />
             <Route path="/checkout" component={Checkout} />
           </Switch>
         ) : (
