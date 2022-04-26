@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import store from "../store";
 import { connect } from "react-redux";
 import { addBeer } from "../store/lineItems";
+import { fetchOrders } from "../store/orders";
 import { Link } from "react-router-dom";
 
 class BeerDescription extends Component {
@@ -37,6 +38,7 @@ class BeerDescription extends Component {
   render() {
     const { beer } = this.props;
     const { addToCart } = this;
+    const {fetchOrders} = this.props
     return (
       <div>
         <p>
@@ -44,7 +46,7 @@ class BeerDescription extends Component {
         </p>
         <p>Beer Description will be inserted here</p>
         <p>{beer.name}</p>
-        <button onClick={() => addToCart()}>Add to Cart</button>
+        <button onClick={function() {addToCart(); fetchOrders()}}>Add to Cart</button>
       </div>
     );
   }
@@ -62,6 +64,7 @@ const mapStateToProps = (state, otherProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addBeer: (beer) => dispatch(addBeer(beer)),
+    fetchOrders: (beer) => dispatch(fetchOrders)
   };
 };
 

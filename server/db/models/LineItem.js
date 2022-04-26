@@ -17,4 +17,40 @@ const LineItem = db.define("lineitem", {
   },
 });
 
+// Add lineitem to order, or update if already exists
+LineItem.addToOrder = async function (
+  beerId,
+  wineId,
+  quantity,
+  price,
+  orderId
+) {
+  try {
+    const duplicate = await LineItem.findAll({
+      where: {
+        beerId: beerId ? beerId : null,
+        wineId: wineId ? wineId : null,
+        orderId: orderId,
+      },
+    });
+    if (duplicate.length) {
+      await duplicate[0].update({
+        quantity: duplicate[0].quantity + quantity,
+      });
+    } else {
+      await LineItem.create({
+        beerId: beerId,
+        wineId: wineId,
+        quantity: quantity,
+        price: price,
+        orderId: orderId,
+      });
+    }
+  } catch (ex) {
+    const error = Error("error in LineItem.addToOrder");
+    error.status = 500;
+    throw error;
+  }
+};
+
 module.exports = LineItem;
