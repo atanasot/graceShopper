@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 // Notes for whoever is doing the Cart Componnet: ? Kenny?
 // 1. For a logged in user: Connect to redux store
 // 2. look at the thunk that i created in store -> lineItems.js to display all items in the cart
@@ -12,7 +11,7 @@ const Cart = () => {
     ? loadedStorage.reduce(
         (current, accume) => (current += accume.price * 1),
         0
-      )
+      ) * loadedStorage.map((item) => item.quantity * 1)
     : null;
   const shipping = 5.99;
   return (
@@ -22,10 +21,8 @@ const Cart = () => {
           <ul>
             {loadedStorage.map((item) => (
               <li key={item.id}>
-                {item.name} ${item.price}
-                <button
-                  onClick={() => window.localStorage.removeItem(`${item.name}`)}
-                >
+                {item.name} ${item.price} quantity: {item.quantity}
+                <button onClick={() => console.log("hello")}>
                   remove this item
                 </button>
               </li>

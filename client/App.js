@@ -9,6 +9,7 @@ class App extends Component {
     this.props.fetchBeers();
     this.props.fetchWines();
   }
+  t;
 
   render() {
     return (
