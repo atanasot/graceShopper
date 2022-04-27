@@ -10,7 +10,7 @@ class BeerDescription extends Component {
     super(props);
     this.state = {
       name: this.props.beer.name ? this.props.beer.name : "",
-      beerId: this.props.beer.id ? this.props.beer.id : "",
+      beerId: this.props.beer.id ? this.props.beer.id : null,
       quantity: 1,
       price: this.props.beer.id ? this.props.beer.price : "",
     };
@@ -74,7 +74,7 @@ const mapStateToProps = (state, otherProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addBeer: (beer) => dispatch(addBeer(beer)),
-    fetchOrders: (beer) => dispatch(fetchOrders),
+    fetchOrders: (beer) => dispatch(fetchOrders), // need to invoke if using this func
   };
 };
 

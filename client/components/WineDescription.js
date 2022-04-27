@@ -8,7 +8,7 @@ class WineDescription extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      wineId: this.props.wine.id ? this.props.wine.id : "",
+      wineId: this.props.wine.id ? this.props.wine.id : null,
       quantity: 1,
       price: this.props.wine.id ? this.props.wine.price : "",
     };

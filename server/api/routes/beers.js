@@ -22,7 +22,7 @@ app.get("/:id", async (req, res, next) => {
 
 app.post("/", async (req, res, next) => {
   try {
-    res.send(await Beer.findAll());
+    res.status(201).send(await Beer.create(req.body));
   } catch (ex) {
     next(ex);
   }

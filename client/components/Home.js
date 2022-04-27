@@ -1,5 +1,7 @@
 import React from "react";
 
+// Checkout Stanleys comments
+
 const Home = () => {
   return (
     <div>

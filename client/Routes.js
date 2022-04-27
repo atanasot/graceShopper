@@ -30,13 +30,11 @@ class Routes extends Component {
       // this should load the products that are in the cart 
       console.log('user logged in')
       this.props.fetchLineItemsFromCart()
-
     }
   }
 
   render() {
     const { isLoggedIn } = this.props;
-    //console.log(isLoggedIn)
     return (
       <div>
         {isLoggedIn ? (
@@ -54,8 +52,8 @@ class Routes extends Component {
           </Switch>
         ) : (
           <Switch>
-            <Route path="/" exact component={Home} />
             <Route path="/login" component={Login} />
+            <Route path="/" exact component={Home} />
             <Route path="/signup" component={Signup} />
             <Route path="/cart" component={Cart} />
             <Route path="/about" component={About} />
