@@ -24,6 +24,7 @@ app.post("/", async (req, res, next) => {
     const user = await User.findByToken(req.headers.authorization);
     const currentOrder = await Order.getOrCreateCart(user.id);
     await LineItem.addToOrder(
+      req.body.name,
       req.body.beerId,
       req.body.wineid,
       req.body.quantity,

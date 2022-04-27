@@ -9,6 +9,7 @@ class BeerDescription extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: this.props.beer.name ? this.props.beer.name : "",
       beerId: this.props.beer.id ? this.props.beer.id : "",
       quantity: 1,
       price: this.props.beer.id ? this.props.beer.price : "",
@@ -19,6 +20,7 @@ class BeerDescription extends Component {
   componentDidUpdate(prevProps) {
     if (!prevProps.beer.id && this.props.beer.id) {
       this.setState({
+        name: this.props.beer.name,
         beerId: this.props.beer.id,
         quantity: 1,
         price: this.props.beer.price,
@@ -28,6 +30,7 @@ class BeerDescription extends Component {
 
   addToCart() {
     const lineItem = {
+      name: this.state.name,
       beerId: this.state.beerId,
       quantity: this.state.quantity,
       price: this.state.price,
@@ -38,7 +41,7 @@ class BeerDescription extends Component {
   render() {
     const { beer } = this.props;
     const { addToCart } = this;
-    const {fetchOrders} = this.props
+    const { fetchOrders } = this.props;
     return (
       <div>
         <p>
@@ -46,7 +49,14 @@ class BeerDescription extends Component {
         </p>
         <p>Beer Description will be inserted here</p>
         <p>{beer.name}</p>
-        <button onClick={function() {addToCart(); fetchOrders()}}>Add to Cart</button>
+        <button
+          onClick={function () {
+            addToCart();
+            fetchOrders();
+          }}
+        >
+          Add to Cart
+        </button>
       </div>
     );
   }
@@ -64,7 +74,7 @@ const mapStateToProps = (state, otherProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addBeer: (beer) => dispatch(addBeer(beer)),
-    fetchOrders: (beer) => dispatch(fetchOrders)
+    fetchOrders: (beer) => dispatch(fetchOrders),
   };
 };
 
