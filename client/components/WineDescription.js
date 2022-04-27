@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { addWine } from "../store/lineItems";
 import { Link } from "react-router-dom";
 
-
 class WineDescription extends Component {
   constructor(props) {
     super(props);

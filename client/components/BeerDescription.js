@@ -5,7 +5,6 @@ import { addBeer } from "../store/lineItems";
 import { fetchOrders } from "../store/orders";
 import { Link } from "react-router-dom";
 
-
 class BeerDescription extends Component {
   constructor(props) {
     super(props);
