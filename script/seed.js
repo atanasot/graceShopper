@@ -190,6 +190,105 @@ async function seed() {
         price: 129.99,
         inventoryCount: 100,
       }),
+      Wine.create({
+        name: "2018 Dominus Estate Christian Moueix",
+        year: 2018,
+        region: "California",
+        type: "Red",
+        style: "Cabernet Sauvignon Blend",
+        abv: 14.5,
+        imgURL: "/2018_Dominus_Estate_Christian_Moueix.jpg",
+        price: 3376.00,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "Hospices de Beaune Cuvée Charlotte Dumay Corton Grand Cru",
+        year: 2014,
+        region: "Burgundy, France",
+        type: "Red",
+        style: "Pinot Noir",
+        abv: 13.5,
+        imgURL: "/2014_Hospices_de_Beaune_Cuvée_Charlotte_Dumay_Corton_Grand_Cru.jpg",
+        price: 1400.00,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "AF Gros Richebourg Grand Cru",
+        year: 2013,
+        region: "Cote de Nuits, France",
+        type: "Red",
+        style: "Pinot Noir",
+        abv: 13,
+        imgURL: "/2013_AF_Gros_Richebourg_Grand_Cru.jpg",
+        price: 990.20,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "Col d'Orcia Brunello di Montalcino (Magnum)",
+        year: 1999,
+        region: "Tuscany, Italy",
+        type: "Red",
+        style: "Sangiovese",
+        abv: 13.5,
+        imgURL: "/1999_Col_d'Orcia_Brunello_di_Montalcino_(Magnum).jpg",
+        price: 919.00,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "Promontory 2015",
+        year: 2015,
+        region: "California, United States",
+        type: "Red",
+        style: "Cabernet Sauvignon",
+        abv: 14.52,
+        imgURL: "2015_Promontory.jpg",
+        price: 1558.00,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "Veuve Clicquot Brut Champagne",
+        year: 2019,
+        region: "Champagne, France",
+        type: "Champagne",
+        style: "Pinot Noir/Chardonnay",
+        abv: 12,
+        imgURL: "/Veuve_Clicquot_Brut_Champagne.jpg",
+        price: 77.35,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "Cristal Brut Champagne 2009",
+        year: 2009,
+        region: "Champagne, France",
+        type: "Champagne",
+        style: "Champagne",
+        abv: 13.5,
+        imgURL: "/2009_Cristal_Brut_Champagne.jpg",
+        price: 3830.00,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "19 Crimes Snoop Dogg Cali Rosé",
+        year: 2022,
+        region: "California, United States",
+        type: "Rose",
+        style: "Rose",
+        abv: 10.5,
+        imgURL: "/19_Crimes_Snoop_Dogg_Cali_Rose.jpg",
+        price: 19.95,
+        inventoryCount: 100,
+      }),
+      Wine.create({
+        name: "Bread & Butter Chardonnay",
+        year: 2019,
+        region: "California, United States",
+        type: "White",
+        style: "Chardonnay",
+        abv: 13.5,
+        imgURL: "/Bread_&_Butter.jpg",
+        price: 19.00,
+        inventoryCount: 100,
+      }),
     ]);
     await Promise.all([
       Wine.update(
@@ -296,6 +395,69 @@ async function seed() {
             "An incredibly complex and delicious Chardonnay that easily holds its weight against the great masters in Puligny, Meursault and Corton-Charlemagne. Muscular yet refined and finessed, it greets the nose with a hedonistic bouquet of lush citrus, tart green apples, white flowers, fresh herbs and delicate yet pronounced saline minerals, all supported by just the slightest hint of toast. Laser-precise on the palate with zippy acidity and immaculate detail.",
         },
         { where: { id: 15 } }
+      ),
+      Wine.update(
+        {
+          description:
+            "This is incredible on the nose, offering hot stones, blackcurrants, iodine and wet earth. Full-bodied with a tight center palate, then it opens with a tannin structure that is weightless and spreads across the palate. Totally integrated on the palate. This is a magic-carpet wine. Really incredible. One of the reference points for the vintage. Drinkable now and please try a bottle, but it's one for the cellar. ",
+        },
+        { where: { id: 16 } }
+      ),
+      Wine.update(
+        {
+          description:
+            "Allen Meadows' barrel tasting note: This is riper than the Ech and not quite as fresh though there is excellent complexity to the layered aromas of plum, black currant and Asian style tea scents. On the plus side there is a slightly finer mouth feel even though there is clearly more size, weight, power and punch to the broad-shouldered flavors that also brim with dry extract on the velvet-textured finale that seems to go on and on. This is certainly structured but in the context of the appellation this is not imposing and as such, it will be approachable a bit earlier than what would be considered typical.",
+        },
+        { where: { id: 17 } }
+      ),
+      Wine.update(
+        {
+          description:
+            "Made up from Corton-Renardes (63%) and a mix of 24 other sectors on the Corton hill, this is a very fine Corton Grand Cru. Charlotte Dumay gave vineyards to the Hospices in 1534, and this is traditionally one of the Hospice's longest living cuvées. Lacks a little in concentration but makes up for this with freshness and elegance. Cool in the mouth, with a blueberry and dusky, dark, fruit character on both the nose and palate. Corton can often be rugged but this is smooth and refined. A very good 2014. Drinking window: 2022-2029. Score - 93. (Andy Howard, MW, decanter.com, Nov. 9, 2020)",
+        },
+        { where: { id: 18 } }
+      ),
+      Wine.update(
+        {
+          description:
+            "The 1999 Brunello di Montalcino is starting to show early signs of maturity in its bouquet. Worn-in leather, spices, licorice and tobacco meld into sweet dark cherries and plums in this full-bodied, intense Brunello. There is still more than enough fruit and sheer power to allow the 1999 to drink well for another 15-20 years, perhaps longer. The style is very much on the masculine, virile side of things. If opened today the 1999 needs time to come together in the glass.Drinking window: 2013-2029. Score - 93+. (Antonio Galloni, vinous.com, May 2012)",
+        },
+        { where: { id: 19 } }
+      ),
+      Wine.update(
+        {
+          description:
+            "Pale lemon with fine bubbles; the nose is filled with aromas of apple, pear, toast and brioche; the palate is extra-dry and medium to full body with flavours that match the aromas.",
+        },
+        { where: { id: 20 } }
+      ),
+      Wine.update(
+        {
+          description:
+            "Insane aromas of lavender, blackberries, wet earth and ripe yet fresh fruit. Full body with very deep fruit, pine needles and hints of chocolate and cedar. Very long and wonderfully polished. This has wonderful depth and focus. Release in 2021. Better after 2024. [and will drink for decades.] Score - 99. (jamessuckling.com, May 3, 2019)",
+        },
+        { where: { id: 21 } }
+      ),
+      Wine.update(
+        {
+          description:
+            "The latest incarnation of this famous Champagne now comes from Roederer's own vineyards, a good portion of which are run on biodynamic lines. This still-young wine has great depth and richness, a beautiful balance between ripe fruit and crisp texture that make it alive, crisp and bright. As it matures, it will deepen and become even more intense. Drink now if you must, but preferably wait until 2019. Ranked #38 in Top 100 Cellar Selections of 2016. Score - 97. (Roger Voss, Wine Enthusiast, Dec. 1, 2016)",
+        },
+        { where: { id: 22 } }
+      ),
+      Wine.update(
+        {
+          description:
+            "19 Crimes wines are defiant by nature, bold and always uncompromising, just like the D-O-double-G! This rosé was created as a collaboration with entertainment icon Snoop Dogg. A zinfandel-based blend with citrus, strawberry, pear and peach notes. It's light-bodied with a balanced finish. Pair with barbecued shrimp.",
+        },
+        { where: { id: 23 } }
+      ),
+      Wine.update(
+        {
+          description:
+            "Based in California, Bread & Butter makes approachable wines. This memorable chardonnay opens with vanilla bean and almond notes, along with crisp minerality and a hint of tropical fruit. It's medium-bodied with a hint of oak leading to a long, buttery finish. Goes well with creamy pasta, roasted vegetables and seafood.",
+        },
+        { where: { id: 24 } }
       ),
     ]);
 
@@ -461,7 +623,7 @@ async function seed() {
         brand: "Delirium",
         country: "Belgium",
         type: "Ale",
-        style: "Fruit Beer",
+        style: "Fruit",
         ABV: 8,
         imgURL: "/beer_delirium_red_bottle",
         price: 42.0,
@@ -487,6 +649,259 @@ async function seed() {
         ABV: 5,
         imgURL: "/Grolsch.png",
         price: 9.99,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Guiness Draught",
+        brand: "Guiness",
+        country: "Ireland",
+        type: "Ale",
+        style: "Stout",
+        ABV: 5,
+        imgURL: "/guinessDraught.jpeg",
+        price: 3.25,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Abbot Ale",
+        brand: "Greene King",
+        country: "England",
+        type: "Ale",
+        style: "Bitter",
+        ABV: 5,
+        imgURL: "/abbotAle.jpeg",
+        price: 3.25,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Kronenbourg 1664 Blanc",
+        brand: "Kronenbourg",
+        country: "France",
+        type: "Ale",
+        style: "Wheat Beer",
+        ABV: 5,
+        imgURL: "/abbotAle.jpeg",
+        price: 3.35,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Chimay Premiere",
+        brand: "Chimay",
+        country: "Belgium",
+        type: "Ale",
+        style: "Dubbel",
+        ABV: 5,
+        imgURL: "/abbotAle.jpeg",
+        price: 3.35,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Orval Trappist Ale",
+        brand: "Orval Brewery",
+        country: "Belgium",
+        type: "Ale",
+        style: "Pale Ale",
+        ABV: 6.9,
+        imgURL: "/orvalTrappist.jpg",
+        price: 3.35,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Fuller's London Pride",
+        brand: "Fuller's Brewery",
+        country: "England",
+        type: "Ale",
+        style: "Bitter",
+        ABV: 6.9,
+        imgURL: "/fullers.jpg",
+        price: 3.40,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Innis & Gunn Irish Whiskey Cask",
+        brand: "Innis & Gunn",
+        country: "Scotland",
+        type: "Ale",
+        style: "Stout",
+        ABV: 6.9,
+        imgURL: "/innisGunn.jpg",
+        price: 3.35,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Rochefort 10",
+        brand: "Brasserie de Rochefort",
+        country: "Belgium",
+        type: "Ale",
+        style: "Quadrupel",
+        ABV: 4.5,
+        imgURL: "/rochefort10.jpg",
+        price: 3.35,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Spitfire Kentish Ale",
+        brand: "Shepherd Neame",
+        country: "England",
+        type: "Ale",
+        style: "Bitter",
+        ABV: 4.5,
+        imgURL: "/spitfireKentish.jpg",
+        price: 3.35,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Hobgoblin Ipa",
+        brand: "Wychwood Brewery",
+        country: "England",
+        type: "Ale",
+        style: "IPA",
+        ABV: 5,
+        imgURL: "/hobgoblin.jpg",
+        price: 4.95,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "La Trappe Tripel",
+        brand: "La Trappe",
+        country: "Netherlands",
+        type: "Ale",
+        style: "Tripel",
+        ABV: 8,
+        imgURL: "/laTrappe.jpg",
+        price: 8.45,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Sierra Nevada Pale Ale",
+        brand: "Sierra Nevada",
+        country: "United States",
+        type: "Ale",
+        style: "Pale Ale",
+        ABV: 5.6,
+        imgURL: "/sierraNevada.jpg",
+        price: 3.4,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Brewdog Hazy Jane",
+        brand: "Brewdog",
+        country: "United States",
+        type: "Ale",
+        style: "IPA",
+        ABV: 7.2,
+        imgURL: "/brewdog.jpg",
+        price: 3.25,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Lagunitas IPA",
+        brand: "Lagunitas",
+        country: "United States",
+        type: "Ale",
+        style: "IPA",
+        ABV: 15,
+        imgURL: "/lagunitas.jpg",
+        price: 15,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Cascade Brewing Brunch Line 2017",
+        brand: "Cascade Brewing",
+        country: "United States",
+        type: "Ale",
+        style: "Fruit",
+        ABV: 9.5,
+        imgURL: "/cascadeBrewingBrunch.jpg",
+        price: 12.85,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Kona Big Wave Golden Ale",
+        brand: "Kona Brewing",
+        country: "United States",
+        type: "Ale",
+        style: "Blonde Ale",
+        ABV: 4.3,
+        imgURL: "/bigWave.jpg",
+        price: 16.95,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Kilkenny Irish Cream Ale",
+        brand: "Kilkenny",
+        country: "Ireland",
+        type: "Ale",
+        style: "Red Ale",
+        ABV: 4.3,
+        imgURL: "/kilkennyIrish.jpg",
+        price: 11.65,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Cigar City Florida Cracker Belgian Style Wit",
+        brand: "Cigar City",
+        country: "United States",
+        type: "Ale",
+        style: "Wheat Beer",
+        ABV: 5.5,
+        imgURL: "/floridaCracker",
+        price: 2.8,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Samuel Adams Utopias",
+        brand: "Samuel Adams",
+        country: "United States",
+        type: "Ale",
+        style: "Strong Ale",
+        ABV: 27.3,
+        imgURL: "/samuelAdams.jpg",
+        price: 150.05,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Deschutes Jubelale Winter Ale",
+        brand: "Deschutes Brewery",
+        country: "United States",
+        type: "Ale",
+        style: "Winter Warmer",
+        ABV: 6.7,
+        imgURL: "/DeschutesJubelale.jpg",
+        price: 12.9,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Oskar Blue Old Chub Scotch Ale",
+        brand: "Oskar Blues",
+        country: "United States",
+        type: "Ale",
+        style: "Scotch Ale",
+        ABV: 8,
+        imgURL: "/oldChub.jpg",
+        price: 10.4,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Marke Original Oettinger Weissbier",
+        brand: "Private Stock",
+        country: "Belgium",
+        type: "Ale",
+        style: "Wheat Beer",
+        ABV: 4.9,
+        imgURL: "/oettingerWeissbier.jpg",
+        price: 2.7,
+        inventoryCount: 100,
+      }),
+      Beer.create({
+        name: "Modern Times Fortunate Islands",
+        brand: "Modern Times",
+        country: "United States",
+        type: "Ale",
+        style: "Wheat Beer",
+        ABV: 5,
+        imgURL: "/fortunateIslands.jpg",
+        price: 2.45,
         inventoryCount: 100,
       }),
     ]);
@@ -603,6 +1018,167 @@ async function seed() {
             "A CRISP, MALTY PILSNER WITH DEPTH OF FLAVOUR, THAT APPEALS TO A DEVELOPED PALETTE",
         },
         { where: { id: 16 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "This iconic beer is defined by its distinct and velvety character. Mahogany brown in colour with a creamy white head. Loaded with aromas of coffee, toasted malt and hops. Full and bold on the palate with a creamy texture and the same rich flavours, a delicate touch of bitterness adds pleasing balance to the finish.",
+        },
+        { where: { id: 17 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "Amber colour with long-lasting head; floral, oatmeal, malt and hops aromas; medium-bodied, creamy taste with clean bitter finish.",
+        },
+        { where: { id: 18 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "For well over 350 years, Kronenbourg has been brewing beer with distinction. This beer offers a slightly cloudy pale golden colour with aromas of floral, tropical fruit and honeysuckle. Crisp and palate-cleansing with flavours of citrus and white peach",
+        },
+        { where: { id: 19 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "This premium Belgian Dubbel brew boasts grassy aromas, a creamy texture and a bread-dough taste. Soft and satisfying, it's a real beer- lover's indulgence.",
+        },
+        { where: { id: 20 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "Amber colour; toasty aromas with citrus, floral and clove notes; intense and flavourful followed by a rich, hoppy finish.",
+        },
+        { where: { id: 21 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "Medium amber colour; the nose suggests caramel, biscuit and light floral notes; on the palate it is dry, medium bodied and malty with flavours of browned butter, toast and toffee.",
+        },
+        { where: { id: 22 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "Smooth Scottish stout, Irish whiskey cask-matured. This delicious beer catches the eye with its jet black colour, then delights the nose with aromas of dark chocolate, espresso and vanilla. All without losing its full malt character. On the palate, a beautifully balanced bitterness gives way to a long, chocolatey finish.",
+        },
+        { where: { id: 23 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "Hazy mahogany with a thick cream head; on the nose are aromas of raisin, fig, treacle, clove and dark chocolate; on the palate it is full bodied and off-dry, with complex, layered flavours that echo the aromatics.",
+        },
+        { where: { id: 24 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "Clear deep amber with a dense cream head; on the nose are notes of toffee, grapefruit, honey, crusty fresh bread, dried flower and grassy hops; on the palate it is medium bodied and moderately carbonated, with flavours of bready malt, caramel and bitter hop presence that lingers on the finish.",
+        },
+        { where: { id: 25 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "This spirited IPA from the British-based brewery pours light amber with a light head. Expect citrus, spice, malt, and hop tones. It's medium-bodied, malty, and lightly carbonated with a long, palate-cleansing finish. Serve with beer-battered vegetables or beef stew alongside crusty bread topped with warm butter.",
+        },
+        { where: { id: 26 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "Hazy gold in colour, with a thick, log-lasting head; aromas of rich malt, banana, grapefruit and pineapple, with underlying floral notes; medium-bodied, with fine-textured carbonation, moderate bitterness and excellent balance; malty and fruity flavours with a hint of nutmeg.",
+        },
+        { where: { id: 27 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "Pours an amber gold, with a moderate head; aromas of sweet roasted malt, biscuit, and citrus, with notes of pine and spice; dryish and medium-bodied with a creamy palate, and flavours of toasted malt, caramel, grapefruit and tropical fruit; a crisp, lingering, pleasantly balanced bitterness on the finish.",
+        },
+        { where: { id: 28 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "New England detuned. This full-tilt fruit machine of an IPA packs all the flavour but less of the alcohol. Notes of pineapple,mango, stone-fruit, and a hint of tangerine to mix it up. Brewed with oats and wheat and left unfiltered for a smooth juicy hit.",
+        },
+        { where: { id: 29 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "This American-style India pale ale has medium-high hop bitterness on a balanced and medium-weight palate. It is fragrant with floral, citrus-like, piney/resinous aroma and flavour, making it ideal for food matching. Pairs nicely with Sushi, other dishes garnished with fresh ginger, or fish and chips.",
+        },
+        { where: { id: 30 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "Cascade Brewing, out of Oregon, named this Mimosa-styled sour beer after the long lines that you might encounter at any good brunch spot. A blend of sour wheat and blond ales aged in ex-chardonnay barrels result in complex citrus and tropical aromas. Pair with brunch staples like eggs Benedict or pancakes with fresh fruit.",
+        },
+        { where: { id: 31 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "Established in 1994 on Hawaii's Big Island, the Kona Brewing Co has become a global success. Their Kona Big Wave Golden Ale rolls in with aromas of citrus, toasted nuts and grain, crests with flavours of banana, pineapple and a hint of pine then finishes with moderately bitter citrus notes. Pair with seafood or roast pork.",
+        },
+        { where: { id: 32 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "Kilkenny's brewing heritage dates back to 14th century and is a classic Irish ale. Pouring brilliant copper with a foamy white head that sustains for a good length of time; the nose is malty and fresh while the palate is creamy with light coffee, raisin, plum and light bitterness on a medium-length finish.",
+        },
+        { where: { id: 33 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "An award-winning, traditional, Belgian style wit beer named in honour of Florida's colonial-era settlers. Hazy in appearance with aromas and flavours of orange zest, lime, spice and candied fruit with floral/herb and bubblegum notes. Well carbonated with a balanced bitter finish. Serve chilled with a citrus slice.",
+        },
+        { where: { id: 34 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "An extraordinary, rare craft beer experience like no other. Made using a unique process and blend of ingredients and aged to perfection in barrel and packed with flavour and highly complex boasting an astounding 28% abv, managing to remain well-structured and poised with a long, warm finish.",
+        },
+        { where: { id: 35 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "A dark, malty celebration ale with layered flavors and beautifully balanced hopping. Jubelale pours deep garnet in color, medium bodied, with notes of chicory, earth, spice and fruit. To beer lovers, it’s like Yule fire and family.",
+        },
+        { where: { id: 36 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "Seven varieties of malt are used to create this heart-warming Scotch ale. It pours dark brown and bursts with aromas of malt, cocoa and cereal grains. On the palate, you're greeted by coffee, plum and raisins, leading to a long-lasting finish. Try with potato pizza topped with smoked Gouda or beef stew and garlic bread.",
+        },
+        { where: { id: 37 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "This Weissbier is a cloudy, golden wheat beer with fine aromatic yeasts, according to the German Purity Law of 1516, and made with certified non-GMO ingredients. Winner of the 2015, 2016, 2017, and 2018 Gold Medal at the Monde Selection Awards in Brussells, Belgium.",
+        },
+        { where: { id: 38 } }
+      ),
+      Beer.update(
+        {
+          description:
+            "Modern Times Beer is well known for their interesting and flavourful beer. This gold-coloured wheat beer boasts aromas and flavours of citrus, pineapple and apricot; great for summer sipping..",
+        },
+        { where: { id: 39 } }
       ),
     ]);
 
