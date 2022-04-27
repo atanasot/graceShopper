@@ -21,7 +21,7 @@ app.get("/:id", async (req, res, next) => {
 
 app.post("/", async (req, res, next) => {
   try {
-    res.send(await Wine.findAll());
+    res.status(201).send(await Wine.create(req.body));
   } catch (ex) {
     next(ex);
   }

@@ -22,6 +22,8 @@ const _fetchLineItemsFromCart = (lineItems) => ({ type: LOAD_CART, lineItems });
 
 const _deleteBeer = (beer) => ({ type: DELETE_BEER, beer });
 
+// combine _addBeer and _addWine into one if using
+
 /**
  * THUNK CREATORS
  */
