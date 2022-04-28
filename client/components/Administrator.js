@@ -12,16 +12,14 @@ class Administrator extends Component {
   }
 
   render() {
-    const users = this.props;
-    console.log("HERE IS PROPS----->", users);
     return <hr />;
   }
 }
 
 const mapStateToProps = (state) => {
-  const { users } = state;
+  const { customers } = state;
   return {
-    users,
+    customers,
   };
 };
 
