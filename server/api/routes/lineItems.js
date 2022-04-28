@@ -2,6 +2,7 @@ const app = require("express").Router();
 const {
   models: { LineItem, User, Order },
 } = require("../../db/index");
+const { isLoggedIn, verifyUserOrAdmin, verifyAdmin} = require("../verifyAuth");
 
 app.get("/", async (req, res, next) => {
   try {
