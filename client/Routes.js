@@ -14,8 +14,9 @@ import BeerDescriptionBeforeLogin from "./components/BeerDescriptionBeforeLogin"
 import BeerDescription from "./components/BeerDescription";
 import WineDescriptionBeforeLogin from "./components/WineDescriptionBeforeLogin";
 import Checkout from "./components/Checkout";
-import {fetchLineItemsFromCart} from './store/lineItems'
-import Orders from './components/Orders'
+import { fetchLineItemsFromCart } from "./store/lineItems";
+import Orders from "./components/Orders";
+import OrderDescription from "./components/OrderDescription";
 
 /**
  * COMPONENT
@@ -27,9 +28,9 @@ class Routes extends Component {
 
   componentDidUpdate(prevProps) {
     if (!prevProps.isLoggedIn && this.props.isLoggedIn) {
-      // this should load the products that are in the cart 
-      console.log('user logged in')
-      this.props.fetchLineItemsFromCart()
+      // this should load the products that are in the cart
+      console.log("user logged in");
+      this.props.fetchLineItemsFromCart();
     }
   }
 
@@ -47,6 +48,7 @@ class Routes extends Component {
             <Route path="/wine" component={Wines} />
             <Route path="/wines/:id" component={WineDescription} />
             <Route path="/beers/:id" component={BeerDescription} />
+            <Route path="/orders/:id" component={OrderDescription} />
             <Route path="/orders" component={Orders} />
             <Route path="/checkout" component={Checkout} />
           </Switch>
@@ -86,8 +88,8 @@ const mapDispatch = (dispatch) => {
       dispatch(me());
     },
     fetchLineItemsFromCart: () => {
-      return dispatch(fetchLineItemsFromCart())
-    }
+      return dispatch(fetchLineItemsFromCart());
+    },
   };
 };
 

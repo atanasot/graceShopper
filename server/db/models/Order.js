@@ -73,7 +73,6 @@ Order.calculatePriceItems = async function (orderId) {
       lineItems: itemsNum,
     });
   } catch (ex) {
-    console.log(ex);
     const error = Error("error in Order.calculatePriceItems");
     error.status = 500;
     throw error;
