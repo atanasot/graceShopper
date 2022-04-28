@@ -9,6 +9,7 @@ const LOAD_CART = "LOAD_CART";
 const ADD_BEER = "ADD_BEER";
 const ADD_WINE = "ADD_WINE";
 const UPDATE_LINEITEM = "UPDATE_LINEITEM";
+const LOAD_ORDER_ITEMS = "LOAD_ORDER_ITEMS";
 
 /**
  * ACTION CREATORS
@@ -22,7 +23,10 @@ const _fetchLineItemsFromCart = (lineItems) => ({ type: LOAD_CART, lineItems });
 
 const _deleteBeer = (beer) => ({ type: DELETE_BEER, beer });
 
-// combine _addBeer and _addWine into one if using
+const _fetchLineItemsByOrder = (lineItems) => ({
+  type: LOAD_ORDER_ITEMS,
+  lineItems,
+});
 
 /**
  * THUNK CREATORS
@@ -39,6 +43,19 @@ export const fetchLineItemsFromCart = () => {
       })
     ).data;
     dispatch(_fetchLineItemsFromCart(lineItems));
+  };
+};
+
+export const fetchLineItemsByOrder = (orderId) => {
+  return async (dispatch) => {
+    const lineItems = (
+      await axios.get(`/api/lineItems/order/${orderId}`, {
+        headers: {
+          authorization: window.localStorage.getItem("token"),
+        },
+      })
+    ).data;
+    dispatch(_fetchLineItemsByOrder(lineItems));
   };
 };
 
@@ -67,6 +84,8 @@ export const addWine = (wine) => {
 export default function (state = [], action) {
   switch (action.type) {
     case LOAD_CART:
+      return action.lineItems;
+    case LOAD_ORDER_ITEMS:
       return action.lineItems;
     case ADD_BEER:
       return [...state, action.beer];

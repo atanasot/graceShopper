@@ -12,9 +12,9 @@ const ADD_WINE = "ADD_WINE";
  * ACTION CREATORS
  */
 
-const _addBeer = (beer) => ({ type: ADD_BEER, beer });
+// const _addBeer = (beer) => ({ type: ADD_BEER, beer });
 
-const _addWine = (wine) => ({ type: ADD_WINE, wine });
+// const _addWine = (wine) => ({ type: ADD_WINE, wine });
 
 const _fetchOrders = (orders) => ({ type: LOAD_ORDERS, orders });
 
