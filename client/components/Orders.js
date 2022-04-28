@@ -3,41 +3,26 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchOrders } from "../store/orders";
 
-// display orders history with prices at the time of purchase
-// need orders slice from the redox store when ready
-// const Orders = ({ lineItems }) => {
-//   return (
-//         <hr></hr>
-//   );
-// };
-
-// const mapStateToProps = (state) => {
-//   const { lineItems } = state;
-//   return {
-//     lineItems,
-//   };
-// };
-
-// // const mapDispatchToProps = (dispatch) => {
-// //   return {
-
-// //     fetchOrders: () => dispatch(fetchOrders),
-// //   };
-// // };
-
 class Orders extends Component {
   componentDidMount() {
     this.props.fetchOrders();
   }
 
   render() {
+    // fix no orders on refresh -- orders have 0 values
     const { orders } = this.props;
+    if (!orders.lineItems) {
+      return <h2>You have no orders</h2>
+    }
     return (
       <ul>
         {orders.map((order) => (
           <li key={order.id}>
-            <Link to={`/orders/${order.id}`}>{order.createdAt} </Link> -{" "}
-            {order.total} - {order.lineItems} items
+            <Link to={`/orders/${order.id}`}>
+              Order Date {order.createdAt}{" "}
+            </Link>
+            <p>Order total : {order.total}</p>
+            <p>Items Per Order : {order.lineItems}</p>
           </li>
         ))}
       </ul>

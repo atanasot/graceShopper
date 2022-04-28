@@ -6,18 +6,12 @@ import axios from "axios";
 
 const DELETE_BEER = "DELETE_BEER";
 const LOAD_CART = "LOAD_CART";
-const ADD_BEER = "ADD_BEER";
-const ADD_WINE = "ADD_WINE";
 const UPDATE_LINEITEM = "UPDATE_LINEITEM";
 const LOAD_ORDER_ITEMS = "LOAD_ORDER_ITEMS";
 
 /**
  * ACTION CREATORS
  */
-
-const _addBeer = (beer) => ({ type: ADD_BEER, beer });
-
-const _addWine = (wine) => ({ type: ADD_WINE, wine });
 
 const _fetchLineItemsFromCart = (lineItems) => ({ type: LOAD_CART, lineItems });
 
@@ -87,10 +81,6 @@ export default function (state = [], action) {
       return action.lineItems;
     case LOAD_ORDER_ITEMS:
       return action.lineItems;
-    case ADD_BEER:
-      return [...state, action.beer];
-    case ADD_WINE:
-      return [...state, action.wine];
     default:
       return state;
   }

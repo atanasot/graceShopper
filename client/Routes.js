@@ -15,7 +15,6 @@ import BeerDescription from "./components/BeerDescription";
 import WineDescriptionBeforeLogin from "./components/WineDescriptionBeforeLogin";
 import Checkout from "./components/Checkout";
 import { fetchLineItemsFromCart } from "./store/lineItems";
-//import { fetchOrders } from "./store/orders";
 import Orders from "./components/Orders";
 import OrderDescription from "./components/OrderDescription";
 
@@ -32,7 +31,6 @@ class Routes extends Component {
       // this should load the products that are in the cart
       console.log("user logged in");
       this.props.fetchLineItemsFromCart();
-      //this.props.fetchOrders()
     }
   }
 
@@ -92,9 +90,6 @@ const mapDispatch = (dispatch) => {
     fetchLineItemsFromCart: () => {
       return dispatch(fetchLineItemsFromCart());
     },
-    // fetchOrders: () => {
-    //   return dispatch(fetchOrders())
-    // }
   };
 };
 

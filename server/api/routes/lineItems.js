@@ -4,7 +4,7 @@ const {
 } = require("../../db/index");
 const { isLoggedIn, verifyUserOrAdmin, verifyAdmin} = require("../verifyAuth");
 
-// what is this for?
+// get all items by orderId -- this is to get the cart
 app.get("/", async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
@@ -30,6 +30,7 @@ app.get("/order/:orderId", async (req, res, next) => {
       res.sendStatus(404);
     }
     if (user.id !== order.userId) {
+      //we sometimes get 404 because userId changes depending on seed
       res.sendStatus(401);
     }
     res.status(200).send(
