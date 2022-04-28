@@ -2,6 +2,7 @@ const app = require("express").Router();
 const {
   models: { Order, User, LineItem },
 } = require("../../db/index");
+const { isLoggedIn, verifyUserOrAdmin, verifyAdmin} = require("../verifyAuth");
 
 // get a history of orders
 app.get("/", async (req, res, next) => {
