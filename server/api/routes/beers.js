@@ -29,6 +29,15 @@ app.get("/:id", isLoggedIn, async (req, res, next) => {
 //     next(ex);
 //   }
 // });
+
+app.post("/", async (req, res, next) => {
+  try {
+    res.status(201).send(await Beer.create(req.body));
+  } catch (ex) {
+    next(ex);
+  }
+});
+
 app.delete("/:id", async (req, res, next) => {
   try {
     const beer = await Beer.findByPk(req.params.id);

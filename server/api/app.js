@@ -19,10 +19,10 @@ app.get("/", (req, res) =>
 // static file-serving middleware
 app.use(express.static(path.join(__dirname, "..", "public")));
 
-app.use("/api/wines", require("./wines"));
-app.use("/api/beers", require("./beers"));
-app.use("/api/lineItems", require("./lineItems"));  // this is the cart
-app.use("/api/orders", require("./orders")); 
+app.use("/api/wines", require("./api/routes/wines"));
+app.use("/api/beers", require("./api/routes/beers"));
+app.use("/api/lineItems", require("./api/routes/lineItems")); // this is the cart
+app.use("/api/orders", require("./api/routes/orders"));
 
 // any remaining requests with an extension (.js, .css, etc.) send 404
 app.use((req, res, next) => {

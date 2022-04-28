@@ -21,13 +21,14 @@ app.get("/:id", async (req, res, next) => {
   }
 });
 
-// app.post("/", async (req, res, next) => {
-//   try {
-        //TBD
-//   } catch (ex) {
-//     next(ex);
-//   }
-// });
+
+app.post("/", async (req, res, next) => {
+  try {
+    res.status(201).send(await Wine.create(req.body));
+  } catch (ex) {
+    next(ex);
+  }
+});
 app.delete("/:id", verifyUserOrAdmin, async (req, res, next) => {
   try {
     const wine = await Wine.findByPk(req.params.id);
