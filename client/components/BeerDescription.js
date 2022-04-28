@@ -74,7 +74,7 @@ const mapStateToProps = (state, otherProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addBeer: (beer) => dispatch(addBeer(beer)),
-    fetchOrders: (beer) => dispatch(fetchOrders), // need to invoke if using this func
+    fetchOrders: () => dispatch(fetchOrders()),
   };
 };
 
