@@ -15,6 +15,8 @@ class BeerDescriptionBeforeLogin extends Component {
       cart: JSON.parse(window.localStorage.getItem("cart")) || [],
     };
     this.addToLocalStorage = this.addToLocalStorage.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -45,6 +47,19 @@ class BeerDescriptionBeforeLogin extends Component {
     console.log(loadedStorage);
   }
 
+  onChange(ev) {
+    this.setState({
+      ...this.state,
+      [ev.target.name]: ev.target.value,
+    });
+  }
+
+  async onSubmit(ev) {
+    ev.preventDefault();
+    const { cart } = this.state;
+    window.localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
   render() {
     //console.log(this.state);
     const { beer } = this.props;
@@ -56,7 +71,20 @@ class BeerDescriptionBeforeLogin extends Component {
         </p>
         <p>Beer Description will be inserted here</p>
         <p>{beer.name}</p>
-        <button onClick={() => this.addToLocalStorage()}>Add to Cart</button>
+        <form onSubmit={this.onSubmit}>
+          <input
+            className="quantity_input"
+            name="quantity"
+            value={this.state.quantity}
+            type="number"
+            min="0"
+            max="100"
+            step="1"
+            onChange={this.onChange}
+            placeholder="Quantity"
+          />
+          <button onClick={() => this.addToLocalStorage()}>Add to Cart</button>
+        </form>
       </div>
     );
   }
