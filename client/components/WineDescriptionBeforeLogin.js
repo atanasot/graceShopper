@@ -107,13 +107,6 @@ class WineDescriptionBeforeLogin extends Component {
           >
             Add to Cart
           </button>
-          <button
-            onClick={() =>
-              this.removeFromLocalStorage(`${this.state.quantity}`)
-            }
-          >
-            Delete Item
-          </button>
         </form>
       </div>
     );

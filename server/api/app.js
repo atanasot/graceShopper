@@ -23,6 +23,7 @@ app.use("/api/wines", require("./api/routes/wines"));
 app.use("/api/beers", require("./api/routes/beers"));
 app.use("/api/lineItems", require("./api/routes/lineItems")); // this is the cart
 app.use("/api/orders", require("./api/routes/orders"));
+app.use("/api/customers", require("./api/routes/customers"));
 
 // any remaining requests with an extension (.js, .css, etc.) send 404
 app.use((req, res, next) => {

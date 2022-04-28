@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
+
 import { Login, Signup } from "./components/AuthForm";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
@@ -14,8 +15,9 @@ import BeerDescriptionBeforeLogin from "./components/BeerDescriptionBeforeLogin"
 import BeerDescription from "./components/BeerDescription";
 import WineDescriptionBeforeLogin from "./components/WineDescriptionBeforeLogin";
 import Checkout from "./components/Checkout";
-import {fetchLineItemsFromCart} from './store/lineItems'
-import Orders from './components/Orders'
+import { fetchLineItemsFromCart } from "./store/lineItems";
+import Orders from "./components/Orders";
+import Administrator from "./components/Administrator";
 
 /**
  * COMPONENT
@@ -27,9 +29,9 @@ class Routes extends Component {
 
   componentDidUpdate(prevProps) {
     if (!prevProps.isLoggedIn && this.props.isLoggedIn) {
-      // this should load the products that are in the cart 
-      console.log('user logged in')
-      this.props.fetchLineItemsFromCart()
+      // this should load the products that are in the cart
+      console.log("user logged in");
+      this.props.fetchLineItemsFromCart();
     }
   }
 
@@ -49,6 +51,7 @@ class Routes extends Component {
             <Route path="/beers/:id" component={BeerDescription} />
             <Route path="/orders" component={Orders} />
             <Route path="/checkout" component={Checkout} />
+            <Route path="/admin" component={Administrator} />
           </Switch>
         ) : (
           <Switch>
@@ -86,8 +89,8 @@ const mapDispatch = (dispatch) => {
       dispatch(me());
     },
     fetchLineItemsFromCart: () => {
-      return dispatch(fetchLineItemsFromCart())
-    }
+      return dispatch(fetchLineItemsFromCart());
+    },
   };
 };
 
