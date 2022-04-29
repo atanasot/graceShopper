@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import store from "../store";
 import { connect } from "react-redux";
 import { addWine } from "../store/lineItems";
 import { Link } from "react-router-dom";
@@ -12,7 +11,7 @@ class WineDescriptionBeforeLogin extends Component {
       name: this.props.wine.name,
       quantity: 1,
       price: this.props.wine.price ? this.props.wine.price : "",
-      cart: [],
+      cart: JSON.parse(window.localStorage.getItem("cart")) || [],
       description: this.props.wine.description
         ? this.props.wine.description
         : "",
@@ -33,14 +32,12 @@ class WineDescriptionBeforeLogin extends Component {
     }
   }
 
-  addToLocalStorage(quant) {
+  addToLocalStorage() {
     const cart = Array.from(this.state.cart);
     cart.push({
       wineId: this.state.wineId,
       name: this.state.name,
-      quantity: this.state.quantity
-        ? (this.state.quantity * 1 + quant * 1).toString()
-        : quant,
+      quantity: this.state.quantity,
       price: this.state.price,
     });
     this.setState({ cart: cart });
@@ -52,19 +49,19 @@ class WineDescriptionBeforeLogin extends Component {
     console.log(loadedStorage);
   }
 
-  removeFromLocalStorage(quant) {
-    let updateCart = this.state.cart.find(
-      (value) => value.wineId === this.props.wine.id
-    );
-    updateCart.quantity = updateCart.quantity
-      ? (updateCart.quantity * 1 - quant * 1).toString()
-      : quant;
-    this.setState({ cart: updateCart });
+  // removeFromLocalStorage(quant) {
+  //   let updateCart = this.state.cart.find(
+  //     (value) => value.wineId === this.props.wine.id
+  //   );
+  //   updateCart.quantity = updateCart.quantity
+  //     ? (updateCart.quantity * 1 - quant * 1).toString()
+  //     : quant;
+  //   this.setState({ cart: updateCart });
 
-    window.localStorage.setItem("cart", JSON.stringify(updateCart));
-    let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
-    console.log(loadedStorage);
-  }
+  //   window.localStorage.setItem("cart", JSON.stringify(updateCart));
+  //   let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
+  //   console.log(loadedStorage);
+  // }
 
   onChange(ev) {
     this.setState({
@@ -80,7 +77,6 @@ class WineDescriptionBeforeLogin extends Component {
   }
 
   render() {
-    //console.log(this.state);
     const { wine } = this.props;
     const { addToCart } = this;
     return (
@@ -102,18 +98,7 @@ class WineDescriptionBeforeLogin extends Component {
             onChange={this.onChange}
             placeholder="Quantity"
           />
-          <button
-            onClick={() => this.addToLocalStorage(`${this.state.quantity}`)}
-          >
-            Add to Cart
-          </button>
-          <button
-            onClick={() =>
-              this.removeFromLocalStorage(`${this.state.quantity}`)
-            }
-          >
-            Delete Item
-          </button>
+          <button onClick={() => this.addToLocalStorage()}>Add to Cart</button>
         </form>
       </div>
     );
@@ -121,13 +106,22 @@ class WineDescriptionBeforeLogin extends Component {
 }
 
 const mapStateToProps = (state, otherProps) => {
-  //console.log(state, "INSIDE mapStateToProps");
   const wine =
     state.wines.find((wine) => wine.id === otherProps.match.params.id * 1) ||
     {};
   return {
     wine,
+    isLoggedIn: !!state.auth.id,
   };
 };
 
-export default connect(mapStateToProps)(WineDescriptionBeforeLogin);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addWine: (wine) => dispatch(addWine(wine)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WineDescriptionBeforeLogin);

@@ -6,9 +6,6 @@ const LineItem = db.define("lineitem", {
   name: {
     type: STRING,
   },
-  subtotal: {
-    type: INTEGER,
-  },
   quantity: {
     type: INTEGER,
   },
