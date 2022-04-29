@@ -22,7 +22,7 @@ app.get("/:id", isLoggedIn, async (req, res, next) => {
   }
 });
 //add beer
-app.post("/", async (req, res, next) => {
+app.post("/", verifyAdmin, async (req, res, next) => {
   try {
     res.status(201).send(await Beer.create(req.body));
   } catch (ex) {
@@ -40,7 +40,7 @@ app.put("/:id", verifyAdmin, async (req, res, next) => {
   }
 });
 //delete beer
-app.delete("/:id", async (req, res, next) => {
+app.delete("/:id", verifyAdmin, async (req, res, next) => {
   try {
     const beer = await Beer.findByPk(req.params.id);
     await beer.destroy();

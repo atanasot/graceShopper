@@ -5,7 +5,7 @@ const {
 } = require("../../db/index");
 const { isLoggedIn, verifyUserOrAdmin, verifyAdmin} = require("../verifyAuth");
 
-//get all beers
+//get all wine
 app.get("/", async (req, res, next) => {
   try {
     res.send(await Wine.findAll());
@@ -13,7 +13,7 @@ app.get("/", async (req, res, next) => {
     next(ex);
   }
 });
-//get single beer
+//get single wine
 app.get("/:id", async (req, res, next) => {
   try {
     const wine = await Wine.findByPk(req.params.id);
@@ -22,15 +22,15 @@ app.get("/:id", async (req, res, next) => {
     next(ex);
   }
 });
-//add beer
-app.post("/", async (req, res, next) => {
+//add wine
+app.post("/", verifyAdmin, async (req, res, next) => {
   try {
     res.status(201).send(await Wine.create(req.body));
   } catch (ex) {
     next(ex);
   }
 });
-//update beer
+//update wine
 app.put("/:id", verifyAdmin, async (req, res, next) => {
   try {
     let id = req.params.id;
@@ -40,7 +40,7 @@ app.put("/:id", verifyAdmin, async (req, res, next) => {
     next(ex);
   }
 });
-//delete beer
+//delete wine
 app.delete("/:id", verifyAdmin, async (req, res, next) => {
   try {
     const wine = await Wine.findByPk(req.params.id);
