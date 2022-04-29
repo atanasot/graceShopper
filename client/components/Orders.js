@@ -9,11 +9,10 @@ class Orders extends Component {
   }
 
   render() {
-    // fix no orders on refresh -- orders have 0 values
     const { orders } = this.props;
-    // if (!orders.lineItems) {
-    //   return <h2>You have no orders</h2>
-    // }
+    if (!orders.length) {
+      return <h2>You have no orders</h2>;
+    }
     return (
       <ul>
         {orders.map((order) => (
