@@ -11,9 +11,9 @@ class Orders extends Component {
   render() {
     // fix no orders on refresh -- orders have 0 values
     const { orders } = this.props;
-    if (!orders.lineItems) {
-      return <h2>You have no orders</h2>
-    }
+    // if (!orders.lineItems) {
+    //   return <h2>You have no orders</h2>
+    // }
     return (
       <ul>
         {orders.map((order) => (
@@ -21,7 +21,7 @@ class Orders extends Component {
             <Link to={`/orders/${order.id}`}>
               Order Date {order.createdAt}{" "}
             </Link>
-            <p>Order total : {order.total}</p>
+            <p>Order total : {(order.total * 1).toFixed(2) * 1}</p>
             <p>Items Per Order : {order.lineItems}</p>
           </li>
         ))}

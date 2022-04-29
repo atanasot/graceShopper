@@ -9,9 +9,9 @@ const Cart = () => {
   const loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
   const subtotal = loadedStorage
     ? loadedStorage.reduce(
-        (current, accume) => (current += accume.price * 1),
+        (current, accume) => (current += accume.price * accume.quantity),
         0
-      ) * loadedStorage.map((item) => item.quantity * 1)
+      )
     : null;
   const shipping = 5.99;
   return (
