@@ -17,6 +17,7 @@ import Checkout from "./components/Checkout";
 import { fetchLineItemsFromCart } from "./store/lineItems";
 import Orders from "./components/Orders";
 import OrderDescription from "./components/OrderDescription";
+import CartAfterlogin from "./components/CartAfterlogin";
 
 /**
  * COMPONENT
@@ -42,7 +43,7 @@ class Routes extends Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/profile" exact component={Profile} />
-            <Route path="/cart" component={Cart} />
+            <Route path="/cart" component={CartAfterlogin} />
             <Route path="/about" component={About} />
             <Route path="/beer" component={Beers} />
             <Route path="/wine" component={Wines} />

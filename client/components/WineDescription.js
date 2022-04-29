@@ -15,6 +15,7 @@ class WineDescription extends Component {
       price: this.props.wine.id ? this.props.wine.price : "",
     };
     this.addToCart = this.addToCart.bind(this);
+    console.log(this.state);
   }
 
   componentDidUpdate(prevProps) {
@@ -74,7 +75,7 @@ const mapStateToProps = (state, otherProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addWine: (wine) => dispatch(addWine(wine)),
-    fetchOrders: (wine) => dispatch(fetchOrders), // need to invoke if using this func
+    fetchOrders: () => dispatch(fetchOrders()),
   };
 };
 

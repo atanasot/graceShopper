@@ -15,6 +15,7 @@ class BeerDescription extends Component {
       price: this.props.beer.id ? this.props.beer.price : "",
     };
     this.addToCart = this.addToCart.bind(this);
+    console.log(this.state);
   }
 
   componentDidUpdate(prevProps) {
