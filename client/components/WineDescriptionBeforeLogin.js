@@ -37,7 +37,7 @@ class WineDescriptionBeforeLogin extends Component {
     cart.push({
       wineId: this.state.wineId,
       name: this.state.name,
-      quantity: this.state.quantity,
+      quantity: this.state.quantity * 1,
       price: this.state.price,
     });
     this.setState({ cart: cart });
@@ -98,7 +98,11 @@ class WineDescriptionBeforeLogin extends Component {
             onChange={this.onChange}
             placeholder="Quantity"
           />
-          <button onClick={() => this.addToLocalStorage()}>Add to Cart</button>
+          <button
+            onClick={() => this.addToLocalStorage(`${this.state.quantity}`)}
+          >
+            Add to Cart
+          </button>
         </form>
       </div>
     );

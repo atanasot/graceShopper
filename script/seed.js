@@ -198,7 +198,7 @@ async function seed() {
         style: "Cabernet Sauvignon Blend",
         abv: 14.5,
         imgURL: "/2018_Dominus_Estate_Christian_Moueix.jpg",
-        price: 3376.00,
+        price: 3376.0,
         inventoryCount: 100,
       }),
       Wine.create({
@@ -208,8 +208,9 @@ async function seed() {
         type: "Red",
         style: "Pinot Noir",
         abv: 13.5,
-        imgURL: "/2014_Hospices_de_Beaune_Cuvée_Charlotte_Dumay_Corton_Grand_Cru.jpg",
-        price: 1400.00,
+        imgURL:
+          "/2014_Hospices_de_Beaune_Cuvée_Charlotte_Dumay_Corton_Grand_Cru.jpg",
+        price: 1400.0,
         inventoryCount: 100,
       }),
       Wine.create({
@@ -220,7 +221,7 @@ async function seed() {
         style: "Pinot Noir",
         abv: 13,
         imgURL: "/2013_AF_Gros_Richebourg_Grand_Cru.jpg",
-        price: 990.20,
+        price: 990.2,
         inventoryCount: 100,
       }),
       Wine.create({
@@ -231,7 +232,7 @@ async function seed() {
         style: "Sangiovese",
         abv: 13.5,
         imgURL: "/1999_Col_d'Orcia_Brunello_di_Montalcino_(Magnum).jpg",
-        price: 919.00,
+        price: 919.0,
         inventoryCount: 100,
       }),
       Wine.create({
@@ -242,7 +243,7 @@ async function seed() {
         style: "Cabernet Sauvignon",
         abv: 14.52,
         imgURL: "2015_Promontory.jpg",
-        price: 1558.00,
+        price: 1558.0,
         inventoryCount: 100,
       }),
       Wine.create({
@@ -264,7 +265,7 @@ async function seed() {
         style: "Champagne",
         abv: 13.5,
         imgURL: "/2009_Cristal_Brut_Champagne.jpg",
-        price: 3830.00,
+        price: 3830.0,
         inventoryCount: 100,
       }),
       Wine.create({
@@ -286,7 +287,7 @@ async function seed() {
         style: "Chardonnay",
         abv: 13.5,
         imgURL: "/Bread_&_Butter.jpg",
-        price: 19.00,
+        price: 19.0,
         inventoryCount: 100,
       }),
     ]);
@@ -669,7 +670,7 @@ async function seed() {
         type: "Ale",
         style: "Bitter",
         ABV: 5,
-        imgURL: "/abbotAle.jpeg",
+        imgURL: "/abbotAle.jpg",
         price: 3.25,
         inventoryCount: 100,
       }),
@@ -680,7 +681,7 @@ async function seed() {
         type: "Ale",
         style: "Wheat Beer",
         ABV: 5,
-        imgURL: "/abbotAle.jpeg",
+        imgURL: "/kronenbourgBlanc.jpeg",
         price: 3.35,
         inventoryCount: 100,
       }),
@@ -691,7 +692,7 @@ async function seed() {
         type: "Ale",
         style: "Dubbel",
         ABV: 5,
-        imgURL: "/abbotAle.jpeg",
+        imgURL: "/chimayPremiere.jpg",
         price: 3.35,
         inventoryCount: 100,
       }),
@@ -714,7 +715,7 @@ async function seed() {
         style: "Bitter",
         ABV: 6.9,
         imgURL: "/fullers.jpg",
-        price: 3.40,
+        price: 3.4,
         inventoryCount: 100,
       }),
       Beer.create({

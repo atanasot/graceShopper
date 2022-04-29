@@ -17,6 +17,7 @@ import Checkout from "./components/Checkout";
 import { fetchLineItemsFromCart } from "./store/lineItems";
 import Orders from "./components/Orders";
 import OrderDescription from "./components/OrderDescription";
+import Administrator from "./components/Administrator";
 import CartAfterlogin from "./components/CartAfterlogin";
 
 /**
@@ -52,6 +53,7 @@ class Routes extends Component {
             <Route path="/orders/:id" component={OrderDescription} />
             <Route path="/orders" component={Orders} />
             <Route path="/checkout" component={Checkout} />
+            <Route path="/admin" component={Administrator} />
           </Switch>
         ) : (
           <Switch>
