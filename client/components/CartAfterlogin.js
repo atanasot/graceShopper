@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchLineItemsByOrder } from "../store/lineItems";
+//import { fetchLineItemsByOrder } from "../store/lineItems";
 
 class CartAfterlogin extends Component {
   constructor() {
@@ -54,11 +54,13 @@ class CartAfterlogin extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchLineItemsByOrder: (orderId) =>
-      dispatch(fetchLineItemsByOrder(orderId)),
-  };
-};
+// Kenny you are not really using this route since you are loading lineitems directly from the state
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     fetchLineItemsByOrder: (orderId) =>
+//       dispatch(fetchLineItemsByOrder(orderId)),
+//   };
+// };
 
-export default connect((state) => state, mapDispatchToProps)(CartAfterlogin);
+//export default connect((state) => state, mapDispatchToProps)(CartAfterlogin);
+export default connect((state) => state)(CartAfterlogin);

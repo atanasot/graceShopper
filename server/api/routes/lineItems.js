@@ -54,7 +54,7 @@ app.post("/", async (req, res, next) => {
     await LineItem.addToOrder(
       req.body.name,
       req.body.beerId,
-      req.body.wineid,
+      req.body.wineId,
       req.body.quantity,
       req.body.price,
       currentOrder.id

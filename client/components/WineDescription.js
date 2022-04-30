@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import store from "../store";
 import { connect } from "react-redux";
 import { addWine } from "../store/lineItems";
-import { fetchOrders } from "../store/orders";
 import { Link } from "react-router-dom";
 
 class WineDescription extends Component {
@@ -15,7 +13,6 @@ class WineDescription extends Component {
       price: this.props.wine.id ? this.props.wine.price : "",
     };
     this.addToCart = this.addToCart.bind(this);
-    console.log(this.state);
   }
 
   componentDidUpdate(prevProps) {
@@ -42,7 +39,6 @@ class WineDescription extends Component {
   render() {
     const { wine } = this.props;
     const { addToCart } = this;
-    const { fetchOrders } = this.props;
     return (
       <div>
         <p>
@@ -53,7 +49,6 @@ class WineDescription extends Component {
         <button
           onClick={function () {
             addToCart();
-            fetchOrders();
           }}
         >
           Add to Cart
@@ -75,7 +70,6 @@ const mapStateToProps = (state, otherProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addWine: (wine) => dispatch(addWine(wine)),
-    fetchOrders: () => dispatch(fetchOrders()),
   };
 };
 
