@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // Checkout Stanleys comments
 
@@ -9,6 +10,11 @@ const Home = () => {
         {" "}
         <div className="homePageword">
           <p>Every sip has a story</p>
+          <div className="btn-1">
+            <Link to={"/checkout"}>
+              <span className="span">SHOP NOW</span>
+            </Link>
+          </div>
         </div>
       </div>
       <div
