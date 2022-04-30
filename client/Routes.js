@@ -30,7 +30,7 @@ class Routes extends Component {
 
   componentDidUpdate(prevProps) {
     if (!prevProps.isLoggedIn && this.props.isLoggedIn) {
-      // this should load the products that are in the cart
+      // this should load the products that are in cart
       console.log("user logged in");
       this.props.fetchLineItemsFromCart();
     }
