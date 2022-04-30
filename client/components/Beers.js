@@ -7,7 +7,6 @@ const Beers = ({ beers }) => {
     <ul>
       {beers.map((beer) => (
         <li key={beer.id}>
-          <img src={`./images/${beer.imgURL}`} alt="" width="80" height="100" />
           <Link to={`/beers/${beer.id}`}>{beer.name} </Link>
         </li>
       ))}
