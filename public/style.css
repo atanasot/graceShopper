@@ -150,42 +150,32 @@ nav {
   color: rgb(0, 0, 0);
   }
   
-.homePageword{
-  color:black;
-  font-size: 4em;
-  padding-top: 250px;
-  text-align: center  ;
+  .homePageword {
+    font-family: 'Water Brush', cursive;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    text-shadow: 6px 6px #d0cfcf;
+    color:black;
+    font-size: 4em;
+    padding-top: 130px;
+    text-align: center  ;
+  
+  }
+  
+  .homePage{
+  background-image: url(./images/background3.jpg); 
+  min-height: 94vh; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
 
-}
-.homePageword p {
-  font-family: 'Water Brush', cursive;
-  margin-top: 0%;
-  margin-bottom: 0%;
-  text-shadow: 6px 6px #d0cfcf;
-}
-
-.homePage{
-background-image: url(./images/background3.jpg); 
- background-position: center;
- background-size: cover;
- background-repeat: no-repeat;
- width: 99.4vw;
- height: 90vh;
-}
-
-/* .photo{
-  position: relative;
-  height: 100vh;
-}
-
-.content{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  height: 100vh;
-  width: 100%;
-} */
-
+  .authForm{
+    margin-top: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
 /*# sourceMappingURL=style.css.map */
