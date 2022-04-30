@@ -10,10 +10,18 @@ class Orders extends Component {
 
   render() {
     const { orders } = this.props;
-    if (!orders.length) {
-      return <h2>You have no orders</h2>;
-    }
-    return (
+    const quantity = orders.map((item) => item.lineItems);
+    return quantity[0] === 0 ? (
+      <div>
+        <Link to={"/"}>Go Back</Link>
+        <p>You have no order</p>
+      </div>
+    ) : (
+      //     if (!orders.length) {
+      //       return <h2>You have no orders</h2>;
+      //     }
+      //     return (
+      // >>>>>>> main
       <ul>
         {orders.map((order) => (
           <li key={order.id}>
