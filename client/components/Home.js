@@ -1,5 +1,4 @@
 import React from "react";
-import HomeBanner from "../../src/components/Homebanner";
 
 // Checkout Stanleys comments
 
