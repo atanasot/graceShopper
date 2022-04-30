@@ -23,7 +23,7 @@ const isLoggedIn = async (req, res, next) => {
   }
   const verifyAdmin = (req,res,next)=>{
     isLoggedIn(req,res,()=>{
-      if(req.user.isAdmin){
+      if(req.user && req.user.isAdmin){
         next()
       }else{
         const error = Error('You are not authorized');

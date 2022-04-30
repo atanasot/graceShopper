@@ -4,7 +4,7 @@ const {
 } = require("../../db/index");
 const User = require("../../db/models/User");
 const { isLoggedIn, verifyUserOrAdmin, verifyAdmin} = require("../verifyAuth");
-
+//get all beers
 app.get("/", async (req, res, next) => {
   try {
     res.send(await Beer.findAll());
@@ -12,7 +12,7 @@ app.get("/", async (req, res, next) => {
     next(ex);
   }
 });
-
+//get single beer
 app.get("/:id", isLoggedIn, async (req, res, next) => {
   try {
     const beer = await Beer.findByPk(req.params.id);
@@ -21,24 +21,26 @@ app.get("/:id", isLoggedIn, async (req, res, next) => {
     next(ex);
   }
 });
-
-// app.post("/",verifyUserAndAdmin, async (req, res, next) => {
-//   try {
-//     TBD
-//   } catch (ex) {
-//     next(ex);
-//   }
-// });
-
-app.post("/", async (req, res, next) => {
+//add beer
+app.post("/", verifyAdmin, async (req, res, next) => {
   try {
     res.status(201).send(await Beer.create(req.body));
   } catch (ex) {
     next(ex);
   }
 });
-
-app.delete("/:id", async (req, res, next) => {
+//update beer
+app.put("/:id", verifyAdmin, async (req, res, next) => {
+  try {
+    let id = req.params.id;
+    const updatedBeer = await Beer.update(req.body, { where: { id: id}});
+    res.status(200).send(updatedBeer);
+  } catch (ex) {
+    next(ex);
+  }
+});
+//delete beer
+app.delete("/:id", verifyAdmin, async (req, res, next) => {
   try {
     const beer = await Beer.findByPk(req.params.id);
     await beer.destroy();
@@ -47,5 +49,6 @@ app.delete("/:id", async (req, res, next) => {
     next(ex);
   }
 });
+
 
 module.exports = app;

@@ -150,7 +150,7 @@ nav {
   color: rgb(0, 0, 0);
   }
   
-/* .homePageword{
+.homePageword{
   color:black;
   font-size: 4em;
   padding-top: 250px;
@@ -171,9 +171,9 @@ background-image: url(./images/background3.jpg);
  background-repeat: no-repeat;
  width: 99.4vw;
  height: 90vh;
-} */
+}
 
-.photo{
+/* .photo{
   position: relative;
   height: 100vh;
 }
@@ -185,7 +185,7 @@ background-image: url(./images/background3.jpg);
   position: absolute;
   height: 100vh;
   width: 100%;
-}
+} */
 
 
 /*# sourceMappingURL=style.css.map */

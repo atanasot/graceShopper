@@ -17,6 +17,11 @@ class Orders extends Component {
         <p>You have no order</p>
       </div>
     ) : (
+      //     if (!orders.length) {
+      //       return <h2>You have no orders</h2>;
+      //     }
+      //     return (
+      // >>>>>>> main
       <ul>
         {orders.map((order) => (
           <li key={order.id}>

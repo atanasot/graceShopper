@@ -34,8 +34,8 @@ Order.getOrCreateCart = async function (userId) {
         userId: userId,
       });
     }
-
     return currentOrder;
+    
   } catch (ex) {
     const error = Error("error in Order.getOrCreateCart");
     error.status = 500;

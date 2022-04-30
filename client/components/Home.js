@@ -6,7 +6,7 @@ import HomeBanner from "../../src/components/Homebanner";
 const Home = () => {
   return (
     <div>
-      <HomeBanner />
+      {/* <HomeBanner /> */}
       <div className="homePage">
         <div className="homePageword">
           <p>Every sip has a story</p>
