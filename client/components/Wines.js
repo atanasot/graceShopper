@@ -13,7 +13,7 @@ const Wines = ({ wines }) => {
                 src={`./images/${wine.imgURL}`}
                 alt=""
                 width="80"
-                height="200"
+                height="100"
               />
               <Link to={`/wines/${wine.id}`}>{wine.name}</Link>
             </li>
