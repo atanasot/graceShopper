@@ -9,12 +9,14 @@ class Orders extends Component {
   }
 
   render() {
-    // fix no orders on refresh -- orders have 0 values
     const { orders } = this.props;
-    // if (!orders.lineItems) {
-    //   return <h2>You have no orders</h2>
-    // }
-    return (
+    const quantity = orders.map((item) => item.lineItems);
+    return quantity[0] === 0 ? (
+      <div>
+        <Link to={"/"}>Go Back</Link>
+        <p>You have no order</p>
+      </div>
+    ) : (
       <ul>
         {orders.map((order) => (
           <li key={order.id}>

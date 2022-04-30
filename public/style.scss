@@ -90,6 +90,8 @@ body {
   .title{
       text-decoration: none;
       color:black;
+      margin-left: 20px;
+      border: 1px solid;
   }
 
   .navbar-left {
@@ -108,10 +110,6 @@ body {
     
 }
 
-.title{    
-    font-family: impact,fantasy;
-    letter-spacing: 3px;
-}
 
 .products{
 display: flex;
@@ -119,6 +117,10 @@ flex-direction: column;
 flex-wrap: wrap;
 justify-content: space-around;
 text-decoration: none;
+}
+
+body a{
+  text-decoration: none;
 }
 
 

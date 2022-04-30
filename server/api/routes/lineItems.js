@@ -2,7 +2,7 @@ const app = require("express").Router();
 const {
   models: { LineItem, User, Order },
 } = require("../../db/index");
-const { isLoggedIn, verifyUserOrAdmin, verifyAdmin} = require("../verifyAuth");
+const { isLoggedIn, verifyUserOrAdmin, verifyAdmin } = require("../verifyAuth");
 
 // get all items by orderId -- this is to get the cart
 app.get("/", async (req, res, next) => {
@@ -46,6 +46,16 @@ app.get("/order/:orderId", async (req, res, next) => {
     next(err);
   }
 });
+
+// app.delete("/:id", async (req, res, next) => {
+//   try {
+//     const targetItem = await Order.findByPk(req.params.id);
+//     await targetItem.destroy();
+//     res.sendStatus(204);
+//   } catch (ex) {
+//     next(ex);
+//   }
+// });
 
 app.post("/", async (req, res, next) => {
   try {
