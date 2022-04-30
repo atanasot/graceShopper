@@ -5,7 +5,6 @@ import React from "react";
 const Home = () => {
   return (
     <div>
-      {/* <HomeBanner /> */}
       <div className="homePage">
         <div className="homePageword">
           <p>Every sip has a story</p>
