@@ -129,6 +129,7 @@ nav {
   font-size: 2em;
   background-color: white;
   box-shadow:1px 1px 7px 3px rgb(203, 203, 203);
+  z-index: 5;
 
 }
 
@@ -181,12 +182,10 @@ nav {
 
 
 .btn-1 {
-  margin-left: 42vw;
-  padding-bottom: 80px;
+  margin-left: 45vw;
+  margin-top: 3vw;
   width: 300px;
   height: 200px;
-
-
 }
 
 .btn-1 a {
@@ -237,4 +236,10 @@ nav {
 .btn-1 a:hover::after {
   transform: scaleX(0);
 }
+
+.homePageBottomWord{
+  height: 1000px;
+   background-color: white 
+  }
+
 /*# sourceMappingURL=style.css.map */

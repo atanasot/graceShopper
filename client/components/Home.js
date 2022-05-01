@@ -17,13 +17,11 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div
-        style={{ height: "1000px", backgroundColor: "white", fontSize: "36px" }}
-      >
-        {" "}
-        Scroll Up and Down this page to see the parallax scrolling effect. This
-        div is just here to enable scrolling. Tip: Try to remove the
-        background-attachment property to remove the scrolling effect.
+      <div className="homePageBottomWord">
+        <br></br>
+        Good wine is one of life’s greatest pleasures. Whether you are a novice
+        or a connoisseur, interested in simply sipping or expertly analyzing,
+        enjoying a glass of wine can be a sublime experience.
       </div>
     </div>
   );
