@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import store from "../store";
 import { connect } from "react-redux";
-import { addBeer } from "../store/lineItems";
 import { Link } from "react-router-dom";
 
 class BeerDescriptionBeforeLogin extends Component {
@@ -37,12 +36,12 @@ class BeerDescriptionBeforeLogin extends Component {
       name: this.state.name,
       quantity: this.state.quantity,
       price: this.state.price,
+      orderId: null
     });
     this.setState({ cart: cart });
 
     window.localStorage.setItem("cart", JSON.stringify(cart));
 
-    console.log(localStorage);
     let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
     console.log(loadedStorage);
   }
@@ -91,7 +90,6 @@ class BeerDescriptionBeforeLogin extends Component {
 }
 
 const mapStateToProps = (state, otherProps) => {
-  //console.log(state, "INSIDE mapStateToProps");
   const beer =
     state.beers.find((beer) => beer.id === otherProps.match.params.id * 1) ||
     {};

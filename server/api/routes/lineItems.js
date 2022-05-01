@@ -60,15 +60,30 @@ app.get("/order/:orderId", async (req, res, next) => {
 app.post("/", async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
+
     const currentOrder = await Order.getOrCreateCart(user.id);
-    await LineItem.addToOrder(
-      req.body.name,
-      req.body.beerId,
-      req.body.wineId,
-      req.body.quantity,
-      req.body.price,
-      currentOrder.id
-    );
+    if (Array.isArray(req.body)) {
+      for (let i = 0; i < req.body.length; i++) {
+        await LineItem.addToOrder(
+          req.body[i].name,
+          req.body[i].beerId,
+          req.body[i].wineId,
+          req.body[i].quantity * 1,
+          req.body[i].price,
+          currentOrder.id
+        );
+      }
+    } else {
+      await LineItem.addToOrder(
+        req.body.name,
+        req.body.beerId,
+        req.body.wineId,
+        req.body.quantity,
+        req.body.price,
+        currentOrder.id
+      );
+    }
+
     await Order.calculatePriceItems(currentOrder.id);
 
     // Return entire updated cart

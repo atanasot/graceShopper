@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addWine } from "../store/lineItems";
 import { Link } from "react-router-dom";
 
 class WineDescriptionBeforeLogin extends Component {
@@ -39,12 +38,12 @@ class WineDescriptionBeforeLogin extends Component {
       name: this.state.name,
       quantity: this.state.quantity * 1,
       price: this.state.price,
+      orderId: null,
     });
     this.setState({ cart: cart });
 
     window.localStorage.setItem("cart", JSON.stringify(cart));
 
-    console.log(localStorage);
     let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
     console.log(loadedStorage);
   }
