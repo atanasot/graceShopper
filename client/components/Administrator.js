@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { store, fetchCustomers } from "../store";
+import { store, fetchCustomers, fetchOrders, adminFetchOrders } from "../store";
 
 class Administrator extends Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   username: this.props.user.username ? this.props.user.username : null,
-    //   admin: this.props.user.isAdmin ? this.props.user.isAdmin : null,
-    // };
+  }
+  componentDidMount() {
+    this.props.fetchOrders();
   }
 
   render() {
@@ -52,6 +51,24 @@ class Administrator extends Component {
         </div>
         <hr />
         <div>Orders</div>
+        <ul>
+          {this.props.orders.map((order) => {
+            return (
+              <li key={order.id}>
+                <p>OrderID: {order.id}</p>
+                <p>OrderDate: {order.updatedAt.slice(0, 10)} </p>
+                Customer:{" "}
+                {
+                  this.props.customers.find(
+                    (customer) => customer.id === order.userId
+                  ).username
+                }{" "}
+                <p>Quantity: {order.lineItems} </p>
+                <p>Total: {order.total}</p>
+              </li>
+            );
+          })}
+        </ul>
         <hr />
       </div>
     );
@@ -68,4 +85,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Administrator);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchOrders: () => dispatch(adminFetchOrders()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Administrator);

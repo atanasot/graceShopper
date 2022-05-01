@@ -2,7 +2,7 @@ const app = require("express").Router();
 const {
   models: { Order, User },
 } = require("../../db/index");
-const { isLoggedIn, verifyUserOrAdmin, verifyAdmin} = require("../verifyAuth");
+const { isLoggedIn, verifyUserOrAdmin, verifyAdmin } = require("../verifyAuth");
 
 // get a history of completed orders per user
 app.get("/", async (req, res, next) => {
@@ -12,10 +12,19 @@ app.get("/", async (req, res, next) => {
       await Order.findAll({
         where: {
           userId: user.id,
-          isCart: false
+          isCart: false,
         },
       })
     );
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.get("/admin", async (req, res, next) => {
+  try {
+    const orders = await Order.findAll();
+    res.send(orders);
   } catch (err) {
     next(err);
   }

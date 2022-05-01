@@ -61,15 +61,15 @@ class BeerDescriptionBeforeLogin extends Component {
   }
 
   render() {
-    //console.log(this.state);
     const { beer } = this.props;
     const { addToCart } = this;
+
     return (
       <div>
         <p>
           <Link to="/beer">Go back</Link>
         </p>
-        <p>Beer Description will be inserted here</p>
+        <p>{beer.description}</p>
         <p>{beer.name}</p>
         <form onSubmit={this.onSubmit}>
           <input
