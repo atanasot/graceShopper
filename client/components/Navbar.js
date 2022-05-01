@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../store";
 
-const Navbar = ({ lineItems, handleClick, isLoggedIn }) => {
+const Navbar = ({ lineItems, handleClick, isLoggedIn, isAdmin }) => {
   const loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
   return (
     <div>
@@ -94,22 +94,38 @@ const Navbar = ({ lineItems, handleClick, isLoggedIn }) => {
 
                 <ul className="drop">
                   {isLoggedIn ? (
-                    <div>
-                      <li>
-                        <Link to="/Profile">Profile</Link>
-                      </li>
-                      <li>
-                        <Link to="/orders">Orders</Link>
-                      </li>
-                      <li>
-                        <Link to="/admin">Administrator</Link>
-                      </li>
-                      <li>
-                        <a href="#" onClick={handleClick}>
-                          Logout
-                        </a>
-                      </li>
-                    </div>
+                    isAdmin ? (
+                      <div>
+                        <li>
+                          <Link to="/Profile">Profile</Link>
+                        </li>
+                        <li>
+                          <Link to="/orders">Orders</Link>
+                        </li>
+                        <li>
+                          <Link to="/admin">Administrator</Link>
+                        </li>
+                        <li>
+                          <a href="#" onClick={handleClick}>
+                            Logout
+                          </a>
+                        </li>
+                      </div>
+                    ) : (
+                      <div>
+                        <li>
+                          <Link to="/Profile">Profile</Link>
+                        </li>
+                        <li>
+                          <Link to="/orders">Orders</Link>
+                        </li>
+                        <li>
+                          <a href="#" onClick={handleClick}>
+                            Logout
+                          </a>
+                        </li>
+                      </div>
+                    )
                   ) : (
                     <div>
                       <li>
@@ -147,6 +163,7 @@ const Navbar = ({ lineItems, handleClick, isLoggedIn }) => {
 const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
+    isAdmin: state.auth.isAdmin,
   };
 };
 
