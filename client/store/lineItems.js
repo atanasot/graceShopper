@@ -4,7 +4,6 @@ import axios from "axios";
  * ACTION TYPES
  */
 
-const DELETE_BEER = "DELETE_BEER";
 const LOAD_CART = "LOAD_CART";
 const UPDATE_LINEITEM = "UPDATE_LINEITEM";
 const LOAD_ORDER_ITEMS = "LOAD_ORDER_ITEMS";
@@ -16,19 +15,17 @@ const DELETE_ITEM = "DELETE_ITEM";
 
 const _fetchLineItemsFromCart = (lineItems) => ({ type: LOAD_CART, lineItems });
 
-const _deleteBeer = (beer) => ({ type: DELETE_BEER, beer });
-
 const _fetchLineItemsByOrder = (lineItems) => ({
   type: LOAD_ORDER_ITEMS,
   lineItems,
 });
 
-const _deleteItem = (item) => {
-  return {
-    type: DELETE_ITEM,
-    item,
-  };
-};
+// const _deleteItem = (item) => {
+//   return {
+//     type: DELETE_ITEM,
+//     item,
+//   };
+// };
 
 /**
  * THUNK CREATORS
@@ -61,20 +58,9 @@ export const fetchLineItemsByOrder = (orderId) => {
   };
 };
 
-export const addBeer = (beer) => {
+export const addToCart = (lineItem) => {
   return async (dispatch) => {
-    const response = await axios.post("/api/lineItems", beer, {
-      headers: {
-        authorization: window.localStorage.getItem("token"),
-      },
-    });
-    dispatch(_fetchLineItemsFromCart(response.data));
-  };
-};
-
-export const addWine = (wine) => {
-  return async (dispatch) => {
-    const response = await axios.post("/api/lineItems", wine, {
+    const response = await axios.post("/api/lineItems", lineItem, {
       headers: {
         authorization: window.localStorage.getItem("token"),
       },

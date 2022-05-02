@@ -14,7 +14,7 @@ import BeerDescriptionBeforeLogin from "./components/BeerDescriptionBeforeLogin"
 import BeerDescription from "./components/BeerDescription";
 import WineDescriptionBeforeLogin from "./components/WineDescriptionBeforeLogin";
 import Checkout from "./components/Checkout";
-import { fetchLineItemsFromCart } from "./store/lineItems";
+import { fetchLineItemsFromCart, addToCart } from "./store/lineItems";
 import Orders from "./components/Orders";
 import OrderDescription from "./components/OrderDescription";
 import Administrator from "./components/Administrator";
@@ -32,7 +32,13 @@ class Routes extends Component {
     if (!prevProps.isLoggedIn && this.props.isLoggedIn) {
       // this should load the products that are in cart
       console.log("user logged in");
-      this.props.fetchLineItemsFromCart();
+      const cart = JSON.parse(window.localStorage.getItem("cart"));
+      if (cart) {
+        this.props.addToCart(JSON.parse(window.localStorage.getItem("cart")));
+      } else {
+        this.props.fetchLineItemsFromCart();
+      }
+      window.localStorage.removeItem("cart");
     }
   }
 
@@ -93,6 +99,9 @@ const mapDispatch = (dispatch) => {
     },
     fetchLineItemsFromCart: () => {
       return dispatch(fetchLineItemsFromCart());
+    },
+    addToCart: (localStorage) => {
+      return dispatch(addToCart(localStorage));
     },
   };
 };

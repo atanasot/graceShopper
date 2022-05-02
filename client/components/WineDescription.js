@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addWine } from "../store/lineItems";
+import { addToCart } from "../store/lineItems";
 import { Link } from "react-router-dom";
 
 class WineDescription extends Component {
@@ -33,7 +33,7 @@ class WineDescription extends Component {
       quantity: this.state.quantity,
       price: this.state.price,
     };
-    this.props.addWine(lineItem);
+    this.props.addToCart(lineItem);
   }
 
   render() {
@@ -69,7 +69,7 @@ const mapStateToProps = (state, otherProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addWine: (wine) => dispatch(addWine(wine)),
+    addToCart: (wine) => dispatch(addToCart(wine)),
   };
 };
 
