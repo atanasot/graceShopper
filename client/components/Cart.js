@@ -33,7 +33,7 @@ const Cart = () => {
           <p>Total = ${(subtotal + shipping).toFixed(2)}</p>
         </div>
       ) : (
-        <p>This is an Emtry cart</p>
+        <p>This is an Empty cart</p>
       )}
       <button onClick={() => localStorage.clear()}>clear all</button>
       <button>
