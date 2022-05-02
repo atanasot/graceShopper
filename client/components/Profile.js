@@ -5,11 +5,14 @@ import { connect } from "react-redux";
  * COMPONENT
  */
 export const Profile = (props) => {
-  const { username } = props;
+  const { username, isAdmin } = props;
 
   return (
     <div>
-      <h3>Welcome, {username}</h3>
+      <h3>
+        Welcome, {username}{" "}
+        {isAdmin ? "....You have Administrator Privileges" : ""}
+      </h3>
     </div>
   );
 };
@@ -20,6 +23,7 @@ export const Profile = (props) => {
 const mapState = (state) => {
   return {
     username: state.auth.username,
+    isAdmin: state.auth.isAdmin,
   };
 };
 
