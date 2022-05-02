@@ -5,6 +5,7 @@ const {
 const { isLoggedIn, verifyUserOrAdmin, verifyAdmin } = require("../verifyAuth");
 
 // get a history of completed orders per user
+// this route displays fullfilled orders
 app.get("/", async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
@@ -21,6 +22,7 @@ app.get("/", async (req, res, next) => {
   }
 });
 
+// admin routes need some token or authorization
 app.get("/admin", async (req, res, next) => {
   try {
     const orders = await Order.findAll();

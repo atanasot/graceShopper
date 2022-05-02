@@ -35,6 +35,9 @@ User.prototype.generateToken = function () {
   return jwt.sign({ id: this.id }, process.env.JWT);
 };
 
+User.prototype.starPassword = function () {
+  return password.split('').map(char => '*').join('')
+}
 /**
  * classMethods
  */
