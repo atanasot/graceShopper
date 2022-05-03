@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import WinesAdmin from "../components/WinesAdmin.js";
+import BeersAdmin from "../components/BeersAdmin.js";
 import {
   store,
   fetchCustomers,
@@ -49,6 +50,7 @@ class Administrator extends Component {
         <hr />
         <div>
           Beers
+          <BeersAdmin />
           {this.props.beers.map((beer) => {
             return (
               <div key={beer.id}>
