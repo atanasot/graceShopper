@@ -112,7 +112,6 @@ class BeersAdmin extends Component {
     );
   }
 }
-//remove comment after fix
 
 const mapStateToProps = (state) => {
   const { beers, auth } = state;
