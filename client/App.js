@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Navbar from "./components/Navbar";
 import Routes from "./Routes";
+import Footer from "./components/footer";
+
 import {
   fetchBeers,
   fetchWines,
@@ -22,6 +24,7 @@ class App extends Component {
       <div>
         <Navbar />
         <Routes />
+        <Footer />
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
-import { Login, Signup } from "./components/AuthForm";
+import { Login } from "./components/AuthForm";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
 import About from "./components/About";
@@ -19,7 +19,8 @@ import Orders from "./components/Orders";
 import OrderDescription from "./components/OrderDescription";
 import Administrator from "./components/Administrator";
 import CartAfterlogin from "./components/CartAfterlogin";
-
+import Contact from "./components/Contact";
+import { Signup } from "./components/AuthFormRegister";
 /**
  * COMPONENT
  */
@@ -60,6 +61,7 @@ class Routes extends Component {
             <Route path="/orders" component={Orders} />
             <Route path="/checkout" component={Checkout} />
             <Route path="/admin" component={Administrator} />
+            <Route path="/contact" component={Contact} />
           </Switch>
         ) : (
           <Switch>
@@ -73,6 +75,7 @@ class Routes extends Component {
             <Route path="/beers/:id" component={BeerDescriptionBeforeLogin} />
             <Route path="/wines/:id" component={WineDescriptionBeforeLogin} />
             <Route path="/checkout" component={Checkout} />
+            <Route path="/contact" component={Contact} />
           </Switch>
         )}
       </div>
