@@ -7,12 +7,12 @@ class Orders extends Component {
   componentDidMount() {
     this.props.fetchOrders();
   }
-
   render() {
     const { orders } = this.props;
-    const quantity = orders.map((item) => item.lineItems);
+
+    <Link to={"/"}>Go Back</Link>;
     if (!orders.length) {
-      return <h2>You have no orders</h2>;
+      return <h2>You have no purchased orders</h2>;
     }
     return (
       <ul>

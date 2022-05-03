@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { store, fetchCustomers, fetchOrders, adminFetchOrders } from "../store";
+import WinesAdmin from "../components/WinesAdmin.js";
+import BeersAdmin from "../components/BeersAdmin.js";
+import {
+  store,
+  fetchCustomers,
+  fetchOrders,
+  fetchWines,
+  adminFetchOrders,
+  addWine,
+} from "../store";
 
 class Administrator extends Component {
   constructor(props) {
@@ -8,6 +17,8 @@ class Administrator extends Component {
   }
   componentDidMount() {
     this.props.fetchOrders();
+    this.props.fetchWines();
+    this.state;
   }
 
   render() {
@@ -24,6 +35,7 @@ class Administrator extends Component {
         <hr />
         <div>
           Wines
+          <WinesAdmin />
           {this.props.wines.map((wine) => {
             return (
               <div key={wine.id}>
@@ -38,6 +50,7 @@ class Administrator extends Component {
         <hr />
         <div>
           Beers
+          <BeersAdmin />
           {this.props.beers.map((beer) => {
             return (
               <div key={beer.id}>
@@ -76,8 +89,9 @@ class Administrator extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { customers, wines, beers, orders } = state;
+  const { customers, wines, beers, orders, auth } = state;
   return {
+    auth,
     customers,
     wines,
     beers,
@@ -88,6 +102,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchOrders: () => dispatch(adminFetchOrders()),
+    fetchWines: () => dispatch(fetchWines()),
   };
 };
 

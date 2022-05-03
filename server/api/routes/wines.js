@@ -1,9 +1,9 @@
 const app = require("express").Router();
 const { verify } = require("jsonwebtoken");
 const {
-  models: { Wine },
+  models: { Wine, User },
 } = require("../../db/index");
-const { isLoggedIn, verifyUserOrAdmin, verifyAdmin} = require("../verifyAuth");
+const { isLoggedIn, verifyUserOrAdmin, verifyAdmin } = require("../verifyAuth");
 
 //get all wine
 app.get("/", async (req, res, next) => {
@@ -23,9 +23,10 @@ app.get("/:id", async (req, res, next) => {
   }
 });
 //add wine
-app.post("/", verifyAdmin, async (req, res, next) => {
+app.post("/", async (req, res, next) => {
   try {
-    res.status(201).send(await Wine.create(req.body));
+    const user = await User.findByToken(req.headers.authorization);
+    user ? res.status(201).send(await Wine.create(req.body)) : res.status(401);
   } catch (ex) {
     next(ex);
   }
@@ -34,7 +35,7 @@ app.post("/", verifyAdmin, async (req, res, next) => {
 app.put("/:id", verifyAdmin, async (req, res, next) => {
   try {
     let id = req.params.id;
-    const updatedWine = await Wine.update(req.body, { where: { id: id}});
+    const updatedWine = await Wine.update(req.body, { where: { id: id } });
     res.status(200).send(updatedWine);
   } catch (ex) {
     next(ex);
