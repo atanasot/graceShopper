@@ -9,7 +9,7 @@ const Home = () => {
       {/* <HomeBanner /> */}
       <div className="homePage">
         <div className="homePageword">
-          <p>Every sip has a story</p>
+          <p>Every sip has a story...</p>
         </div>
       </div>
       <div className="margin"></div>
