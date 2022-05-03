@@ -41,18 +41,49 @@ class BeerDescription extends Component {
     const { addToCart } = this;
     return (
       <div>
-        <p>
-          <Link to="/beer">Go back</Link>
-        </p>
-        <p>Beer Description will be inserted here</p>
-        <p>{beer.name}</p>
-        <button
-          onClick={function () {
-            addToCart();
-          }}
-        >
-          Add to Cart
-        </button>
+        <div className="wrapper">
+          <div style={{ marginTop: "100px", marginLeft: "160px" }}>
+            <Link to="/">Home</Link> / <Link to="/beer">Beer</Link> /{" "}
+            {beer.name}
+          </div>
+
+          <div className="product-top" style={{ marginLeft: "400px" }}>
+            <div className="product__gallery">
+              <img src={`./images/${beer.imgURL}`} alt="" />
+            </div>
+            <div className="product__info">
+              <div className="product__desc">
+                <div className="product__type">Beer</div>
+                <h1>{beer.name}</h1>
+                <p className="product__price">${beer.price}</p>
+                <div className="product__short">
+                  <h4>Type:{beer.type}</h4>
+
+                  <h4>
+                    country:{beer.country}, {beer.state}
+                  </h4>
+                  <h4>ABV:{beer.ABV}</h4>
+                </div>
+                <button
+                  className="product__btn"
+                  onClick={function () {
+                    addToCart();
+                  }}
+                >
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="product-bottom">
+            <h2>Description</h2>
+            <p>{beer.description}</p>
+            <h2>Reviews</h2>
+            <p>Stanley said he doesnt like beers</p>
+          </div>
+        </div>
+
+        <div className="overlay" />
       </div>
     );
   }
