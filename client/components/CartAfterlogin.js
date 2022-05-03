@@ -2,9 +2,12 @@ import React from "react";
 import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteItem } from "../store/lineItems";
+import { removeFromCart } from "../store/lineItems";
 
-const CartAfterlogin = ({ lineItems }) => {
-  const dispatch = useDispatch();
+const CartAfterlogin = ({ lineItems, removeFromCart }) => {
+  // console.log('???', lineItems);
+  // const dispatch = useDispatch();
+  console.log('lineitems >>', lineItems)
   const shipping = 5.99;
   const subtotal =
     lineItems
@@ -20,7 +23,11 @@ const CartAfterlogin = ({ lineItems }) => {
           <li key={lineItem.id}>
             {lineItem.name}
             <p>Price : ${lineItem.price}</p>
-            <p>Quantity : {lineItem.quantity}</p>
+            <p>Quantity : {lineItem.quantity}
+              <button onClick= { ()=> {
+                console.log(lineItem)
+                removeFromCart(lineItem.id, lineItem.orderId, 1)}}>-</button>
+            </p>
             <p>
               {" "}
               <button
@@ -52,4 +59,9 @@ const CartAfterlogin = ({ lineItems }) => {
   );
 };
 
-export default connect((state) => state)(CartAfterlogin);
+const mapDispatch = (dispatch)=> {
+  return{
+    removeFromCart: (lineItemId, orderId, quantity)=> dispatch(removeFromCart(lineItemId, orderId, quantity))
+  }
+}
+export default connect((state) => state, mapDispatch)(CartAfterlogin);

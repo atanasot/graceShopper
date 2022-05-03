@@ -47,6 +47,9 @@ app.get("/order/:orderId", async (req, res, next) => {
   }
 });
 
+
+
+
 // app.delete("/:id", async (req, res, next) => {
 //   try {
 //     const targetItem = await Order.findByPk(req.params.id);
@@ -84,4 +87,36 @@ app.post("/", async (req, res, next) => {
   }
 });
 
+app.put('/cart', async(req,res,next)=> {
+  try{
+    const user = await User.findByToken(req.headers.authorization); 
+    console.log(req.body)
+    await LineItem.removeFromCart(req.body.lineItemId, req.body.quantity)
+    res.send(
+      await LineItem.findAll({
+        where: {
+          orderId: req.body.orderId,
+        },
+      })
+    );
+  } catch(ex) {
+    next(ex)
+  } 
+})
+// app.put("/", async(req,res,next)=>{
+//   try{
+//     const user = await User.findByToken(req.headers.authorization);
+//     const currentOrder = await Order.getOrCreateCart(user.id);
+//     res.send(
+//       await LineItem.findAll({
+//         where: {
+//           orderId: currentOrder.id,
+//         },
+//       })
+//     );
+//     res.json(req.user.removeFromCart(req.body.product, req.body.quantity))
+//   }catch(ex){
+//     next(ex)
+//   }
+// })
 module.exports = app;

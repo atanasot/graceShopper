@@ -50,14 +50,14 @@ export const fetchLineItemsFromCart = () => {
 
 export const fetchLineItemsByOrder = (orderId) => {
   return async (dispatch) => {
-    const lineItems = (
+    const response = (
       await axios.get(`/api/lineItems/order/${orderId}`, {
         headers: {
           authorization: window.localStorage.getItem("token"),
         },
       })
     ).data;
-    dispatch(_fetchLineItemsByOrder(lineItems));
+    dispatch(_fetchLineItemsByOrder(response));
   };
 };
 
@@ -89,6 +89,19 @@ export const deleteItem = (item) => {
     dispatch(_deleteItem(item));
   };
 };
+
+export const removeFromCart = (lineItemId, orderId, quantity)=> {
+  return async(dispatch)=> {
+    const response = await axios.put(`/api/lineItems/cart`, {lineItemId,quantity, orderId},
+    {
+      headers: {
+        authorization: window.localStorage.getItem('token')
+      }
+    }
+    );
+    dispatch(_fetchLineItemsFromCart(response.data))
+  }
+}
 
 export default function (state = [], action) {
   switch (action.type) {

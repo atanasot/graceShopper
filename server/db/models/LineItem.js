@@ -52,5 +52,25 @@ LineItem.addToOrder = async function (
     throw error;
   }
 };
+// const order = await Order.findByPk(lineItem.orderId)
+
+LineItem.removeFromCart = async function (lineItemId, quantity) {
+  try {
+    const lineItem = await LineItem.findByPk(lineItemId);
+    if (lineItem) {
+      if (lineItem === 0 || (lineItem.quantity - quantity) === 0) {
+        //TBD: Need to update order table's lineItems proeprty
+        await lineItem.destroy();
+      } else {
+        await lineItem.update({ quantity: lineItem.quantity - quantity });
+      }
+    }     
+  } catch (ex) {
+    const error = Error("error in LineItem.removeFromCart");
+    error.status = 500;
+    throw error;
+  }
+};
+
 
 module.exports = LineItem;
