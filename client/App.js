@@ -2,7 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Navbar from "./components/Navbar";
 import Routes from "./Routes";
-import { fetchBeers, fetchWines, fetchLineItemsFromCart, fetchCustomers } from "./store";
+import Footer from "./components/footer";
+import {
+  fetchBeers,
+  fetchWines,
+  fetchLineItemsFromCart,
+  fetchCustomers,
+} from "./store";
 
 class App extends Component {
   componentDidMount() {
@@ -17,6 +23,7 @@ class App extends Component {
       <div>
         <Navbar />
         <Routes />
+        <Footer />
       </div>
     );
   }

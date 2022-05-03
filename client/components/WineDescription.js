@@ -39,20 +39,61 @@ class WineDescription extends Component {
   render() {
     const { wine } = this.props;
     const { addToCart } = this;
+    const rightarrow = (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        className="bi bi-arrow-right-short"
+        viewBox="0 0 16 10"
+      >
+        <path
+          fillRule="evenodd"
+          d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+        />
+      </svg>
+    );
     return (
       <div>
-        <p>
-          <Link to="/wine">Go back</Link>
-        </p>
-        <p>wine Description will be inserted here</p>
-        <p>{wine.name}</p>
-        <button
-          onClick={function () {
-            addToCart();
-          }}
-        >
-          Add to Cart
-        </button>
+        <div className="wrapper">
+          <div style={{ marginTop: "100px", marginLeft: "160px" }}>
+            <Link to="/">Home</Link> / <Link to="/wine">Wine</Link> /{" "}
+            {wine.name}
+          </div>
+
+          <div className="product-top" style={{ marginLeft: "400px" }}>
+            <div className="product__gallery">
+              <img src={`./images/${wine.imgURL}`} alt="" />
+            </div>
+            <div className="product__info">
+              <div className="product__desc">
+                <div className="product__type">wine</div>
+                <h1>{wine.name}</h1>
+                <p className="product__price">${wine.price}</p>
+                <div className="product__short">
+                  <h4>Type:{wine.type}</h4>
+                </div>
+                <button
+                  className="product__btn"
+                  onClick={function () {
+                    addToCart();
+                  }}
+                >
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="product-bottom">
+            <h2>Description</h2>
+            <p>{wine.description}</p>
+            <h2>Reviews</h2>
+            <p>Stanley said he doesnt like wines</p>
+          </div>
+        </div>
+
+        <div className="overlay" />
       </div>
     );
   }

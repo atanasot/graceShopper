@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { authenticate } from "../store";
+import { Link } from "react-router-dom";
 
 /**
  * COMPONENT
@@ -9,25 +10,47 @@ const AuthForm = (props) => {
   const { name, displayName, handleSubmit, error } = props;
 
   return (
-    <div className="authForm">
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
+    <div className="container1">
+      <div className="wrapper1">
+        <form onSubmit={handleSubmit} name={name} className="form">
+          <h1 className="h1">Login</h1>
+          <p>If you are already a member, easily log in</p>
+          <br></br>
           <label htmlFor="username">
-            <small>Username</small>
+            <input
+              name="username"
+              id="email"
+              type="text"
+              placeholder="Username"
+            />
           </label>
-          <input name="username" type="text" />
-        </div>
-        <div>
           <label htmlFor="password">
-            <small>Password</small>
+            <input
+              type="password"
+              name="password"
+              id="email"
+              placeholder="password"
+            />
           </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
+          <button type="submit" id="login-btn">
+            {displayName}
+          </button>
+          <div className="or">
+            <hr />
+            <span className=".span">OR</span>
+            <hr />
+          </div>
+
+          <div className="register">
+            <p>If you don't have an account</p>
+            <button className="register-btn">
+              <Link to={"/signup"}>Register</Link>
+            </button>
+          </div>
+          {error && error.response && <div> {error.response.data} </div>}
+        </form>
+      </div>
+      <div className="main-img" />{" "}
     </div>
   );
 };
@@ -47,14 +70,6 @@ const mapLogin = (state) => {
   };
 };
 
-const mapSignup = (state) => {
-  return {
-    name: "signup",
-    displayName: "Sign Up",
-    error: state.auth.error,
-  };
-};
-
 const mapDispatch = (dispatch) => {
   return {
     handleSubmit(evt) {
@@ -68,4 +83,3 @@ const mapDispatch = (dispatch) => {
 };
 
 export const Login = connect(mapLogin, mapDispatch)(AuthForm);
-export const Signup = connect(mapSignup, mapDispatch)(AuthForm);
