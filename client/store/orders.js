@@ -25,14 +25,14 @@ export const fetchOrders = () => {
         },
       })
     ).data;
-    dispatch({ type: LOAD_ORDERS, orders });
+    dispatch(_fetchOrders(orders));
   };
 };
 
 export const adminFetchOrders = () => {
   return async (dispatch) => {
     const orders = await (await axios.get("/api/orders/admin")).data;
-    dispatch({ type: LOAD_ORDERS, orders });
+    dispatch(fetchOrders(orders));
   };
 };
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { fetchOrders } from "./orders";
 /**
  * ACTION TYPES
  */
@@ -66,6 +66,7 @@ export const addToCart = (lineItem) => {
       },
     });
     dispatch(_fetchLineItemsFromCart(response.data));
+    await dispatch(fetchOrders());
   };
 };
 
@@ -76,6 +77,7 @@ export const deleteItem = (item) => {
   };
 };
 
+// fix order items
 export default function (state = [], action) {
   switch (action.type) {
     case LOAD_CART:

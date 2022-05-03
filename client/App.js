@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Navbar from "./components/Navbar";
 import Routes from "./Routes";
 import Footer from "./components/footer";
+
 import {
   fetchBeers,
   fetchWines,

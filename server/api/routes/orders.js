@@ -13,7 +13,7 @@ app.get("/", async (req, res, next) => {
       await Order.findAll({
         where: {
           userId: user.id,
-          isCart: false,
+          //isCart: false,
         },
       })
     );
