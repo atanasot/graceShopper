@@ -56,22 +56,19 @@ LineItem.addToOrder = async function (
 LineItem.removeFromCart = async function (lineItemId, quantity) {
   try {
     const lineItem = await LineItem.findByPk(lineItemId);
+
     if (lineItem) {
-      if (lineItem === 0 || (lineItem.quantity - quantity) === 0) {
-        //TBD: Need to update order table's lineItems proeprty.  Intend to do something like the code below (doesn't work)
-        //const order = await Order.findByPk(lineItem.orderId)
-        //await order.update({ lineItems: order.lineItems -1})
+      if (lineItem === 0 || lineItem.quantity - quantity === 0) {
         await lineItem.destroy();
       } else {
         await lineItem.update({ quantity: lineItem.quantity - quantity });
       }
-    }     
+    }
   } catch (ex) {
     const error = Error("error in LineItem.removeFromCart");
     error.status = 500;
     throw error;
   }
 };
-
 
 module.exports = LineItem;
