@@ -35,9 +35,9 @@ const Home = () => {
                 connoisseur, interested in simply sipping or expertly analyzing,
                 enjoying a glass of wine can be a sublime experience.
                 <div class="btn-2">
-                  <a href="">
+                  <Link to={"/aboutwine"}>
                     <span>LEARN MORE</span>
-                  </a>
+                  </Link>
                 </div>
               </p>
               <img
@@ -85,9 +85,9 @@ const Home = () => {
                 ancient tradition that brought joy to people’s lives throughout
                 history.
                 <div class="btn-2">
-                  <a href="">
+                  <Link to={"/aboutbeer"}>
                     <span>LEARN MORE</span>
-                  </a>
+                  </Link>
                 </div>
               </p>
               <img

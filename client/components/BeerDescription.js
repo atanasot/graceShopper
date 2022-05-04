@@ -15,6 +15,10 @@ class BeerDescription extends Component {
     this.addToCart = this.addToCart.bind(this);
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   componentDidUpdate(prevProps) {
     if (!prevProps.beer.id && this.props.beer.id) {
       this.setState({
@@ -42,7 +46,7 @@ class BeerDescription extends Component {
     return (
       <div>
         <div className="wrapper">
-          <div style={{ marginTop: "100px", marginLeft: "160px" }}>
+          <div style={{ marginTop: "100px", marginLeft: "270px" }}>
             <Link to="/">Home</Link> / <Link to="/beer">Beer</Link> /{" "}
             {beer.name}
           </div>

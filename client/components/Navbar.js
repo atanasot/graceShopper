@@ -57,6 +57,12 @@ const Navbar = ({ lineItems, handleClick, isLoggedIn, isAdmin }) => {
                     <Link to="/about">About Us</Link>
                   </li>
                   <li>
+                    <Link to="/aboutwine">About Wine</Link>
+                  </li>
+                  <li>
+                    <Link to="/aboutbeer">About Beer</Link>
+                  </li>
+                  <li>
                     <Link to="/contact">Contact Us</Link>
                   </li>
                 </div>
