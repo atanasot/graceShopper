@@ -57,6 +57,23 @@ app.get("/order/:orderId", async (req, res, next) => {
 //   }
 // });
 
+app.put('/cart', async(req,res,next)=> {
+  try{
+    const user = await User.findByToken(req.headers.authorization); 
+    console.log(req.body)
+    await LineItem.removeFromCart(req.body.lineItemId, req.body.quantity)
+    res.send(
+      await LineItem.findAll({
+        where: {
+          orderId: req.body.orderId,
+        },
+      })
+    );
+  } catch(ex) {
+    next(ex)
+  } 
+})
+
 app.post("/", async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);

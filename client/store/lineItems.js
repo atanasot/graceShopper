@@ -77,6 +77,19 @@ export const deleteItem = (item) => {
   };
 };
 
+export const removeFromCart = (lineItemId, orderId, quantity) => {
+  return async (dispatch) => {
+    const response = await axios.put('/api/lineItems/cart', {lineItemId, quantity, orderId},
+    {
+      headers: {
+        authorization: window.localStorage.getItem('token')
+      }
+    }
+    );
+    dispatch(_fetchLineItemsFromCart(response.data))
+  }
+}
+
 // fix order items
 export default function (state = [], action) {
   switch (action.type) {
