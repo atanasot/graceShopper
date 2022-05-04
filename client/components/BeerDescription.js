@@ -14,6 +14,9 @@ class BeerDescription extends Component {
     };
     this.addToCart = this.addToCart.bind(this);
   }
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
 
   componentDidUpdate(prevProps) {
     if (!prevProps.beer.id && this.props.beer.id) {
