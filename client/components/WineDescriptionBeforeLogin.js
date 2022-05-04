@@ -20,6 +20,10 @@ class WineDescriptionBeforeLogin extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   componentDidUpdate(prevProps) {
     if (!prevProps.wine.id && this.props.wine.id) {
       this.setState({

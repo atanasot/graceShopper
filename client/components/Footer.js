@@ -5,6 +5,8 @@ const Footer = () => {
   return (
     <footer>
       <div class="footer" style={{ textAlign: "center" }}>
+
+   
         <p>
           <br></br>
           <Link to="/about">About Us</Link>{" "}
