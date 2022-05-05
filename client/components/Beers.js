@@ -18,7 +18,7 @@ const Beers = ({ beers }) => {
           </div>
           <ol className="posts">
             {beers.map((beer) => (
-              <div>
+              <div key={beer.id}>
                 <Link to={`/beers/${beer.id}`}>
                   <div className="container">
                     <div className="card-2 card-div">

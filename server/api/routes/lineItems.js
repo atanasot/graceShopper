@@ -47,21 +47,23 @@ app.get("/order/:orderId", async (req, res, next) => {
   }
 });
 
-// app.delete("/:id", async (req, res, next) => {
-//   try {
-//     const targetItem = await Order.findByPk(req.params.id);
-//     await targetItem.destroy();
-//     res.sendStatus(204);
-//   } catch (ex) {
-//     next(ex);
-//   }
-// });
+app.put("/", async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
 
-app.put('/cart', async(req,res,next)=> {
-  try{
-    const user = await User.findByToken(req.headers.authorization); 
-    console.log(req.body)
-    await LineItem.removeFromCart(req.body.lineItemId, req.body.quantity)
+    await LineItem.removeFromCart(req.body.lineItemId, req.body.quantity);
+
+    const currentOrder = await Order.getOrCreateCart(user.id); // a user can have only one cart
+
+    await currentOrder.update({
+      lineItems: currentOrder.lineItems - req.body.quantity,
+    });
+
+    await Order.calculatePriceItems(currentOrder.id);
+
+    if (!currentOrder.lineItems) {
+      await Order.destroy();
+    }
     res.send(
       await LineItem.findAll({
         where: {
@@ -69,10 +71,10 @@ app.put('/cart', async(req,res,next)=> {
         },
       })
     );
-  } catch(ex) {
-    next(ex)
-  } 
-})
+  } catch (ex) {
+    next(ex);
+  }
+});
 
 app.post("/", async (req, res, next) => {
   try {
