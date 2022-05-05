@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Navbar from "./components/Navbar";
 import Routes from "./Routes";
-import Footer from "./components/footer";
+import Footer from "./components/Footer";
 
 import {
   fetchBeers,

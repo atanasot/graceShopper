@@ -15,11 +15,11 @@ const Home = () => {
       <div>
         <div id="parallax-world-of-ugg">
           <section>
-            <div class="title">
+            <div className="title">
               <h1>IT'S ALL ABOUT THE GRAPES</h1>
             </div>
           </section>
-          <section class="block">
+          <section className="block">
             <div>
               <p
                 style={{
@@ -30,11 +30,11 @@ const Home = () => {
                   marginTop: "100px",
                 }}
               >
-                <span class="first-character ny">I</span>Good wine is one of
+                <span className="first-character ny">I</span>Good wine is one of
                 life’s greatest pleasures. Whether you are a novice or a
                 connoisseur, interested in simply sipping or expertly analyzing,
                 enjoying a glass of wine can be a sublime experience.
-                <div class="btn-2">
+                <div className="btn-2">
                   <Link to={"/aboutwine"}>
                     <span>LEARN MORE</span>
                   </Link>
@@ -52,7 +52,7 @@ const Home = () => {
           </section>
 
           <section>
-            <div class="parallax-four">
+            <div className="parallax-four">
               <h2 style={{ color: "black" }}>Jennifer's wine</h2>
               <div className="btn-1" style={{ marginLeft: "400px" }}>
                 <Link to={"/wine"}>
@@ -62,11 +62,11 @@ const Home = () => {
             </div>
           </section>
           <section>
-            <div class="title">
+            <div className="title">
               <h1>IT'S HISTORICAL</h1>
             </div>
           </section>
-          <section class="block">
+          <section className="block">
             <div>
               <p
                 style={{
@@ -77,14 +77,14 @@ const Home = () => {
                   marginTop: "100px",
                 }}
               >
-                <span class="first-character ny">I</span>Beer was consumed by
+                <span className="first-character ny">I</span>Beer was consumed by
                 ancient farmers who built the first agrarian civilizations,
                 Egyptian workers as they toiled along the nile river, and is
                 even thought by experts to have been the cause of civilization
                 as we know it. By imbibing in beer, you’re following in an
                 ancient tradition that brought joy to people’s lives throughout
                 history.
-                <div class="btn-2">
+                <div className="btn-2">
                   <Link to={"/aboutbeer"}>
                     <span>LEARN MORE</span>
                   </Link>
@@ -101,7 +101,7 @@ const Home = () => {
             </div>
           </section>
           <section>
-            <div class="parallax-five">
+            <div className="parallax-five">
               <h2>Lina's Beer</h2>
 
               <div className="btn-1" style={{ marginLeft: "400px" }}>

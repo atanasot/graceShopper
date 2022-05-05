@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const {
-  models: { User },
+  models: { User, Address },
 } = require("../db");
 module.exports = router;
 
@@ -27,7 +27,12 @@ router.post("/signup", async (req, res, next) => {
 
 router.get("/me", async (req, res, next) => {
   try {
-    res.send(await User.findByToken(req.headers.authorization));
+    const user = await User.findByToken(req.headers.authorization, {
+      include: {
+        model: Address,
+      },
+    });
+    res.send(user);
   } catch (ex) {
     next(ex);
   }
@@ -35,8 +40,13 @@ router.get("/me", async (req, res, next) => {
 
 router.put("/me", async (req, res, next) => {
   try {
-    const user = await User.findByToken(req.headers.authorization);
+    const user = await User.findByToken(req.headers.authorization, {
+      include: {
+        model: Address,
+      },
+    });
     await user.update(req.body);
+    await user.address.update(req.body);
     res.send(user);
   } catch (ex) {
     next(ex);
