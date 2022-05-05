@@ -7,9 +7,9 @@ const Footer = () => {
       <div class="footer" style={{ textAlign: "center" }}>
         <p>
           <br></br>
-          <Link to="/about">About Us</Link>{" "}
+          <Link to="/about">About us</Link>
           <Link to="/contact" style={{ paddingLeft: "60px" }}>
-            Contact Us
+            Contact us
           </Link>
         </p>
         <br />

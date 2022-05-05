@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import GoogleMap from "./Googlemap";
 
 const Contact = () => {
