@@ -7,6 +7,7 @@ const Wine = require("./models/Wine");
 const Beer = require("./models/Beer");
 const Order = require("./models/Order");
 const LineItem = require("./models/LineItem");
+const Address = require("./models/Address");
 
 //associations could go here!
 Order.belongsTo(User);
@@ -17,7 +18,9 @@ LineItem.belongsTo(Wine);
 Wine.hasMany(LineItem);
 LineItem.belongsTo(Beer);
 Beer.hasMany(LineItem);
-LineItem.belongsTo(User);
+//LineItem.belongsTo(User);
+Address.belongsTo(User);
+User.hasOne(Address)
 
 module.exports = {
   db,
@@ -27,5 +30,6 @@ module.exports = {
     Beer,
     Order,
     LineItem,
+    Address,
   },
 };

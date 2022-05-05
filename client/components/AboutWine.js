@@ -7,11 +7,11 @@ const AboutWine = () => {
   return (
     <div id="parallax-world-of-ugg">
       <section>
-        <div class="title">
+        <div className="title">
           <h1> Wines </h1>
         </div>
       </section>
-      <section class="block">
+      <section className="block">
         <div>
           <h2
             style={{
@@ -87,7 +87,7 @@ const AboutWine = () => {
         </div>
       </section>
 
-      <section class="block">
+      <section className="block">
         <h2
           style={{
             color: "black",
