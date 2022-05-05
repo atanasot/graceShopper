@@ -3,19 +3,22 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <section>
-      <div className="block" style={{ textAlign: "center" }}>
+    <footer>
+      <div class="footer" style={{ textAlign: "center" }}>
+
+   
         <p>
           <br></br>
           <Link to="/about">About Us</Link>{" "}
-          <Link to="/about" style={{ paddingLeft: "60px" }}>
+          <Link to="/contact" style={{ paddingLeft: "60px" }}>
             Contact Us
           </Link>
         </p>
-        <br></br>
+        <br />
         <p>Copyright © 2022 ACE Team FullStack Academy, All Right Reserved.</p>
+        <br />
       </div>
-    </section>
+    </footer>
   );
 };
 
