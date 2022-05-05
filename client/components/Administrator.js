@@ -70,7 +70,7 @@ class Administrator extends Component {
               <li key={order.id}>
                 <p>OrderID: {order.id}</p>
                 <p>OrderDate: {order.updatedAt.slice(0, 10)} </p>
-                Customers:{" "}
+                Customer:{" "}
                 {
                   this.props.customers.find(
                     (customer) => customer.id === order.userId
