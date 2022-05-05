@@ -11,7 +11,7 @@ const CartAfterlogin = ({ lineItems, removeFromCart }) => {
       .reduce((accume, current) => accume + current.price * current.quantity, 0)
       .toFixed(2) * 1;
   return lineItems.length ? (
-    <div>
+    <div style={{ marginTop: "200px" }}>
       <p>
         <Link to="/">Continue Shopping</Link>
       </p>
@@ -24,6 +24,7 @@ const CartAfterlogin = ({ lineItems, removeFromCart }) => {
               Quantity : {lineItem.quantity}
               <button
                 onClick={() => {
+                  console.log(lineItem);
                   removeFromCart(lineItem.id, lineItem.orderId, 1);
                 }}
               >
@@ -43,7 +44,7 @@ const CartAfterlogin = ({ lineItems, removeFromCart }) => {
       </ul>
     </div>
   ) : (
-    <div>
+    <div style={{ marginTop: "200px" }}>
       <p>
         <Link to="/">Continue Shopping</Link>
       </p>

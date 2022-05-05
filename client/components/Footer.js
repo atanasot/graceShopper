@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer>
-      <div class="footer" style={{ textAlign: "center" }}>
-
-   
+      <div className="footer" style={{ textAlign: "center" }}>
         <p>
           <br></br>
           <Link to="/about">About us</Link>

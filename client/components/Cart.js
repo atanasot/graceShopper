@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const Cart = () => {
   const loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
+  console.log(loadedStorage);
   const subtotal = loadedStorage
     ? loadedStorage.reduce(
         (current, accume) => (current += accume.price * accume.quantity),
@@ -15,7 +16,7 @@ const Cart = () => {
     : null;
   const shipping = 5.99;
   return (
-    <div>
+    <div style={{ marginTop: "200px" }}>
       {loadedStorage ? (
         <div>
           <ul>

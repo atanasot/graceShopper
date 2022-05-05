@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import store from "../store";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -12,10 +11,17 @@ class BeerDescriptionBeforeLogin extends Component {
       quantity: 1,
       price: this.props.beer.price ? this.props.beer.price : "",
       cart: JSON.parse(window.localStorage.getItem("cart")) || [],
+      description: this.props.beer.description
+        ? this.props.beer.description
+        : "",
     };
     this.addToLocalStorage = this.addToLocalStorage.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
   }
 
   componentDidUpdate(prevProps) {
@@ -30,21 +36,55 @@ class BeerDescriptionBeforeLogin extends Component {
   }
 
   addToLocalStorage() {
-    let cart = this.state.cart;
-    cart.push({
-      beerId: this.state.beerId,
-      name: this.state.name,
-      quantity: this.state.quantity,
-      price: this.state.price,
-      orderId: null
-    });
+    const cart = Array.from(this.state.cart);
+    let loadStorage = JSON.parse(window.localStorage.getItem("cart"));
+    console.log(loadStorage);
+    if (loadStorage === null) {
+      cart.push({
+        beerId: this.state.beerId,
+        name: this.state.name,
+        quantity: this.state.quantity * 1,
+        price: this.state.price,
+        orderId: null,
+      });
+    } else {
+      for (let i = 0; i < loadStorage.length; i++) {
+        let target = loadStorage[i].quantity * 1;
+        let cartNum = this.state.quantity * 1;
+        if (loadStorage[i].name === this.state.name) {
+          cart.quantity = target += cartNum;
+        } else {
+          cart.push({
+            beerId: this.state.beerId,
+            name: this.state.name,
+            quantity: (target += cartNum),
+            price: this.state.price,
+            orderId: null,
+          });
+          break;
+        }
+      }
+    }
+
     this.setState({ cart: cart });
-
     window.localStorage.setItem("cart", JSON.stringify(cart));
-
     let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
     console.log(loadedStorage);
   }
+
+  // removeFromLocalStorage(quant) {
+  //   let updateCart = this.state.cart.find(
+  //     (value) => value.beerId === this.props.beer.id
+  //   );
+  //   updateCart.quantity = updateCart.quantity
+  //     ? (updateCart.quantity * 1 - quant * 1).toString()
+  //     : quant;
+  //   this.setState({ cart: updateCart });
+
+  //   window.localStorage.setItem("cart", JSON.stringify(updateCart));
+  //   let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
+  //   console.log(loadedStorage);
+  // }
 
   onChange(ev) {
     this.setState({
@@ -62,9 +102,8 @@ class BeerDescriptionBeforeLogin extends Component {
   render() {
     const { beer } = this.props;
     const { addToCart } = this;
-
     return (
-      <div>
+      <div style={{ marginTop: "200px" }}>
         <p>
           <Link to="/beer">Go back</Link>
         </p>
@@ -82,7 +121,11 @@ class BeerDescriptionBeforeLogin extends Component {
             onChange={this.onChange}
             placeholder="Quantity"
           />
-          <button onClick={() => this.addToLocalStorage()}>Add to Cart</button>
+          <button
+            onClick={() => this.addToLocalStorage(`${this.state.quantity}`)}
+          >
+            Add to Cart
+          </button>
         </form>
       </div>
     );
@@ -95,7 +138,17 @@ const mapStateToProps = (state, otherProps) => {
     {};
   return {
     beer,
+    isLoggedIn: !!state.auth.id,
   };
 };
 
-export default connect(mapStateToProps)(BeerDescriptionBeforeLogin);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addbeer: (beer) => dispatch(addbeer(beer)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BeerDescriptionBeforeLogin);
