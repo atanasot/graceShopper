@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { deleteItem } from "../store/lineItems";
 import { updateItemQty } from "../store/lineItems";
 
-const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
+const CartAfterlogin = ({ lineItems, updateItemQty }) => {
   const shipping = 5.99;
   const subtotal =
     lineItems

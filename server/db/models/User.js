@@ -10,7 +10,7 @@ const SALT_ROUNDS = 5;
 const User = db.define("user", {
   firstName: {
     type: STRING,
-    allowNull: false,
+    //allowNull: false,
     validate: {
       notEmpty: {
         msg: "Please provide a first name",
@@ -19,7 +19,7 @@ const User = db.define("user", {
   },
   lastName: {
     type: STRING,
-    allowNull: false,
+    //allowNull: false,
     validate: {
       notEmpty: {
         msg: "Please provide a last name",

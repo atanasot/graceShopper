@@ -15,6 +15,13 @@ async function seed() {
     console.log("db synced!");
 
     // Creating Users
+    const kiki = await User.create({
+      username: "kiki",
+      password: "123",
+      firstName: "Chrisi",
+      lastName: "Banana",
+      email: "kiki@gmail.com",
+    });
 
     const cody = await User.create({
       username: "cody",

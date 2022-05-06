@@ -42,6 +42,7 @@ export const fetchLineItemsFromCart = () => {
       })
     ).data;
     dispatch(_fetchLineItemsFromCart(lineItems));
+    await dispatch(fetchOrders());
   };
 };
 
