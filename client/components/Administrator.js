@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import WinesAdmin from "../components/WinesAdmin.js";
 import BeersAdmin from "../components/BeersAdmin.js";
+import CustomersAdmin from "../components/CustomersAdmin";
 import {
   store,
   fetchCustomers,
@@ -26,25 +27,31 @@ class Administrator extends Component {
       <div>
         <div>Customers</div>
         <table>
-          <tr>
-            <th> First Name</th>
-            <th> Last Name</th>
-            <th> Username</th>
-            <th> Password </th>
-            <th> Is Administrator </th>
-          </tr>
-          <tr>
+          <tbody>
+            <tr>
+              <th> First Name</th>
+              <th> Last Name</th>
+              <th> Username</th>
+              <th> Is Administrator </th>
+            </tr>
             {this.props.customers.map((customer) => {
               return (
-                <td key={customer.id}>
-                  {customer.firstName} {customer.lastName} {customer.username}{" "}
-                  {customer.password} {customer.isAdmin}
-                </td>
+                <tr key={customer.id}>
+                  <td>{customer.firstName} </td>
+                  <td>{customer.lastName} </td>
+                  <td>{customer.username}</td>
+                  <td>
+                    {" "}
+                    {customer.isAdmin
+                      ? customer.isAdmin.toString()
+                      : "False"}{" "}
+                  </td>
+                </tr>
               );
             })}
-          </tr>
+          </tbody>
         </table>
-
+        <CustomersAdmin />
         <hr />
         <div>
           Wines
