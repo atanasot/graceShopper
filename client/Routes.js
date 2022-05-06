@@ -50,23 +50,43 @@ class Routes extends Component {
     return (
       <div>
         {isLoggedIn ? (
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/profile" exact component={Profile} />
-            <Route path="/cart" component={CartAfterlogin} />
-            <Route path="/about" component={About} />
-            <Route path="/beer" component={Beers} />
-            <Route path="/wine" component={Wines} />
-            <Route path="/wines/:id" component={WineDescription} />
-            <Route path="/beers/:id" component={BeerDescription} />
-            <Route path="/orders/:id" component={OrderDescription} />
-            <Route path="/orders" component={Orders} />
-            <Route path="/checkout" component={Checkout} />
-            <Route path="/admin" component={Administrator} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/aboutwine" component={AboutWine} />
-            <Route path="/aboutbeer" component={AboutBeer} />
-          </Switch>
+          isAdmin ? (
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/profile" exact component={Profile} />
+              <Route path="/cart" component={CartAfterlogin} />
+              <Route path="/about" component={About} />
+              <Route path="/beer" component={Beers} />
+              <Route path="/wine" component={Wines} />
+              <Route path="/wines/:id" component={WineDescription} />
+              <Route path="/beers/:id" component={BeerDescription} />
+              <Route path="/orders/:id" component={OrderDescription} />
+              <Route path="/orders" component={Orders} />
+              <Route path="/checkout" component={Checkout} />
+              <Route path="/admin" component={Administrator} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/aboutwine" component={AboutWine} />
+              <Route path="/aboutbeer" component={AboutBeer} />
+              <Route pathe="/admin" component={Administrator} />
+            </Switch>
+          ) : (
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/profile" exact component={Profile} />
+              <Route path="/cart" component={CartAfterlogin} />
+              <Route path="/about" component={About} />
+              <Route path="/beer" component={Beers} />
+              <Route path="/wine" component={Wines} />
+              <Route path="/wines/:id" component={WineDescription} />
+              <Route path="/beers/:id" component={BeerDescription} />
+              <Route path="/orders/:id" component={OrderDescription} />
+              <Route path="/orders" component={Orders} />
+              <Route path="/checkout" component={Checkout} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/aboutwine" component={AboutWine} />
+              <Route path="/aboutbeer" component={AboutBeer} />
+            </Switch>
+          )
         ) : (
           <Switch>
             <Route path="/login" component={Login} />
