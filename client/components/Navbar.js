@@ -75,7 +75,7 @@ const Navbar = ({ lineItems, handleClick, isLoggedIn, isAdmin, username }) => {
           <div className="navbar-right">
             <ul id="main">
               {isLoggedIn ? (
-                <li>
+                <li style={{ width: "200px" }}>
                   WELCOME,{" "}
                   <span
                     style={{
