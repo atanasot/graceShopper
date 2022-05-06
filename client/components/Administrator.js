@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import WinesAdmin from "../components/WinesAdmin.js";
 import BeersAdmin from "../components/BeersAdmin.js";
+import CustomersAdmin from "../components/CustomersAdmin";
 import {
   store,
   fetchCustomers,
@@ -25,13 +26,32 @@ class Administrator extends Component {
     return (
       <div>
         <div>Customers</div>
-        {this.props.customers.map((customer) => {
-          return (
-            <p key={customer.id}>
-              {customer.username} {customer.password} {customer.isAdmin}
-            </p>
-          );
-        })}
+        <table>
+          <tbody>
+            <tr>
+              <th> First Name</th>
+              <th> Last Name</th>
+              <th> Username</th>
+              <th> Is Administrator </th>
+            </tr>
+            {this.props.customers.map((customer) => {
+              return (
+                <tr key={customer.id}>
+                  <td>{customer.firstName} </td>
+                  <td>{customer.lastName} </td>
+                  <td>{customer.username}</td>
+                  <td>
+                    {" "}
+                    {customer.isAdmin
+                      ? customer.isAdmin.toString()
+                      : "False"}{" "}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+        <CustomersAdmin />
         <hr />
         <div>
           Wines
@@ -42,7 +62,10 @@ class Administrator extends Component {
                 <p>
                   {wine.name} {wine.price}
                 </p>
-                <img src={`/images/${wine.imgURL}`} height="150" />
+                <img
+                  src={`/images/${wine.imgURL}`}
+                  style={{ height: "150px" }}
+                />
               </div>
             );
           })}
@@ -57,7 +80,10 @@ class Administrator extends Component {
                 <p>
                   {beer.name} {beer.price}
                 </p>
-                <img src={`/images${beer.imgURL}`} height="150" />
+                <img
+                  src={`/images${beer.imgURL}`}
+                  style={{ height: "150px" }}
+                />
               </div>
             );
           })}
@@ -70,7 +96,7 @@ class Administrator extends Component {
               <li key={order.id}>
                 <p>OrderID: {order.id}</p>
                 <p>OrderDate: {order.updatedAt.slice(0, 10)} </p>
-                Customer:{" "}
+                Customers:{" "}
                 {
                   this.props.customers.find(
                     (customer) => customer.id === order.userId

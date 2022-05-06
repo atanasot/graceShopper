@@ -17,11 +17,11 @@ const AboutWine = () => {
         </span>
       </div>
       <section>
-        <div class="title">
+        <div className="title">
           <h1> Beers </h1>
         </div>
       </section>
-      <section class="block">
+      <section className="block">
         <div>
           <h2
             style={{
@@ -78,7 +78,7 @@ const AboutWine = () => {
         </div>
       </section>
 
-      <section class="block">
+      <section className="block">
         <h2
           style={{
             color: "black",

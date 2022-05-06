@@ -50,8 +50,7 @@ app.get("/order/:orderId", async (req, res, next) => {
 app.put("/", async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
-
-    await LineItem.removeFromCart(req.body.lineItemId, req.body.quantity);
+    await LineItem.updateItemQty(req.body.lineItemId, req.body.quantity);
 
     const currentOrder = await Order.getOrCreateCart(user.id); // a user can have only one cart
 

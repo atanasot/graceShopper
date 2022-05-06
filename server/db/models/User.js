@@ -3,20 +3,48 @@ const db = require("../db");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const axios = require("axios");
+const { STRING, BOOLEAN } = Sequelize;
 
 const SALT_ROUNDS = 5;
 
 const User = db.define("user", {
+  firstName: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        msg: "Please provide a first name",
+      },
+    },
+  },
+  lastName: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        msg: "Please provide a last name",
+      },
+    },
+  },
+  email: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      isEmail: {
+        msg: "Please provide a valid email address",
+      },
+    },
+  },
   username: {
-    type: Sequelize.STRING,
+    type: STRING,
     unique: true,
     allowNull: false,
   },
   password: {
-    type: Sequelize.STRING,
+    type: STRING,
   },
   isAdmin: {
-    type: Sequelize.BOOLEAN,
+    type: BOOLEAN,
     defaultValue: false,
   },
 });
@@ -36,8 +64,11 @@ User.prototype.generateToken = function () {
 };
 
 User.prototype.starPassword = function () {
-  return password.split('').map(char => '*').join('')
-}
+  return password
+    .split("")
+    .map((char) => "*")
+    .join("");
+};
 /**
  * classMethods
  */
@@ -51,10 +82,10 @@ User.authenticate = async function ({ username, password }) {
   return user.generateToken();
 };
 
-User.findByToken = async function (token) {
+User.findByToken = async function (token, args = {}) {
   try {
     const { id } = await jwt.verify(token, process.env.JWT);
-    const user = User.findByPk(id);
+    const user = User.findByPk(id, args);
     if (!user) {
       throw "nooo";
     }

@@ -10,4 +10,14 @@ app.get("/", async (req, res, next) => {
   }
 });
 
+//add customer
+app.post("/", async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+    user ? res.status(201).send(await User.create(req.body)) : res.status(401);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
 module.exports = app;

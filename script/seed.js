@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { User, Wine, Beer },
+  models: { User, Wine, Beer, Address },
 } = require("../server/db");
 
 /**
@@ -15,11 +15,56 @@ async function seed() {
     console.log("db synced!");
 
     // Creating Users
-    const users = await Promise.all([
-      User.create({ username: "cody", password: "123" }),
-      User.create({ username: "murphy", password: "123" }),
-      User.create({ username: "stannie", password: "123", isAdmin: true }),
-    ]);
+
+    const cody = await User.create({
+      username: "cody",
+      password: "123",
+      firstName: "Cody",
+      lastName: "The Coder",
+      email: "cody@gmail.com",
+    });
+    const murphy = await User.create({
+      username: "murphy",
+      password: "123",
+      firstName: "Murphy",
+      lastName: "Smurphy",
+      email: "murph@gmail.com",
+    });
+    const stannie = await User.create({
+      username: "stannie",
+      password: "123",
+      isAdmin: true,
+      firstName: "Stanley",
+      lastName: "Lim",
+      email: "stannie@gmail.com",
+    });
+
+    // Creating addresses
+    const addressOne = await Address.create({
+      line1: "123 first Street",
+      line2: "apt 644",
+      city: "Jersey City",
+      state: "NJ",
+      zip: "09765",
+      userId: cody.id,
+    });
+
+    const addressTwo = await Address.create({
+      line1: "123 Second Street",
+      line2: "apt 344",
+      city: "New York City",
+      state: "NY",
+      zip: "56465",
+      userId: murphy.id,
+    });
+
+    const addressThree = await Address.create({
+      line1: "123 Third Street",
+      city: "New York City",
+      state: "NY",
+      zip: "56465",
+      userId: stannie.id,
+    });
 
     // Creating Products - Wine
     const wines = await Promise.all([
@@ -1184,14 +1229,14 @@ async function seed() {
       ),
     ]);
 
-    console.log(`seeded ${users.length} users`);
+    //console.log(`seeded ${users.length} users`);
     console.log(`seeded successfully`);
-    return {
-      users: {
-        cody: users[0],
-        murphy: users[1],
-      },
-    };
+    // return {
+    //   users: {
+    //     cody: users[0],
+    //     murphy: users[1],
+    //   },
+    // };
   } catch (error) {
     console.log(error);
   }
