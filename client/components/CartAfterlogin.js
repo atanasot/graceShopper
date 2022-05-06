@@ -2,9 +2,9 @@ import React from "react";
 import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteItem } from "../store/lineItems";
-import { removeFromCart } from "../store/lineItems";
+import { updateItemQty } from "../store/lineItems";
 
-const CartAfterlogin = ({ lineItems, removeFromCart }) => {
+const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
   const shipping = 5.99;
   const subtotal =
     lineItems
@@ -21,10 +21,17 @@ const CartAfterlogin = ({ lineItems, removeFromCart }) => {
             {lineItem.name}
             <p>Price : ${lineItem.price}</p>
             <p>
+            <button
+                onClick={() => {
+                  updateItemQty(lineItem.id, lineItem.orderId, 1);
+                }}
+              >
+                +
+              </button>
               Quantity : {lineItem.quantity}
               <button
                 onClick={() => {
-                  removeFromCart(lineItem.id, lineItem.orderId, 1);
+                  updateItemQty(lineItem.id, lineItem.orderId, -1);
                 }}
               >
                 -
@@ -54,8 +61,8 @@ const CartAfterlogin = ({ lineItems, removeFromCart }) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    removeFromCart: (lineItemId, orderId, quantity) =>
-      dispatch(removeFromCart(lineItemId, orderId, quantity)),
+    updateItemQty: (lineItemId, orderId, quantity) =>
+      dispatch(updateItemQty(lineItemId, orderId, quantity)),
   };
 };
 export default connect((state) => state, mapDispatch)(CartAfterlogin);

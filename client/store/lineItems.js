@@ -77,7 +77,7 @@ export const deleteItem = (item) => {
   };
 };
 
-export const removeFromCart = (lineItemId, orderId, quantity) => {
+export const updateItemQty = (lineItemId, orderId, quantity) => {
   return async (dispatch) => {
     const response = await axios.put(
       "/api/lineItems",
