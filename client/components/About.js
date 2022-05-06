@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const About = () => {
   useEffect(() => {
@@ -6,6 +7,15 @@ const About = () => {
   }, []);
   return (
     <div>
+      <div style={{ marginTop: "100px", marginLeft: "270px" }}>
+        <span
+          style={{
+            textDecoration: "underline",
+          }}
+        >
+          <Link to="/">Go Back</Link>
+        </span>
+      </div>
       <h1 className="Abouth1">ABOUT US</h1>
       <div className="aboutContainer">
         <figure className="snip1336">

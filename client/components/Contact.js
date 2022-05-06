@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import GoogleMap from "./Googlemap";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   const pin = (
@@ -61,6 +62,15 @@ const Contact = () => {
 
   return (
     <div id="parallax-world-of-ugg">
+      <div style={{ marginTop: "100px", marginLeft: "270px" }}>
+        <span
+          style={{
+            textDecoration: "underline",
+          }}
+        >
+          <Link to="/">Go Back</Link>
+        </span>
+      </div>
       <section>
         <div class="title">
           <h1> Get in Touch</h1>

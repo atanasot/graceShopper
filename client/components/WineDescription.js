@@ -62,8 +62,23 @@ class WineDescription extends Component {
       <div>
         <div className="wrapper">
           <div style={{ marginTop: "100px", marginLeft: "270px" }}>
-            <Link to="/">Home</Link> / <Link to="/wine">Wine</Link> /{" "}
-            {wine.name}
+            <span
+              style={{
+                textDecoration: "underline",
+              }}
+            >
+              {" "}
+              <Link to="/">Home</Link>
+            </span>{" "}
+            /{" "}
+            <span
+              style={{
+                textDecoration: "underline",
+              }}
+            >
+              <Link to="/wine">Wine</Link>
+            </span>{" "}
+            / {wine.name}
           </div>
 
           <div className="product-top" style={{ marginLeft: "400px" }}>

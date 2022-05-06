@@ -119,6 +119,7 @@ form div {
 .title {
   text-decoration: none;
   color: black;
+  padding-top: 10px;
 }
 
 .navbar-left {
@@ -1724,7 +1725,6 @@ img {
 
 .Abouth1 {
   text-align: center;
-  margin-Top: 80px;
   font-family: 'Times New Roman', Times, serif;
 }
 /*# sourceMappingURL=style.css.map */

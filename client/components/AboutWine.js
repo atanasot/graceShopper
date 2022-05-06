@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const AboutWine = () => {
   useEffect(() => {
@@ -6,6 +7,15 @@ const AboutWine = () => {
   }, []);
   return (
     <div id="parallax-world-of-ugg">
+      <div style={{ marginTop: "100px", marginLeft: "270px" }}>
+        <span
+          style={{
+            textDecoration: "underline",
+          }}
+        >
+          <Link to="/">Go Back</Link>
+        </span>
+      </div>
       <section>
         <div class="title">
           <h1> Wines </h1>
