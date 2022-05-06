@@ -71,7 +71,15 @@ const mapStateToProps = (state, { location, match }) => {
     console.log('sort by name asc');
     beers.sort((a,b) => a.name.localeCompare(b.name))
   }
-
+  else if (sort === 'name,desc') {
+    beers.sort((a,b) => b.name.localeCompare(a.name))
+  }
+  else if (sort === 'price,desc') {
+    beers.sort((a,b) => b.price.localeCompare(a.price))
+  }
+  else if (sort === 'price,desc') {
+    beers.sort((a,b) => b.price.localeCompare(a.price))
+  }
   return {
     beers,
   };
