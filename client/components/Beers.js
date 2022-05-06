@@ -42,7 +42,7 @@ const Beers = ({ beers, match,history  }) => {
                         <p className="date1">{beer.type} </p>
                         <div className="pricing-and-cart1">
                           <div className="pricing1">
-                            <p className="current-price1">${parseFloat(beer.price).toFixed(2)}</p>
+                            <p className="current-price1">${beer.price}</p>
                           </div>
                           <i className="fas fa-shopping-cart1" />
                         </div>
@@ -74,11 +74,11 @@ const mapStateToProps = (state, { location, match }) => {
   else if (sort === 'name,desc') {
     beers.sort((a,b) => b.name.localeCompare(a.name))
   }
-  else if (sort === 'price,desc') {
-    beers.sort((a,b) => b.price.localeCompare(a.price))
+  else if (sort === 'price,asc') {
+    beers.sort((a,b) => parseFloat(a.price) - parseFloat(b.price))
   }
   else if (sort === 'price,desc') {
-    beers.sort((a,b) => b.price.localeCompare(a.price))
+    beers.sort((a,b) => parseFloat(b.price) - parseFloat(a.price))
   }
   return {
     beers,
