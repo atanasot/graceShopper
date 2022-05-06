@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addToCart } from "../store/lineItems";
 import { Link } from "react-router-dom";
+import WineProductRelated from "./wineProductRelated";
 
 class WineDescription extends Component {
   constructor(props) {
@@ -111,7 +112,7 @@ class WineDescription extends Component {
             <p>Stanley said he doesnt like wines</p>
           </div>
         </div>
-
+        <WineProductRelated />
         <div className="overlay" />
       </div>
     );

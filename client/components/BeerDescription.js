@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addToCart } from "../store/lineItems";
 import { Link } from "react-router-dom";
+import BeerProductRelated from "./BeerProductRelated";
 
 class BeerDescription extends Component {
   constructor(props) {
@@ -14,10 +15,6 @@ class BeerDescription extends Component {
     };
     this.addToCart = this.addToCart.bind(this);
   }
-  componentDidMount() {
-    window.scrollTo(0, 0);
-  }
-
   componentDidMount() {
     window.scrollTo(0, 0);
   }
@@ -89,7 +86,7 @@ class BeerDescription extends Component {
             <p>Stanley said he doesnt like beers</p>
           </div>
         </div>
-
+        <BeerProductRelated />
         <div className="overlay" />
       </div>
     );
