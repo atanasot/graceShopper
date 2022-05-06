@@ -31,7 +31,7 @@ class Administrator extends Component {
             <th> Last Name</th>
             <th> Username</th>
             <th> Password </th>
-            <th> Is Admin </th>
+            <th> Is Administrator </th>
           </tr>
           <tr>
             {this.props.customers.map((customer) => {
