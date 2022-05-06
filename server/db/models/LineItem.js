@@ -53,15 +53,15 @@ LineItem.addToOrder = async function (
   }
 };
 
-LineItem.removeFromCart = async function (lineItemId, quantity) {
+LineItem.updateItemQty = async function (lineItemId, quantity) {
   try {
     const lineItem = await LineItem.findByPk(lineItemId);
-
     if (lineItem) {
-      if (lineItem === 0 || lineItem.quantity - quantity === 0) {
+      //if current item's quantity is 0 or if lineItem transitions from 1 to 0 remove line item
+      if (lineItem.quantity === 0 || lineItem.quantity + quantity === 0) {
         await lineItem.destroy();
       } else {
-        await lineItem.update({ quantity: lineItem.quantity - quantity });
+        await lineItem.update({ quantity: lineItem.quantity + quantity });
       }
     }
   } catch (ex) {
