@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
  */
 const AuthFormRegister = (props) => {
   const { name, displayName, handleSubmit, error } = props;
-  // Kenny can you add an email address to the signUp form 
+  // Kenny can you add an email address to the signUp form
   return (
     <div className="container1">
       <div className="wrapper1">
@@ -18,16 +18,40 @@ const AuthFormRegister = (props) => {
           <label htmlFor="username">
             <input
               name="username"
-              id="email"
+              className="email"
               type="text"
               placeholder="Username"
+            />
+          </label>
+          <label htmlFor="username">
+            <input
+              name="email"
+              className="email"
+              type="text"
+              placeholder="Email"
+            />
+          </label>
+          <label htmlFor="username">
+            <input
+              name="firstName"
+              className="email"
+              type="text"
+              placeholder="First Name"
+            />
+          </label>
+          <label htmlFor="username">
+            <input
+              name="lastName"
+              className="email"
+              type="text"
+              placeholder="Last Name"
             />
           </label>
           <label htmlFor="password">
             <input
               type="password"
               name="password"
-              id="email"
+              className="email"
               placeholder="password"
             />
           </label>
@@ -36,7 +60,14 @@ const AuthFormRegister = (props) => {
           </button>
           <div className="register">
             <p>
-              <Link to={"/Login"}>Login</Link> Instead
+              <span
+                style={{
+                  textDecoration: "underline",
+                }}
+              >
+                <Link to={"/Login"}>Login</Link>
+              </span>{" "}
+              Instead
             </p>
           </div>
           {error && error.response && <div> {error.response.data} </div>}
@@ -67,10 +98,15 @@ const mapDispatch = (dispatch) => {
   return {
     handleSubmit(evt) {
       evt.preventDefault();
+      const email = evt.target.email.value;
+      const firstName = evt.target.firstName.value;
+      const lastName = evt.target.lastName.value;
       const formName = evt.target.name;
       const username = evt.target.username.value;
       const password = evt.target.password.value;
-      dispatch(authenticate(username, password, formName));
+      dispatch(
+        authenticate(username, password, formName, email, firstName, lastName)
+      );
     },
   };
 };

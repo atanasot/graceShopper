@@ -1342,7 +1342,19 @@ img {
 border: 1px solid black;
 float:left}
 
-#email, #password {
+.email{
+  height: 40px;
+  width: 250px;
+  border-radius: 15px;
+  padding-left: 15px;
+  border: 1px solid #000000;
+  margin-bottom: 15px;
+  float: left;
+  position: relative;
+}
+
+
+ #password {
   height: 40px;
   width: 250px;
   border-radius: 15px;
