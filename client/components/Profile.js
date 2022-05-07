@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateProfile } from "../store/auth";
+import { fetchCustomers } from "../store/customers";
 
 class Profile extends Component {
   constructor(props) {
@@ -11,14 +12,15 @@ class Profile extends Component {
       email: this.props.email || null,
       username: this.props.username || null,
       password: this.props.password || null, // fix pass to be *****
-      line1: this.props.address.line1,
-      line2: this.props.address.line2,
-      city: this.props.address.city,
-      state: this.props.address.state,
-      zip: this.props.address.zip,
+      line1: this.props.address ? this.props.address.line1 : null,
+      line2: this.props.address ? this.props.address.line2 : null,
+      city: this.props.address ? this.props.address.city : null,
+      state: this.props.address ? this.props.address.state : null,
+      zip: this.props.address ? this.props.address.zip : null,
       error: "",
     };
     this.onChange = this.onChange.bind(this);
+    this.onSave = this.onSave.bind(this);
   }
 
   onChange(ev) {
@@ -72,15 +74,15 @@ class Profile extends Component {
           {isAdmin ? "....You have Administrator Privileges" : ""}
         </h3>
         <p> Update name below:</p>
-        <form onSubmit={(ev) => this.onSave(ev)}>
+        <form onSubmit={this.onSave}>
           {error}
           <input name="firstName" value={firstName} onChange={onChange} />
-          <button disabled={firstName === this.props.firstName}>Save</button>
+          <button>Save</button>
         </form>
         <form onSubmit={(ev) => this.onSave(ev)}>
           {error}
           <input name="lastName" value={lastName} onChange={onChange} />
-          <button disabled={lastName === this.props.lastName}>Save</button>
+          <button>Save</button>
         </form>
         <p> Update Username below:</p>
         <form onSubmit={(ev) => this.onSave(ev)}>
@@ -101,29 +103,39 @@ class Profile extends Component {
           <button>Save</button>
         </form>
         <p> Update Address below:</p>
-        <form onSubmit={(ev) => this.onSave(ev)}>
-          {error}
-          <input name="line1" value={line1} onChange={onChange} />
-          <button>Save</button>
-        </form>
-        <form onSubmit={(ev) => this.onSave(ev)}>
-          {error}
-          <input name="line2" value={line2} onChange={onChange} />
-          <button>Save</button>
-        </form>
-        <form onSubmit={(ev) => this.onSave(ev)}>
-          {error}
-          <input name="city" value={city} onChange={onChange} />
-          <button>Save</button>
-        </form>
-        <form onSubmit={(ev) => this.onSave(ev)}>
-          {error}
-          <input name="state" value={state} onChange={onChange} />
-          <button>Save</button>
-        </form>
-        <form onSubmit={(ev) => this.onSave(ev)}>
-          {error}
-          <input name="zip" value={zip} onChange={onChange} />
+        <form onSubmit={this.onSave}>
+          <input
+            name="line1"
+            value={line1}
+            onChange={this.onChange}
+            placeholder="Address 1"
+          />
+          <input
+            name="line2"
+            value={line2}
+            onChange={this.onChange}
+            placeholder="Address 2"
+          />
+          <input
+            name="city"
+            value={city}
+            onChange={this.onChange}
+            placeholder="City"
+          />
+
+          <input
+            name="state"
+            value={state}
+            onChange={this.onChange}
+            placeholder="State"
+          />
+
+          <input
+            name="zip"
+            value={zip}
+            onChange={this.onChange}
+            placeholder="Zip"
+          />
           <button>Save</button>
         </form>
       </div>
@@ -149,6 +161,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     update: (user) => dispatch(updateProfile(user)),
+    fetchCustomers: () => dispatch(fetchCustomers()),
   };
 };
 
