@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addToCart } from "../store/lineItems";
 import { Link } from "react-router-dom";
+import WineProductRelated from "./wineProductRelated";
 
 class WineDescription extends Component {
   constructor(props) {
@@ -62,8 +63,23 @@ class WineDescription extends Component {
       <div>
         <div className="wrapper">
           <div style={{ marginTop: "100px", marginLeft: "270px" }}>
-            <Link to="/">Home</Link> / <Link to="/wine">Wine</Link> /{" "}
-            {wine.name}
+            <span
+              style={{
+                textDecoration: "underline",
+              }}
+            >
+              {" "}
+              <Link to="/">Home</Link>
+            </span>{" "}
+            /{" "}
+            <span
+              style={{
+                textDecoration: "underline",
+              }}
+            >
+              <Link to="/wine">Wine</Link>
+            </span>{" "}
+            / {wine.name}
           </div>
 
           <div className="product-top" style={{ marginLeft: "400px" }}>
@@ -96,7 +112,7 @@ class WineDescription extends Component {
             <p>Stanley said he doesnt like wines</p>
           </div>
         </div>
-
+        <WineProductRelated />
         <div className="overlay" />
       </div>
     );

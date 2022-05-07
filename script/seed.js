@@ -650,7 +650,7 @@ async function seed() {
         type: "Lager",
         style: "Pilsner",
         ABV: 7,
-        imgURL: "/twoHearted.png",
+        imgURL: "/Lager_of_the_Lakes.png",
         price: 10.99,
         inventoryCount: 100,
       }),
@@ -904,7 +904,7 @@ async function seed() {
         style: "Strong Ale",
         ABV: 27.3,
         imgURL: "/samuelAdams.png",
-        price: 150.05,
+        price: 15.05,
         inventoryCount: 100,
       }),
       Beer.create({

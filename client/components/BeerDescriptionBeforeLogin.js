@@ -31,17 +31,44 @@ class BeerDescriptionBeforeLogin extends Component {
 
   addToLocalStorage() {
     let cart = this.state.cart;
-    cart.push({
-      beerId: this.state.beerId,
-      name: this.state.name,
-      quantity: this.state.quantity,
-      price: this.state.price,
-      orderId: null
-    });
+    let loadStorage = JSON.parse(window.localStorage.getItem("cart"));
+    console.log(loadStorage);
+    if (loadStorage === null) {
+      cart.push({
+        beerId: this.state.beerId,
+        name: this.state.name,
+        quantity: this.state.quantity,
+        price: this.state.price,
+        orderId: null,
+      });
+    } else {
+      for (let i = 0; i < loadStorage.length; i++) {
+        if (this.state.name === loadStorage[i].name) {
+          console.log(
+            this.state.quantity,
+            "+",
+            loadStorage[i].quantity,
+            "=",
+            this.state.quantity * 1 + loadStorage[i].quantity * 1
+          );
+          loadStorage["quantity"] =
+            this.state.quantity * 1 + loadStorage[i].quantity * 1;
+          this.setState({ cart: cart });
+          window.localStorage.setItem("cart", JSON.stringify(existing));
+          break;
+        } else {
+          cart.push({
+            beerId: this.state.beerId,
+            name: this.state.name,
+            quantity: this.state.quantity,
+            price: this.state.price,
+            orderId: null,
+          });
+        }
+      }
+    }
     this.setState({ cart: cart });
-
     window.localStorage.setItem("cart", JSON.stringify(cart));
-
     let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
     console.log(loadedStorage);
   }
@@ -64,7 +91,7 @@ class BeerDescriptionBeforeLogin extends Component {
     const { addToCart } = this;
 
     return (
-      <div>
+      <div style={{ marginTop: "100px" }}>
         <p>
           <Link to="/beer">Go back</Link>
         </p>

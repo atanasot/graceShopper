@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../store";
 
-const Navbar = ({ lineItems, handleClick, isLoggedIn, isAdmin }) => {
+const Navbar = ({ lineItems, handleClick, isLoggedIn, isAdmin, username }) => {
   const loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
   return (
     <div>
@@ -68,12 +68,28 @@ const Navbar = ({ lineItems, handleClick, isLoggedIn, isAdmin }) => {
                 </div>
               </ul>
             </li>
+            <li style={{ width: "200px", visibility: "hidden" }}></li>
           </ul>
           <Link to="/" className="title">
             ALWAYS THE WEEKEND.
           </Link>
           <div className="navbar-right">
             <ul id="main">
+              {isLoggedIn ? (
+                <li style={{ width: "200px" }}>
+                  WELCOME,{" "}
+                  <span
+                    style={{
+                      textTransform: "uppercase",
+                      textDecoration: "underline",
+                    }}
+                  >
+                    <Link to="/Profile"> {username} </Link>
+                  </span>
+                </li>
+              ) : (
+                <li style={{ width: "200px", visibility: "hidden" }}></li>
+              )}
               <li>
                 <span>
                   <svg
@@ -100,13 +116,12 @@ const Navbar = ({ lineItems, handleClick, isLoggedIn, isAdmin }) => {
                     d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
                   />
                 </svg>
-
                 <ul className="drop">
                   {isLoggedIn ? (
                     isAdmin ? (
                       <div>
                         <li>
-                          <Link to="/Profile">Profile</Link>
+                          <Link to="/Profile"> Profile </Link>
                         </li>
                         <li>
                           <Link to="/orders">Orders</Link>
@@ -160,6 +175,7 @@ const Navbar = ({ lineItems, handleClick, isLoggedIn, isAdmin }) => {
                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                   </svg>
                 </Link>
+                <span>{loadedStorage === null ? 0 : loadedStorage.length}</span>
               </li>
             </ul>
           </div>
@@ -173,6 +189,7 @@ const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
     isAdmin: state.auth.isAdmin,
+    username: state.auth.username,
   };
 };
 

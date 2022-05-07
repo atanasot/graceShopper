@@ -9,7 +9,21 @@ const Beers = ({ beers }) => {
   return (
     <div>
       <div style={{ marginLeft: "270px", marginTop: "100px" }}>
-        <Link to="/">Home</Link> / <Link to="/beer">Beers</Link>
+        <span
+          style={{
+            textDecoration: "underline",
+          }}
+        >
+          <Link to="/">Home</Link>
+        </span>{" "}
+        /{" "}
+        <span
+          style={{
+            textDecoration: "underline",
+          }}
+        >
+          <Link to="/beer">Beers</Link>
+        </span>
       </div>
       <section className="author-archive">
         <div className="container">
