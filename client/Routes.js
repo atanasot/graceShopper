@@ -23,6 +23,7 @@ import Contact from "./components/Contact";
 import { Signup } from "./components/AuthFormRegister";
 import AboutBeer from "./components/AboutBeer";
 import AboutWine from "./components/AboutWine";
+import CheckoutAfterLogin from "./components/CheckoutAfterLogin";
 /**
  * COMPONENT
  */
@@ -62,7 +63,7 @@ class Routes extends Component {
               <Route path="/beers/:id" component={BeerDescription} />
               <Route path="/orders/:id" component={OrderDescription} />
               <Route path="/orders" component={Orders} />
-              <Route path="/checkout" component={Checkout} />
+              <Route path="/checkout" component={CheckoutAfterLogin} />
               <Route path="/admin" component={Administrator} />
               <Route path="/contact" component={Contact} />
               <Route path="/aboutwine" component={AboutWine} />

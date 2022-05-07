@@ -55,7 +55,7 @@ app.put("/", async (req, res, next) => {
     const currentOrder = await Order.getOrCreateCart(user.id); // a user can have only one cart
 
     await currentOrder.update({
-      lineItems: currentOrder.lineItems - req.body.quantity,
+      lineItems: currentOrder.lineItems + req.body.quantity,
     });
 
     await Order.calculatePriceItems(currentOrder.id);
