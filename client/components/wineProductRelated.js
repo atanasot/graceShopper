@@ -9,9 +9,9 @@ const WineProductRelated = () => {
         <div className="wrapper11">
           <div className="product-img">
             <img
-              src="./images//2009_Cristal_Brut_Champagne.png"
-              height={420}
-              width={327}
+              src="/images//2009_Cristal_Brut_Champagne.png"
+              height="200px"
+              width="100px"
               alt=""
             />
           </div>
@@ -39,12 +39,16 @@ const WineProductRelated = () => {
         </div>
         <div className="wrapper11">
           <div className="product-img">
-            <img src="http://bit.ly/2tMBBTd" height={420} width={327} />
+            <img
+              src="/images//2018_Dominus_Estate_Christian_Moueix.png"
+              height="90px"
+              width="90px"
+            />
           </div>
           <div className="product-info">
             <div className="product-text">
               <h1 className="h1111">
-                <Link to="/wines/15" onClick={window.scrollTo(0, 0)}>
+                <Link to="/wines/16" onClick={window.scrollTo(0, 0)}>
                   Dominus Estate Christian Moueix{" "}
                 </Link>
               </h1>
@@ -65,9 +69,9 @@ const WineProductRelated = () => {
         <div className="wrapper11">
           <div className="product-img">
             <img
-              src="./images//2009_Cristal_Brut_Champagne.png"
-              height={420}
-              width={327}
+              src="/images//Sine_Qua_Non_Aperta_2018.png"
+              height="85px"
+              width="85px"
               alt=""
             />
           </div>
@@ -75,7 +79,7 @@ const WineProductRelated = () => {
             <div className="product-text">
               <h1 className="h1111">
                 {" "}
-                <Link to="/wines/11" onClick={window.scrollTo(0, 0)}>
+                <Link to="/wines/10" onClick={window.scrollTo(0, 0)}>
                   Sine Qua Non Aperta
                 </Link>
               </h1>

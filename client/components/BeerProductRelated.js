@@ -8,12 +8,7 @@ const BeerProductRelated = () => {
       <div style={{ display: "flex", justifyContent: "space-around" }}>
         <div className="wrapper11">
           <div className="product-img">
-            <img
-              src="./images//2009_Cristal_Brut_Champagne.png"
-              height={420}
-              width={327}
-              alt=""
-            />
+            <img src="/images//acidHouse.png" height={420} width={327} alt="" />
           </div>
           <div className="product-info">
             <div className="product-text">
@@ -38,37 +33,32 @@ const BeerProductRelated = () => {
         </div>
         <div className="wrapper11">
           <div className="product-img">
-            <img src="http://bit.ly/2tMBBTd" height={420} width={327} />
+            <img src="/images//oldTownLager.png" height={420} width={327} />
           </div>
           <div className="product-info">
             <div className="product-text">
               <h1 className="h1111">
-                <Link to="/beers/14" onClick={window.scrollTo(0, 0)}>
-                  Delirium Red
+                <Link to="/beers/8" onClick={window.scrollTo(0, 0)}>
+                  Old Town Lager
                 </Link>
               </h1>
               <h2></h2>
               <p>
-                Sweet and fruity, with a nice balance between sweet and sour. An
-                excellent dessert beer. Deep dark red colour, with a light pink,
-                compact and lacing head.
+                Sometimes you gotta remember that it’s a marathon and not a
+                sprint and you just need a workhorse of a beer that is built for
+                crushing.
               </p>
             </div>
             <div className="product-price-btn">
               <p>
-                <span className="span111">$42.00</span>
+                <span className="span111">$20.00</span>
               </p>
             </div>
           </div>
         </div>
         <div className="wrapper11">
           <div className="product-img">
-            <img
-              src="./images//2009_Cristal_Brut_Champagne.png"
-              height={420}
-              width={327}
-              alt=""
-            />
+            <img src="/images//hobgoblin.png" height={420} width={327} alt="" />
           </div>
           <div className="product-info">
             <div className="product-text">
