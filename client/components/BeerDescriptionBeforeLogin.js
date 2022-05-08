@@ -8,7 +8,7 @@ class BeerDescriptionBeforeLogin extends Component {
     super(props);
     this.state = {
       beerId: this.props.beer.id ? this.props.beer.id : "",
-      name: this.props.beer.id ? this.props.beer.name : '',
+      name: this.props.beer.id ? this.props.beer.name : "",
       quantity: 1,
       price: this.props.beer.id ? this.props.beer.price : "",
       cart: JSON.parse(window.localStorage.getItem("cart")) || [],
@@ -35,26 +35,26 @@ class BeerDescriptionBeforeLogin extends Component {
 
   addToLocalStorage() {
     const cart = Array.from(this.state.cart);
-    let foundDuplicate = false
+    let foundDuplicate = false;
 
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].beerId === this.state.beerId) {
-        cart[i].quantity += this.state.quantity * 1
-        foundDuplicate = true
-        break
+        cart[i].quantity += this.state.quantity * 1;
+        foundDuplicate = true;
+        break;
       }
     }
     if (!foundDuplicate) {
       cart.push({
-      beerId: this.state.beerId,
-      name: this.state.name,
-      quantity: this.state.quantity * 1,
-      price: this.state.price,
-      orderId: null,
-    });
+        beerId: this.state.beerId,
+        name: this.state.name,
+        quantity: this.state.quantity * 1,
+        price: this.state.price,
+        orderId: null,
+      });
     }
     this.setState({ cart });
-  
+
     window.localStorage.setItem("cart", JSON.stringify(cart));
     let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
     console.log(loadedStorage);
@@ -131,7 +131,9 @@ class BeerDescriptionBeforeLogin extends Component {
                     />{" "}
                     <button
                       className="product__btn"
-                      onClick={() => this.addToLocalStorage(`${this.state.quantity}`)}}
+                      onClick={() =>
+                        this.addToLocalStorage(`${this.state.quantity}`)
+                      }
                     >
                       Add to cart
                     </button>
