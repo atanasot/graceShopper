@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchCustomers, adminAddCustomer } from "../store/customers";
+import {
+  fetchCustomers,
+  adminAddCustomer,
+  adminAddAddress,
+} from "../store/customers";
 
 class CustomersAdmin extends Component {
   constructor(props) {
@@ -12,7 +16,11 @@ class CustomersAdmin extends Component {
       username: "",
       password: "",
       isAdmin: false,
-      address: {},
+      line1: "",
+      line2: "",
+      city: "",
+      state: "",
+      zip: "",
     };
 
     this.onChange = this.onChange.bind(this);
@@ -28,7 +36,16 @@ class CustomersAdmin extends Component {
   async onSubmit(ev) {
     ev.preventDefault();
     const customer = this.state;
+    const address = {
+      line1: this.state.line1,
+      line2: this.state.line2,
+      city: this.state.city,
+      state: this.state.state,
+      zip: this.state.zip,
+      userId: this.props.customers.length + 1,
+    };
     await this.props.addCustomer(customer);
+    await this.props.addAddress(address);
   }
 
   render() {
@@ -87,35 +104,35 @@ class CustomersAdmin extends Component {
           <input
             type="text"
             name="line1"
-            value={this.state.address.line1}
+            value={this.state.line1}
             onChange={this.onChange}
             placeholder="Address Line 1"
           />
           <input
             type="text"
             name="line2"
-            value={this.state.address.line2}
+            value={this.state.line2}
             onChange={this.onChange}
             placeholder="Address Line 2"
           />
           <input
             type="text"
             name="city"
-            value={this.state.address.city}
+            value={this.state.city}
             onChange={this.onChange}
             placeholder="City"
           />
           <input
             type="text"
             name="state"
-            value={this.state.address.state}
+            value={this.state.state}
             onChange={this.onChange}
             placeholder="State"
           />
           <input
             type="text"
             name="zip"
-            value={this.state.address.zip}
+            value={this.state.zip}
             onChange={this.onChange}
             placeholder="Zip"
           />
@@ -127,11 +144,12 @@ class CustomersAdmin extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { customer, auth } = state;
+  const { customers, auth } = state;
 
   return {
-    customer,
+    customers,
     address: auth.address,
+    userId: auth.id,
   };
 };
 
@@ -139,6 +157,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchCustomers: dispatch(fetchCustomers()),
     addCustomer: (customer) => dispatch(adminAddCustomer(customer)),
+    addAddress: (address) => dispatch(adminAddAddress(address)),
   };
 };
 

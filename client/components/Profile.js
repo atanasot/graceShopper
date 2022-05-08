@@ -1,26 +1,27 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateProfile } from "../store/auth";
-import { fetchCustomers } from "../store/customers";
+import { fetchCustomers, updateAddress } from "../store/customers";
 
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: this.props.firstName || null,
-      lastName: this.props.lastName || null,
-      email: this.props.email || null,
-      username: this.props.username || null,
-      password: this.props.password || null, // fix pass to be *****
-      line1: this.props.address ? this.props.address.line1 : null,
-      line2: this.props.address ? this.props.address.line2 : null,
-      city: this.props.address ? this.props.address.city : null,
-      state: this.props.address ? this.props.address.state : null,
-      zip: this.props.address ? this.props.address.zip : null,
+      firstName: this.props.firstName || "",
+      lastName: this.props.lastName || "",
+      email: this.props.email || "",
+      username: this.props.username || "",
+      password: this.props.password || "", // fix pass to be *****
+      line1: this.props.address ? this.props.address.line1 : "",
+      line2: this.props.address ? this.props.address.line2 : "",
+      city: this.props.address ? this.props.address.city : "",
+      state: this.props.address ? this.props.address.state : "",
+      zip: this.props.address ? this.props.address.zip : "",
       error: "",
     };
     this.onChange = this.onChange.bind(this);
     this.onSave = this.onSave.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(ev) {
@@ -37,19 +38,21 @@ class Profile extends Component {
       email: this.state.email,
       username: this.state.username,
       password: this.state.password,
+    };
+  }
+
+  async onSubmit(ev) {
+    ev.preventDefault();
+    const address = {
       line1: this.state.line1,
       line2: this.state.line2,
       city: this.state.city,
       state: this.state.state,
       zip: this.state.zip,
     };
-    try {
-      await this.props.update(user);
-    } catch (err) {
-      console.log({ err });
-      this.setState({ error: err.response.data.error });
-    }
+    await this.props.updateAddress(address);
   }
+
   // add error section
   render() {
     const {
@@ -102,8 +105,9 @@ class Profile extends Component {
           <input name="password" value={password} onChange={onChange} />
           <button>Save</button>
         </form>
+
         <p> Update Address below:</p>
-        <form onSubmit={this.onSave}>
+        <form onSubmit={this.onSubmit}>
           <input
             name="line1"
             value={line1}
@@ -145,7 +149,7 @@ class Profile extends Component {
 
 const mapState = (state) => {
   if (!state.auth) {
-    return null;
+    return {};
   }
   return {
     firstName: state.auth.firstName,
@@ -161,6 +165,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     update: (user) => dispatch(updateProfile(user)),
+    updateAddress: (address) => dispatch(updateAddress(address)),
     fetchCustomers: () => dispatch(fetchCustomers()),
   };
 };

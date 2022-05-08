@@ -18,6 +18,7 @@ const setAuth = (auth) => ({ type: SET_AUTH, auth });
  */
 export const updateProfile = (user) => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);
+  console.log("HERE IS THE USER FROM THUNK---->", user);
   const res = await axios.put("/auth/me", user, {
     headers: {
       authorization: token,
