@@ -1077,7 +1077,7 @@ img {
 }
 
 .sekiro-img-div img{
-  width: 300px;
+  width: 250px;
   height: 300px;
   transform: translateY(7.5%);
 }
@@ -1884,6 +1884,19 @@ label {
   }
 }
 
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap');
+
+//Variables
+$color-primary-theme: #30336b;
+$width-sm-min: (768px);
+
+//Mixins
+@mixin breackpoint-sm-min{
+  @media (min-width: #{$width-sm-min}){
+    @content;
+  }
+}
 
 
 

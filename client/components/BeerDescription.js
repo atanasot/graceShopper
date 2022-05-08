@@ -47,13 +47,28 @@ class BeerDescription extends Component {
       <div>
         <div className="wrapper">
           <div style={{ marginTop: "100px", marginLeft: "270px" }}>
-            <Link to="/">Home</Link> / <Link to="/beer">Beer</Link> /{" "}
-            {beer.name}
+            <span
+              style={{
+                textDecoration: "underline",
+              }}
+            >
+              {" "}
+              <Link to="/">Home</Link>
+            </span>{" "}
+            /{" "}
+            <span
+              style={{
+                textDecoration: "underline",
+              }}
+            >
+              <Link to="/beer">Beers</Link>
+            </span>{" "}
+            / {beer.name}
           </div>
 
           <div className="product-top" style={{ marginLeft: "400px" }}>
             <div className="product__gallery">
-              <img src={`./images/${beer.imgURL}`} alt="" />
+              <img src={`/images/${beer.imgURL}`} alt="" />
             </div>
             <div className="product__info">
               <div className="product__desc">

@@ -5,6 +5,7 @@ import { deleteItem } from "../store/lineItems";
 import { updateItemQty } from "../store/lineItems";
 
 const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
+  const dispatch = useDispatch();
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -76,9 +77,16 @@ const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
                   </div>
                   <div
                     className="product-removal"
-                    style={{ visibility: "hidden" }}
+                    // style={{ visibility: "hidden" }}
                   >
-                    <button className="remove-product">Remove</button>
+                    <button
+                      className="remove-product"
+                      onClick={() => {
+                        dispatch(deleteItem(lineItem));
+                      }}
+                    >
+                      Remove
+                    </button>
                   </div>
                   <div className="product-line-price">
                     {(lineItem.price * lineItem.quantity).toFixed(2) * 1}

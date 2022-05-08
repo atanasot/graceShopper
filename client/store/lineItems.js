@@ -20,12 +20,12 @@ const _fetchLineItemsByOrder = (lineItems) => ({
   lineItems,
 });
 
-// const _deleteItem = (item) => {
-//   return {
-//     type: DELETE_ITEM,
-//     item,
-//   };
-// };
+const _deleteItem = (item) => {
+  return {
+    type: DELETE_ITEM,
+    item,
+  };
+};
 
 /**
  * THUNK CREATORS

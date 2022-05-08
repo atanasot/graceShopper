@@ -77,14 +77,21 @@ class WineDescription extends Component {
                 textDecoration: "underline",
               }}
             >
-              <Link to="/wine">Wine</Link>
+              <Link to="/wine">Wines</Link>
             </span>{" "}
             / {wine.name}
           </div>
 
-          <div className="product-top" style={{ marginLeft: "400px" }}>
+          <div
+            className="product-top"
+            style={{ marginLeft: "400px", marginTop: "30px" }}
+          >
             <div className="product__gallery">
-              <img src={`./images/${wine.imgURL}`} alt="" />
+              <img
+                src={`/images/${wine.imgURL}`}
+                alt=""
+                style={{ height: "500px", width: "140px" }}
+              />
             </div>
             <div className="product__info">
               <div className="product__desc">

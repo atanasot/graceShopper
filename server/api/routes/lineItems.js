@@ -117,4 +117,17 @@ app.post("/", async (req, res, next) => {
   }
 });
 
+// app.delete("/:id", async (req, res, next) => {
+//   try {
+//     await Order.destroy({
+//       where: {
+//         beerId: req.params.beerId,
+//       },
+//     });
+//     res.sendStatus(204);
+//   } catch (ex) {
+//     next(ex);
+//   }
+// });
+
 module.exports = app;
