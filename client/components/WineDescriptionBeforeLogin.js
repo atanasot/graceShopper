@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import WineProductRelated from "./wineProductRelated";
 
 class WineDescriptionBeforeLogin extends Component {
   constructor(props) {
@@ -84,29 +85,83 @@ class WineDescriptionBeforeLogin extends Component {
     const { addToCart } = this;
     return (
       <div>
-        <p>
-          <Link to="/wine">Go back</Link>
-        </p>
-        <p>{wine.description}</p>
-        <p>{wine.name}</p>
-        <form onSubmit={this.onSubmit}>
-          <input
-            className="quantity_input"
-            name="quantity"
-            value={this.state.quantity}
-            type="number"
-            min="0"
-            max="100"
-            step="1"
-            onChange={this.onChange}
-            placeholder="Quantity"
-          />
-          <button
-            onClick={() => this.addToLocalStorage(`${this.state.quantity}`)}
-          >
-            Add to Cart
-          </button>
-        </form>
+        {" "}
+        <div>
+          <div className="wrapper">
+            <div style={{ marginTop: "100px", marginLeft: "270px" }}>
+              <span
+                style={{
+                  textDecoration: "underline",
+                }}
+              >
+                {" "}
+                <Link to="/">Home</Link>
+              </span>{" "}
+              /{" "}
+              <span
+                style={{
+                  textDecoration: "underline",
+                }}
+              >
+                <Link to="/wine">Wines</Link>
+              </span>{" "}
+              / {wine.name}
+            </div>
+
+            <div
+              className="product-top"
+              style={{ marginLeft: "400px", marginTop: "30px" }}
+            >
+              <div className="product__gallery">
+                <img
+                  src={`/images/${wine.imgURL}`}
+                  alt=""
+                  style={{ height: "500px", width: "140px" }}
+                />
+              </div>
+              <div className="product__info">
+                <div className="product__desc">
+                  <div className="product__type">wine</div>
+                  <h1>{wine.name}</h1>
+                  <p className="product__price">${wine.price}</p>
+                  <div className="product__short">
+                    <h4>Type:{wine.type}</h4>
+                  </div>
+                  <form onSubmit={this.onSubmit}>
+                    Quantity:
+                    <input
+                      className="quantity_input"
+                      name="quantity"
+                      value={this.state.quantity}
+                      type="number"
+                      min="0"
+                      max="100"
+                      step="1"
+                      onChange={this.onChange}
+                      placeholder="Quantity"
+                    />{" "}
+                    <button
+                      className="product__btn"
+                      onClick={() =>
+                        this.addToLocalStorage(`${this.state.quantity}`)
+                      }
+                    >
+                      Add to Cart
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div className="product-bottom">
+              <h2>Description</h2>
+              <p>{wine.description}</p>
+              <h2>Reviews</h2>
+              <p>Stanley said he doesnt like wines</p>
+            </div>
+          </div>
+          <WineProductRelated />
+          <div className="overlay" />
+        </div>
       </div>
     );
   }

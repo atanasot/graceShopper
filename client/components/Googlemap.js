@@ -53,5 +53,5 @@ export class GoogleMap extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyBt-IGpaQ4IUOzdb5ZagrHddaIBHDh0aEk",
+  apiKey: "HIDE FROM NOW",
 })(GoogleMap);

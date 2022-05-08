@@ -2068,4 +2068,15 @@ label {
     width: 40%;
   }
 }
+
+.quantity_input {
+  position: relative;
+  text-transform: none;
+  border: none;
+  padding: 1rem 2.5rem;
+  color: black;
+  font-size: 1rem;
+  background-color: white;
+  outline: none !important;
+}
 /*# sourceMappingURL=style.css.map */

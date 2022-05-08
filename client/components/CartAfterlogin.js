@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteItem } from "../store/lineItems";
 import { updateItemQty } from "../store/lineItems";
 
 const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
-  const dispatch = useDispatch();
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -33,18 +32,10 @@ const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
           <div className="product">
             <ul style={{ listStyleType: "none" }}>
               {lineItems.map((lineItem) => (
-                <li
-                  style={{
-                    width: "1600px",
-                    float: "right",
-                  }}
-                >
+                <li>
                   <div
                     className="product-image"
-                    style={{
-                      visibility: "hidden",
-                      height: "1px",
-                    }}
+                    style={{ visibility: "hidden", height: "1px" }}
                   >
                     <img src="https://s.cdpn.io/3/dingo-dog-bones.jpg" />
                   </div>
@@ -63,7 +54,9 @@ const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
                       >
                         +
                       </button>
-                      {lineItem.quantity}
+                      <span style={{ width: "120px" }}>
+                        {lineItem.quantity}
+                      </span>
                       <button
                         className="remove-product"
                         onClick={() => {
@@ -75,14 +68,12 @@ const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
                       </button>
                     </p>
                   </div>
-                  <div
-                    className="product-removal"
-                    // style={{ visibility: "hidden" }}
-                  >
+                  {/* remove is not working */}
+                  <div className="product-removal">
                     <button
                       className="remove-product"
                       onClick={() => {
-                        dispatch(deleteItem(lineItem));
+                        deleteItem(lineItem);
                       }}
                     >
                       Remove
@@ -133,11 +124,38 @@ const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
       </div>
     </div>
   ) : (
-    <div style={{ marginTop: "200px" }}>
-      <p>
-        <Link to="/">Continue Shopping</Link>
-      </p>
-      <p>This is an empty cart</p>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginBottom: "140px",
+      }}
+    >
+      <div className="wrapper11">
+        <div className="product-img">
+          <img
+            src="/images/empty.jpg"
+            style={{ height: "320px", width: "327px" }}
+            alt=""
+          />
+        </div>
+        <div className="product-info">
+          <div className="product-text">
+            <h1 className="h1111">This is an empty cart =(</h1>
+            <h2></h2>
+            <p></p>
+          </div>
+          <div
+            className="btn-2"
+            style={{ marginLeft: "-35px", marginTop: "-100px" }}
+          >
+            <Link to={"/"}>
+              <span style={{ fontSize: "0.7rem" }}>CONTINUE SHOPPING</span>
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
@@ -146,6 +164,7 @@ const mapDispatch = (dispatch) => {
   return {
     updateItemQty: (lineItemId, orderId, quantity) =>
       dispatch(updateItemQty(lineItemId, orderId, quantity)),
+    deleteItem: (item) => dispatch(deleteItem(item)),
   };
 };
 export default connect((state) => state, mapDispatch)(CartAfterlogin);
