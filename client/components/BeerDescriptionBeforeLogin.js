@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import store from "../store";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import BeerProductRelated from "./BeerProductRelated";
@@ -9,9 +8,9 @@ class BeerDescriptionBeforeLogin extends Component {
     super(props);
     this.state = {
       beerId: this.props.beer.id ? this.props.beer.id : "",
-      name: this.props.beer.name,
+      name: this.props.beer.id ? this.props.beer.name : '',
       quantity: 1,
-      price: this.props.beer.price ? this.props.beer.price : "",
+      price: this.props.beer.id ? this.props.beer.price : "",
       cart: JSON.parse(window.localStorage.getItem("cart")) || [],
     };
     this.addToLocalStorage = this.addToLocalStorage.bind(this);
@@ -35,44 +34,27 @@ class BeerDescriptionBeforeLogin extends Component {
   }
 
   addToLocalStorage() {
-    let cart = this.state.cart;
-    let loadStorage = JSON.parse(window.localStorage.getItem("cart"));
-    console.log(loadStorage);
-    if (loadStorage === null) {
-      cart.push({
-        beerId: this.state.beerId,
-        name: this.state.name,
-        quantity: this.state.quantity,
-        price: this.state.price,
-        orderId: null,
-      });
-    } else {
-      for (let i = 0; i < loadStorage.length; i++) {
-        if (this.state.name === loadStorage[i].name) {
-          console.log(
-            this.state.quantity,
-            "+",
-            loadStorage[i].quantity,
-            "=",
-            this.state.quantity * 1 + loadStorage[i].quantity * 1
-          );
-          loadStorage["quantity"] =
-            this.state.quantity * 1 + loadStorage[i].quantity * 1;
-          this.setState({ cart: cart });
-          window.localStorage.setItem("cart", JSON.stringify(existing));
-          break;
-        } else {
-          cart.push({
-            beerId: this.state.beerId,
-            name: this.state.name,
-            quantity: this.state.quantity,
-            price: this.state.price,
-            orderId: null,
-          });
-        }
+    const cart = Array.from(this.state.cart);
+    let foundDuplicate = false
+
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].beerId === this.state.beerId) {
+        cart[i].quantity += this.state.quantity * 1
+        foundDuplicate = true
+        break
       }
     }
-    this.setState({ cart: cart });
+    if (!foundDuplicate) {
+      cart.push({
+      beerId: this.state.beerId,
+      name: this.state.name,
+      quantity: this.state.quantity * 1,
+      price: this.state.price,
+      orderId: null,
+    });
+    }
+    this.setState({ cart });
+  
     window.localStorage.setItem("cart", JSON.stringify(cart));
     let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
     console.log(loadedStorage);
@@ -93,8 +75,6 @@ class BeerDescriptionBeforeLogin extends Component {
 
   render() {
     const { beer } = this.props;
-    const { addToCart } = this;
-
     return (
       <div>
         <div>
@@ -151,7 +131,7 @@ class BeerDescriptionBeforeLogin extends Component {
                     />{" "}
                     <button
                       className="product__btn"
-                      onClick={() => this.addToLocalStorage()}
+                      onClick={() => this.addToLocalStorage(`${this.state.quantity}`)}}
                     >
                       Add to cart
                     </button>

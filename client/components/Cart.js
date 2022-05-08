@@ -1,16 +1,32 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-// Notes for whoever is doing the Cart Componnet: ? Kenny?
-// 1. For a logged in user: Connect to redux store
-// 2. look at the thunk that i created in store -> lineItems.js to display all items in the cart
-
 const Cart = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   const loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
   console.log(loadedStorage);
+
+  // const reduced = loadedStorage.reduce((acc, item, idx) => {
+  //   // let duplicateBeerId = item[beerId]
+  //   // let duplicateWineId = item[wineId]
+  //   // if (!acc[duplicateBeerId] || !acc[duplicateWineId]) {
+  //   //   return acc
+  //   // }
+  //   // else if (acc[duplicateBeerId]) {
+  //   //   acc[quantity] ++
+  //   // } else {
+
+  //   // }
+  //   let beerIdDuplicate = item[beerId] // 3
+  //   let wineIdDuplicate = item[wineId] // 15
+  //   if (item[beerIdDuplicate] || item[wineIdDuplicate]) {
+  //     item[quantity] 
+  //   }
+
+  // }, []);
+
   const subtotal = loadedStorage
     ? loadedStorage.reduce(
         (current, accume) => (current += accume.price * accume.quantity),
@@ -76,6 +92,12 @@ const Cart = () => {
           </div>
         </div>
       )}
+      <button onClick={() => window.localStorage.clear()}>
+        clear all
+      </button>
+      <button>
+        <Link to={"/checkout"}>check out</Link>
+      </button>
     </div>
   );
 };

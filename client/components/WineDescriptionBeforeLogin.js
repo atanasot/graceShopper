@@ -8,13 +8,11 @@ class WineDescriptionBeforeLogin extends Component {
     super(props);
     this.state = {
       wineId: this.props.wine.id ? this.props.wine.id : "",
-      name: this.props.wine.name,
+      name: this.props.wine.id ? this.props.wine.name : '',
       quantity: 1,
-      price: this.props.wine.price ? this.props.wine.price : "",
+      price: this.props.wine.id ? this.props.wine.price : "",
       cart: JSON.parse(window.localStorage.getItem("cart")) || [],
-      description: this.props.wine.description
-        ? this.props.wine.description
-        : "",
+      description: this.props.wine.id ? this.props.wine.description : "",
     };
     this.addToLocalStorage = this.addToLocalStorage.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -38,17 +36,27 @@ class WineDescriptionBeforeLogin extends Component {
 
   addToLocalStorage() {
     const cart = Array.from(this.state.cart);
-    cart.push({
+    let foundDuplicate = false
+
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].wineId === this.state.wineId) {
+        cart[i].quantity += this.state.quantity * 1
+        foundDuplicate = true
+        break
+      }
+    }
+    if (!foundDuplicate) {
+      cart.push({
       wineId: this.state.wineId,
       name: this.state.name,
       quantity: this.state.quantity * 1,
       price: this.state.price,
       orderId: null,
     });
-    this.setState({ cart: cart });
-
+    }
+    this.setState({ cart });
+  
     window.localStorage.setItem("cart", JSON.stringify(cart));
-
     let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
     console.log(loadedStorage);
   }
@@ -82,10 +90,8 @@ class WineDescriptionBeforeLogin extends Component {
 
   render() {
     const { wine } = this.props;
-    const { addToCart } = this;
     return (
       <div>
-        {" "}
         <div>
           <div className="wrapper">
             <div style={{ marginTop: "100px", marginLeft: "270px" }}>
@@ -173,17 +179,16 @@ const mapStateToProps = (state, otherProps) => {
     {};
   return {
     wine,
-    isLoggedIn: !!state.auth.id,
+    //isLoggedIn: !!state.auth.id,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addWine: (wine) => dispatch(addWine(wine)),
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     addWine: (wine) => dispatch(addWine(wine)),
+//   };
+// };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
 )(WineDescriptionBeforeLogin);
