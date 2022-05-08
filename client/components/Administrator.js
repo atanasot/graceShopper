@@ -19,6 +19,7 @@ class Administrator extends Component {
   componentDidMount() {
     this.props.fetchOrders();
     this.props.fetchWines();
+    this.props.fetchCustomers();
     this.state;
   }
 
@@ -34,21 +35,23 @@ class Administrator extends Component {
               <th> Username</th>
               <th> Is Administrator </th>
             </tr>
-            {this.props.customers.map((customer) => {
-              return (
-                <tr key={customer.id}>
-                  <td>{customer.firstName} </td>
-                  <td>{customer.lastName} </td>
-                  <td>{customer.username}</td>
-                  <td>
-                    {" "}
-                    {customer.isAdmin
-                      ? customer.isAdmin.toString()
-                      : "False"}{" "}
-                  </td>
-                </tr>
-              );
-            })}
+            {this.props.customers
+              ? this.props.customers.map((customer) => {
+                  return (
+                    <tr key={customer.id}>
+                      <td>{customer.firstName} </td>
+                      <td>{customer.lastName} </td>
+                      <td>{customer.username}</td>
+                      <td>
+                        {" "}
+                        {customer.isAdmin
+                          ? customer.isAdmin.toString()
+                          : "False"}{" "}
+                      </td>
+                    </tr>
+                  );
+                })
+              : ""}
           </tbody>
         </table>
         <CustomersAdmin />
@@ -134,6 +137,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchOrders: () => dispatch(adminFetchOrders()),
     fetchWines: () => dispatch(fetchWines()),
+    fetchCustomers: () => dispatch(fetchCustomers()),
   };
 };
 

@@ -45,6 +45,7 @@ router.put("/me", async (req, res, next) => {
         model: Address,
       },
     });
+
     await user.update(req.body);
     await user.address.update(req.body);
     res.send(user);

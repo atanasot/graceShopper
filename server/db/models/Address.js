@@ -5,7 +5,7 @@ const { STRING } = Sequelize;
 const Address = db.define("address", {
   line1: {
     type: STRING,
-    allowNull: false,
+    allowNull: true,
     validate: {
       notEmpty: {
         msg: "Please provide a street name",
@@ -17,7 +17,7 @@ const Address = db.define("address", {
   },
   city: {
     type: STRING,
-    allowNull: false,
+    allowNull: true,
     validate: {
       notEmpty: {
         msg: "Please provide a city name",
@@ -26,7 +26,7 @@ const Address = db.define("address", {
   },
   state: {
     type: STRING,
-    allowNull: false,
+    allowNull: true,
     validate: {
       notEmpty: {
         msg: "Please provide a state",
@@ -36,7 +36,7 @@ const Address = db.define("address", {
   },
   zip: {
     type: STRING,
-    allowNull: false,
+    allowNull: true,
     validate: {
       notEmpty: {
         msg: "Please provide a zip code",
