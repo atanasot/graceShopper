@@ -31,18 +31,24 @@ const Beers = ({ beers, match, history }) => {
           <div style={{ marginBottom: "70px" }}>
             <h1>BEER</h1>
 
-            <div>
-              <select
-                value={match.params.sort}
-                onChange={(ev) => history.push(`/beer?sort=${ev.target.value}`)}
-              >
-                <option value=""> Sort By</option>
-                <option value="name,asc"> Name ASC</option>
-                <option value="name,desc"> Name DESC</option>
-                <option value="price,asc"> Price ASC</option>
-                <option value="price,desc"> Price DESC</option>
-              </select>
-            </div>
+            <section class="containercontainer">
+              <div class="dropdowndropdown">
+                <select
+                  name="one"
+                  class="dropdown-select"
+                  value={match.params.sort}
+                  onChange={(ev) =>
+                    history.push(`/beer?sort=${ev.target.value}`)
+                  }
+                >
+                  <option value="">Sort By</option>
+                  <option value="name,asc"> Name A-Z</option>
+                  <option value="name,desc">Name Z-A</option>
+                  <option value="price,asc">Price Low to High</option>
+                  <option value="price,desc">PRice High to Low</option>
+                </select>
+              </div>
+            </section>
           </div>
           <ol className="posts">
             {beers.map((beer) => (

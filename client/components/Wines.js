@@ -29,15 +29,24 @@ const Wines = ({ wines, match, history }) => {
         <div className="container">
           <div style={{ marginBottom: "70px" }}>
             <h1>WINE</h1>
-            <div>
-              <select value={ match.params.sort } onChange={ ev =>  history.push(`/wine?sort=${ev.target.value}`)}>
-                <option value=''> Sort By</option>
-                <option value='name,asc'> Name ASC</option>
-                <option value='name,desc'> Name DESC</option>
-                <option value='price,asc'> Price ASC</option>
-                <option value='price,desc'> Price DESC</option>
-              </select>
-            </div>
+            <section class="containercontainer">
+              <div class="dropdowndropdown">
+                <select
+                  name="one"
+                  class="dropdown-select"
+                  value={match.params.sort}
+                  onChange={(ev) =>
+                    history.push(`/beer?sort=${ev.target.value}`)
+                  }
+                >
+                  <option value="">Sort By</option>
+                  <option value="name,asc"> Name A-Z</option>
+                  <option value="name,desc">Name Z-A</option>
+                  <option value="price,asc">Price Low to High</option>
+                  <option value="price,desc">PRice High to Low</option>
+                </select>
+              </div>
+            </section>
           </div>
           <ol className="posts">
             {wines.map((wine) => (
@@ -83,23 +92,20 @@ const Wines = ({ wines, match, history }) => {
   );
 };
 
-const mapStateToProps = (state, {location, match}) => {
+const mapStateToProps = (state, { location, match }) => {
   const { wines } = state;
-  const searchParams = new URLSearchParams(location.search) // ?sort=name,asc
-  const sort = searchParams.get('sort');
+  const searchParams = new URLSearchParams(location.search); // ?sort=name,asc
+  const sort = searchParams.get("sort");
 
-  if (sort === 'name,asc') {
-    console.log('sort by name asc');
-    wines.sort((a,b) => a.name.localeCompare(b.name))
-  }
-  else if (sort === 'name,desc') {
-    wines.sort((a,b) => b.name.localeCompare(a.name))
-  }
-  else if (sort === 'price,asc') {
-    wines.sort((a,b) => parseFloat(a.price) - parseFloat(b.price))
-  }
-  else if (sort === 'price,desc') {
-    wines.sort((a,b) => parseFloat(b.price) - parseFloat(a.price))
+  if (sort === "name,asc") {
+    console.log("sort by name asc");
+    wines.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (sort === "name,desc") {
+    wines.sort((a, b) => b.name.localeCompare(a.name));
+  } else if (sort === "price,asc") {
+    wines.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+  } else if (sort === "price,desc") {
+    wines.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
   }
   return {
     wines,
