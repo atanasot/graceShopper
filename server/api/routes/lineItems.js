@@ -47,6 +47,30 @@ app.get("/order/:orderId", async (req, res, next) => {
   }
 });
 
+app.put("/order/:orderId", async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+    const order = await Order.findByPk(req.params.orderId);
+    if (!order) {
+      res.sendStatus(404);
+    }
+    if (user.id !== order.userId) {
+      //we sometimes get 404 because userId changes depending on seed
+      res.sendStatus(401);
+    }
+
+    await order.update({
+      isCart: false,
+    });
+
+    res.sendStatus(204);
+  } catch (err) {
+    console.log("ERROR");
+    console.log(err);
+    next(err);
+  }
+});
+
 app.put("/", async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);

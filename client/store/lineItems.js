@@ -8,6 +8,7 @@ const LOAD_CART = "LOAD_CART";
 const UPDATE_LINEITEM = "UPDATE_LINEITEM";
 const LOAD_ORDER_ITEMS = "LOAD_ORDER_ITEMS";
 const DELETE_ITEM = "DELETE_ITEM";
+const EMPTY_CART = "EMPTY_CART";
 
 /**
  * ACTION CREATORS
@@ -26,6 +27,8 @@ const _deleteItem = (item) => {
     item,
   };
 };
+
+const _emptyCart = (lineItems) => ({ type: EMPTY_CART, lineItems });
 
 /**
  * THUNK CREATORS
@@ -56,6 +59,24 @@ export const fetchLineItemsByOrder = (orderId) => {
       })
     ).data;
     dispatch(_fetchLineItemsByOrder(lineItems));
+  };
+};
+
+export const emptyCartAndSubmitOrder = (orderId) => {
+  return async (dispatch) => {
+    const lineItems = (
+      await axios.put(
+        `/api/lineItems/order/${orderId}`,
+        {}, // No data in request
+        {
+          headers: {
+            authorization: window.localStorage.getItem("token"),
+          },
+        }
+      )
+    ).data;
+    dispatch(_emptyCart(lineItems));
+    await dispatch(fetchOrders());
   };
 };
 
@@ -103,6 +124,8 @@ export default function (state = [], action) {
       return action.lineItems;
     case DELETE_ITEM:
       return [...state.filter((item) => item.id !== action.item.id)];
+    case EMPTY_CART:
+      return [];
     default:
       return state;
   }

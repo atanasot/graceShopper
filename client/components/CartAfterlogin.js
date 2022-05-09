@@ -32,7 +32,7 @@ const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
           <div className="product">
             <ul style={{ listStyleType: "none" }}>
               {lineItems.map((lineItem) => (
-                <li>
+                <li key={lineItem.id}>
                   <div
                     className="product-image"
                     style={{ visibility: "hidden", height: "1px" }}
