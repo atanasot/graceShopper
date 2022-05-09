@@ -5,7 +5,7 @@ import axios from "axios";
  */
 
 const LOAD_ORDERS = "LOAD_ORDERS";
-
+const ADMIN_LOAD_ORDERS = "ADMIN_LOAD_ORDERS";
 /**
  * ACTION CREATORS
  */
@@ -31,14 +31,22 @@ export const fetchOrders = () => {
 
 export const adminFetchOrders = () => {
   return async (dispatch) => {
-    const orders = await (await axios.get("/api/orders/admin")).data;
-    dispatch(fetchOrders(orders));
+    const orders = await (
+      await axios.get("/api/orders/admin", {
+        headers: {
+          authorization: window.localStorage.getItem("token"),
+        },
+      })
+    ).data;
+    dispatch({ type: ADMIN_LOAD_ORDERS, orders });
   };
 };
 
 export default function (state = [], action) {
   switch (action.type) {
     case LOAD_ORDERS:
+      return action.orders;
+    case ADMIN_LOAD_ORDERS:
       return action.orders;
     default:
       return state;

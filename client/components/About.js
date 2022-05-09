@@ -30,9 +30,10 @@ const About = () => {
               Jennifer Woodbury<span>Software Engineer</span>
             </h2>
             <p>
-              I'm looking for something that can deliver a 50-pound payload of
-              snow on a small feminine target. Can you suggest something?
-              Hello...?{" "}
+              It's not considered work when you're having so much fun.
+              Developing a web application and working with such a great team of
+              engineers. It's been a great experience. Cheers with wines and
+              beers!!{" "}
             </p>
             <a
               href="https://www.linkedin.com/in/jennifer-woodbury-0290814/"

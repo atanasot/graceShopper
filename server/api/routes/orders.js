@@ -25,8 +25,9 @@ app.get("/", async (req, res, next) => {
 // admin routes need some token or authorization
 app.get("/admin", async (req, res, next) => {
   try {
+    const user = await User.findByToken(req.headers.authorization);
     const orders = await Order.findAll();
-    res.send(orders);
+    user ? res.send(orders) : res.sendStatus(404);
   } catch (err) {
     next(err);
   }

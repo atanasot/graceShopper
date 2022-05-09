@@ -90,14 +90,14 @@ class CustomersAdmin extends Component {
           <input
             type="checkbox"
             name="isAdmin"
-            value={this.state.isAdmin}
+            value={"TRUE"}
             onChange={this.onChange}
           />
           true
           <input
             type="checkbox"
             name="isAdmin"
-            value={this.state.isAdmin}
+            value={"FALSE"}
             onChange={this.onChange}
           />
           false

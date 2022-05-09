@@ -3,14 +3,7 @@ import { connect } from "react-redux";
 import WinesAdmin from "../components/WinesAdmin.js";
 import BeersAdmin from "../components/BeersAdmin.js";
 import CustomersAdmin from "../components/CustomersAdmin";
-import {
-  store,
-  fetchCustomers,
-  fetchOrders,
-  fetchWines,
-  adminFetchOrders,
-  addWine,
-} from "../store";
+import { fetchCustomers, fetchWines, adminFetchOrders } from "../store";
 
 class Administrator extends Component {
   constructor(props) {
@@ -20,7 +13,12 @@ class Administrator extends Component {
     this.props.fetchOrders();
     this.props.fetchWines();
     this.props.fetchCustomers();
-    this.state;
+  }
+
+  componentDidUpdate(prevState) {
+    if (prevState.orders.length === 0) {
+      this.props.fetchOrders();
+    }
   }
 
   render() {
@@ -123,7 +121,7 @@ class Administrator extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { customers, wines, beers, orders, auth } = state;
+  const { customers, wines, beers, auth, orders } = state;
   return {
     auth,
     customers,

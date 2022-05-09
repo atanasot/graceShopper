@@ -64,7 +64,6 @@ class Routes extends Component {
               <Route path="/orders/:id" component={OrderDescription} />
               <Route path="/orders" component={Orders} />
               <Route path="/checkout" component={CheckoutAfterLogin} />
-              <Route path="/admin" component={Administrator} />
               <Route path="/contact" component={Contact} />
               <Route path="/aboutwine" component={AboutWine} />
               <Route path="/aboutbeer" component={AboutBeer} />
