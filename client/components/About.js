@@ -114,7 +114,8 @@ const About = () => {
             <p>
               After helping my clients to get their dream house for a couple of
               years, I decided to follow my passion for software and start
-              building dreams with code instead of bricks.
+              building dreams with code instead of bricks.It's the BEST decision
+              I've ever made.
             </p>
             <a
               href="https://www.linkedin.com/in/kenneth-lee-software-engineer/"

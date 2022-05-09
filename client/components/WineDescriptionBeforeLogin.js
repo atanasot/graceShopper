@@ -8,7 +8,7 @@ class WineDescriptionBeforeLogin extends Component {
     super(props);
     this.state = {
       wineId: this.props.wine.id ? this.props.wine.id : "",
-      name: this.props.wine.id ? this.props.wine.name : '',
+      name: this.props.wine.id ? this.props.wine.name : "",
       quantity: 1,
       price: this.props.wine.id ? this.props.wine.price : "",
       cart: JSON.parse(window.localStorage.getItem("cart")) || [],
@@ -36,26 +36,26 @@ class WineDescriptionBeforeLogin extends Component {
 
   addToLocalStorage() {
     const cart = Array.from(this.state.cart);
-    let foundDuplicate = false
+    let foundDuplicate = false;
 
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].wineId === this.state.wineId) {
-        cart[i].quantity += this.state.quantity * 1
-        foundDuplicate = true
-        break
+        cart[i].quantity += this.state.quantity * 1;
+        foundDuplicate = true;
+        break;
       }
     }
     if (!foundDuplicate) {
       cart.push({
-      wineId: this.state.wineId,
-      name: this.state.name,
-      quantity: this.state.quantity * 1,
-      price: this.state.price,
-      orderId: null,
-    });
+        wineId: this.state.wineId,
+        name: this.state.name,
+        quantity: this.state.quantity * 1,
+        price: this.state.price,
+        orderId: null,
+      });
     }
     this.setState({ cart });
-  
+
     window.localStorage.setItem("cart", JSON.stringify(cart));
     let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
     console.log(loadedStorage);
@@ -189,6 +189,4 @@ const mapStateToProps = (state, otherProps) => {
 //   };
 // };
 
-export default connect(
-  mapStateToProps,
-)(WineDescriptionBeforeLogin);
+export default connect(mapStateToProps)(WineDescriptionBeforeLogin);

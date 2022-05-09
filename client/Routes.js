@@ -24,6 +24,7 @@ import { Signup } from "./components/AuthFormRegister";
 import AboutBeer from "./components/AboutBeer";
 import AboutWine from "./components/AboutWine";
 import CheckoutAfterLogin from "./components/CheckoutAfterLogin";
+import ProductAdmin from "./components/ProductAdmin";
 /**
  * COMPONENT
  */
@@ -67,7 +68,8 @@ class Routes extends Component {
               <Route path="/contact" component={Contact} />
               <Route path="/aboutwine" component={AboutWine} />
               <Route path="/aboutbeer" component={AboutBeer} />
-              <Route pathe="/admin" component={Administrator} />
+              <Route path="/adminuser" component={Administrator} />
+              <Route path="/adminproduct" component={ProductAdmin} />
             </Switch>
           ) : (
             <Switch>

@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import WinesAdmin from "../components/WinesAdmin.js";
-import BeersAdmin from "../components/BeersAdmin.js";
 import CustomersAdmin from "../components/CustomersAdmin";
 import { fetchCustomers, fetchWines, adminFetchOrders } from "../store";
 
@@ -13,6 +11,7 @@ class Administrator extends Component {
     this.props.fetchOrders();
     this.props.fetchWines();
     this.props.fetchCustomers();
+    window.scrollTo(0, 0);
   }
 
   componentDidUpdate(prevState) {
@@ -22,39 +21,110 @@ class Administrator extends Component {
   }
 
   render() {
+    const current = new Date();
+    const date = `${
+      current.getMonth() + 1
+    }/${current.getDate()}/${current.getFullYear()}`;
     return (
       <div>
-        <div>Customers</div>
-        <table>
-          <tbody>
-            <tr>
-              <th> First Name</th>
-              <th> Last Name</th>
-              <th> Username</th>
-              <th> Is Administrator </th>
-            </tr>
-            {this.props.customers
-              ? this.props.customers.map((customer) => {
-                  return (
-                    <tr key={customer.id}>
-                      <td>{customer.firstName} </td>
-                      <td>{customer.lastName} </td>
-                      <td>{customer.username}</td>
-                      <td>
-                        {" "}
-                        {customer.isAdmin
-                          ? customer.isAdmin.toString()
-                          : "False"}{" "}
-                      </td>
-                    </tr>
-                  );
-                })
-              : ""}
-          </tbody>
-        </table>
+        <div className="app-container">
+          <p
+            className="app-name"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <div
+              style={{
+                textAlign: "center",
+                fontSize: "50px",
+                width: "500px",
+              }}
+              className="H1Background"
+            >
+              Customers Portfolio
+            </div>
+          </p>
+          <div className="app-content">
+            <div className="projects-section">
+              <div className="projects-section-header">
+                <p className="time">{date}</p>
+              </div>
+
+              <div className="project-boxes jsGridView">
+                {this.props.customers
+                  ? this.props.customers.map((customer) => {
+                      return (
+                        <div className="project-box-wrapper">
+                          <div
+                            className="project-box"
+                            style={{ backgroundColor: "#EAE1C8" }}
+                          >
+                            <div className="project-box-header">
+                              <span>{customer.createdAt}</span>
+                              <div className="more-wrapper">
+                                <button className="project-btn-more">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={24}
+                                    height={24}
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="feather feather-more-vertical"
+                                  >
+                                    <circle cx={12} cy={12} r={1} />
+                                    <circle cx={12} cy={5} r={1} />
+                                    <circle cx={12} cy={19} r={1} />
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                            <div className="project-box-content-header">
+                              <p
+                                className="box-content-header"
+                                style={{ color: "#094C93" }}
+                              >
+                                {customer.firstName} {customer.lastName}
+                              </p>
+                              <p className="box-content-subheader">
+                                username: {customer.username}
+                              </p>
+                              <p className="box-content-subheader">
+                                email: {customer.email}
+                              </p>
+                            </div>
+                            <div className="box-progress-wrapper">
+                              <p className="box-progress-header">Admin?</p>{" "}
+                              {customer.isAdmin
+                                ? customer.isAdmin.toString()
+                                : "False"}
+                            </div>
+                            <div className="project-box-footer">
+                              <div
+                                className="days-left"
+                                style={{ color: "#3CBCC7" }}
+                              >
+                                BE NICE TO OUR CUSTOMER =)
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })
+                  : ""}
+              </div>
+            </div>
+          </div>
+        </div>
+
         <CustomersAdmin />
-        <hr />
-        <div>
+        {/* <div>
           Wines
           <WinesAdmin />
           {this.props.wines.map((wine) => {
@@ -70,9 +140,9 @@ class Administrator extends Component {
               </div>
             );
           })}
-        </div>
+        </div> */}
         <hr />
-        <div>
+        {/* <div>
           Beers
           <BeersAdmin />
           {this.props.beers.map((beer) => {
@@ -88,9 +158,9 @@ class Administrator extends Component {
               </div>
             );
           })}
-        </div>
+        </div> */}
         <hr />
-        <div>Orders</div>
+        {/* <div>Orders</div>
         <ul>
           {this.props.orders.map((order) => {
             return (
@@ -113,7 +183,7 @@ class Administrator extends Component {
               </li>
             );
           })}
-        </ul>
+        </ul> */}
         <hr />
       </div>
     );

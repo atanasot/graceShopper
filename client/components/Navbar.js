@@ -155,7 +155,10 @@ const Navbar = ({ lineItems, handleClick, isLoggedIn, isAdmin, username }) => {
                           <Link to="/orders">Orders</Link>
                         </li>
                         <li>
-                          <Link to="/admin">Administrator</Link>
+                          <Link to="/adminuser">Manage Users</Link>
+                        </li>
+                        <li>
+                          <Link to="/adminproduct">Manage Products</Link>
                         </li>
                         <li>
                           <a href="#" onClick={handleClick}>
