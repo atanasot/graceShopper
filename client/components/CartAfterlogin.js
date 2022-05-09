@@ -88,6 +88,35 @@ const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
           </div>
           <div className="totals">
             <div className="totals-item">
+              <div
+                id="cart-subtotal"
+                style={{
+                  float: "right",
+                  marginTop: "20px",
+                  marginBottom: "20px",
+                }}
+              >
+                <label>
+                  <input
+                    style={{
+                      width: "150px",
+                      borderRadius: "5px",
+                      height: "35px",
+                    }}
+                    name="username"
+                    className="email"
+                    type="text"
+                    placeholder="PROMO CODE"
+                  />
+                </label>
+                <button
+                  className="checkout"
+                  style={{ marginTop: "-50px", marginLeft: "10px" }}
+                >
+                  APPLY
+                </button>
+              </div>
+
               <label>Subtotal</label>
               <div className="totals-value" id="cart-subtotal">
                 {subtotal}
@@ -111,13 +140,11 @@ const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
                 {(subtotal + shipping + tax).toFixed(2) * 1}
               </div>
             </div>
-          </div>{" "}
+          </div>
           <button className="checkout">
-            {" "}
             <Link to="/checkout">Checkout</Link>
           </button>
           <button className="checkout">
-            {" "}
             <Link to="/">Continue Shopping</Link>
           </button>
         </div>

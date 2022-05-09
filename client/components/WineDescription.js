@@ -101,14 +101,27 @@ class WineDescription extends Component {
                 <div className="product__short">
                   <h4>Type:{wine.type}</h4>
                 </div>
-                <button
-                  className="product__btn"
-                  onClick={function () {
-                    addToCart();
-                  }}
-                >
-                  Add to cart
-                </button>
+                <form>
+                  Quantity:
+                  <input
+                    className="quantity_input"
+                    name="quantity"
+                    value={this.state.quantity}
+                    type="number"
+                    min="0"
+                    max="100"
+                    step="1"
+                    placeholder="Quantity"
+                  />
+                  <button
+                    className="product__btn"
+                    onClick={() => {
+                      addToCart();
+                    }}
+                  >
+                    Add to cart
+                  </button>
+                </form>
               </div>
             </div>
           </div>

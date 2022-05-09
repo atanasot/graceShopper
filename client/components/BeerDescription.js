@@ -83,14 +83,27 @@ class BeerDescription extends Component {
                   </h4>
                   <h4>ABV:{beer.ABV}</h4>
                 </div>
-                <button
-                  className="product__btn"
-                  onClick={function () {
-                    addToCart();
-                  }}
-                >
-                  Add to cart
-                </button>
+                <form>
+                  Quantity:
+                  <input
+                    className="quantity_input"
+                    name="quantity"
+                    value={this.state.quantity}
+                    type="number"
+                    min="0"
+                    max="100"
+                    step="1"
+                    placeholder="Quantity"
+                  />
+                  <button
+                    className="product__btn"
+                    onClick={() => {
+                      addToCart();
+                    }}
+                  >
+                    Add to cart
+                  </button>
+                </form>
               </div>
             </div>
           </div>
