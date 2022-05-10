@@ -22,7 +22,12 @@ export const fetchWines = () => {
     dispatch(_fetchWines(wines));
   };
 };
-
+export const searchWines = (params) => {
+  return async (dispatch) => {
+    const wines = (await axios.get("/api/wines/search", { params })).data;
+    dispatch(_fetchWines(wines));
+  };
+};
 export const adminAddWine = (_wine) => {
   return async (dispatch) => {
     const wine = (

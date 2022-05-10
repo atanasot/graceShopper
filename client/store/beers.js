@@ -34,7 +34,12 @@ export const adminAddBeer = (_beer) => {
     dispatch({ type: ADMIN_ADD_BEER, beer });
   };
 };
-
+export const searchBeers = (params) => {
+  return async (dispatch) => {
+    const beers = (await axios.get("/api/beers/search", { params })).data;
+    dispatch(_fetchBeers(beers));
+  };
+};
 /**
  * REDUCER
  */
