@@ -177,6 +177,7 @@ class ProfileUpdate extends Component {
                 name="password"
                 value={password}
                 onChange={onChange}
+                style={{ WebkitTextSecurity: "disc" }}
                 required
               />
               <span className="highlight" />
