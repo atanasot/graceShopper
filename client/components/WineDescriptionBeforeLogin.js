@@ -183,10 +183,4 @@ const mapStateToProps = (state, otherProps) => {
   };
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     addWine: (wine) => dispatch(addWine(wine)),
-//   };
-// };
-
 export default connect(mapStateToProps)(WineDescriptionBeforeLogin);
