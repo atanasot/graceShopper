@@ -2852,7 +2852,7 @@ $activeColor: #27ae60; //green
 
 .group 			  { 
   position:relative; 
-  margin-bottom:45px; 
+ 
 }
 input 				{
   font-size:18px;
@@ -2944,8 +2944,8 @@ input:focus ~ .highlight {
 
 $black: #252021;
 $light: #D8DBE2;
-$pale: #B7CEE8;
-$navy: #577399;
+$pale: #aeb5bb;
+$navy: #000000;
 $dark: #495867;
 $white: #FFFFFF;
 
@@ -2975,6 +2975,7 @@ $ease: all .3s ease;
   height: 550px;
   border: 1px solid $light;
 }
+
 
 .leftside-menu {
   position: absolute;

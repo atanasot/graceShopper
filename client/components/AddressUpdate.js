@@ -5,7 +5,7 @@ import { updateProfile } from "../store/auth";
 import { fetchCustomers, updateAddress } from "../store/customers";
 import { fetchOrders } from "../store/orders";
 
-class ProfileUpdate extends Component {
+class AddressUpdate extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,11 +14,16 @@ class ProfileUpdate extends Component {
       email: this.props.email || "",
       username: this.props.username || "",
       password: this.props.password || "", // fix pass to be *****
+      line1: this.props.address ? this.props.address.line1 : "",
+      line2: this.props.address ? this.props.address.line2 : "",
+      city: this.props.address ? this.props.address.city : "",
+      state: this.props.address ? this.props.address.state : "",
+      zip: this.props.address ? this.props.address.zip : "",
+      error: "",
     };
     this.onChange = this.onChange.bind(this);
-    this.onSave = this.onSave.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
-
   componentDidMount() {
     this.props.fetchOrders();
   }
@@ -29,22 +34,23 @@ class ProfileUpdate extends Component {
     this.setState(change);
   }
 
-  async onSave(ev) {
+  async onSubmit(ev) {
     ev.preventDefault();
-    const user = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      email: this.state.email,
-      username: this.state.username,
-      password: this.state.password,
+    const address = {
+      line1: this.state.line1,
+      line2: this.state.line2,
+      city: this.state.city,
+      state: this.state.state,
+      zip: this.state.zip,
     };
+    await this.props.updateAddress(address);
   }
 
   //   add error section
   render() {
-    const { username, error, password, firstName, lastName, email } =
-      this.state;
+    const { firstName, lastName, city, line1, line2, zip, state } = this.state;
     const { onChange } = this;
+
     return (
       <div>
         <div style={{ marginTop: "100px", marginLeft: "270px" }}>
@@ -60,7 +66,7 @@ class ProfileUpdate extends Component {
           className="H1Background"
           style={{ marginBottom: "-100px", marginTop: "-50px" }}
         >
-          Update Profile
+          Update Address
         </h1>
         <div id="dashboard-container">
           <div className="leftside-menu">
@@ -117,71 +123,68 @@ class ProfileUpdate extends Component {
               <p>Address Setting</p>
             </div>
           </div>
-
           <form
-            onSubmit={(ev) => this.onSave(ev)}
+            onSubmit={this.onSubmit}
             style={{ marginLeft: "250px", marginTop: "100px" }}
           >
-            {error}
             <div className="group">
               <input
                 type="text"
-                name="firstName"
-                value={firstName}
+                name="line1"
+                value={line1}
                 onChange={onChange}
                 required
               />
               <span className="highlight" />
               <span className="bar" />
-              <label className="label11">First Name</label>
-            </div>
-            <div className="group">
-              <input
-                type="text"
-                name="lastName"
-                value={lastName}
-                onChange={onChange}
-                required
-              />
-              <span className="highlight" />
-              <span className="bar" />
-              <label className="label11">Last Name</label>
-            </div>
-            <div className="group">
-              <input
-                type="text"
-                name="username"
-                value={username}
-                onChange={onChange}
-                required
-              />
-              <span className="highlight" />
-              <span className="bar" />
-              <label className="label11">Username</label>
+              <label className="label11">Address 1</label>
             </div>{" "}
             <div className="group">
               <input
                 type="text"
-                name="email"
-                value={email}
-                onChange={onChange}
-                required
+                name="line2"
+                value={line2}
+                onChange={this.onChange}
               />
               <span className="highlight" />
               <span className="bar" />
-              <label className="label11">Email</label>
+              <label className="label11">Address 2</label>
             </div>{" "}
             <div className="group">
               <input
                 type="text"
-                name="password"
-                value={password}
-                onChange={onChange}
+                name="city"
+                value={city}
+                onChange={this.onChange}
                 required
               />
               <span className="highlight" />
               <span className="bar" />
-              <label className="label11">Password</label>
+              <label className="label11">City</label>
+            </div>{" "}
+            <div className="group">
+              <input
+                type="text"
+                name="state"
+                value={state}
+                onChange={this.onChange}
+                required
+              />
+              <span className="highlight" />
+              <span className="bar" />
+              <label className="label11">State</label>
+            </div>{" "}
+            <div className="group">
+              <input
+                type="text"
+                name="zip"
+                value={zip}
+                onChange={this.onChange}
+                required
+              />
+              <span className="highlight" />
+              <span className="bar" />
+              <label className="label11">Zip Code</label>
             </div>
             <button className="register-btn">Save</button>
           </form>
@@ -215,4 +218,4 @@ const mapDispatch = (dispatch) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(ProfileUpdate);
+export default connect(mapState, mapDispatch)(AddressUpdate);

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { updateProfile } from "../store/auth";
 import { fetchCustomers, updateAddress } from "../store/customers";
 import { fetchOrders } from "../store/orders";
+import axios from "axios";
 
 class Profile extends Component {
   constructor(props) {
@@ -22,51 +23,23 @@ class Profile extends Component {
       state: this.props.address ? this.props.address.state : "",
       zip: this.props.address ? this.props.address.zip : "",
       error: "",
+      data: {},
     };
-    // this.onChange = this.onChange.bind(this);
-    // this.onSave = this.onSave.bind(this);
-    // this.onSubmit = this.onSubmit.bind(this);
   }
   componentDidMount() {
     this.props.fetchOrders();
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&units=imperial&appid=895284fb2d2c50a520ea537456963d9c`;
+    axios.get(url).then((response) => {
+      this.setState({
+        data: response.data,
+      });
+    });
   }
 
-  // onChange(ev) {
-  //   const change = {};
-  //   change[ev.target.name] = ev.target.value;
-  //   this.setState(change);
-  // }
-
-  // async onSave(ev) {
-  //   ev.preventDefault();
-  //   const user = {
-  //     firstName: this.state.firstName,
-  //     lastName: this.state.lastName,
-  //     email: this.state.email,
-  //     username: this.state.username,
-  //     password: this.state.password,
-  //   };
-  // }
-  // async onSubmit(ev) {
-  //   ev.preventDefault();
-  //   const address = {
-  //     line1: this.state.line1,
-  //     line2: this.state.line2,
-  //     city: this.state.city,
-  //     state: this.state.state,
-  //     zip: this.state.zip,
-  //   };
-  //   await this.props.updateAddress(address);
-  // }
-
-  // add error section
   render() {
     const {
-      createdAt,
       id,
       username,
-      error,
-      password,
       firstName,
       lastName,
       email,
@@ -75,9 +48,9 @@ class Profile extends Component {
       line2,
       zip,
       state,
+      data,
     } = this.state;
-    // const { isAdmin } = this.props;
-    // const { onChange } = this;
+
     let today = new Date();
     let time = today.toLocaleString("en-US", {
       hour: "numeric",
@@ -88,7 +61,6 @@ class Profile extends Component {
     let month = today.getMonth();
     let day = today.getUTCDate();
     let year = today.getFullYear();
-
     let months = [
       "January",
       "February",
@@ -113,82 +85,22 @@ class Profile extends Component {
         return "good afternoon";
       }
     };
-    const { orders } = this.props;
-
+    const { orders, isAdmin } = this.props;
     return (
-      // <div>
-      //   <h3>
-      //     Welcome, {firstName}{" "}
-      //     {isAdmin ? "....You have Administrator Privileges" : ""}
-      //   </h3>
-      //   <p className="p1111"> Update name below:</p>
-      //   <form onSubmit={this.onSave}>
-      //     {error}
-      //     <input name="firstName" value={firstName} onChange={onChange} />
-      //     <button>Save</button>
-      //   </form>
-      //   <form onSubmit={(ev) => this.onSave(ev)}>
-      //     {error}
-      //     <input name="lastName" value={lastName} onChange={onChange} />
-      //     <button>Save</button>
-      //   </form>
-      //   <p className="p1111"> Update Username below:</p>
-      //   <form onSubmit={(ev) => this.onSave(ev)}>
-      //     {error}
-      //     <input name="username" value={username} onChange={onChange} />
-      //     <button disabled={username === this.props.username}>Save</button>
-      //   </form>
-      //   <p className="p1111"> Update email below:</p>
-      //   <form onSubmit={(ev) => this.onSave(ev)}>
-      //     {error}
-      //     <input name="email" value={email} onChange={onChange} />
-      //     <button disabled={email === this.props.email}>Save</button>
-      //   </form>
-      //   <p className="p1111"> Update Password below:</p>
-      //   <form onSubmit={(ev) => this.onSave(ev)}>
-      //     {error}
-      //     <input name="password" value={password} onChange={onChange} />
-      //     <button>Save</button>
-      //   </form>
-      //   <p className="p1111"> Update Address below:</p>
-      //   <form onSubmit={this.onSubmit}>
-      //     <input
-      //       name="line1"
-      //       value={line1}
-      //       onChange={this.onChange}
-      //       placeholder="Address 1"
-      //     />
-      //     <input
-      //       name="line2"
-      //       value={line2}
-      //       onChange={this.onChange}
-      //       placeholder="Address 2"
-      //     />
-      //     <input
-      //       name="city"
-      //       value={city}
-      //       onChange={this.onChange}
-      //       placeholder="City"
-      //     />
-
-      //     <input
-      //       name="state"
-      //       value={state}
-      //       onChange={this.onChange}
-      //       placeholder="State"
-      //     />
-
-      //     <input
-      //       name="zip"
-      //       value={zip}
-      //       onChange={this.onChange}
-      //       placeholder="Zip"
-      //     />
-      //     <button>Save</button>
-      //   </form>
       <div>
-        {" "}
-        <h1 className="H1Background" style={{ marginBottom: "-100px" }}>
+        <div style={{ marginTop: "100px", marginLeft: "270px" }}>
+          <span
+            style={{
+              textDecoration: "underline",
+            }}
+          >
+            <Link to="/">Go Back</Link>
+          </span>
+        </div>
+        <h1
+          className="H1Background"
+          style={{ marginBottom: "-100px", marginTop: "-50px" }}
+        >
           Profile
         </h1>
         <div id="dashboard-container">
@@ -203,8 +115,7 @@ class Profile extends Component {
                 </Link>
               </div>
               <p>
-                {firstName}
-                {lastName}
+                {firstName}, {lastName}
               </p>
             </div>
             <div className="avatar">
@@ -225,13 +136,40 @@ class Profile extends Component {
                   </p>
                 </Link>
               </div>
-              <p>SETTING</p>
+              <p>Profile Setting</p>
+            </div>
+            <div className="avatar">
+              <div className="icon">
+                <Link to="/addressupdate">
+                  <p>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      fill="currentColor"
+                      className="bi bi-house-door"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                    </svg>
+                  </p>
+                </Link>
+              </div>
+              <p>Address Setting</p>
             </div>
           </div>
 
           <div className="main-grid">
             <div className="item one">
-              {" "}
+              {isAdmin ? (
+                <p className="p1111" style={{ marginBottom: "5px" }}>
+                  Welcome, Admin
+                </p>
+              ) : (
+                <p className="p1111" style={{ marginBottom: "5px" }}>
+                  Welcome
+                </p>
+              )}
               <h1 className="p1111" style={{ margin: "35px" }}>
                 {months[month]} {day}, {year}
               </h1>
@@ -242,20 +180,24 @@ class Profile extends Component {
             </div>
             <div className="item two">
               <div className="music">
-                <p className="p1111">Email</p>
+                <p className="p1111">Email:</p>
                 <p className="p1111">{email}</p>
                 <br />
-                <p className="p1111">Username</p>
+                <p className="p1111">Username:</p>
                 <p className="p1111">{username}</p>
               </div>
             </div>
             <div className="item three">
               <h2 className="h21111">
-                <i className="fas fa-cloud-sun" /> 57°
+                <i className="fas fa-cloud-sun" />{" "}
+                {data.main ? <span>{data.main.temp.toFixed()}°F</span> : null}
               </h2>
               <div className="weather">
-                <p className="p1111">cloudy skies</p>
-                <p className="city p1111">Seattle, WA</p>
+                <p className="p1111">
+                  {" "}
+                  {data.weather ? <span>{data.weather[0].main}</span> : null}
+                </p>
+                <p className="city p1111">{data.name}</p>
               </div>
             </div>
             <div className="item four">
@@ -269,15 +211,27 @@ class Profile extends Component {
             </div>
             <div className="item five">
               <div>
-                <img
-                  style={{
-                    width: 180,
-                    height: 180,
-                    marginLeft: "40px",
-                    marginTop: "40px",
-                  }}
-                  src={`https://avatars.dicebear.com/api/human/${id}.svg`}
-                />
+                {isAdmin ? (
+                  <img
+                    src="/images/stannie.png"
+                    style={{
+                      width: 180,
+                      height: 180,
+                      marginLeft: "40px",
+                      marginTop: "40px",
+                    }}
+                  />
+                ) : (
+                  <img
+                    style={{
+                      width: 180,
+                      height: 180,
+                      marginLeft: "40px",
+                      marginTop: "40px",
+                    }}
+                    src={`https://avatars.dicebear.com/api/human/${id}.svg`}
+                  />
+                )}
               </div>
               <br />
               <p className="p1111" style={{ marginLeft: "60px" }}>
@@ -286,7 +240,10 @@ class Profile extends Component {
             </div>
             <div className="item six">
               <div className="reminders">
-                <p className="p1111">Your Orders</p>
+                <p className="p1111">
+                  <Link to="/orders">Orders:</Link>
+                </p>
+                <br />
                 <p className="p1111">
                   you have {orders ? orders.length : 0} orders
                 </p>

@@ -3157,7 +3157,6 @@ button, a {
 .product,
 .totals-item {
   position: relative;
-  margin-bottom: 45px;
 }
 
 input {
@@ -3319,7 +3318,7 @@ input:focus ~ .highlight {
 .icon {
   width: 55px;
   height: 55px;
-  background: #B7CEE8;
+  background: #aeb5bb;
   border-radius: 50%;
 }
 
@@ -3343,13 +3342,13 @@ input:focus ~ .highlight {
 
 .li1111:hover {
   background: #FFFFFF;
-  color: #577399;
+  color: #000000;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .active {
-  background: #B7CEE8;
+  background: #aeb5bb;
   color: #FFFFFF;
   width: 140px;
   margin-left: -10px;
@@ -3375,7 +3374,7 @@ input:focus ~ .highlight {
 }
 
 .p1111 {
-  color: #577399;
+  color: #000000;
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -3388,7 +3387,7 @@ input:focus ~ .highlight {
 }
 
 .a1111:hover {
-  background: #B7CEE8;
+  background: #aeb5bb;
   color: #FFFFFF;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -3399,7 +3398,7 @@ input:focus ~ .highlight {
   font-family: "PT Mono", monospace;
   margin-top: -30px;
   margin-bottom: 25px;
-  color: #B7CEE8;
+  color: #aeb5bb;
   background: #FFFFFF;
   padding: 7px;
 }
@@ -3430,7 +3429,7 @@ input:focus ~ .highlight {
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
   grid-column: 1 / 2;
-  background: #B7CEE8;
+  background: #aeb5bb;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3460,7 +3459,7 @@ input:focus ~ .highlight {
 }
 
 .music {
-  color: #B7CEE8;
+  color: #aeb5bb;
   text-align: center;
   margin-top: 20px;
   margin-bottom: -10px;
@@ -3487,7 +3486,7 @@ input:focus ~ .highlight {
 }
 
 .fill {
-  background-color: #B7CEE8;
+  background-color: #aeb5bb;
   width: 40%;
   height: 0.3rem;
   border-radius: 2px;
@@ -3543,13 +3542,13 @@ input:focus ~ .highlight {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: #B7CEE8;
+  color: #aeb5bb;
   cursor: pointer;
 }
 
 .controls .play {
   margin: 15px 20px;
-  color: #90b4dc;
+  color: #929ca4;
 }
 
 .controls .option {
@@ -3646,7 +3645,7 @@ input:focus ~ .highlight {
 }
 
 #date {
-  color: #B7CEE8;
+  color: #aeb5bb;
   font-family: "PT Mono", monospace;
   font-size: 1.3em;
   font-weight: 900;
@@ -3722,7 +3721,7 @@ input:focus ~ .highlight {
 }
 
 .toggle-checkbox:checked + .toggle-switch {
-  background: #B7CEE8;
+  background: #aeb5bb;
 }
 
 .toggle-checkbox:checked + .toggle-switch:before {
@@ -3750,7 +3749,7 @@ input:focus ~ .highlight {
   grid-area: six;
   -ms-grid-column: 2;
   grid-column: 2;
-  background: #B7CEE8;
+  background: #aeb5bb;
 }
 
 .reminders {
@@ -3777,7 +3776,7 @@ input:focus ~ .highlight {
 }
 
 .reminder--btns i:hover {
-  color: #577399;
+  color: #000000;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
@@ -3811,7 +3810,7 @@ input:focus ~ .highlight {
 }
 
 .todo-checkbox:checked + .todo-switch {
-  background: #577399;
+  background: #000000;
 }
 
 .todo-checkbox:checked + .todo-switch:before {
