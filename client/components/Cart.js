@@ -1,9 +1,11 @@
 import React, { useEffect, Component } from "react";
 import { Link } from "react-router-dom";
+import { fetchLineItemsFromCartNotLoggedIn } from "../store/lineItems";
+import { connect } from "react-redux";
 
 class Cart extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       cart: JSON.parse(window.localStorage.getItem("cart")) || [],
     };
@@ -12,8 +14,9 @@ class Cart extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    
   }
-  
+
   removeItem = (index) => {
     this.state.cart.splice(index, 1);
     this.setState({
@@ -21,6 +24,7 @@ class Cart extends Component {
     });
     window.localStorage.setItem("cart", JSON.stringify(this.state.cart));
     console.log(this.state.cart);
+    this.props.updateCart()
   };
 
   render() {
@@ -195,4 +199,10 @@ class Cart extends Component {
   }
 }
 
-export default Cart;
+const mapDispatch = (dispatch) => {
+  return {
+    updateCart: () => dispatch(fetchLineItemsFromCartNotLoggedIn()),
+  }
+}
+
+export default connect(null, mapDispatch)(Cart);
