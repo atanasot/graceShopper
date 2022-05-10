@@ -3,11 +3,23 @@ const {
   models: { Beer },
 } = require("../../db/index");
 const User = require("../../db/models/User");
+const Sequelize = require('sequelize');
 const { isLoggedIn, verifyUserOrAdmin, verifyAdmin} = require("../verifyAuth");
 //get all beers
 app.get("/", async (req, res, next) => {
   try {
     res.send(await Beer.findAll());
+  } catch (ex) {
+    next(ex);
+  }
+});
+app.get("/search", async (req, res, next) => {
+  try {
+    let queryObject = { where: {} };    
+    if (req.query.type) queryObject.where.type = { [Sequelize.Op.eq]: req.query.type };    
+
+    const beers = await Beer.findAll(queryObject);
+    res.send(beers);
   } catch (ex) {
     next(ex);
   }

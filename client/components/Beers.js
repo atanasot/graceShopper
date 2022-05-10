@@ -1,12 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { searchBeers } from "../store/beers";
 
-const Beers = ({ beers, match, history }) => {
+const Beers = ({ beers, match, history, onSearchBeers }) => {
+  const [filter, setFilter] = useState("");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
+  const onFilterChange = (e) => {
+    const val = e.target.value;
+    setFilter(val);
+    onSearchBeers({ type: val });
+  };
   return (
     <div>
       <div style={{ marginLeft: "270px", marginTop: "100px" }}>
@@ -29,6 +35,19 @@ const Beers = ({ beers, match, history }) => {
       <div style={{ marginBottom: "60px" }}>
         <h1 className="H1Background">BEER</h1>
         <section class="containercontainer">
+          <p style={{ marginLeft: "-100px" }}>Filter by Style</p>
+          <div class="dropdowndropdown">
+            <select
+              name="filter"
+              class="dropdown-select"
+              value={filter}
+              onChange={onFilterChange}
+            >
+              <option value=""> All</option>
+              <option value="Ale"> Ale</option>
+              <option value="Lager">Lager</option>
+            </select>
+          </div>
           <p style={{ marginLeft: "-100px" }}>Sort by</p>
 
           <div class="dropdowndropdown">
@@ -104,4 +123,12 @@ const mapStateToProps = (state, { location, match }) => {
   };
 };
 
-export default connect(mapStateToProps)(Beers);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSearchBeers: (params) => {
+      dispatch(searchBeers(params));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Beers);

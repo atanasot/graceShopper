@@ -1,11 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { searchWines } from "../store/wines";
 
-const Wines = ({ wines, match, history }) => {
+const Wines = ({ wines, match, history, onSearchWines }) => {
+  const [filter, setFilter] = useState("");
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const onFilterChange = (e) => {
+    const val = e.target.value;
+    setFilter(val);
+    onSearchWines({ type: val });
+  };
   return (
     <div>
       <div style={{ marginLeft: "270px", marginTop: "100px" }}>
@@ -28,8 +36,22 @@ const Wines = ({ wines, match, history }) => {
       <div style={{ marginBottom: "60px" }}>
         <h1 className="H1Background">Wine</h1>
         <section class="containercontainer">
+          <p style={{ marginLeft: "-100px" }}>Filter by</p>
+          <div class="dropdowndropdown">
+            <select
+              name="filter"
+              class="dropdown-select"
+              value={filter}
+              onChange={onFilterChange}
+            >
+              <option value="">All</option>
+              <option value="Red">Red</option>
+              <option value="White">White</option>
+              <option value="Rose">Rose</option>
+              <option value="Champagne">Champagne</option>
+            </select>
+          </div>
           <p style={{ marginLeft: "-100px" }}>Sort by</p>
-
           <div class="dropdowndropdown">
             <select
               name="one"
@@ -111,4 +133,12 @@ const mapStateToProps = (state, { location, match }) => {
   };
 };
 
-export default connect(mapStateToProps)(Wines);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSearchWines: (params) => {
+      dispatch(searchWines(params));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Wines);
