@@ -5,6 +5,7 @@ import { fetchOrders } from "./orders";
  */
 
 const LOAD_CART = "LOAD_CART";
+const LOAD_CART_NOT_SIGNED_IN = "LOAD_CART_NOT_SIGNED_IN";
 const UPDATE_LINEITEM = "UPDATE_LINEITEM";
 const LOAD_ORDER_ITEMS = "LOAD_ORDER_ITEMS";
 const DELETE_ITEM = "DELETE_ITEM";
@@ -15,6 +16,10 @@ const EMPTY_CART = "EMPTY_CART";
  */
 
 const _fetchLineItemsFromCart = (lineItems) => ({ type: LOAD_CART, lineItems });
+const _fetchLineItemsFromCartNotSignedIn = (lineItems) => ({
+  type: LOAD_CART_NOT_SIGNED_IN,
+  lineItems,
+});
 
 const _fetchLineItemsByOrder = (lineItems) => ({
   type: LOAD_ORDER_ITEMS,
@@ -46,6 +51,14 @@ export const fetchLineItemsFromCart = () => {
     ).data;
     dispatch(_fetchLineItemsFromCart(lineItems));
     await dispatch(fetchOrders());
+  };
+};
+
+// use this thunk to load products from cart -- not logged in user
+export const fetchLineItemsFromCartNotLoggedIn = () => {
+  return async (dispatch) => {
+    const lineItems = window.localStorage.getItem("cart");
+    dispatch(_fetchLineItemsFromCartNotSignedIn(lineItems));
   };
 };
 
@@ -119,6 +132,8 @@ export const updateItemQty = (lineItemId, orderId, quantity) => {
 export default function (state = [], action) {
   switch (action.type) {
     case LOAD_CART:
+      return action.lineItems;
+    case LOAD_CART_NOT_SIGNED_IN:
       return action.lineItems;
     case LOAD_ORDER_ITEMS:
       return action.lineItems;

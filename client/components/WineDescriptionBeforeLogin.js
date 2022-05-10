@@ -58,7 +58,6 @@ class WineDescriptionBeforeLogin extends Component {
 
     window.localStorage.setItem("cart", JSON.stringify(cart));
     let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
-    console.log(loadedStorage);
   }
 
   // removeFromLocalStorage(quant) {

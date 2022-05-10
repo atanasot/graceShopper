@@ -8,6 +8,7 @@ import beers from "./beers";
 import lineItems from "./lineItems";
 import orders from "./orders";
 import customers from "./customers";
+import cartNumber from "./cartNumber";
 
 const reducer = combineReducers({
   auth,
@@ -16,6 +17,7 @@ const reducer = combineReducers({
   lineItems,
   orders,
   customers,
+  cartNumber
 });
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
@@ -29,3 +31,4 @@ export * from "./wines";
 export * from "./lineItems";
 export * from "./orders";
 export * from "./customers";
+export * from "./cartNumber"
