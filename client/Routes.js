@@ -25,6 +25,7 @@ import AboutBeer from "./components/AboutBeer";
 import AboutWine from "./components/AboutWine";
 import CheckoutAfterLogin from "./components/CheckoutAfterLogin";
 import ProductAdmin from "./components/ProductAdmin";
+import ProfileUpdate from "./components/ProfileUpdate";
 /**
  * COMPONENT
  */
@@ -70,6 +71,7 @@ class Routes extends Component {
               <Route path="/aboutbeer" component={AboutBeer} />
               <Route path="/adminuser" component={Administrator} />
               <Route path="/adminproduct" component={ProductAdmin} />
+              <Route path="/profileupdate" exact component={ProfileUpdate} />
             </Switch>
           ) : (
             <Switch>
@@ -87,6 +89,7 @@ class Routes extends Component {
               <Route path="/contact" component={Contact} />
               <Route path="/aboutwine" component={AboutWine} />
               <Route path="/aboutbeer" component={AboutBeer} />
+              <Route path="/profileupdate" exact component={ProfileUpdate} />
             </Switch>
           )
         ) : (

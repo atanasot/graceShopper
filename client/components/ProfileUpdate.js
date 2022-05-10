@@ -5,7 +5,7 @@ import { updateProfile } from "../store/auth";
 import { fetchCustomers, updateAddress } from "../store/customers";
 import { fetchOrders } from "../store/orders";
 
-class Profile extends Component {
+class ProfileUpdate extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,43 +23,43 @@ class Profile extends Component {
       zip: this.props.address ? this.props.address.zip : "",
       error: "",
     };
-    // this.onChange = this.onChange.bind(this);
-    // this.onSave = this.onSave.bind(this);
-    // this.onSubmit = this.onSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onSave = this.onSave.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
   componentDidMount() {
     this.props.fetchOrders();
   }
 
-  // onChange(ev) {
-  //   const change = {};
-  //   change[ev.target.name] = ev.target.value;
-  //   this.setState(change);
-  // }
+  onChange(ev) {
+    const change = {};
+    change[ev.target.name] = ev.target.value;
+    this.setState(change);
+  }
 
-  // async onSave(ev) {
-  //   ev.preventDefault();
-  //   const user = {
-  //     firstName: this.state.firstName,
-  //     lastName: this.state.lastName,
-  //     email: this.state.email,
-  //     username: this.state.username,
-  //     password: this.state.password,
-  //   };
-  // }
-  // async onSubmit(ev) {
-  //   ev.preventDefault();
-  //   const address = {
-  //     line1: this.state.line1,
-  //     line2: this.state.line2,
-  //     city: this.state.city,
-  //     state: this.state.state,
-  //     zip: this.state.zip,
-  //   };
-  //   await this.props.updateAddress(address);
-  // }
+  async onSave(ev) {
+    ev.preventDefault();
+    const user = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      username: this.state.username,
+      password: this.state.password,
+    };
+  }
+  async onSubmit(ev) {
+    ev.preventDefault();
+    const address = {
+      line1: this.state.line1,
+      line2: this.state.line2,
+      city: this.state.city,
+      state: this.state.state,
+      zip: this.state.zip,
+    };
+    await this.props.updateAddress(address);
+  }
 
-  // add error section
+  //   add error section
   render() {
     const {
       createdAt,
@@ -76,44 +76,8 @@ class Profile extends Component {
       zip,
       state,
     } = this.state;
-    // const { isAdmin } = this.props;
-    // const { onChange } = this;
-    let today = new Date();
-    let time = today.toLocaleString("en-US", {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    });
-    let hours = today.getHours();
-    let month = today.getMonth();
-    let day = today.getUTCDate();
-    let year = today.getFullYear();
-
-    let months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    const displayGreeting = () => {
-      if (hours < 11) {
-        return "good morning";
-      }
-      if (hours > 17) {
-        return "good evening";
-      } else {
-        return "good afternoon";
-      }
-    };
-    const { orders } = this.props;
+    const { isAdmin } = this.props;
+    const { onChange } = this;
 
     return (
       // <div>
@@ -189,7 +153,7 @@ class Profile extends Component {
       <div>
         {" "}
         <h1 className="H1Background" style={{ marginBottom: "-100px" }}>
-          Profile
+          Update Profile
         </h1>
         <div id="dashboard-container">
           <div className="leftside-menu">
@@ -228,73 +192,38 @@ class Profile extends Component {
               <p>SETTING</p>
             </div>
           </div>
-
-          <div className="main-grid">
-            <div className="item one">
-              {" "}
-              <h1 className="p1111" style={{ margin: "35px" }}>
-                {months[month]} {day}, {year}
-              </h1>
-              <p className="p1111">
-                {displayGreeting()}, {firstName}
-              </p>
-              <h1 className="p1111">{time}</h1>
+          <form
+            onSubmit={(ev) => this.onSave(ev)}
+            style={{ marginLeft: "170px" }}
+          >
+            {error}
+            <div className="group">
+              <input
+                type="text"
+                name="firstName"
+                value={firstName}
+                onChange={onChange}
+                required
+              />
+              <span className="highlight" />
+              <span className="bar" />
+              <label className="label11">First Name</label>
             </div>
-            <div className="item two">
-              <div className="music">
-                <p className="p1111">Email</p>
-                <p className="p1111">{email}</p>
-                <br />
-                <p className="p1111">Username</p>
-                <p className="p1111">{username}</p>
-              </div>
+            <div className="group">
+              <input
+                type="text"
+                name="lastName"
+                value={lastName}
+                onChange={onChange}
+                required
+              />
+              <span className="highlight" />
+              <span className="bar" />
+              <label className="label11">Last Name</label>
             </div>
-            <div className="item three">
-              <h2 className="h21111">
-                <i className="fas fa-cloud-sun" /> 57°
-              </h2>
-              <div className="weather">
-                <p className="p1111">cloudy skies</p>
-                <p className="city p1111">Seattle, WA</p>
-              </div>
-            </div>
-            <div className="item four">
-              <h1 id="date" />
-              <p className="p1111">
-                <p className=".a1111" style={{ marginTop: "-50px" }}>
-                  <p className=".a1111">Address:</p>
-                  {line1} {line2}, {city}, {state}, {zip}
-                </p>
-              </p>
-            </div>
-            <div className="item five">
-              <div>
-                <img
-                  style={{
-                    width: 180,
-                    height: 180,
-                    marginLeft: "40px",
-                    marginTop: "40px",
-                  }}
-                  src={`https://avatars.dicebear.com/api/human/${id}.svg`}
-                />
-              </div>
-              <br />
-              <p className="p1111" style={{ marginLeft: "60px" }}>
-                Profile picture
-              </p>
-            </div>
-            <div className="item six">
-              <div className="reminders">
-                <p className="p1111">Your Orders</p>
-                <p className="p1111">
-                  you have {orders ? orders.length : 0} orders
-                </p>
-              </div>
-            </div>
-          </div>
+            <button>Save</button>
+          </form>
         </div>
-        //{" "}
       </div>
     );
   }
@@ -324,4 +253,4 @@ const mapDispatch = (dispatch) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(Profile);
+export default connect(mapState, mapDispatch)(ProfileUpdate);
