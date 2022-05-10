@@ -26,30 +26,28 @@ const Beers = ({ beers, match, history }) => {
           <Link to="/beer">Beers</Link>
         </span>
       </div>
+      <div style={{ marginBottom: "60px" }}>
+        <h1 className="H1Background">BEER</h1>
+        <section class="containercontainer">
+          <p style={{ marginLeft: "-100px" }}>Sort by</p>
+
+          <div class="dropdowndropdown">
+            <select
+              name="one"
+              class="dropdown-select"
+              value={match.params.sort}
+              onChange={(ev) => history.push(`/beer?sort=${ev.target.value}`)}
+            >
+              <option value="name,asc"> A-Z</option>
+              <option value="name,desc">Z-A</option>
+              <option value="price,asc">Price low to high</option>
+              <option value="price,desc">Price high to low</option>
+            </select>
+          </div>
+        </section>
+      </div>
       <section className="author-archive">
         <div className="container">
-          <div style={{ marginBottom: "70px" }}>
-            <h1>BEER</h1>
-
-            <section class="containercontainer">
-              <div class="dropdowndropdown">
-                <select
-                  name="one"
-                  class="dropdown-select"
-                  value={match.params.sort}
-                  onChange={(ev) =>
-                    history.push(`/beer?sort=${ev.target.value}`)
-                  }
-                >
-                  <option value="">Sort By</option>
-                  <option value="name,asc"> Name A-Z</option>
-                  <option value="name,desc">Name Z-A</option>
-                  <option value="price,asc">Price Low to High</option>
-                  <option value="price,desc">PRice High to Low</option>
-                </select>
-              </div>
-            </section>
-          </div>
           <ol className="posts">
             {beers.map((beer) => (
               <div key={beer.id}>

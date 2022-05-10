@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { authenticate } from "../store";
 import { Link } from "react-router-dom";
@@ -8,7 +8,9 @@ import { Link } from "react-router-dom";
  */
 const AuthForm = (props) => {
   const { name, displayName, handleSubmit, error } = props;
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="container1">
       <div className="wrapper1">

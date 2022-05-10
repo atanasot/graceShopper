@@ -51,92 +51,151 @@ class CustomersAdmin extends Component {
   render() {
     return (
       <div>
+        ADD A CUSTOMER
         <form onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            name="firstName"
-            value={this.state.firstName}
-            onChange={this.onChange}
-            placeholder="First Name"
-          />
-          <input
-            type="text"
-            name="lastName"
-            value={this.state.lastName}
-            onChange={this.onChange}
-            placeholder="Last Name"
-          />
-          <input
-            type="text"
-            name="email"
-            value={this.state.email}
-            onChange={this.onChange}
-            placeholder="Email Address"
-          />
-          <input
-            type="text"
-            name="username"
-            value={this.state.userName}
-            onChange={this.onChange}
-            placeholder="Username"
-          />
-          <input
-            type="text"
-            name="password"
-            value={this.state.password}
-            onChange={this.onChange}
-            placeholder="Password"
-          />
-          <input
-            type="checkbox"
-            name="isAdmin"
-            value={"TRUE"}
-            onChange={this.onChange}
-          />
-          true
-          <input
-            type="checkbox"
-            name="isAdmin"
-            value={"FALSE"}
-            onChange={this.onChange}
-          />
-          false
-          <input
-            type="text"
-            name="line1"
-            value={this.state.line1}
-            onChange={this.onChange}
-            placeholder="Address Line 1"
-          />
-          <input
-            type="text"
-            name="line2"
-            value={this.state.line2}
-            onChange={this.onChange}
-            placeholder="Address Line 2"
-          />
-          <input
-            type="text"
-            name="city"
-            value={this.state.city}
-            onChange={this.onChange}
-            placeholder="City"
-          />
-          <input
-            type="text"
-            name="state"
-            value={this.state.state}
-            onChange={this.onChange}
-            placeholder="State"
-          />
-          <input
-            type="text"
-            name="zip"
-            value={this.state.zip}
-            onChange={this.onChange}
-            placeholder="Zip"
-          />
-          <button>Add Customer</button>
+          <div className="group">
+            <input
+              type="text"
+              name="firstName"
+              value={this.state.firstName}
+              onChange={this.onChange}
+              required
+            />
+            <span className="highlight" />
+            <span className="bar" />
+            <label className="label11">First Name</label>
+          </div>
+          <div className="group">
+            <input
+              type="text"
+              name="lastName"
+              value={this.state.lastName}
+              onChange={this.onChange}
+              required
+            />
+            <span className="highlight" />
+            <span className="bar" />
+            <label className="label11">Last Name</label>
+          </div>
+          <div className="group">
+            <input
+              type="text"
+              name="email"
+              value={this.state.email}
+              onChange={this.onChange}
+              required
+            />
+            <span className="highlight" />
+            <span className="bar" />
+            <label className="label11">email</label>
+          </div>
+          <div className="group">
+            <input
+              type="text"
+              name="username"
+              value={this.state.userName}
+              onChange={this.onChange}
+              required
+            />
+            <span className="highlight" />
+            <span className="bar" />
+            <label className="label11">Username</label>
+          </div>
+          <div className="group">
+            <input
+              type="text"
+              name="password"
+              value={this.state.password}
+              onChange={this.onChange}
+              required
+            />
+            <span className="highlight" />
+            <span className="bar" />
+            <label className="label11">password</label>
+          </div>
+          <div className="group">
+            <input
+              type="text"
+              name="line1"
+              value={this.state.line1}
+              onChange={this.onChange}
+              required
+            />
+            <span className="highlight" />
+            <span className="bar" />
+            <label className="label11">Address</label>
+          </div>
+          <div className="group">
+            <input
+              type="text"
+              name="line2"
+              value={this.state.line2}
+              onChange={this.onChange}
+              required
+            />
+            <span className="highlight" />
+            <span className="bar" />
+            <label className="label11">Address Line 2</label>
+          </div>
+          <div className="group">
+            <input
+              type="text"
+              name="city"
+              value={this.state.city}
+              onChange={this.onChange}
+              required
+            />
+            <span className="highlight" />
+            <span className="bar" />
+            <label className="label11">City</label>
+          </div>
+          <div className="group">
+            <input
+              type="text"
+              name="state"
+              value={this.state.state}
+              onChange={this.onChange}
+              required
+            />
+            <span className="highlight" />
+            <span className="bar" />
+            <label className="label11">State</label>
+          </div>
+          <div className="group">
+            <input
+              type="text"
+              name="zip"
+              value={this.state.zip}
+              onChange={this.onChange}
+              required
+            />
+            <span className="highlight" />
+            <span className="bar" />
+            <label className="label11">Zip code</label>
+          </div>
+
+          <div>
+            Admin?
+            <p>
+              <input
+                type="checkbox"
+                name="isAdmin"
+                style={{ display: "inline", width: "50px" }}
+                value={"TRUE"}
+                onChange={this.onChange}
+              />
+              true
+            </p>
+            <input
+              type="checkbox"
+              name="isAdmin"
+              style={{ display: "inline", width: "50px" }}
+              value={"FALSE"}
+              onChange={this.onChange}
+            />
+            false
+          </div>
+          <button className="register-btn">Add Customer</button>
         </form>
       </div>
     );
