@@ -10,11 +10,11 @@ const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
   });
   const shipping = 5.99;
   const subtotal =
-    lineItems
-      .reduce((accume, current) => accume + current.price * current.quantity, 0)
-      .toFixed(2) * 1;
+    lineItems ?
+      lineItems.reduce((accume, current) => accume + current.price * current.quantity, 0) 
+      .toFixed(2) * 1 : null
   const tax = (subtotal * 0.011).toFixed(2) * 1;
-  return lineItems.length ? (
+  return lineItems ? (
     <div>
       <div style={{ marginBottom: "100px", marginRight: "30px" }}>
         <h1 style={{ marginBottom: "100px", marginTop: "100px" }}>
