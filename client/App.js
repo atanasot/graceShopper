@@ -9,6 +9,7 @@ import {
   fetchWines,
   fetchLineItemsFromCart,
   fetchCustomers,
+  fetchLineItemsFromCartNotLoggedIn,
 } from "./store";
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
     this.props.fetchWines();
     this.props.fetchCustomers();
     this.props.fetchLineItemsFromCart();
+    this.props.updateCart();
   }
 
   render() {
@@ -36,6 +38,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchWines: () => dispatch(fetchWines()),
     fetchCustomers: () => dispatch(fetchCustomers()),
     fetchLineItemsFromCart: () => dispatch(fetchLineItemsFromCart()),
+    updateCart: () => dispatch(fetchLineItemsFromCartNotLoggedIn()),
   };
 };
 

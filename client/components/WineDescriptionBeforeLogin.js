@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import WineProductRelated from "./wineProductRelated";
+import { fetchLineItemsFromCartNotLoggedIn } from "../store/lineItems";
 
 class WineDescriptionBeforeLogin extends Component {
   constructor(props) {
@@ -58,7 +59,6 @@ class WineDescriptionBeforeLogin extends Component {
 
     window.localStorage.setItem("cart", JSON.stringify(cart));
     let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
-    console.log(loadedStorage);
   }
 
   // removeFromLocalStorage(quant) {
@@ -86,6 +86,7 @@ class WineDescriptionBeforeLogin extends Component {
     ev.preventDefault();
     const { cart } = this.state;
     window.localStorage.setItem("cart", JSON.stringify(cart));
+    this.props.updateCart();
   }
 
   render() {
@@ -183,4 +184,13 @@ const mapStateToProps = (state, otherProps) => {
   };
 };
 
-export default connect(mapStateToProps)(WineDescriptionBeforeLogin);
+const mapDispatch = (dispatch) => {
+  return {
+    updateCart: () => dispatch(fetchLineItemsFromCartNotLoggedIn()),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatch
+)(WineDescriptionBeforeLogin);

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import BeerProductRelated from "./BeerProductRelated";
+import { fetchLineItemsFromCartNotLoggedIn } from "../store/lineItems";
 
 class BeerDescriptionBeforeLogin extends Component {
   constructor(props) {
@@ -56,8 +57,7 @@ class BeerDescriptionBeforeLogin extends Component {
     this.setState({ cart });
 
     window.localStorage.setItem("cart", JSON.stringify(cart));
-    let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
-    console.log(loadedStorage);
+    this.props.updateCart();
   }
 
   onChange(ev) {
@@ -165,4 +165,13 @@ const mapStateToProps = (state, otherProps) => {
   };
 };
 
-export default connect(mapStateToProps)(BeerDescriptionBeforeLogin);
+const mapDispatch = (dispatch) => {
+  return {
+    updateCart: () => dispatch(fetchLineItemsFromCartNotLoggedIn()),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatch
+)(BeerDescriptionBeforeLogin);
