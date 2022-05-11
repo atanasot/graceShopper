@@ -3,7 +3,7 @@ const { verify } = require("jsonwebtoken");
 const {
   models: { Wine, User },
 } = require("../../db/index");
-const Sequelize = require("sequelize")
+const Sequelize = require("sequelize");
 const { isLoggedIn, verifyUserOrAdmin, verifyAdmin } = require("../verifyAuth");
 
 //get all wine
@@ -16,9 +16,10 @@ app.get("/", async (req, res, next) => {
 });
 app.get("/search", async (req, res, next) => {
   try {
-    let queryObject = { where: {} };    
-    if (req.query.type) queryObject.where.type = { [Sequelize.Op.eq]: req.query.type };    
-    //if (req.query.year) queryObject.where.year = { [Sequelize.Op.gt]: 10 };    
+    let queryObject = { where: {} };
+    if (req.query.type)
+      queryObject.where.type = { [Sequelize.Op.eq]: req.query.type };
+    //if (req.query.year) queryObject.where.year = { [Sequelize.Op.gt]: 10 };
 
     const wines = await Wine.findAll(queryObject);
     res.send(wines);
