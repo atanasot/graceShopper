@@ -241,12 +241,11 @@ class Profile extends Component {
             <div className="item six">
               <div className="reminders">
                 <p className="p1111">
-                  <Link to="/orders">Orders:</Link>
+                  <Link to="/orders">
+                    <h1 className="profileh1">Orders History</h1>
+                  </Link>
                 </p>
                 <br />
-                <p className="p1111">
-                  you have {orders ? orders.length : 0} orders
-                </p>
               </div>
             </div>
           </div>

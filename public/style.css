@@ -7,6 +7,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,400|PT+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Koulen&family=Poiret+One&display=swap");
 body {
   font-family: sans-serif;
   margin-top: 55px;
@@ -968,7 +969,7 @@ img {
   --card-2-secondary-color: rgb(7, 46, 13);
 }
 
-.container input {
+.container .input1111 {
   display: none;
 }
 
@@ -1094,7 +1095,6 @@ img {
   /* background-color: yellow; */
   width: 1em;
   height: 1em;
-  position: relative;
   z-index: 3;
   cursor: pointer;
 }
@@ -3465,26 +3465,6 @@ input:focus ~ .highlight {
   margin-bottom: -10px;
 }
 
-.info {
-  height: 5px;
-  width: 100%;
-  margin-bottom: -40px;
-  background: rgba(255, 255, 255, 0.85);
-  -webkit-transform: translateY(35px);
-          transform: translateY(35px);
-  -webkit-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
-}
-
-.progress-bar {
-  height: 5px;
-  width: 70%;
-  margin: 6% auto;
-  background: #e7e9ed;
-  border-radius: 10px;
-  font-family: "Raleway", sans-serif;
-}
-
 .fill {
   background-color: #aeb5bb;
   width: 40%;
@@ -3837,5 +3817,624 @@ input:focus ~ .highlight {
   position: relative;
   color: #FFFFFF;
   text-transform: none;
+}
+
+.checkout111 {
+  color: #3a3a3a;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.checkout111 .checkout-container {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.checkout111 .checkout-container a {
+  text-decoration: none;
+}
+
+.checkout111 .checkout-container button {
+  min-width: 150px;
+  padding: 8px 0;
+  border: 0;
+  border-radius: 7px;
+}
+
+.checkout111 .checkout-container button i {
+  margin-right: 7px;
+}
+
+.checkout111 .checkout-container .black-button {
+  background: #000;
+  color: #ffffff;
+}
+
+.checkout111 .checkout-container .bold-text {
+  font-weight: 700;
+}
+
+.checkout111 .checkout-container .p-small {
+  font-size: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .checkout111 .checkout-container .p-small {
+    font-size: 13px;
+  }
+}
+
+.checkout111 .checkout-container .blue-bg {
+  background: #3b5998;
+  color: #fff;
+}
+
+.checkout111 .checkout-container .red-bg {
+  background: #d32f2f;
+  color: #fff;
+}
+
+.checkout111 .checkout-container .red-text {
+  color: #fefefe;
+}
+
+.checkout111 .checkout-order {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.checkout111 .checkout-title-icon {
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+.checkout111 .checkout-title-notice {
+  padding: 15px;
+  background: #f1f1f1;
+}
+
+.checkout111 .checkout-title-form {
+  margin-top: 15px;
+  background: #ffffff;
+  border: 1px solid #f1f1f1;
+}
+
+.checkout111 .checkout-form-inner {
+  padding: 20px;
+}
+
+.checkout111 .checkout-form-description {
+  margin-bottom: 15px;
+}
+
+.checkout111 .checkout-form-detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.checkout111 .checkout-form-col {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .checkout111 .checkout-form-col {
+    width: calc(50% - 10px);
+    margin-bottom: 0;
+  }
+}
+
+.checkout111 .checkout-form-col label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.checkout111 .checkout-form-col .input1111 {
+  width: 100%;
+  padding: 10px 0 10px 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #f1f1f1;
+}
+
+.checkout111 .checkout-social {
+  margin-bottom: 15px;
+}
+
+.checkout111 .checkout-social-icon {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  position: relative;
+}
+
+.checkout111 .checkout-social-icon.red-bg {
+  margin-left: 5px;
+}
+
+.checkout111 .checkout-social-icon i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 18px;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+}
+
+.checkout111 .checkout-social-title {
+  margin-bottom: 5px;
+  display: block;
+}
+
+.checkout111 .checkout-form-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media screen and (min-width: 768px) {
+  .checkout111 .checkout-form-footer {
+    -webkit-box-pack: normal;
+        -ms-flex-pack: normal;
+            justify-content: normal;
+  }
+}
+
+.checkout111 .checkout-button {
+  display: block;
+  width: 100%;
+}
+
+.checkout111 .checkout-button.login-button {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+
+@media screen and (min-width: 768px) {
+  .checkout111 .checkout-button.login-button {
+    width: auto;
+    display: inline-block;
+  }
+}
+
+.checkout111 .checkout-button button {
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.checkout111 .checkout-link {
+  margin-top: 8px;
+  margin-left: 10px;
+  line-height: 2;
+  text-decoration: none;
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+}
+
+@media screen and (min-width: 768px) {
+  .checkout111 .checkout-link {
+    margin-top: 0;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+}
+
+.checkout111 .checkout-checkbox {
+  margin-top: 10px;
+  display: inline-block;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+
+@media screen and (min-width: 768px) {
+  .checkout111 .checkout-checkbox {
+    width: 100%;
+    display: block;
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;
+  }
+}
+
+.checkout111 .checkout-col-inner {
+  padding: 15px 0;
+  border: 1px solid #dfdada;
+  border-radius: 4px;
+}
+
+.checkout111 .checkout-col-inner.bill-credit-inner {
+  border-bottom: 0;
+}
+
+.checkout111 .checkout-col.order-col {
+  width: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+  .checkout111 .checkout-col.order-col {
+    width: calc(30% - 5px);
+  }
+}
+
+.checkout111 .checkout-col.bill-col {
+  width: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+  .checkout111 .checkout-col.bill-col {
+    width: calc(35% - 5px);
+  }
+}
+
+.checkout111 .checkout-col.payment-col {
+  width: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+  .checkout111 .checkout-col.payment-col {
+    width: calc(30% - 5px);
+  }
+}
+
+.checkout111 .checkout-col-header {
+  padding: 0 15px;
+  margin-bottom: 10px;
+}
+
+.checkout111 .checkout-col-header .checkout-button {
+  width: 100%;
+}
+
+.checkout111 .checkout-order-info {
+  padding: 0 15px;
+}
+
+.checkout111 .order-row {
+  margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.checkout111 .order-row:last-child {
+  margin-bottom: 0;
+}
+
+.checkout111 .order-row span {
+  display: inline-block;
+}
+
+.checkout111 .order-row .order-icon {
+  font-size: 20px;
+}
+
+.checkout111 .order-row .order-img {
+  width: 50%;
+  height: auto;
+}
+
+.checkout111 .order-row .order-product-name {
+  width: 75%;
+}
+
+.checkout111 .order-row .order-product-price {
+  width: 25%;
+}
+
+.checkout111 .text-left {
+  text-align: left;
+}
+
+.checkout111 .text-right {
+  text-align: right;
+}
+
+.checkout111 .order-payment-col {
+  width: 50%;
+}
+
+.checkout111 .order-card {
+  padding: 20px 0;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.checkout111 .order-card-plan, .checkout111 .checkout-order-discount {
+  padding: 15px 10px;
+}
+
+.checkout111 .gray-bg {
+  background: #f1f1f1;
+}
+
+.checkout111 .order-plan-row {
+  margin-bottom: 3px;
+}
+
+.checkout111 .order-plan-row:last-child {
+  margin-bottom: 0;
+}
+
+.checkout111 .order-plan-detail {
+  margin-left: 3px;
+}
+
+.checkout111 .order-card-bill {
+  padding: 15px 0;
+}
+
+.checkout111 .order-bill-row span {
+  display: block;
+  margin-bottom: 3px;
+}
+
+.checkout111 .order-discount-form {
+  margin-bottom: 10px;
+}
+
+.checkout111 .checkout-order-note {
+  padding: 15px;
+  border: 1px solid #f1f1f1;
+}
+
+.checkout111 .input1111 .checkout-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #dfdada;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.checkout111 .input1111 .checkout-input::-webkit-input-placeholder {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.checkout111 .input1111 .checkout-input:-ms-input-placeholder {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.checkout111 .input1111 .checkout-input::-ms-input-placeholder {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.checkout111 .input1111 .checkout-input::placeholder {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.checkout111 .input1111 .checkout-input:last-child {
+  margin-bottom: 0;
+}
+
+.checkout111 .order-note-title {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.checkout111 .order-textarera {
+  width: 100%;
+  padding: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  border: 1px solid #dfdada;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.checkout111 .order-textarera::-webkit-input-placeholder {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.checkout111 .order-textarera:-ms-input-placeholder {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.checkout111 .order-textarera::-ms-input-placeholder {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.checkout111 .order-textarera::placeholder {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.checkout111 .checkout-select {
+  width: 150px;
+  padding: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  border: 1px solid #dfdada;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.checkout111 .checkout-bill-form {
+  padding: 0 10px;
+}
+
+.checkout111 .bill-small-col {
+  display: inline-block;
+  width: calc(50% - 5px);
+}
+
+.checkout111 .bill-full-col {
+  display: block;
+  width: 100%;
+}
+
+.checkout111 .bill-col-inner {
+  padding: 0 10px;
+}
+
+.checkout111 .checkout-bill-credit {
+  padding: 20px 0;
+  width: calc(100% - 20px);
+  margin: 0 auto;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #dfdada;
+}
+
+.checkout111 .bill-credit-title {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.checkout111 .checkout-col-bottom {
+  margin-bottom: 20px;
+}
+
+.checkout111 .checkout-col-headline {
+  position: relative;
+}
+
+.checkout111 .checkout-col-headline i {
+  position: absolute;
+  font-size: 24px;
+  right: 5px;
+}
+
+@media screen and (min-width: 1024px) {
+  .checkout111 .checkout-col-headline i {
+    display: none;
+  }
+}
+
+.columns {
+  text-align: center;
+}
+
+.column {
+  -webkit-box-shadow: inset 0 0 0 2px #202c50;
+          box-shadow: inset 0 0 0 2px #202c50;
+  border-radius: 8px;
+  display: inline-block;
+  padding: 50px;
+  width: 60%;
+  color: #202c50;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.4em;
+}
+
+.divider {
+  width: 40%;
+  height: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #202c50;
+  border: 0 none;
+  margin-top: 14px;
+  margin-bottom: 40px;
+}
+
+.success-extras p {
+  color: #202c50;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 2em;
+  font-weight: 300;
+  padding: 0 0 20px 0;
+  line-height: 1.2em;
+}
+
+p.success-lrg {
+  font-size: 2.4em;
+}
+
+.fa-check-circle {
+  color: #202c50;
+  font-size: 6em;
+  margin: 0 0 30px 0;
+}
+
+.action.primary {
+  background: #202c50;
+  border: none;
+  color: #fff;
+  display: inline-block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 1.4rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  vertical-align: middle;
+  padding: 20px 20px;
+  margin: 20px 0 0 0;
+  text-decoration: none;
+}
+
+.action.primary:hover {
+  background: #2e3f73;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 80%;
+  }
+}
+
+.profileh1 {
+  font-family: 'Koulen', cursive;
+  margin: 20px;
+  color: white;
+}
+
+.creditCardImg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 /*# sourceMappingURL=style.css.map */
