@@ -1,20 +1,30 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
-const CartNumber = (props) => {
-    const updatedCartItems = JSON.parse(window.localStorage.getItem("cart"))
-      ? (JSON.parse(window.localStorage.getItem("cart"))).reduce((acc, item) => {
-          acc += item.quantity;
-          return acc;
-        }, 0)
-      : 0;
-      console.log(updatedCartItems)
-  return (
-    <div>{updatedCartItems}</div>
-  );
+class CartNumber extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const { lineItems } = this.props;
+    let count = 0;
+    if (lineItems) {
+      count = lineItems
+        ? lineItems.reduce((acc, item) => {
+            acc += item.quantity;
+            return acc;
+          }, 0)
+        : 0;
+    }
+    return <div>{count}</div>;
+  }
+}
+
+const mapState = (state) => {
+  return {
+    lineItems: state.lineItems,
+  };
 };
 
-
-
-export default connect(state => state)(CartNumber);
+export default connect(mapState)(CartNumber);

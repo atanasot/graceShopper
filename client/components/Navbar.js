@@ -2,60 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../store";
-import CartNumber from "./CartNumber"
+import CartNumber from "./CartNumber";
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loadedStorage: JSON.parse(window.localStorage.getItem("cart")) || [],
-      //cartItems: 0
-    };
-    console.log(this.state)
-    this.getCartItemsNum = this.getCartItemsNum.bind(this)
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log('componentDidUpdate')
-    //let cart = JSON.parse(window.localStorage.getItem("cart")
-    if (prevState.loadedStorage !== JSON.parse(window.localStorage.getItem("cart"))) {
-      this.setState({
-        //cartItems: this.state.cartItems,
-        loadedStorage: this.state.JSON.parse(window.localStorage.getItem("cart"))
-      });
-    }
-  }
-
-  // updateCart() {
-  //   this.setState({
-  //     loadedStorage: JSON.parse(window.localStorage.getItem("cart"))
-  //   })
-  // }
-
-  getCartItemsNum () {
-    //let cart = JSON.parse(window.localStorage.getItem("cart"))
-    // const updatedCartItems = JSON.parse(window.localStorage.getItem("cart"))
-    //   ? (JSON.parse(window.localStorage.getItem("cart"))).reduce((acc, item) => {
-    //       acc += item.quantity;
-    //       return acc;
-    //     }, 0)
-    //   : 0;
-    // this.setState({
-    //   cartItems: updatedCartItems
-    // })
-    console.log(JSON.parse(window.localStorage.getItem("cart")))
   }
 
   render() {
-    console.log("Rendering navbar");
-    //console.log(this.state.cartItems)
-    //console.log(this.state.loadedStorage)
-    // this.state.cartItems = this.state.loadedStorage
-    //   ? this.state.loadedStorage.reduce((acc, item) => {
-    //       acc += item.quantity;
-    //       return acc;
-    //     }, 0)
-    //   : null;
     const { lineItems, handleClick, isLoggedIn, isAdmin, username } =
       this.props;
     return (
@@ -260,7 +214,7 @@ class Navbar extends Component {
                     </svg>
                   </Link>
                   <span>
-                    < CartNumber />
+                    <CartNumber />
                   </span>
                 </li>
               </ul>

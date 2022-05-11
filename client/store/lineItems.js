@@ -57,7 +57,7 @@ export const fetchLineItemsFromCart = () => {
 // use this thunk to load products from cart -- not logged in user
 export const fetchLineItemsFromCartNotLoggedIn = () => {
   return async (dispatch) => {
-    const lineItems = window.localStorage.getItem("cart");
+    const lineItems = JSON.parse(window.localStorage.getItem("cart"));
     dispatch(_fetchLineItemsFromCartNotSignedIn(lineItems));
   };
 };
