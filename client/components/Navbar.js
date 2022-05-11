@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { logout } from "../store";
 import CartNumber from "./CartNumber";
 
+
 class Navbar extends Component {
   constructor(props) {
     super(props);

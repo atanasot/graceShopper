@@ -28,6 +28,7 @@ import ProductAdmin from "./components/ProductAdmin";
 import ProductAdminUpdate from "./components/ProductAdminUpdate";
 import ProfileUpdate from "./components/ProfileUpdate";
 import AddressUpdate from "./components/AddressUpdate";
+import Confirm from "./components/OrderConfirmation";
 /**
  * COMPONENT
  */
@@ -76,6 +77,7 @@ class Routes extends Component {
               <Route path="/adminproduct" component={ProductAdmin} />
               <Route path="/profileupdate" exact component={ProfileUpdate} />
               <Route path="/addressupdate" exact component={AddressUpdate} />
+              <Route path="/confirm" component={Confirm} />
             </Switch>
           ) : (
             <Switch>
@@ -95,6 +97,7 @@ class Routes extends Component {
               <Route path="/aboutbeer" component={AboutBeer} />
               <Route path="/profileupdate" exact component={ProfileUpdate} />
               <Route path="/addressupdate" exact component={AddressUpdate} />
+              <Route path="/confirm" component={Confirm} />
             </Switch>
           )
         ) : (

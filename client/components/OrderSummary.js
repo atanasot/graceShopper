@@ -10,11 +10,12 @@ const OrderSummary = ({ orders, lineItems }) => {
 
   const taxes = (subtotal * 0.05).toFixed(2) * 1;
   const total = (shipping + subtotal + taxes).toFixed(2) * 1;
-  let payment = total // Add in discount code in future
-  
+  let payment = total; // Add in discount code in future
+
   return (
     <div>
       <h3>Order Summary</h3>
+      <p>Item in Cart: {lineItems.length}</p>
       <p>Subtotal: {subtotal}</p>
       <p>Shipping: {shipping}</p>
       <p>Taxes: {taxes}</p>

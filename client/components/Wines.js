@@ -75,16 +75,6 @@ const Wines = ({ wines, match, history, onSearchWines }) => {
                 <Link to={`/wines/${wine.id}`}>
                   <div className="container">
                     <div className="card-1 card-div">
-                      <div className="like-icon-div">
-                        <label
-                          htmlFor="card-1-like"
-                          className="like-icon-div-child"
-                        >
-                          <input type="checkbox" id="card-1-like" />
-                          <i className="far fa-heart heart-empty" />
-                          <i className="fas fa-heart heart-fill" />
-                        </label>
-                      </div>
                       <div className="gow-img-div img-div">
                         <img src={`./images/${wine.imgURL}`} alt="" />
                       </div>
