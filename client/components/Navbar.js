@@ -8,7 +8,6 @@ class Navbar extends Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     const { lineItems, handleClick, isLoggedIn, isAdmin, username } =
       this.props;
@@ -165,7 +164,7 @@ class Navbar extends Component {
                             <Link to="/adminuser">Manage Users</Link>
                           </li>
                           <li>
-                            <Link to="/adminproduct">Manage Products</Link>
+                            <Link to="/adminproduct">Data Management</Link>
                           </li>
                           <li>
                             <a href="#" onClick={handleClick}>

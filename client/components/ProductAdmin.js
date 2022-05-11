@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import WinesAdmin from "../components/WinesAdmin.js";
 import BeersAdmin from "../components/BeersAdmin.js";
+import ProductAdminUpdate from "../components/ProductAdminUpdate";
 import { fetchCustomers, fetchWines, adminFetchOrders } from "../store";
+import { Link } from "react-router-dom";
 
 class ProductAdmin extends Component {
   constructor(props) {
@@ -65,24 +67,26 @@ class ProductAdmin extends Component {
                         <div className="project-box-header ">
                           <span>{wine.createdAt.slice(0, 10)}</span>
                           <div className="more-wrapper">
-                            <button className="project-btn-more">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={24}
-                                height={24}
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="feather feather-more-vertical"
-                              >
-                                <circle cx={12} cy={12} r={1} />
-                                <circle cx={12} cy={5} r={1} />
-                                <circle cx={12} cy={19} r={1} />
-                              </svg>
-                            </button>
+                            <Link to={`/adminproduct/${wine.id}`}>
+                              <button className="project-btn-more">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width={24}
+                                  height={24}
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth={2}
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  className="feather feather-more-vertical"
+                                >
+                                  <circle cx={12} cy={12} r={1} />
+                                  <circle cx={12} cy={5} r={1} />
+                                  <circle cx={12} cy={19} r={1} />
+                                </svg>
+                              </button>
+                            </Link>
                           </div>
                         </div>
                         <div className="project-box-content-header">
