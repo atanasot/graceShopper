@@ -165,7 +165,7 @@ class Navbar extends Component {
                             <Link to="/adminuser">Manage Users</Link>
                           </li>
                           <li>
-                            <Link to="/adminproduct">Manage Products</Link>
+                            <Link to="/adminproduct">Data Management</Link>
                           </li>
                           <li>
                             <a href="#" onClick={handleClick}>

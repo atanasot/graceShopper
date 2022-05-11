@@ -5,6 +5,7 @@ import axios from "axios";
  */
 const LOAD_WINES = "LOAD_WINES";
 const ADMIN_ADD_WINE = "ADMIN_ADD_WINE";
+const ADMIN_UPDATE_WINE = "ADMIN_UPDATE_WINE";
 
 /**
  * ACTION CREATORS
@@ -41,6 +42,19 @@ export const adminAddWine = (_wine) => {
   };
 };
 
+export const adminUpdateWine = (_wine) => {
+  return async (dispatch) => {
+    const wine = (
+      await axios.put(`/api/wines/${_wine.wineId}`, _wine, {
+        headers: {
+          authorization: window.localStorage.getItem("token"),
+        },
+      })
+    ).data;
+    dispatch({ type: ADMIN_UPDATE_WINE, wine });
+  };
+};
+
 /**
  * REDUCER
  */
@@ -48,6 +62,8 @@ export default function (state = [], action) {
   switch (action.type) {
     case LOAD_WINES:
       return action.wines;
+    case ADMIN_ADD_WINE:
+      return [...state, action.wine];
     case ADMIN_ADD_WINE:
       return [...state, action.wine];
     default:
