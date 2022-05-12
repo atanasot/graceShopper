@@ -36,7 +36,7 @@ class Cart extends Component {
     const tax = (subtotal * 0.011).toFixed(2) * 1;
     return (
       <div>
-        {this.state.cart ? (
+        {this.state.cart.length ? (
           <div>
             <div style={{ marginBottom: "100px", marginRight: "30px" }}>
               <h1 style={{ marginBottom: "100px", marginTop: "100px" }}>

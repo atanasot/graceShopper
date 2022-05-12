@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { searchBeers } from "../store/beers";
+import { searchBeers, queryBeers } from "../store/beers";
 
-const Beers = ({ beers, match, history, onSearchBeers }) => {
+const Beers = ({ beers, match, history, onSearchBeers, onQueryBeers }) => {
   const [filter, setFilter] = useState("");
+  const [query, setQuery] = useState("");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -13,6 +14,12 @@ const Beers = ({ beers, match, history, onSearchBeers }) => {
     setFilter(val);
     onSearchBeers({ type: val });
   };
+  const onChange = (e) => {
+    const val = e.target.value;
+    setQuery(val);
+    onQueryBeers(val);
+  };
+
   return (
     <div>
       <div style={{ marginLeft: "270px", marginTop: "100px" }}>
@@ -38,7 +45,8 @@ const Beers = ({ beers, match, history, onSearchBeers }) => {
       </div>
       <section className="author-archive">
         <div className="sidebar">
-          <div className="subheader">Filter by Style</div>
+          <div className="subheader">Filter by Type</div>
+
           <div class="dropdowndropdown">
             <select
               name="filter"
@@ -66,6 +74,18 @@ const Beers = ({ beers, match, history, onSearchBeers }) => {
             </select>
           </div>
         </div>
+        <p style={{ marginLeft: "-100px" }}>Search</p>
+        <div>
+          <input
+            placeholder="search field"
+            type="text"
+            value={query}
+            onChange={onChange}
+            name="query"
+          />
+        </div>
+      </section>
+      <section className="author-archive">
         <div className="container">
           <ol className="posts">
             {beers.map((beer) => (
@@ -102,9 +122,6 @@ const Beers = ({ beers, match, history, onSearchBeers }) => {
 
 const mapStateToProps = (state, { location, match }) => {
   const { beers } = state;
-
-  console.log(match.params);
-
   const searchParams = new URLSearchParams(location.search); // ?sort=name,asc
   const sort = searchParams.get("sort");
 
@@ -127,6 +144,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onSearchBeers: (params) => {
       dispatch(searchBeers(params));
+    },
+    onQueryBeers: (query) => {
+      dispatch(queryBeers(query));
     },
   };
 };

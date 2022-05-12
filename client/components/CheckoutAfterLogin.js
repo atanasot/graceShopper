@@ -5,12 +5,9 @@ import { emptyCartAndSubmitOrder } from "../store/lineItems";
 import { Link } from "react-router-dom";
 import OrderSummary from "./OrderSummary";
 
-// add error handling
-// Kenny needs to add a new page after the Place Order Button is clicked
 class CheckoutAfterLogin extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       line1: this.props.address ? this.props.address.line1 : "",
       line2: this.props.address ? this.props.address.line2 : "",
@@ -30,6 +27,7 @@ class CheckoutAfterLogin extends Component {
   }
 
   async onSubmit(ev) {
+    console.log("Start of submit");
     ev.preventDefault();
     const address = {
       line1: this.state.line1,
@@ -41,7 +39,9 @@ class CheckoutAfterLogin extends Component {
     try {
       console.log(this.props);
       await this.props.update(address);
+      console.log(address);
       await this.props.submitOrder(this.props.orderId);
+      this.props.history.push('/confirm')
     } catch (err) {
       console.log(err);
       this.setState({ error: err.response.data.error });
@@ -49,7 +49,10 @@ class CheckoutAfterLogin extends Component {
   }
 
   render() {
-    const { email, firstName, lastName } = this.props.auth;
+    console.log("Check out after login render");
+    const { email, firstName, lastName } = this.props.auth
+      ? this.props.auth
+      : {};
     const { line1, line2, city, state, zip } = this.state;
     const { onChange, onSubmit } = this;
     return (
@@ -102,7 +105,7 @@ class CheckoutAfterLogin extends Component {
                   <i className="checkout-icon fa fa-angle-up" />
                 </h3>
                 <div className="checkout-col-inner">
-                  <form className="checkout-bill-form">
+                  <form className="checkout-bill-form" onSubmit={onSubmit}>
                     <div className="order-row">
                       <span className="bill-small-col">
                         <label
@@ -113,8 +116,9 @@ class CheckoutAfterLogin extends Component {
                         </label>
                         <input
                           name="firstName"
-                          defaultValue={firstName}
+                          defaultValue={firstName || ""}
                           style={{ width: "150px" }}
+                          readOnly
                         />
                       </span>
                       <span className="bill-small-col">
@@ -128,6 +132,7 @@ class CheckoutAfterLogin extends Component {
                           name="lastName"
                           defaultValue={lastName}
                           style={{ width: "150px" }}
+                          readOnly
                         />
                       </span>
                     </div>
@@ -136,7 +141,11 @@ class CheckoutAfterLogin extends Component {
                         <label className="bold-text p-small" htmlFor="adress">
                           Adress
                         </label>
-                        <input name="line1" value={line1} onChange={onChange} />
+                        <input
+                          name="line1"
+                          value={line1 || ""}
+                          onChange={onChange}
+                        />
                       </span>
                     </div>
                     <div className="order-row">
@@ -144,7 +153,11 @@ class CheckoutAfterLogin extends Component {
                         <label className="bold-text p-small" htmlFor="suburd">
                           Apt, suite, etc. (optional)
                         </label>
-                        <input name="line2" value={line2} onChange={onChange} />
+                        <input
+                          name="line2"
+                          value={line2 || ""}
+                          onChange={onChange}
+                        />
                       </span>
                     </div>
                     <div className="order-row">
@@ -157,7 +170,8 @@ class CheckoutAfterLogin extends Component {
                         </label>
                         <input
                           name="city"
-                          defaultValue={city}
+                          value={city || ""}
+                          onChange={onChange}
                           style={{ width: "150px" }}
                         />
                       </span>
@@ -170,7 +184,8 @@ class CheckoutAfterLogin extends Component {
                         </label>
                         <input
                           name="state"
-                          defaultValue={state}
+                          value={state || ""}
+                          onChange={onChange}
                           style={{ width: "150px" }}
                         />
                       </span>
@@ -182,9 +197,8 @@ class CheckoutAfterLogin extends Component {
                         </label>
                         <input
                           name="zip"
-                          value={zip}
+                          value={zip || ""}
                           onChange={onChange}
-                          defaultValue={zip}
                         />
                       </span>
                     </div>
@@ -194,15 +208,14 @@ class CheckoutAfterLogin extends Component {
                           Email Address
                         </label>
                         <input
-                          name="zip"
-                          value={email}
-                          onChange={onChange}
-                          defaultValue={email}
+                          name="email"
+                          defaultValue={email || ""}
+                          readOnly
                         />
                       </span>
                     </div>
                     <button className="black-button bold-text ">
-                      <Link to="/confirm">Place Order</Link>
+                      Place Order
                     </button>
                     <p>
                       <span
@@ -377,13 +390,17 @@ class CheckoutAfterLogin extends Component {
   }
 }
 
-const mapState = (state) => {
+const mapState = (state, otherProps) => {
+  console.log(otherProps)
   if (!state.auth || !state.lineItems) {
-    return {};
+    return {
+      history: otherProps.history
+    };
   }
+
   return {
-    auth: state.auth,
-    address: state.auth.address,
+    auth: state.auth.id ? state.auth : {},
+    address: state.auth.address ? state.auth.address : [],
     orderId: state.lineItems.length ? state.lineItems[0].orderId : null,
   };
 };

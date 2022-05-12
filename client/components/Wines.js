@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { searchWines } from "../store/wines";
+import { searchWines, queryWines } from "../store/wines";
 
-const Wines = ({ wines, match, history, onSearchWines }) => {
+const Wines = ({ wines, match, history, onSearchWines, onQueryWines }) => {
   const [filter, setFilter] = useState("");
-
+  const [query, setQuery] = useState("");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -15,6 +15,11 @@ const Wines = ({ wines, match, history, onSearchWines }) => {
     onSearchWines({ type: val });
   };
 
+  const onChange = (e) => {
+    const val = e.target.value;
+    setQuery(val);
+    onQueryWines(val);
+  };
   return (
     <div>
       <div style={{ marginLeft: "270px", marginTop: "100px" }}>
@@ -43,7 +48,7 @@ const Wines = ({ wines, match, history, onSearchWines }) => {
           <div class="dropdowndropdown">
             <select
               name="filter"
-              class="dropdown-select"
+              className="dropdown-select"
               value={filter}
               onChange={onFilterChange}
             >
@@ -54,11 +59,12 @@ const Wines = ({ wines, match, history, onSearchWines }) => {
               <option value="Champagne">Champagne</option>
             </select>
           </div>
+
           <div className="subheader">Sort by</div>
           <div class="dropdowndropdown">
             <select
               name="one"
-              class="dropdown-select"
+              className="dropdown-select"
               value={match.params.sort}
               onChange={(ev) => history.push(`/wine?sort=${ev.target.value}`)}
             >
@@ -69,6 +75,18 @@ const Wines = ({ wines, match, history, onSearchWines }) => {
             </select>
           </div>
         </div>
+        <p style={{ marginLeft: "-100px" }}>Search</p>
+        <div>
+          <input
+            placeholder="search field"
+            type="text"
+            name="query"
+            onChange={onChange}
+            value={query}
+          />
+        </div>
+      </section>
+      <section className="author-archive">
         <div className="container">
           <ol className="posts">
             {wines.map((wine) => (
@@ -128,6 +146,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onSearchWines: (params) => {
       dispatch(searchWines(params));
+    },
+    onQueryWines: (query) => {
+      dispatch(queryWines(query));
     },
   };
 };

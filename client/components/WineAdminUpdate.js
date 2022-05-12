@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { adminUpdateWine, fetchWines } from "../store/wines";
 import { Link } from "react-router-dom";
 
-class ProductAdminUpdate extends React.Component {
+class WineAdminUpdate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -208,4 +208,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductAdminUpdate);
+export default connect(mapStateToProps, mapDispatchToProps)(WineAdminUpdate);

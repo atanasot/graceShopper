@@ -2,8 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import WinesAdmin from "../components/WinesAdmin.js";
 import BeersAdmin from "../components/BeersAdmin.js";
-import ProductAdminUpdate from "../components/ProductAdminUpdate";
-import { fetchCustomers, fetchWines, adminFetchOrders } from "../store";
+import {
+  fetchBeers,
+  fetchCustomers,
+  fetchWines,
+  adminFetchOrders,
+} from "../store";
 import { Link } from "react-router-dom";
 
 class ProductAdmin extends Component {
@@ -13,6 +17,7 @@ class ProductAdmin extends Component {
   componentDidMount() {
     this.props.fetchOrders();
     this.props.fetchWines();
+    this.props.fetchBeers();
     this.props.fetchCustomers();
     window.scrollTo(0, 0);
   }
@@ -71,7 +76,7 @@ class ProductAdmin extends Component {
                             Created date: {wine.createdAt.slice(0, 10)}
                           </span>
                           <div className="more-wrapper">
-                            <Link to={`/adminproduct/${wine.id}`}>
+                            <Link to={`/adminwine/${wine.id}`}>
                               <button className="project-btn-more">
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
@@ -149,24 +154,26 @@ class ProductAdmin extends Component {
                           Created date: {beer.createdAt.slice(0, 10)}
                         </span>
                         <div className="more-wrapper">
-                          <button className="project-btn-more">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width={24}
-                              height={24}
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth={2}
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              className="feather feather-more-vertical"
-                            >
-                              <circle cx={12} cy={12} r={1} />
-                              <circle cx={12} cy={5} r={1} />
-                              <circle cx={12} cy={19} r={1} />
-                            </svg>
-                          </button>
+                          <Link to={`/adminbeer/${beer.id}`}>
+                            <button className="project-btn-more">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width={24}
+                                height={24}
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth={2}
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="feather feather-more-vertical"
+                              >
+                                <circle cx={12} cy={12} r={1} />
+                                <circle cx={12} cy={5} r={1} />
+                                <circle cx={12} cy={19} r={1} />
+                              </svg>
+                            </button>
+                          </Link>
                         </div>
                       </div>
                       <div className="project-box-content-header">
@@ -220,26 +227,28 @@ class ProductAdmin extends Component {
                     >
                       <div className="project-box-header ">
                         <span>OrderDate: {order.updatedAt.slice(0, 10)}</span>
-                        <div className="more-wrapper">
-                          <button className="project-btn-more">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width={24}
-                              height={24}
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth={2}
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              className="feather feather-more-vertical"
-                            >
-                              <circle cx={12} cy={12} r={1} />
-                              <circle cx={12} cy={5} r={1} />
-                              <circle cx={12} cy={19} r={1} />
-                            </svg>
-                          </button>
-                        </div>
+                        {/* <div className="more-wrapper">
+                          <Link to={`/orders/${order.id}`}>
+                            <button className="project-btn-more">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width={24}
+                                height={24}
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth={2}
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="feather feather-more-vertical"
+                              >
+                                <circle cx={12} cy={12} r={1} />
+                                <circle cx={12} cy={5} r={1} />
+                                <circle cx={12} cy={19} r={1} />
+                              </svg>
+                            </button>
+                          </Link>
+                        </div> */}
                       </div>
                       <div className="project-box-content-header">
                         <p
@@ -260,17 +269,8 @@ class ProductAdmin extends Component {
                           alignItems: "center",
                         }}
                       >
-                        Customer:{" "}
-                        {
-                          this.props.customers.find(
-                            (customer) => customer.id === order.userId
-                          ).firstName
-                        }{" "}
-                        {
-                          this.props.customers.find(
-                            (customer) => customer.id === order.userId
-                          ).lastName
-                        }{" "}
+                        Customer: {this.props.customer.firstName}{" "}
+                        {this.props.customer.lastName}{" "}
                       </div>
                       <p>Quantity: {order.lineItems}</p>
                       <p>Total: {order.total}</p>
@@ -287,11 +287,14 @@ class ProductAdmin extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, history) => {
   const { customers, wines, beers, auth, orders } = state;
+  const customer =
+    customers.find((customer) => customer.id === history.match.params.id * 1) ||
+    {};
   return {
     auth,
-    customers,
+    customer,
     wines,
     beers,
     orders,
@@ -300,9 +303,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchBeers: () => dispatch(fetchBeers()),
+    fetchCustomers: () => dispatch(fetchCustomers()),
     fetchOrders: () => dispatch(adminFetchOrders()),
     fetchWines: () => dispatch(fetchWines()),
-    fetchCustomers: () => dispatch(fetchCustomers()),
   };
 };
 
