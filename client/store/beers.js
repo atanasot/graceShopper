@@ -5,6 +5,7 @@ import axios from "axios";
  */
 const LOAD_BEERS = "LOAD_BEERS";
 const ADMIN_ADD_BEER = "ADMIN_ADD_BEER";
+const ADMIN_UPDATE_BEER = "ADMIN_UPDATE_BEER";
 /**
  * ACTION CREATORS
  */
@@ -34,6 +35,20 @@ export const adminAddBeer = (_beer) => {
     dispatch({ type: ADMIN_ADD_BEER, beer });
   };
 };
+
+export const adminUpdateBeer = (_beer) => {
+  return async (dispatch) => {
+    const beer = (
+      await axios.put(`/api/beers/${_beer.beerId}`, _beer, {
+        headers: {
+          authorization: window.localStorage.getItem("token"),
+        },
+      })
+    ).data;
+    dispatch({ type: ADMIN_UPDATE_BEER, beer });
+  };
+};
+
 export const searchBeers = (params) => {
   return async (dispatch) => {
     const beers = (await axios.get("/api/beers/search", { params })).data;
@@ -48,6 +63,8 @@ export default function (state = [], action) {
     case LOAD_BEERS:
       return action.beers;
     case ADMIN_ADD_BEER:
+      return [...state, action.beer];
+    case ADMIN_UPDATE_BEER:
       return [...state, action.beer];
     default:
       return state;
