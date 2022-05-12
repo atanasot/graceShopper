@@ -966,7 +966,7 @@ img {
 /* Card Styling */
 .card-div {
   width: 20em;
-  min-height: 20em;
+  height: 25em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -989,6 +989,8 @@ img {
   transition: -webkit-transform 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  -webkit-box-shadow: 20px 7px 24px -1px rgba(0, 0, 0, 0.52);
+  box-shadow: 20px 7px 24px -1px rgba(0, 0, 0, 0.52);
 }
 
 /* ======== General styling of all cards and heart divs ========== */
@@ -2153,7 +2155,6 @@ label {
   border: 0;
   border-radius: 0;
   -webkit-appearance: none;
-  font-family: 'Nanum Myeongjo', serif;
 }
 
 .dropdown-select:focus {
@@ -2687,10 +2688,6 @@ a {
   display: flex;
   border-radius: 10px;
   position: relative;
-}
-
-.project-boxes.jsListView .project-box > * {
-  margin-right: 24px;
 }
 
 .project-boxes.jsListView .more-wrapper {
@@ -4498,5 +4495,34 @@ p.success-lrg {
 .productH1 {
   font-size: 300px;
   color: #252021;
+}
+
+.background11111 {
+  height: 800px;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.3))), url(https://images.unsplash.com/photo-1571656721197-d8f16e3b90d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1996&q=80) fixed;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url(https://images.unsplash.com/photo-1571656721197-d8f16e3b90d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1996&q=80) fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.contact11111 {
+  -webkit-box-shadow: 5px 5px 5px 0px #000000, 32px 25px 23px 11px rgba(0, 0, 0, 0.32);
+  box-shadow: 5px 5px 5px 0px #000000, 32px 25px 23px 11px rgba(0, 0, 0, 0.32);
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.contact11111 i {
+  padding: 0 20px;
+  font-size: 0.8em;
+}
+
+.contactspan {
+  text-shadow: 0px 2px 0px #f6f6f6;
 }
 /*# sourceMappingURL=style.css.map */

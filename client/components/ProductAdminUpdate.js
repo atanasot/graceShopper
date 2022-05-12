@@ -70,104 +70,124 @@ class ProductAdminUpdate extends React.Component {
   render() {
     return (
       <div>
-        <div className="container1111">
-          <div className="wrapper1111">
-            <form className="form" onSubmit={this.onSubmit}>
-              <h1 className="h1">
-                Update <label>{this.props.wine.name}</label>
-              </h1>
-              <br></br> Name:
-              <input
-                name="name"
-                value={this.state.name}
-                className="email"
-                type="text"
-                onChange={this.onChange}
-                placeholder="Update Name"
-              />
-              Year:
-              <input
-                name="year"
-                className="email"
-                value={this.state.year}
-                onChange={this.onChange}
-                placeholder="Update Year"
-                type="text"
-              />
-              Type:
-              <input
-                name="type"
-                className="email"
-                value={this.state.type}
-                onChange={this.onChange}
-                placeholder="Update type"
-                type="text"
-              />
-              Style:
-              <input
-                name="style"
-                className="email"
-                type="text"
-                value={this.state.style}
-                onChange={this.onChange}
-                placeholder="Update Style"
-              />
-              ABV:
-              <input
-                name="abv"
-                className="email"
-                type="text"
-                value={this.state.abv}
-                onChange={this.onChange}
-                placeholder="Update A.B.V"
-              />
-              Price:
-              <input
-                type="text"
-                name="price"
-                className="email"
-                value={this.state.price}
-                onChange={this.onChange}
-                placeholder="Update Price"
-              />{" "}
-              Inventory Count:
-              <input
-                type="text"
-                name="inventoryCount"
-                className="email"
-                value={this.state.inventoryCount}
-                onChange={this.onChange}
-                placeholder="Update Inventory Count"
-              />
-              Description:
-              <textarea
-                type="text"
-                name="description"
-                className="email"
-                value={this.state.description}
-                onChange={this.onChange}
-                placeholder="Update description"
-                style={{ width: "300px", height: "200px" }}
-              />
-              <button type="submit" id="login-btn">
-                Update Product
-              </button>
-              <div className="register"></div>
-            </form>{" "}
+        <div className="background11111">
+          <div
+            style={{
+              marginTop: "40px",
+              marginLeft: "-90px",
+              textAlign: "center",
+            }}
+          >
+            <span
+              style={{
+                textDecoration: "underline",
+              }}
+            >
+              <Link to="/adminproduct">Go Back</Link>
+            </span>
+            <h1 className="H1Background">Update</h1>
+          </div>
+
+          <div className="contact11111" id="contact">
             <div>
-              <img
-                src={`/images/${this.props.wine.imgURL}`}
-                style={{
-                  height: "600px",
-                  width: "150px",
-                  marginTop: "-40px",
-                }}
-              />
+              <form className="contact11111" onSubmit={this.onSubmit}>
+                <div>
+                  <span className="contactspan">Name:</span>
+                  <input
+                    name="name"
+                    type="text"
+                    value={this.state.name}
+                    id="name"
+                    size={30}
+                    onChange={this.onChange}
+                    placeholder="Update Name"
+                  />
+                  <br />
+                  <span className="contactspan">Year:</span>
+                  <input
+                    name="year"
+                    type="text"
+                    id="email"
+                    size={30}
+                    value={this.state.year}
+                    onChange={this.onChange}
+                    placeholder="Update Year"
+                  />
+                  <br />
+                  <span className="contactspan">Type:</span>
+                  <input
+                    name="type"
+                    type="text"
+                    id="phone"
+                    size={30}
+                    value={this.state.type}
+                    onChange={this.onChange}
+                    placeholder="Update type"
+                  />
+                  <br />
+                  <span className="contactspan">Style:</span>
+                  <input
+                    name="style"
+                    type="text"
+                    id="human"
+                    size={30}
+                    value={this.state.style}
+                    onChange={this.onChange}
+                    placeholder="Update Style"
+                  />
+                  <br />
+                  <span className="contactspan">A.B.V:</span>
+                  <input
+                    name="abv"
+                    type="text"
+                    id="human"
+                    size={30}
+                    value={this.state.abv}
+                    onChange={this.onChange}
+                    placeholder="Update A.B.V"
+                  />
+                  <br />
+                  <span className="contactspan"> Price:</span>
+                  <input
+                    name="price"
+                    type="text"
+                    id="human"
+                    size={30}
+                    value={this.state.price}
+                    onChange={this.onChange}
+                    placeholder="Update Price"
+                  />
+                  <br />
+                  <span className="contactspan">Inventory Count:</span>
+                  <input
+                    name="inventoryCount"
+                    type="text"
+                    id="human"
+                    size={30}
+                    value={this.state.inventoryCount}
+                    onChange={this.onChange}
+                    placeholder="Update Inventory Count"
+                  />
+                  <br />
+                </div>
+                <div className="col-md-5">
+                  <textarea
+                    name="description"
+                    cols={40}
+                    rows={15}
+                    id="comments"
+                    value={this.state.description}
+                    onChange={this.onChange}
+                    placeholder="Update description"
+                  />
+                </div>
+                <button className="product__btn" style={{ margin: "20px" }}>
+                  Update
+                </button>
+              </form>
             </div>
           </div>
         </div>
-
-        <div></div>
       </div>
     );
   }

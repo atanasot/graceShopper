@@ -54,7 +54,7 @@ class ProductAdmin extends Component {
           <div className="app-content">
             <div className="projects-section">
               <div className="projects-section-header">
-                <p className="time">{date}, WINE</p>
+                <p className="time"> WINE</p>
               </div>
 
               <div className="project-boxes jsGridView">
@@ -66,7 +66,10 @@ class ProductAdmin extends Component {
                         style={{ backgroundColor: "#90ACCA" }}
                       >
                         <div className="project-box-header ">
-                          <span>{wine.createdAt.slice(0, 10)}</span>
+                          <span>
+                            {" "}
+                            Created date: {wine.createdAt.slice(0, 10)}
+                          </span>
                           <div className="more-wrapper">
                             <Link to={`/adminproduct/${wine.id}`}>
                               <button className="project-btn-more">
@@ -129,7 +132,7 @@ class ProductAdmin extends Component {
         <div className="app-content">
           <div className="projects-section">
             <div className="projects-section-header">
-              <p className="time">{date}, BEER</p>
+              <p className="time">BEER</p>
             </div>
 
             <div className="project-boxes jsGridView">
@@ -141,7 +144,10 @@ class ProductAdmin extends Component {
                       style={{ backgroundColor: " #EBE399" }}
                     >
                       <div className="project-box-header ">
-                        <span>{beer.createdAt.slice(0, 10)}</span>
+                        <span>
+                          {" "}
+                          Created date: {beer.createdAt.slice(0, 10)}
+                        </span>
                         <div className="more-wrapper">
                           <button className="project-btn-more">
                             <svg
