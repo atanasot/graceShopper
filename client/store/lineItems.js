@@ -6,7 +6,6 @@ import { fetchOrders } from "./orders";
 
 const LOAD_CART = "LOAD_CART";
 const LOAD_CART_NOT_SIGNED_IN = "LOAD_CART_NOT_SIGNED_IN";
-const UPDATE_LINEITEM = "UPDATE_LINEITEM";
 const LOAD_ORDER_ITEMS = "LOAD_ORDER_ITEMS";
 const DELETE_ITEM = "DELETE_ITEM";
 const EMPTY_CART = "EMPTY_CART";
@@ -107,7 +106,11 @@ export const addToCart = (lineItem) => {
 
 export const deleteItem = (item) => {
   return async (dispatch) => {
-    await axios.delete(`/api/lineItems/${item.id}`);
+    await axios.delete(`/api/lineItems/${item.id}`, {
+      headers: {
+        authorization: window.localStorage.getItem("token"),
+      },
+    });
     dispatch(_deleteItem(item));
   };
 };
@@ -128,7 +131,6 @@ export const updateItemQty = (lineItemId, orderId, quantity) => {
   };
 };
 
-// fix order items
 export default function (state = [], action) {
   switch (action.type) {
     case LOAD_CART:

@@ -31,7 +31,7 @@ const OrderSummary = ({ lineItems }) => {
 
 const mapStateToProps = (state) => {
   if (!state.orders || !state.lineItems) {
-    return null;
+    return {};
   }
   return {
     lineItems: state.lineItems,
