@@ -24,6 +24,19 @@ app.get("/search", async (req, res, next) => {
     next(ex);
   }
 });
+app.get("/filter", async (req, res, next) => {
+  try {
+    res.send(await Beer.findAll({
+      where: {
+        name: {
+          [Sequelize.Op.iLike]: `%${req.query.query}%`
+        }
+      }
+    }))
+  } catch (ex) {
+    next(ex);
+  }
+});
 //get single beer
 app.get("/:id", isLoggedIn, async (req, res, next) => {
   try {

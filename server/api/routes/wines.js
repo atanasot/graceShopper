@@ -27,6 +27,19 @@ app.get("/search", async (req, res, next) => {
     next(ex);
   }
 });
+app.get("/filter", async (req, res, next) => {
+  try {
+    res.send(await Wine.findAll({
+      where: {
+        name: {
+          [Sequelize.Op.iLike]: `%${req.query.query}%`
+        }
+      }
+    }))
+  } catch (ex) {
+    next(ex);
+  }
+});
 //get single wine
 app.get("/:id", async (req, res, next) => {
   try {

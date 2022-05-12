@@ -40,6 +40,12 @@ export const searchBeers = (params) => {
     dispatch(_fetchBeers(beers));
   };
 };
+export const queryBeers = (query) => {
+  return async (dispatch) => {
+    const beers = (await axios.get(`/api/beers/filter?query=${query}`)).data;
+    dispatch(_fetchBeers(beers));
+  };
+};
 /**
  * REDUCER
  */
