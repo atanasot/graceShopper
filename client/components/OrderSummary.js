@@ -16,11 +16,11 @@ const OrderSummary = ({ orders, lineItems }) => {
     <div>
       <h3>Order Summary</h3>
       <p>Item in Cart: {lineItems.length}</p>
-      <p>Subtotal: {subtotal}</p>
-      <p>Shipping: {shipping}</p>
-      <p>Taxes: {taxes}</p>
-      <p>Total: {total}</p>
-      <p>Payment Due: {payment}</p>
+      <p>Subtotal: ${subtotal}</p>
+      <p>Shipping: ${shipping}</p>
+      <p>Taxes: ${taxes}</p>
+      <p>Total: ${total}</p>
+      <p>Payment Due: ${payment}</p>
     </div>
   );
 };

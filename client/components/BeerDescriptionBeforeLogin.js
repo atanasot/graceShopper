@@ -105,8 +105,14 @@ class BeerDescriptionBeforeLogin extends Component {
               </div>
               <div className="product__info">
                 <div className="product__desc">
-                  <div className="product__type">Beer</div>
-                  <h1>{beer.name}</h1>
+                  <h1
+                    style={{
+                      fontSize: "60px",
+                      fontFamily: "initial",
+                    }}
+                  >
+                    {beer.name}
+                  </h1>
                   <p className="product__price">${beer.price}</p>
                   <div className="product__short">
                     <h4>Type:{beer.type}</h4>

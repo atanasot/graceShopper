@@ -32,14 +32,17 @@ const Beers = ({ beers, match, history, onSearchBeers }) => {
           <Link to="/beer">Beers</Link>
         </span>
       </div>
+
       <div style={{ marginBottom: "60px" }}>
         <h1 className="H1Background">BEER</h1>
-        <section class="containercontainer">
-          <p style={{ marginLeft: "-100px" }}>Filter by Style</p>
+      </div>
+      <section className="author-archive">
+        <div className="sidebar">
+          <div className="subheader">Filter by Style</div>
           <div class="dropdowndropdown">
             <select
               name="filter"
-              class="dropdown-select"
+              className="dropdown-select"
               value={filter}
               onChange={onFilterChange}
             >
@@ -48,12 +51,11 @@ const Beers = ({ beers, match, history, onSearchBeers }) => {
               <option value="Lager">Lager</option>
             </select>
           </div>
-          <p style={{ marginLeft: "-100px" }}>Sort by</p>
-
+          <div className="subheader">Sort by</div>
           <div class="dropdowndropdown">
             <select
               name="one"
-              class="dropdown-select"
+              className="dropdown-select"
               value={match.params.sort}
               onChange={(ev) => history.push(`/beer?sort=${ev.target.value}`)}
             >
@@ -63,9 +65,7 @@ const Beers = ({ beers, match, history, onSearchBeers }) => {
               <option value="price,desc">Price high to low</option>
             </select>
           </div>
-        </section>
-      </div>
-      <section className="author-archive">
+        </div>
         <div className="container">
           <ol className="posts">
             {beers.map((beer) => (
@@ -80,7 +80,7 @@ const Beers = ({ beers, match, history, onSearchBeers }) => {
                         <h2 className="item-name">
                           <Link to={`/beers/${beer.id}`}>{beer.name}</Link>
                         </h2>
-                        <p className="date1">{beer.type} </p>
+                        <p className="date">{beer.type} </p>
                         <div className="pricing-and-cart1">
                           <div className="pricing1">
                             <p className="current-price1">${beer.price}</p>

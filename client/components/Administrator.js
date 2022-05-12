@@ -41,6 +41,7 @@ class Administrator extends Component {
                 textAlign: "center",
                 fontSize: "50px",
                 width: "500px",
+                marginTop: "80px",
               }}
               className="H1Background"
             >
@@ -63,7 +64,7 @@ class Administrator extends Component {
                             style={{ backgroundColor: "#EAE1C8" }}
                           >
                             <div className="project-box-header">
-                              <span>{customer.createdAt}</span>
+                              <span>date created:{customer.createdAt}</span>
                               <div className="more-wrapper">
                                 <button className="project-btn-more">
                                   <svg
@@ -106,10 +107,7 @@ class Administrator extends Component {
                                 : "False"}
                             </div>
                             <div className="project-box-footer">
-                              <div
-                                className="days-left"
-                                style={{ color: "#3CBCC7" }}
-                              >
+                              <div className="days-left">
                                 BE NICE TO OUR CUSTOMER =)
                               </div>
                             </div>
@@ -124,67 +122,6 @@ class Administrator extends Component {
         </div>
 
         <CustomersAdmin />
-        {/* <div>
-          Wines
-          <WinesAdmin />
-          {this.props.wines.map((wine) => {
-            return (
-              <div key={wine.id}>
-                <p>
-                  {wine.name} {wine.price}
-                </p>
-                <img
-                  src={`/images/${wine.imgURL}`}
-                  style={{ height: "150px" }}
-                />
-              </div>
-            );
-          })}
-        </div> */}
-        <hr />
-        {/* <div>
-          Beers
-          <BeersAdmin />
-          {this.props.beers.map((beer) => {
-            return (
-              <div key={beer.id}>
-                <p>
-                  {beer.name} {beer.price}
-                </p>
-                <img
-                  src={`/images${beer.imgURL}`}
-                  style={{ height: "150px" }}
-                />
-              </div>
-            );
-          })}
-        </div> */}
-        <hr />
-        {/* <div>Orders</div>
-        <ul>
-          {this.props.orders.map((order) => {
-            return (
-              <li key={order.id}>
-                <p>OrderID: {order.id}</p>
-                <p>OrderDate: {order.updatedAt.slice(0, 10)} </p>
-                Customer:{" "}
-                {
-                  this.props.customers.find(
-                    (customer) => customer.id === order.userId
-                  ).firstName
-                }{" "}
-                {
-                  this.props.customers.find(
-                    (customer) => customer.id === order.userId
-                  ).lastName
-                }{" "}
-                <p>Quantity: {order.lineItems} </p>
-                <p>Total: {order.total}</p>
-              </li>
-            );
-          })}
-        </ul> */}
-        <hr />
       </div>
     );
   }

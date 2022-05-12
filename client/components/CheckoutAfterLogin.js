@@ -330,6 +330,10 @@ class CheckoutAfterLogin extends Component {
                     <div className="order-row"></div>
                   </div>
                 </div>
+                <h3 className="checkout-col-headline">
+                  Or
+                  <i className="checkout-icon fa fa-angle-up" />
+                </h3>
                 <div className="checkout-col-inner ">
                   <div className="bill-credit-inner">
                     <div className="checkout-bill-credit">

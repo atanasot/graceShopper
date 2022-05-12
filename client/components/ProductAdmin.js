@@ -44,6 +44,7 @@ class ProductAdmin extends Component {
                 textAlign: "center",
                 fontSize: "50px",
                 width: "500px",
+                marginTop: "70px",
               }}
               className="H1Background"
             >
