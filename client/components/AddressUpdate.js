@@ -34,7 +34,7 @@ class AddressUpdate extends Component {
     this.setState(change);
   }
 
-  onSubmit(ev) {
+  async onSubmit(ev) {
     ev.preventDefault();
     const address = {
       line1: this.state.line1,
@@ -43,8 +43,8 @@ class AddressUpdate extends Component {
       state: this.state.state,
       zip: this.state.zip,
     };
-    this.props.update(address)
-    this.props.updateAddress(address);
+    await this.props.update(address)
+    await this.props.updateAddress(address);
   }
 
   //   add error section
