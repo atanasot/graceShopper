@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 
-const OrderSummary = ({ orders, lineItems }) => {
+const OrderSummary = ({ lineItems }) => {
   const shipping = 5.99;
-  const subtotal =
+  const subtotal = lineItems ?
     lineItems
       .reduce((accume, current) => accume + current.price * current.quantity, 0)
-      .toFixed(2) * 1;
+      .toFixed(2) * 1 : null
 
   const taxes = (subtotal * 0.05).toFixed(2) * 1;
   const total = (shipping + subtotal + taxes).toFixed(2) * 1;
@@ -15,7 +15,7 @@ const OrderSummary = ({ orders, lineItems }) => {
   return (
     <div>
       <h3>Order Summary</h3>
-      <p>Item in Cart: {lineItems.length}</p>
+      <p>Item in Cart: {lineItems ? lineItems.length : null}</p>
       <p>Subtotal: {subtotal}</p>
       <p>Shipping: {shipping}</p>
       <p>Taxes: {taxes}</p>
@@ -30,7 +30,6 @@ const mapStateToProps = (state) => {
     return null;
   }
   return {
-    orders: state.orders,
     lineItems: state.lineItems,
   };
 };

@@ -9,11 +9,12 @@ class BeerDescription extends Component {
     super(props);
     this.state = {
       name: this.props.beer.name ? this.props.beer.name : "",
-      beerId: this.props.beer.id ? this.props.beer.id : null,
+      beerId: this.props.beer.id ? this.props.beer.id : "",
       quantity: 1,
       price: this.props.beer.id ? this.props.beer.price : "",
     };
     this.addToCart = this.addToCart.bind(this);
+    this.onChange = this.onChange.bind(this)
   }
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -34,15 +35,21 @@ class BeerDescription extends Component {
     const lineItem = {
       name: this.state.name,
       beerId: this.state.beerId,
-      quantity: this.state.quantity,
+      quantity: this.state.quantity * 1,
       price: this.state.price,
     };
     this.props.addToCart(lineItem);
   }
 
+  onChange (ev) {
+    const change = {}
+    change[ev.target.name] = ev.target.value
+    this.setState(change)
+  }
+
   render() {
     const { beer } = this.props;
-    const { addToCart } = this;
+    const { addToCart, onChange } = this;
     return (
       <div>
         <div className="wrapper">
@@ -83,12 +90,13 @@ class BeerDescription extends Component {
                   </h4>
                   <h4>ABV:{beer.ABV}</h4>
                 </div>
-                <form>
+                <form onSubmit={(ev) => ev.preventDefault()}>
                   Quantity:
                   <input
                     className="quantity_input"
                     name="quantity"
                     value={this.state.quantity}
+                    onChange={onChange}
                     type="number"
                     min="0"
                     max="100"
