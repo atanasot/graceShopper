@@ -99,6 +99,32 @@ app.put("/", async (req, res, next) => {
   }
 });
 
+app.delete("/:id", async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+    const currentOrder = await Order.getOrCreateCart(user.id); // a user can have only one cart
+
+    const itemToDelete = await LineItem.findByPk(req.params.id);
+    await itemToDelete.destroy();
+
+    await Order.calculatePriceItems(currentOrder.id);
+
+    if (!currentOrder.lineItems) {
+      await Order.destroy();
+    }
+
+    res.status(204).send(
+      await LineItem.findAll({
+        where: {
+          orderId: currentOrder.id,
+        },
+      })
+    );
+  } catch (ex) {
+    next(ex);
+  }
+});
+
 app.post("/", async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
@@ -140,18 +166,5 @@ app.post("/", async (req, res, next) => {
     next(ex);
   }
 });
-
-// app.delete("/:id", async (req, res, next) => {
-//   try {
-//     await Order.destroy({
-//       where: {
-//         beerId: req.params.beerId,
-//       },
-//     });
-//     res.sendStatus(204);
-//   } catch (ex) {
-//     next(ex);
-//   }
-// });
 
 module.exports = app;

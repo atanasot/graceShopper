@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { deleteItem } from "../store/lineItems";
 import { updateItemQty } from "../store/lineItems";
 
-const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
+const CartAfterlogin = ({ lineItems, updateItemQty, deleteItem }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -14,7 +14,7 @@ const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
       lineItems.reduce((accume, current) => accume + current.price * current.quantity, 0) 
       .toFixed(2) * 1 : null
   const tax = (subtotal * 0.011).toFixed(2) * 1;
-  return lineItems.length ? (
+  return subtotal ? (
     <div>
       <div style={{ marginBottom: "100px", marginRight: "30px" }}>
         <h1 style={{ marginBottom: "100px", marginTop: "100px" }}>
@@ -67,7 +67,6 @@ const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
                       </button>
                     </p>
                   </div>
-                  {/* remove is not working */}
                   <div className="product-removal">
                     <button
                       className="remove-product"

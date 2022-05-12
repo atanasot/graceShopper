@@ -27,7 +27,6 @@ class CheckoutAfterLogin extends Component {
   }
 
   async onSubmit(ev) {
-    console.log("Start of submit");
     ev.preventDefault();
     const address = {
       line1: this.state.line1,
@@ -38,8 +37,8 @@ class CheckoutAfterLogin extends Component {
     };
     try {
       console.log(this.props);
+      console.log(address)
       await this.props.update(address);
-      console.log(address);
       await this.props.submitOrder(this.props.orderId);
       this.props.history.push('/confirm')
     } catch (err) {
@@ -49,7 +48,6 @@ class CheckoutAfterLogin extends Component {
   }
 
   render() {
-    console.log("Check out after login render");
     const { email, firstName, lastName } = this.props.auth
       ? this.props.auth
       : {};
@@ -387,14 +385,11 @@ class CheckoutAfterLogin extends Component {
 }
 
 const mapState = (state, otherProps) => {
-  console.log(otherProps)
   if (!state.auth || !state.lineItems) {
-    return {
-      history: otherProps.history
-    };
+    return {};
   }
-
   return {
+    history: otherProps.history,
     auth: state.auth.id ? state.auth : {},
     address: state.auth.address ? state.auth.address : [],
     orderId: state.lineItems.length ? state.lineItems[0].orderId : null,

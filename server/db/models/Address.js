@@ -32,7 +32,6 @@ const Address = db.define("address", {
         msg: "Please provide a state",
       },
     },
-    defaultValue: "NY",
   },
   zip: {
     type: STRING,
@@ -42,7 +41,6 @@ const Address = db.define("address", {
         msg: "Please provide a zip code",
       },
     },
-    defaultValue: "04578",
   },
 });
 
