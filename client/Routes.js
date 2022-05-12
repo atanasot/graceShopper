@@ -93,7 +93,7 @@ class Routes extends Component {
               <Route path="/beers/:id" component={BeerDescription} />
               <Route path="/orders/:id" component={OrderDescription} />
               <Route path="/orders" component={Orders} />
-              <Route path="/checkout" component={Checkout} />
+              <Route path="/checkout" component={CheckoutAfterLogin} />
               <Route path="/contact" component={Contact} />
               <Route path="/aboutwine" component={AboutWine} />
               <Route path="/aboutbeer" component={AboutBeer} />

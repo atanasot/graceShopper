@@ -14,7 +14,7 @@ const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
       lineItems.reduce((accume, current) => accume + current.price * current.quantity, 0) 
       .toFixed(2) * 1 : null
   const tax = (subtotal * 0.011).toFixed(2) * 1;
-  return lineItems ? (
+  return lineItems.length ? (
     <div>
       <div style={{ marginBottom: "100px", marginRight: "30px" }}>
         <h1 style={{ marginBottom: "100px", marginTop: "100px" }}>
@@ -60,7 +60,6 @@ const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
                       <button
                         className="remove-product"
                         onClick={() => {
-                          console.log(lineItem);
                           updateItemQty(lineItem.id, lineItem.orderId, -1);
                         }}
                       >
@@ -141,7 +140,7 @@ const CartAfterlogin = ({ lineItems, updateItemQty: updateItemQty }) => {
               </div>
             </div>
           </div>
-          <button className="checkout">
+          <button className="checkout" >
             <Link to="/checkout">Checkout</Link>
           </button>
           <button className="checkout">

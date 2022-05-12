@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import CheckoutAfterLogin from "./CheckoutAfterLogin";
 
 const Checkout = () => {
+  console.log("Check out before login render");
   const token = window.localStorage.getItem("token");
 
   return token ? (

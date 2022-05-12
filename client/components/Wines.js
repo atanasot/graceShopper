@@ -35,12 +35,12 @@ const Wines = ({ wines, match, history, onSearchWines }) => {
       </div>
       <div style={{ marginBottom: "60px" }}>
         <h1 className="H1Background">Wine</h1>
-        <section class="containercontainer">
+        <section className="containercontainer">
           <p style={{ marginLeft: "-100px" }}>Filter by</p>
-          <div class="dropdowndropdown">
+          <div className="dropdowndropdown">
             <select
               name="filter"
-              class="dropdown-select"
+              className="dropdown-select"
               value={filter}
               onChange={onFilterChange}
             >
@@ -52,10 +52,10 @@ const Wines = ({ wines, match, history, onSearchWines }) => {
             </select>
           </div>
           <p style={{ marginLeft: "-100px" }}>Sort by</p>
-          <div class="dropdowndropdown">
+          <div className="dropdowndropdown">
             <select
               name="one"
-              class="dropdown-select"
+              className="dropdown-select"
               value={match.params.sort}
               onChange={(ev) => history.push(`/wine?sort=${ev.target.value}`)}
             >

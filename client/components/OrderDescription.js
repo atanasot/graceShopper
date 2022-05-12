@@ -1,28 +1,41 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchLineItemsByOrder } from "../store/lineItems";
+import axios from "axios";
 
-// need to use componentDidUpdate for order to display lineItems per Order -- fix orders slice in redux store
+// need to use componentDidUpdate for order to display previous order items -- fix orders slice in redux store
 class OrderDescription extends Component {
-  componentDidMount() {
-    this.props.fetchLineItemsByOrder(this.props.orderId);
+  constructor(props) {
+    super(props);
+    this.state = {
+      order: [],
+    };
+  }
+  async componentDidMount() {
+    const order = (
+      await axios.get(`/api/lineItems/order/${this.props.orderId}`, {
+        headers: {
+          authorization: window.localStorage.getItem("token"),
+        },
+      })
+    ).data;
+    this.setState({
+      order,
+    });
   }
 
   render() {
-    const { lineItems } = this.props;
-
     return (
       <div>
         <p>
           <Link to="/orders">Go back</Link>
         </p>
         <ul>
-          {lineItems.map((lineItem) => (
-            <li key={lineItem.id}>
-              {lineItem.name}
-              <p>Price : {lineItem.price}</p>
-              <p>Quantity : {lineItem.quantity}</p>
+          {this.state.order.map((item) => (
+            <li key={item.id}>
+              {item.name}
+              <p>Price : {item.price}</p>
+              <p>Quantity : {item.quantity}</p>
             </li>
           ))}
         </ul>
@@ -33,18 +46,9 @@ class OrderDescription extends Component {
 
 const mapStateToProps = (state, otherProps) => {
   const orderId = otherProps.match.params.id * 1;
-  const { lineItems } = state;
   return {
     orderId,
-    lineItems,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchLineItemsByOrder: (orderId) =>
-      dispatch(fetchLineItemsByOrder(orderId)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(OrderDescription);
+export default connect(mapStateToProps)(OrderDescription);
