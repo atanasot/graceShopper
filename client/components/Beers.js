@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { searchBeers } from "../store/beers";
+import { searchBeers, queryBeers } from "../store/beers";
 
-const Beers = ({ beers, match, history, onSearchBeers }) => {
+const Beers = ({ beers, match, history, onSearchBeers, onQueryBeers }) => {
   const [filter, setFilter] = useState("");
+  const [query, setQuery] = useState("");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -13,6 +14,13 @@ const Beers = ({ beers, match, history, onSearchBeers }) => {
     setFilter(val);
     onSearchBeers({ type: val });
   };
+  const onChange = (e) => {
+    const val = e.target.value;
+    setQuery(val);
+    onQueryBeers(val);
+  };
+
+
   return (
     <div>
       <div style={{ marginLeft: "270px", marginTop: "100px" }}>
@@ -34,9 +42,10 @@ const Beers = ({ beers, match, history, onSearchBeers }) => {
       </div>
       <div style={{ marginBottom: "60px" }}>
         <h1 className="H1Background">BEER</h1>
-        <section className="containercontainer">
-          <p style={{ marginLeft: "-100px" }}>Filter by Style</p>
-          <div className="dropdowndropdown">
+
+        <section class="containercontainer">
+          <p style={{ marginLeft: "-100px" }}>Filter by Type</p>
+          <div class="dropdowndropdown">
             <select
               name="filter"
               className="dropdown-select"
@@ -62,6 +71,10 @@ const Beers = ({ beers, match, history, onSearchBeers }) => {
               <option value="price,asc">Price low to high</option>
               <option value="price,desc">Price high to low</option>
             </select>
+          </div>
+          <p style={{ marginLeft: "-100px" }}>Search</p>
+          <div>
+            <input placeholder="search field" type='text' value={ query } onChange = { onChange } name='query' /> 
           </div>
         </section>
       </div>
@@ -125,6 +138,9 @@ const mapDispatchToProps = (dispatch) => {
     onSearchBeers: (params) => {
       dispatch(searchBeers(params));
     },
+    onQueryBeers: (query)=>{
+      dispatch(queryBeers(query));
+    }
   };
 };
 

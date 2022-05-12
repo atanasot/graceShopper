@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { searchWines } from "../store/wines";
+import { searchWines, queryWines } from "../store/wines";
 
-const Wines = ({ wines, match, history, onSearchWines }) => {
+const Wines = ({ wines, match, history, onSearchWines,onQueryWines }) => {
   const [filter, setFilter] = useState("");
-
+  const [query, setQuery] = useState("");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -14,6 +14,12 @@ const Wines = ({ wines, match, history, onSearchWines }) => {
     setFilter(val);
     onSearchWines({ type: val });
   };
+
+  const onChange = (e) => {
+    const val = e.target.value;
+    setQuery(val);
+    onQueryWines(val);
+  }
   return (
     <div>
       <div style={{ marginLeft: "270px", marginTop: "100px" }}>
@@ -64,6 +70,10 @@ const Wines = ({ wines, match, history, onSearchWines }) => {
               <option value="price,asc">Price low to high</option>
               <option value="price,desc">Price high to low</option>
             </select>
+          </div>
+          <p style={{ marginLeft: "-100px" }}>Search</p>
+          <div>
+            <input placeholder="search field" type='text' name='query' onChange={onChange} value={query} />  
           </div>
         </section>
       </div>
@@ -128,7 +138,10 @@ const mapDispatchToProps = (dispatch) => {
     onSearchWines: (params) => {
       dispatch(searchWines(params));
     },
-  };
+    onQueryWines: (query)=> {
+      dispatch(queryWines(query))
+    }
+  }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Wines);

@@ -29,6 +29,12 @@ export const searchWines = (params) => {
     dispatch(_fetchWines(wines));
   };
 };
+export const queryWines = (query) => {
+  return async (dispatch) => {
+    const wines = (await axios.get(`/api/wines/filter?query=${query}`)).data
+    dispatch(_fetchWines(wines));
+  };
+};
 export const adminAddWine = (_wine) => {
   return async (dispatch) => {
     const wine = (
