@@ -45,7 +45,7 @@ const Beers = ({ beers, match, history, onSearchBeers, onQueryBeers }) => {
       </div>
       <section className="author-archive">
         <div className="sidebar">
-          <div className="subheader">Filter by Type</div>
+          <div className="subheader">Filter by</div>
 
           <div class="dropdowndropdown">
             <select
@@ -73,16 +73,16 @@ const Beers = ({ beers, match, history, onSearchBeers, onQueryBeers }) => {
               <option value="price,desc">Price high to low</option>
             </select>
           </div>
-        </div>
-        <p style={{ marginLeft: "-100px" }}>Search</p>
-        <div>
-          <input
-            placeholder="search field"
-            type="text"
-            value={query}
-            onChange={onChange}
-            name="query"
-          />
+          <div className="subheader">Search</div>
+          <div>
+            <input
+              placeholder="search"
+              type="text"
+              name="query"
+              onChange={onChange}
+              value={query}
+            />
+          </div>
         </div>
       </section>
       <section className="author-archive">

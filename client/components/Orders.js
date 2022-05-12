@@ -2,29 +2,45 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchOrders } from "../store/orders";
+import NoOrder from "./NoOrder";
 
 class Orders extends Component {
   componentDidMount() {
     this.props.fetchOrders();
+    window.scrollTo(0, 0);
   }
   render() {
     const { orders } = this.props;
-    <Link to={"/"}>Go Back</Link>;
     if (!orders.length) {
-      return <h2>You have no purchased orders</h2>;
+      return <NoOrder />;
     }
     return (
-      <ul>
-        {orders.map((order) => (
-          <li key={order.id}>
+      <div clasName="orderlist11" style={{ height: "700px" }}>
+        <div style={{ marginLeft: "270px", marginTop: "100px" }}>
+          <span
+            style={{
+              textDecoration: "underline",
+            }}
+          >
+            <Link to="/">Home</Link>
+          </span>{" "}
+        </div>
+        <div>
+          <h1 className="H1Background">Order History</h1>
+        </div>
+        <ul class="rolldown-list" id="myList">
+          <div></div>
+          {orders.map((order) => (
             <Link to={`/orders/${order.id}`}>
-              Order Date {order.createdAt}{" "}
+              <li key={order.id}>
+                Order Date : {order.createdAt.slice(0, 10)}{" "}
+                <p>Order total : ${(order.total * 1).toFixed(2) * 1}</p>
+                <p>Items of Order : {order.lineItems}</p>
+              </li>{" "}
             </Link>
-            <p>Order total : {(order.total * 1).toFixed(2) * 1}</p>
-            <p>Items Per Order : {order.lineItems}</p>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </ul>
+      </div>
     );
   }
 }
