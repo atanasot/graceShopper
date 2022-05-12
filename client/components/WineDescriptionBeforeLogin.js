@@ -128,8 +128,14 @@ class WineDescriptionBeforeLogin extends Component {
               </div>
               <div className="product__info">
                 <div className="product__desc">
-                  <div className="product__type">wine</div>
-                  <h1>{wine.name}</h1>
+                  <h1
+                    style={{
+                      fontSize: "60px",
+                      fontFamily: "initial",
+                    }}
+                  >
+                    {wine.name}
+                  </h1>
                   <p className="product__price">${wine.price}</p>
                   <div className="product__short">
                     <h4>Type:{wine.type}</h4>

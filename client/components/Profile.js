@@ -94,7 +94,7 @@ class Profile extends Component {
               textDecoration: "underline",
             }}
           >
-            <Link to="/">Go Back</Link>
+            <Link to="/">Home</Link>
           </span>
         </div>
         <h1

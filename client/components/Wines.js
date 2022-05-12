@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { searchWines, queryWines } from "../store/wines";
 
-const Wines = ({ wines, match, history, onSearchWines,onQueryWines }) => {
+const Wines = ({ wines, match, history, onSearchWines, onQueryWines }) => {
   const [filter, setFilter] = useState("");
   const [query, setQuery] = useState("");
   useEffect(() => {
@@ -19,7 +19,7 @@ const Wines = ({ wines, match, history, onSearchWines,onQueryWines }) => {
     const val = e.target.value;
     setQuery(val);
     onQueryWines(val);
-  }
+  };
   return (
     <div>
       <div style={{ marginLeft: "270px", marginTop: "100px" }}>
@@ -41,9 +41,11 @@ const Wines = ({ wines, match, history, onSearchWines,onQueryWines }) => {
       </div>
       <div style={{ marginBottom: "60px" }}>
         <h1 className="H1Background">Wine</h1>
-        <section className="containercontainer">
-          <p style={{ marginLeft: "-100px" }}>Filter by</p>
-          <div className="dropdowndropdown">
+      </div>
+      <section className="author-archive">
+        <div className="sidebar">
+          <div className="subheader">Filter by Style</div>
+          <div class="dropdowndropdown">
             <select
               name="filter"
               className="dropdown-select"
@@ -57,8 +59,9 @@ const Wines = ({ wines, match, history, onSearchWines,onQueryWines }) => {
               <option value="Champagne">Champagne</option>
             </select>
           </div>
-          <p style={{ marginLeft: "-100px" }}>Sort by</p>
-          <div className="dropdowndropdown">
+
+          <div className="subheader">Sort by</div>
+          <div class="dropdowndropdown">
             <select
               name="one"
               className="dropdown-select"
@@ -71,12 +74,18 @@ const Wines = ({ wines, match, history, onSearchWines,onQueryWines }) => {
               <option value="price,desc">Price high to low</option>
             </select>
           </div>
-          <p style={{ marginLeft: "-100px" }}>Search</p>
-          <div>
-            <input placeholder="search field" type='text' name='query' onChange={onChange} value={query} />  
-          </div>
-        </section>
-      </div>
+        </div>
+        <p style={{ marginLeft: "-100px" }}>Search</p>
+        <div>
+          <input
+            placeholder="search field"
+            type="text"
+            name="query"
+            onChange={onChange}
+            value={query}
+          />
+        </div>
+      </section>
       <section className="author-archive">
         <div className="container">
           <ol className="posts">
@@ -138,10 +147,10 @@ const mapDispatchToProps = (dispatch) => {
     onSearchWines: (params) => {
       dispatch(searchWines(params));
     },
-    onQueryWines: (query)=> {
-      dispatch(queryWines(query))
-    }
-  }
+    onQueryWines: (query) => {
+      dispatch(queryWines(query));
+    },
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Wines);

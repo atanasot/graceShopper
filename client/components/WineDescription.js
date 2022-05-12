@@ -14,7 +14,7 @@ class WineDescription extends Component {
       price: this.props.wine.id ? this.props.wine.price : "",
     };
     this.addToCart = this.addToCart.bind(this);
-    this.onChange = this.onChange.bind(this)
+    this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
@@ -32,10 +32,10 @@ class WineDescription extends Component {
     }
   }
 
-  onChange (ev) {
-    const change = {}
-    change[ev.target.name] = ev.target.value
-    this.setState(change)
+  onChange(ev) {
+    const change = {};
+    change[ev.target.name] = ev.target.value;
+    this.setState(change);
   }
 
   addToCart() {
@@ -51,21 +51,7 @@ class WineDescription extends Component {
   render() {
     const { wine } = this.props;
     const { addToCart, onChange } = this;
-    const rightarrow = (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        fill="currentColor"
-        className="bi bi-arrow-right-short"
-        viewBox="0 0 16 10"
-      >
-        <path
-          fillRule="evenodd"
-          d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-        />
-      </svg>
-    );
+
     return (
       <div>
         <div className="wrapper">
@@ -97,13 +83,22 @@ class WineDescription extends Component {
               <img
                 src={`/images/${wine.imgURL}`}
                 alt=""
-                style={{ height: "500px", width: "140px" }}
+                style={{
+                  height: "500px",
+                  width: "140px",
+                }}
               />
             </div>
             <div className="product__info">
               <div className="product__desc">
-                <div className="product__type">wine</div>
-                <h1>{wine.name}</h1>
+                <h1
+                  style={{
+                    fontSize: "60px",
+                    fontFamily: "initial",
+                  }}
+                >
+                  {wine.name}
+                </h1>
                 <p className="product__price">${wine.price}</p>
                 <div className="product__short">
                   <h4>Type:{wine.type}</h4>
@@ -121,18 +116,19 @@ class WineDescription extends Component {
                     step="1"
                     placeholder="Quantity"
                   />
-                  <button
-                    className="product__btn"
-                    onClick={() => {
-                      addToCart();
-                    }}
-                  >
-                    Add to cart
-                  </button>
                 </form>
+                <button
+                  className="product__btn"
+                  onClick={() => {
+                    addToCart();
+                  }}
+                >
+                  Add to cart
+                </button>
               </div>
-            </div>
+            </div>{" "}
           </div>
+
           <div className="product-bottom">
             <h2>Description</h2>
             <p>{wine.description}</p>

@@ -3,10 +3,14 @@ import { connect } from "react-redux";
 
 const OrderSummary = ({ lineItems }) => {
   const shipping = 5.99;
-  const subtotal = lineItems ?
-    lineItems
-      .reduce((accume, current) => accume + current.price * current.quantity, 0)
-      .toFixed(2) * 1 : null
+  const subtotal = lineItems
+    ? lineItems
+        .reduce(
+          (accume, current) => accume + current.price * current.quantity,
+          0
+        )
+        .toFixed(2) * 1
+    : null;
 
   const taxes = (subtotal * 0.05).toFixed(2) * 1;
   const total = (shipping + subtotal + taxes).toFixed(2) * 1;
@@ -15,12 +19,12 @@ const OrderSummary = ({ lineItems }) => {
   return (
     <div>
       <h3>Order Summary</h3>
-      <p>Item in Cart: {lineItems ? lineItems.length : null}</p>
-      <p>Subtotal: {subtotal}</p>
-      <p>Shipping: {shipping}</p>
-      <p>Taxes: {taxes}</p>
-      <p>Total: {total}</p>
-      <p>Payment Due: {payment}</p>
+      <p>Item in Cart: {lineItems.length}</p>
+      <p>Subtotal: ${subtotal}</p>
+      <p>Shipping: ${shipping}</p>
+      <p>Taxes: ${taxes}</p>
+      <p>Total: ${total}</p>
+      <p>Payment Due: ${payment}</p>
     </div>
   );
 };

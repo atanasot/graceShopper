@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { adminUpdateWine, fetchWines } from "../store/wines";
+import { Link } from "react-router-dom";
 
 class WineAdminUpdate extends React.Component {
   constructor(props) {
@@ -69,70 +70,123 @@ class WineAdminUpdate extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <form onSubmit={this.onSubmit}>
-            <label>{this.props.wine.id}</label>
-            <input
-              type="text"
-              name="name"
-              value={this.state.name}
-              onChange={this.onChange}
-              placeholder="Update Name"
-            />
-            <input
-              type="text"
-              name="year"
-              value={this.state.year}
-              onChange={this.onChange}
-              placeholder="Update Year"
-            />
-            <input
-              type="text"
-              name="type"
-              value={this.state.type}
-              onChange={this.onChange}
-              placeholder="Update Type"
-            />
-            <input
-              type="text"
-              name="style"
-              value={this.state.style}
-              onChange={this.onChange}
-              placeholder="Update Style"
-            />
-            <input
-              type="text"
-              name="abv"
-              value={this.state.abv}
-              onChange={this.onChange}
-              placeholder="Update A.B.V"
-            />
-            <input
-              type="text"
-              name="price"
-              value={this.state.price}
-              onChange={this.onChange}
-              placeholder="Update Price"
-            />
-            <input
-              type="text"
-              name="inventoryCount"
-              value={this.state.inventoryCount}
-              onChange={this.onChange}
-              placeholder="Update Inventory Count"
-            />
-            <input
-              type="text"
-              name="description"
-              value={this.state.description}
-              onChange={this.onChange}
-              placeholder="Update Description"
-            />
-            <button>Update Product</button>
-          </form>
-        </div>
-        <div>
-          <img src={`/images/${this.props.wine.imgURL}`} />
+        <div className="background11111">
+          <div
+            style={{
+              marginTop: "40px",
+              marginLeft: "-90px",
+              textAlign: "center",
+            }}
+          >
+            <span
+              style={{
+                textDecoration: "underline",
+              }}
+            >
+              <Link to="/adminproduct">Go Back</Link>
+            </span>
+            <h1 className="H1Background">Update</h1>
+          </div>
+
+          <div className="contact11111" id="contact">
+            <div>
+              <form className="contact11111" onSubmit={this.onSubmit}>
+                <div>
+                  <span className="contactspan">Name:</span>
+                  <input
+                    name="name"
+                    type="text"
+                    value={this.state.name}
+                    id="name"
+                    size={30}
+                    onChange={this.onChange}
+                    placeholder="Update Name"
+                  />
+                  <br />
+                  <span className="contactspan">Year:</span>
+                  <input
+                    name="year"
+                    type="text"
+                    id="email"
+                    size={30}
+                    value={this.state.year}
+                    onChange={this.onChange}
+                    placeholder="Update Year"
+                  />
+                  <br />
+                  <span className="contactspan">Type:</span>
+                  <input
+                    name="type"
+                    type="text"
+                    id="phone"
+                    size={30}
+                    value={this.state.type}
+                    onChange={this.onChange}
+                    placeholder="Update type"
+                  />
+                  <br />
+                  <span className="contactspan">Style:</span>
+                  <input
+                    name="style"
+                    type="text"
+                    id="human"
+                    size={30}
+                    value={this.state.style}
+                    onChange={this.onChange}
+                    placeholder="Update Style"
+                  />
+                  <br />
+                  <span className="contactspan">A.B.V:</span>
+                  <input
+                    name="abv"
+                    type="text"
+                    id="human"
+                    size={30}
+                    value={this.state.abv}
+                    onChange={this.onChange}
+                    placeholder="Update A.B.V"
+                  />
+                  <br />
+                  <span className="contactspan"> Price:</span>
+                  <input
+                    name="price"
+                    type="text"
+                    id="human"
+                    size={30}
+                    value={this.state.price}
+                    onChange={this.onChange}
+                    placeholder="Update Price"
+                  />
+                  <br />
+                  <span className="contactspan">Inventory Count:</span>
+                  <input
+                    name="inventoryCount"
+                    type="text"
+                    id="human"
+                    size={30}
+                    value={this.state.inventoryCount}
+                    onChange={this.onChange}
+                    placeholder="Update Inventory Count"
+                  />
+                  <br />
+                </div>
+                <div className="col-md-5">
+                  <textarea
+                    name="description"
+                    cols={40}
+                    rows={15}
+                    id="comments"
+                    value={this.state.description}
+                    onChange={this.onChange}
+                    placeholder="Update description"
+                  />
+                </div>
+                <button className="product__btn" style={{ margin: "20px" }}>
+                  Update
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     );

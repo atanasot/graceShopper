@@ -49,6 +49,7 @@ class ProductAdmin extends Component {
                 textAlign: "center",
                 fontSize: "50px",
                 width: "500px",
+                marginTop: "70px",
               }}
               className="H1Background"
             >
@@ -58,7 +59,7 @@ class ProductAdmin extends Component {
           <div className="app-content">
             <div className="projects-section">
               <div className="projects-section-header">
-                <p className="time">{date}, WINE</p>
+                <p className="time"> WINE</p>
               </div>
 
               <div className="project-boxes jsGridView">
@@ -70,7 +71,10 @@ class ProductAdmin extends Component {
                         style={{ backgroundColor: "#90ACCA" }}
                       >
                         <div className="project-box-header ">
-                          <span>{wine.createdAt.slice(0, 10)}</span>
+                          <span>
+                            {" "}
+                            Created date: {wine.createdAt.slice(0, 10)}
+                          </span>
                           <div className="more-wrapper">
                             <Link to={`/adminwine/${wine.id}`}>
                               <button className="project-btn-more">
@@ -133,7 +137,7 @@ class ProductAdmin extends Component {
         <div className="app-content">
           <div className="projects-section">
             <div className="projects-section-header">
-              <p className="time">{date}, BEER</p>
+              <p className="time">BEER</p>
             </div>
 
             <div className="project-boxes jsGridView">
@@ -145,7 +149,10 @@ class ProductAdmin extends Component {
                       style={{ backgroundColor: " #EBE399" }}
                     >
                       <div className="project-box-header ">
-                        <span>{beer.createdAt.slice(0, 10)}</span>
+                        <span>
+                          {" "}
+                          Created date: {beer.createdAt.slice(0, 10)}
+                        </span>
                         <div className="more-wrapper">
                           <Link to={`/adminbeer/${beer.id}`}>
                             <button className="project-btn-more">

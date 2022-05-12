@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
  */
 const AuthFormRegister = (props) => {
   const { name, displayName, handleSubmit, error } = props;
-  // Kenny can you add an email address to the signUp form
   return (
     <div className="container1">
       <div className="wrapper1">
