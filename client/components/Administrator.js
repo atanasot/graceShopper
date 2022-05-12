@@ -57,7 +57,7 @@ class Administrator extends Component {
                 {this.props.customers
                   ? this.props.customers.map((customer) => {
                       return (
-                        <div className="project-box-wrapper">
+                        <div className="project-box-wrapper" key={customer.id}>
                           <div
                             className="project-box"
                             style={{ backgroundColor: "#EAE1C8" }}

@@ -9,11 +9,12 @@ class WineDescription extends Component {
     super(props);
     this.state = {
       name: this.props.wine.name ? this.props.wine.name : "",
-      wineId: this.props.wine.id ? this.props.wine.id : null,
+      wineId: this.props.wine.id ? this.props.wine.id : "",
       quantity: 1,
       price: this.props.wine.id ? this.props.wine.price : "",
     };
     this.addToCart = this.addToCart.bind(this);
+    this.onChange = this.onChange.bind(this)
   }
 
   componentDidMount() {
@@ -31,11 +32,17 @@ class WineDescription extends Component {
     }
   }
 
+  onChange (ev) {
+    const change = {}
+    change[ev.target.name] = ev.target.value
+    this.setState(change)
+  }
+
   addToCart() {
     const lineItem = {
       name: this.state.name,
       wineId: this.state.wineId,
-      quantity: this.state.quantity,
+      quantity: this.state.quantity * 1,
       price: this.state.price,
     };
     this.props.addToCart(lineItem);
@@ -43,7 +50,7 @@ class WineDescription extends Component {
 
   render() {
     const { wine } = this.props;
-    const { addToCart } = this;
+    const { addToCart, onChange } = this;
     const rightarrow = (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -101,12 +108,13 @@ class WineDescription extends Component {
                 <div className="product__short">
                   <h4>Type:{wine.type}</h4>
                 </div>
-                <form>
+                <form onSubmit={(ev) => ev.preventDefault()}>
                   Quantity:
                   <input
                     className="quantity_input"
                     name="quantity"
                     value={this.state.quantity}
+                    onChange={onChange}
                     type="number"
                     min="0"
                     max="100"

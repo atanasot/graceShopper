@@ -42,12 +42,13 @@ const Beers = ({ beers, match, history, onSearchBeers, onQueryBeers }) => {
       </div>
       <div style={{ marginBottom: "60px" }}>
         <h1 className="H1Background">BEER</h1>
+
         <section class="containercontainer">
           <p style={{ marginLeft: "-100px" }}>Filter by Type</p>
           <div class="dropdowndropdown">
             <select
               name="filter"
-              class="dropdown-select"
+              className="dropdown-select"
               value={filter}
               onChange={onFilterChange}
             >
@@ -58,10 +59,10 @@ const Beers = ({ beers, match, history, onSearchBeers, onQueryBeers }) => {
           </div>
           <p style={{ marginLeft: "-100px" }}>Sort by</p>
 
-          <div class="dropdowndropdown">
+          <div className="dropdowndropdown">
             <select
               name="one"
-              class="dropdown-select"
+              className="dropdown-select"
               value={match.params.sort}
               onChange={(ev) => history.push(`/beer?sort=${ev.target.value}`)}
             >
@@ -114,9 +115,6 @@ const Beers = ({ beers, match, history, onSearchBeers, onQueryBeers }) => {
 
 const mapStateToProps = (state, { location, match }) => {
   const { beers } = state;
-
-  console.log(match.params);
-
   const searchParams = new URLSearchParams(location.search); // ?sort=name,asc
   const sort = searchParams.get("sort");
 
