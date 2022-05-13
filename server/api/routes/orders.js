@@ -26,7 +26,7 @@ app.get("/", async (req, res, next) => {
 app.get("/admin", async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
-    const orders = await Order.findAll();
+    const orders = await Order.findAll({ include: User });
     user ? res.send(orders) : res.sendStatus(404);
   } catch (err) {
     next(err);

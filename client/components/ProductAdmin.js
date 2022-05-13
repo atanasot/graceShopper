@@ -15,16 +15,16 @@ class ProductAdmin extends Component {
     super(props);
   }
   componentDidMount() {
-    this.props.fetchOrders();
     this.props.fetchWines();
     this.props.fetchBeers();
     this.props.fetchCustomers();
+    this.props.fetchAdminOrders();
     window.scrollTo(0, 0);
   }
 
   componentDidUpdate(prevState) {
     if (prevState.orders.length === 0) {
-      this.props.fetchOrders();
+      this.props.fetchAdminOrders();
     }
   }
 
@@ -269,8 +269,7 @@ class ProductAdmin extends Component {
                           alignItems: "center",
                         }}
                       >
-                        Customer: {this.props.customer.firstName}{" "}
-                        {this.props.customer.lastName}{" "}
+                        Customer: {order.user.firstName} {order.user.lastName}
                       </div>
                       <p>Quantity: {order.lineItems}</p>
                       <p>Total: {order.total}</p>
@@ -289,12 +288,9 @@ class ProductAdmin extends Component {
 
 const mapStateToProps = (state, history) => {
   const { customers, wines, beers, auth, orders } = state;
-  const customer =
-    customers.find((customer) => customer.id === history.match.params.id * 1) ||
-    {};
   return {
     auth,
-    customer,
+    customers,
     wines,
     beers,
     orders,
@@ -305,7 +301,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchBeers: () => dispatch(fetchBeers()),
     fetchCustomers: () => dispatch(fetchCustomers()),
-    fetchOrders: () => dispatch(adminFetchOrders()),
+    fetchAdminOrders: () => dispatch(adminFetchOrders()),
     fetchWines: () => dispatch(fetchWines()),
   };
 };
