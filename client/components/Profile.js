@@ -28,6 +28,7 @@ class Profile extends Component {
   }
   componentDidMount() {
     this.props.fetchOrders();
+    window.scrollTo(0, 0);
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&units=imperial&appid=895284fb2d2c50a520ea537456963d9c`;
     axios.get(url).then((response) => {
       this.setState({

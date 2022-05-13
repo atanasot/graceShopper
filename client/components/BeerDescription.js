@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { addToCart } from "../store/lineItems";
 import { Link } from "react-router-dom";
 import BeerProductRelated from "./BeerProductRelated";
+import { withAlert } from "react-alert";
 
 class BeerDescription extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class BeerDescription extends Component {
       price: this.props.beer.id ? this.props.beer.price : "",
     };
     this.addToCart = this.addToCart.bind(this);
-    this.onChange = this.onChange.bind(this)
+    this.onChange = this.onChange.bind(this);
   }
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -41,14 +42,14 @@ class BeerDescription extends Component {
     this.props.addToCart(lineItem);
   }
 
-  onChange (ev) {
-    const change = {}
-    change[ev.target.name] = ev.target.value
-    this.setState(change)
+  onChange(ev) {
+    const change = {};
+    change[ev.target.name] = ev.target.value;
+    this.setState(change);
   }
 
   render() {
-    const { beer } = this.props;
+    const { beer, alert } = this.props;
     const { addToCart, onChange } = this;
     return (
       <div>
@@ -113,6 +114,7 @@ class BeerDescription extends Component {
                     className="product__btn"
                     onClick={() => {
                       addToCart();
+                      alert.success("added to cart!");
                     }}
                   >
                     Add to cart
@@ -150,4 +152,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BeerDescription);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withAlert()(BeerDescription));

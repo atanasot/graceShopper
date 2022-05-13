@@ -18,9 +18,8 @@ LineItem.belongsTo(Wine);
 Wine.hasMany(LineItem);
 LineItem.belongsTo(Beer);
 Beer.hasMany(LineItem);
-//LineItem.belongsTo(User);
 Address.belongsTo(User);
-User.hasOne(Address)
+User.hasOne(Address);
 
 module.exports = {
   db,

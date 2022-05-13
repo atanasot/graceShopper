@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { adminUpdateWine, fetchWines } from "../store/wines";
 import { Link } from "react-router-dom";
+import { withAlert } from "react-alert";
 
 class WineAdminUpdate extends React.Component {
   constructor(props) {
@@ -68,6 +69,8 @@ class WineAdminUpdate extends React.Component {
   }
 
   render() {
+    const { alert } = this.props;
+
     return (
       <div>
         <div className="background11111">
@@ -180,7 +183,13 @@ class WineAdminUpdate extends React.Component {
                     placeholder="Update description"
                   />
                 </div>
-                <button className="product__btn" style={{ margin: "20px" }}>
+                <button
+                  className="product__btn"
+                  onClick={() => {
+                    alert.success("updated!");
+                  }}
+                  style={{ margin: "20px" }}
+                >
                   Update
                 </button>
               </form>
@@ -207,4 +216,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(WineAdminUpdate);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withAlert()(WineAdminUpdate));

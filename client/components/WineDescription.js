@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { addToCart } from "../store/lineItems";
 import { Link } from "react-router-dom";
 import WineProductRelated from "./wineProductRelated";
+import { withAlert } from "react-alert";
 
 class WineDescription extends Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class WineDescription extends Component {
   }
 
   render() {
-    const { wine } = this.props;
+    const { wine, alert } = this.props;
     const { addToCart, onChange } = this;
 
     return (
@@ -121,6 +122,7 @@ class WineDescription extends Component {
                   className="product__btn"
                   onClick={() => {
                     addToCart();
+                    alert.success("added to cart!");
                   }}
                 >
                   Add to cart
@@ -158,4 +160,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(WineDescription);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withAlert()(WineDescription));

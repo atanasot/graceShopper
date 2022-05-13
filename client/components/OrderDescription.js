@@ -24,6 +24,7 @@ class OrderDescription extends Component {
   }
 
   render() {
+
     const { firstName, lastName } = this.props.auth;
     const { line1, line2, city, state, zip } = this.props.address;
     return (
@@ -83,7 +84,7 @@ class OrderDescription extends Component {
                     </tr>
                     <tr>
                       <td>Price :</td>
-                      <td>{item.price}</td>
+                      <td>$ {item.price}</td>
                     </tr>
                     <tr>
                       <td>Quantity :</td>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { updateProfile } from "../store/auth";
 import { fetchCustomers, updateAddress } from "../store/customers";
 import { fetchOrders } from "../store/orders";
+import { withAlert } from "react-alert";
 
 class AddressUpdate extends Component {
   constructor(props) {
@@ -43,7 +44,7 @@ class AddressUpdate extends Component {
       state: this.state.state,
       zip: this.state.zip,
     };
-    await this.props.update(address)
+    await this.props.update(address);
     await this.props.updateAddress(address);
   }
 
@@ -51,6 +52,7 @@ class AddressUpdate extends Component {
   render() {
     const { firstName, lastName, city, line1, line2, zip, state } = this.state;
     const { onChange } = this;
+    const { alert } = this.props;
 
     return (
       <div>
@@ -60,7 +62,7 @@ class AddressUpdate extends Component {
               textDecoration: "underline",
             }}
           >
-            <Link to="/">Go Back</Link>
+            <Link to="/">Home</Link>
           </span>
         </div>
         <h1
@@ -187,7 +189,14 @@ class AddressUpdate extends Component {
               <span className="bar" />
               <label className="label11">Zip Code</label>
             </div>
-            <button className="register-btn">Save</button>
+            <button
+              className="register-btn"
+              onClick={() => {
+                alert.success("updated!");
+              }}
+            >
+              Save
+            </button>
           </form>
         </div>
       </div>
@@ -207,7 +216,7 @@ const mapState = (state) => {
     password: state.auth.password,
     isAdmin: state.auth.isAdmin,
     address: state.auth.address,
-    auth: state.auth
+    auth: state.auth,
   };
 };
 
@@ -220,4 +229,4 @@ const mapDispatch = (dispatch) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(AddressUpdate);
+export default connect(mapState, mapDispatch)(withAlert()(AddressUpdate));

@@ -2,11 +2,14 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { authenticate } from "../store";
 import { Link } from "react-router-dom";
+import { useAlert } from "react-alert";
 
 /**
  * COMPONENT
  */
 const AuthForm = (props) => {
+  const alert = useAlert();
+
   const { name, displayName, handleSubmit, error } = props;
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -34,7 +37,13 @@ const AuthForm = (props) => {
               placeholder="password"
             />
           </label>
-          <button type="submit" id="login-btn">
+          <button
+            type="submit"
+            id="login-btn"
+            onClick={() => {
+              alert.success("welcome back!");
+            }}
+          >
             {displayName}
           </button>
           <div className="or">
