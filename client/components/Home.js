@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// Checkout Stanleys comments
-
 const Home = () => {
   return (
     <div>
@@ -79,7 +77,7 @@ const Home = () => {
               >
                 <span className="first-character ny">I</span>Beer was consumed by
                 ancient farmers who built the first agrarian civilizations,
-                Egyptian workers as they toiled along the nile river, and is
+                Egyptian workers as they toiled along the Nile river, and is
                 even thought by experts to have been the cause of civilization
                 as we know it. By imbibing in beer, you’re following in an
                 ancient tradition that brought joy to people’s lives throughout
