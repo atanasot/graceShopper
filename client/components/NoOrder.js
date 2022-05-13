@@ -32,7 +32,7 @@ const NoOrder = () => {
           </div>
           <div className="product-info">
             <div className="product-text">
-              <h1 className="h1111">You Have No Order =(</h1>
+              <h1 className="h1111">You Have No Orders =(</h1>
               <h2></h2>
             </div>
             <div style={{ textAlign: "center" }}>
