@@ -262,7 +262,7 @@ async function seed() {
         style: "Pinot Noir",
         abv: 13.5,
         imgURL:
-          "/2014_Hospices_de_Beaune_Cuvée_Charlotte_Dumay_Corton_Grand_Cru.png",
+          "/2014_Hospices_de_Beaune_Cuvee_Charlotte_Dumay_Corton_Grand_Cru.png",
         price: 1400.0,
         inventoryCount: 100,
       }),
