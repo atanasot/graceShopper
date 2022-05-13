@@ -24,6 +24,7 @@ class OrderDescription extends Component {
   }
 
   render() {
+
     const { firstName, lastName } = this.props.auth;
     const { line1, line2, city, state, zip } = this.props.address;
     return (

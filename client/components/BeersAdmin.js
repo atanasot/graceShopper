@@ -40,7 +40,6 @@ class BeersAdmin extends Component {
 
   render() {
     const { alert } = this.props;
-    console.log(alert);
     return (
       <div>
         <span style={{ marginLeft: "50px" }}>ADD A BEER</span>
