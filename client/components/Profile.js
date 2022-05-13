@@ -211,7 +211,14 @@ class Profile extends Component {
               <p className="p1111">
                 <p className=".a1111" style={{ marginTop: "-50px" }}>
                   <p className=".a1111">Address:</p>
-                  {line1} {line2}, {city}, {state}, {zip}
+                  {line1 ? (
+                    <>
+                      {line1}
+                      {line2}, {city}, {state}, {zip}
+                    </>
+                  ) : (
+                    "TBD"
+                  )}
                 </p>
               </p>
             </div>
@@ -230,12 +237,13 @@ class Profile extends Component {
                 ) : (
                   <img
                     style={{
-                      width: 180,
-                      height: 180,
-                      marginLeft: "40px",
+                      width: 160,
+                      height: 230,
+                      marginLeft: "50px",
                       marginTop: "40px",
+                      borderRadius: "10px",
                     }}
-                    src={`https://avatars.dicebear.com/api/human/${id}.svg`}
+                    src={"/images/horse.jpg"}
                   />
                 )}
               </div>

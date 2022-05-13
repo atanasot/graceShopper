@@ -36,11 +36,9 @@ class CheckoutAfterLogin extends Component {
       zip: this.state.zip,
     };
     try {
-      console.log(this.props);
-      console.log(address)
       await this.props.update(address);
       await this.props.submitOrder(this.props.orderId);
-      this.props.history.push('/confirm')
+      this.props.history.push("/confirm");
     } catch (err) {
       console.log(err);
       this.setState({ error: err.response.data.error });

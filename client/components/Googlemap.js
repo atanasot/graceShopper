@@ -26,6 +26,8 @@ export class GoogleMap extends Component {
   };
 
   render() {
+    console.log(process.env.REACT_APP_GOOGLE_API_KEY);
+
     const mapStyles = {
       maxWidth: "450px",
       height: "350px",
