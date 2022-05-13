@@ -136,7 +136,6 @@ class AddressUpdate extends Component {
                 name="line1"
                 value={line1}
                 onChange={onChange}
-                required
               />
               <span className="highlight" />
               <span className="bar" />
@@ -159,7 +158,6 @@ class AddressUpdate extends Component {
                 name="city"
                 value={city}
                 onChange={this.onChange}
-                required
               />
               <span className="highlight" />
               <span className="bar" />
@@ -171,7 +169,6 @@ class AddressUpdate extends Component {
                 name="state"
                 value={state}
                 onChange={this.onChange}
-                required
               />
               <span className="highlight" />
               <span className="bar" />
@@ -183,7 +180,6 @@ class AddressUpdate extends Component {
                 name="zip"
                 value={zip}
                 onChange={this.onChange}
-                required
               />
               <span className="highlight" />
               <span className="bar" />

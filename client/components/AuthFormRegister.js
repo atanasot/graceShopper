@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { authenticate } from "../store";
 import { Link } from "react-router-dom";
+import { useAlert } from "react-alert";
 
 /**
  * COMPONENT
  */
 const AuthFormRegister = (props) => {
+  const alert = useAlert();
   const { name, displayName, handleSubmit, error } = props;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="container1">
       <div className="wrapper1">
@@ -54,7 +59,13 @@ const AuthFormRegister = (props) => {
               placeholder="password"
             />
           </label>
-          <button type="submit" id="login-btn">
+          <button
+            onClick={() => {
+              alert.success("Registration successful!");
+            }}
+            type="submit"
+            id="login-btn"
+          >
             {displayName}
           </button>
           <div className="register">
