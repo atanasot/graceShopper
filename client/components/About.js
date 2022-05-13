@@ -85,8 +85,10 @@ const About = () => {
               Lina Ryerkerk<span>Software Engineer</span>
             </h2>
             <p>
-              If you want to stay dad you've got to polish your image. I think
-              the image we need to create for you is "repentant but learning".
+              Coming from a Chemistry background, I kept imagining redox
+              reactions when I was working with React or Redux. Lately I've been
+              running more code than chemical reactions and I'm loving it! 
+              Cheers to new experiences!
             </p>
             <a
               href="https://www.linkedin.com/in/lina-ryerkerk/"

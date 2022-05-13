@@ -36,8 +36,6 @@ class CheckoutAfterLogin extends Component {
       zip: this.state.zip,
     };
     try {
-      console.log(this.props);
-      console.log(address)
       await this.props.update(address);
       await this.props.submitOrder(this.props.orderId);
       this.props.history.push('/confirm')

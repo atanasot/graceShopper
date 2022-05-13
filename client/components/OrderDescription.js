@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-// need to use componentDidUpdate for order to display previous order items -- fix orders slice in redux store
 class OrderDescription extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +24,8 @@ class OrderDescription extends Component {
   }
 
   render() {
+    const { firstName, lastName } = this.props.auth;
+    const { line1, line2, city, state, zip } = this.props.address;
     return (
       <div>
         <div style={{ marginLeft: "270px", marginTop: "100px" }}>
@@ -111,27 +112,29 @@ class OrderDescription extends Component {
                 <tbody>
                   <tr>
                     <td>Name</td>
-                    <td>Robert M. Hamilton</td>
+                    <td>
+                      {firstName} {lastName}
+                    </td>
                   </tr>
                   <tr>
                     <td>Street Address</td>
-                    <td>1627 Rose Street</td>
+                    <td>{line1}</td>
                   </tr>
                   <tr>
                     <td>Street Address 2</td>
-                    <td></td>
+                    <td>{line2}</td>
                   </tr>
                   <tr>
                     <td>City</td>
-                    <td>Manhattan</td>
+                    <td>{city}</td>
                   </tr>
                   <tr>
                     <td>State (Province)</td>
-                    <td>Kansas</td>
+                    <td>{state}</td>
                   </tr>
                   <tr>
                     <td>Postal Code</td>
-                    <td>66502</td>
+                    <td>{zip}</td>
                   </tr>
                   <tr>
                     <td>Country</td>
@@ -155,6 +158,8 @@ const mapStateToProps = (state, otherProps) => {
   const orderId = otherProps.match.params.id * 1;
   return {
     orderId,
+    auth: state.auth.id ? state.auth : {},
+    address: state.auth.address ? state.auth.address : [],
   };
 };
 
