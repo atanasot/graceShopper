@@ -97,12 +97,17 @@ class Profile extends Component {
             <Link to="/">Home</Link>
           </span>
         </div>
-        <h1
-          className="H1Background"
-          style={{ marginBottom: "-100px", marginTop: "-50px" }}
-        >
-          Profile
-        </h1>
+        <div className="content">
+          <div className="content__container">
+            <p className="content__container__text">Hello</p>
+            <ul className="content__container__list">
+              <li className="content__container__list__item">World !</li>
+              <li className="content__container__list__item">{firstName} !</li>
+              <li className="content__container__list__item">User !</li>
+              <li className="content__container__list__item">Everybody !</li>
+            </ul>
+          </div>
+        </div>
         <div id="dashboard-container">
           <div className="leftside-menu">
             <div className="avatar">

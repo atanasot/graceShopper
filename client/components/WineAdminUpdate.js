@@ -74,8 +74,7 @@ class WineAdminUpdate extends React.Component {
           <div
             style={{
               marginTop: "40px",
-              marginLeft: "-90px",
-              textAlign: "center",
+              textAlign: "end",
             }}
           >
             <span

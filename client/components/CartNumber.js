@@ -17,7 +17,7 @@ class CartNumber extends Component {
           }, 0)
         : 0;
     }
-    return <div>{count}</div>;
+    return <>{count}</>;
   }
 }
 

@@ -10,7 +10,6 @@ class Cart extends Component {
       cart: JSON.parse(window.localStorage.getItem("cart")) || [],
     };
     this.removeItem = this.removeItem.bind(this);
-    this.updateQuantity = this.updateQuantity.bind(this);
   }
 
   componentDidMount() {
@@ -23,28 +22,15 @@ class Cart extends Component {
       cart: this.state.cart,
     });
     window.localStorage.setItem("cart", JSON.stringify(this.state.cart));
-    this.props.updateCart();
-  };
-
-  updateQuantity = (index, qty) => {
-    this.state.cart[index].quantity += qty;
-    window.localStorage.setItem("cart", JSON.stringify(this.state.cart));
-    this.setState({
-      cart: this.state.cart,
-    });
-    if (this.state.cart[index].quantity < 1) {
-      this.removeItem(index)
-    }
+    console.log(this.state.cart);
     this.props.updateCart();
   };
 
   render() {
-    const subtotal = this.state.cart
-      ? this.state.cart.reduce(
-          (current, accume) => (current += accume.price * accume.quantity),
-          0
-        )
-      : 0;
+    const subtotal = this.state.cart.reduce(
+      (current, accume) => (current += accume.price * accume.quantity),
+      0
+    );
     const shipping = 5.99;
     const tax = (subtotal * 0.011).toFixed(2) * 1;
     return (
@@ -81,25 +67,11 @@ class Cart extends Component {
                         <div className="product-quantity">
                           <p>
                             {" "}
-                            <button
-                              className="remove-product"
-                              onClick={() => {
-                                this.updateQuantity(idx, 1);
-                              }}
-                            >
-                              +
-                            </button>
+                            <button className="remove-product">+</button>
                             <span style={{ width: "120px" }}>
                               {lineItem.quantity}
                             </span>
-                            <button
-                              className="remove-product"
-                              onClick={() => {
-                                this.updateQuantity(idx, -1);
-                              }}
-                            >
-                              -
-                            </button>
+                            <button className="remove-product">-</button>
                           </p>
                         </div>
                         <div className="product-removal">
@@ -189,7 +161,7 @@ class Cart extends Component {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              marginTop: "-90px",
+              marginTop: "190px",
               marginBottom: "140px",
             }}
           >

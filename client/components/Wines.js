@@ -44,7 +44,7 @@ const Wines = ({ wines, match, history, onSearchWines, onQueryWines }) => {
       </div>
       <section className="author-archive">
         <div className="sidebar">
-          <div className="subheader">Filter by Style</div>
+          <div className="subheader">Filter by</div>
           <div class="dropdowndropdown">
             <select
               name="filter"
@@ -59,7 +59,6 @@ const Wines = ({ wines, match, history, onSearchWines, onQueryWines }) => {
               <option value="Champagne">Champagne</option>
             </select>
           </div>
-
           <div className="subheader">Sort by</div>
           <div class="dropdowndropdown">
             <select
@@ -74,19 +73,19 @@ const Wines = ({ wines, match, history, onSearchWines, onQueryWines }) => {
               <option value="price,desc">Price high to low</option>
             </select>
           </div>
-        </div>
-        <p style={{ marginLeft: "-100px" }}>Search</p>
-        <div>
-          <input
-            placeholder="search field"
-            type="text"
-            name="query"
-            onChange={onChange}
-            value={query}
-          />
+          <div className="subheader">Search</div>
+          <div>
+            <input
+              placeholder="search"
+              type="text"
+              name="query"
+              onChange={onChange}
+              value={query}
+            />
+          </div>
         </div>
       </section>
-      <section className="author-archive">
+      <section className="author-archive" style={{ marginTop: "30px" }}>
         <div className="container">
           <ol className="posts">
             {wines.map((wine) => (
