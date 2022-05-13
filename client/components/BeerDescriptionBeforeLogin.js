@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import BeerProductRelated from "./BeerProductRelated";
 import { fetchLineItemsFromCartNotLoggedIn } from "../store/lineItems";
+import { withAlert } from "react-alert";
 
 class BeerDescriptionBeforeLogin extends Component {
   constructor(props) {
@@ -74,7 +75,7 @@ class BeerDescriptionBeforeLogin extends Component {
   }
 
   render() {
-    const { beer } = this.props;
+    const { beer, alert } = this.props;
     return (
       <div>
         <div>
@@ -137,9 +138,10 @@ class BeerDescriptionBeforeLogin extends Component {
                     />{" "}
                     <button
                       className="product__btn"
-                      onClick={() =>
-                        this.addToLocalStorage(`${this.state.quantity}`)
-                      }
+                      onClick={() => {
+                        this.addToLocalStorage(`${this.state.quantity}`);
+                        alert.success("added to cart!");
+                      }}
                     >
                       Add to cart
                     </button>
@@ -180,4 +182,4 @@ const mapDispatch = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatch
-)(BeerDescriptionBeforeLogin);
+)(withAlert()(BeerDescriptionBeforeLogin));

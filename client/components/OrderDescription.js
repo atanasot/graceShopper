@@ -25,6 +25,8 @@ class OrderDescription extends Component {
   }
 
   render() {
+    console.log(this.state.order);
+
     return (
       <div>
         <div style={{ marginLeft: "270px", marginTop: "100px" }}>
@@ -82,7 +84,7 @@ class OrderDescription extends Component {
                     </tr>
                     <tr>
                       <td>Price :</td>
-                      <td>{item.price}</td>
+                      <td>$ {item.price}</td>
                     </tr>
                     <tr>
                       <td>Quantity :</td>

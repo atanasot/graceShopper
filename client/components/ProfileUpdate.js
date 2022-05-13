@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { updateProfile } from "../store/auth";
 import { fetchCustomers, updateAddress } from "../store/customers";
 import { fetchOrders } from "../store/orders";
+import { withAlert } from "react-alert";
 
 class ProfileUpdate extends Component {
   constructor(props) {
@@ -13,8 +14,8 @@ class ProfileUpdate extends Component {
       lastName: this.props.lastName || "",
       email: this.props.email || "",
       username: this.props.username || "",
-      password: this.props.password || "", 
-      error: ''
+      password: this.props.password || "",
+      error: "",
     };
     this.onChange = this.onChange.bind(this);
     this.onSave = this.onSave.bind(this);
@@ -40,11 +41,10 @@ class ProfileUpdate extends Component {
       password: this.state.password,
     };
     try {
-      await this.props.update(user)
+      await this.props.update(user);
     } catch (err) {
-      this.setState({error: err.response.data.error})
+      this.setState({ error: err.response.data.error });
     }
-    
   }
 
   // <pre>{!!error && (
@@ -59,6 +59,8 @@ class ProfileUpdate extends Component {
     const { username, error, password, firstName, lastName, email } =
       this.state;
     const { onChange } = this;
+    const { alert } = this.props;
+
     return (
       <div>
         <div style={{ marginTop: "100px", marginLeft: "270px" }}>
@@ -67,7 +69,7 @@ class ProfileUpdate extends Component {
               textDecoration: "underline",
             }}
           >
-            <Link to="/">Go Back</Link>
+            <Link to="/">Home</Link>
           </span>
         </div>
         <h1
@@ -197,7 +199,14 @@ class ProfileUpdate extends Component {
               <span className="bar" />
               <label className="label11">Password</label>
             </div>
-            <button className="register-btn">Save</button>
+            <button
+              className="register-btn"
+              onClick={() => {
+                alert.success("updated!");
+              }}
+            >
+              Save
+            </button>
           </form>
         </div>
       </div>
@@ -229,4 +238,4 @@ const mapDispatch = (dispatch) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(ProfileUpdate);
+export default connect(mapState, mapDispatch)(withAlert()(ProfileUpdate));

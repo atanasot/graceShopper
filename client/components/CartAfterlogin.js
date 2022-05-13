@@ -9,11 +9,16 @@ const CartAfterlogin = ({ lineItems, updateItemQty, deleteItem }) => {
     window.scrollTo(0, 0);
   });
   const shipping = 5.99;
-  const subtotal =
-    lineItems ?
-      lineItems.reduce((accume, current) => accume + current.price * current.quantity, 0) 
-      .toFixed(2) * 1 : null
+  const subtotal = lineItems
+    ? lineItems
+        .reduce(
+          (accume, current) => accume + current.price * current.quantity,
+          0
+        )
+        .toFixed(2) * 1
+    : null;
   const tax = (subtotal * 0.011).toFixed(2) * 1;
+  console.log(lineItems);
   return subtotal ? (
     <div>
       <div style={{ marginBottom: "100px", marginRight: "30px" }}>
@@ -139,7 +144,7 @@ const CartAfterlogin = ({ lineItems, updateItemQty, deleteItem }) => {
               </div>
             </div>
           </div>
-          <button className="checkout" >
+          <button className="checkout">
             <Link to="/checkout">Checkout</Link>
           </button>
           <button className="checkout">

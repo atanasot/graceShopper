@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchBeers, adminAddBeer } from "../store/beers";
+import { withAlert } from "react-alert";
 
 class BeersAdmin extends Component {
   constructor(props) {
@@ -38,6 +39,8 @@ class BeersAdmin extends Component {
   }
 
   render() {
+    const { alert } = this.props;
+    console.log(alert);
     return (
       <div>
         <span style={{ marginLeft: "50px" }}>ADD A BEER</span>
@@ -165,8 +168,11 @@ class BeersAdmin extends Component {
           <button
             className="register-btn"
             style={{ width: "100px", height: "50px", marginLeft: "50px" }}
+            onClick={() => {
+              alert.success("added!");
+            }}
           >
-            Add Wine
+            Add Beer
           </button>{" "}
         </form>
       </div>
@@ -189,4 +195,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BeersAdmin);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withAlert()(BeersAdmin));

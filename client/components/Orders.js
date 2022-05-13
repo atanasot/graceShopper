@@ -14,6 +14,7 @@ class Orders extends Component {
     if (!orders.length) {
       return <NoOrder />;
     }
+    console.log(orders);
     return (
       <div clasName="orderlist11" style={{ height: "700px" }}>
         <div style={{ marginLeft: "270px", marginTop: "100px" }}>

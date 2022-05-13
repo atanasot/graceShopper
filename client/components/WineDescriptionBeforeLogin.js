@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import WineProductRelated from "./wineProductRelated";
 import { fetchLineItemsFromCartNotLoggedIn } from "../store/lineItems";
+import { withAlert } from "react-alert";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
 
 class WineDescriptionBeforeLogin extends Component {
   constructor(props) {
@@ -61,20 +64,6 @@ class WineDescriptionBeforeLogin extends Component {
     let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
   }
 
-  // removeFromLocalStorage(quant) {
-  //   let updateCart = this.state.cart.find(
-  //     (value) => value.wineId === this.props.wine.id
-  //   );
-  //   updateCart.quantity = updateCart.quantity
-  //     ? (updateCart.quantity * 1 - quant * 1).toString()
-  //     : quant;
-  //   this.setState({ cart: updateCart });
-
-  //   window.localStorage.setItem("cart", JSON.stringify(updateCart));
-  //   let loadedStorage = JSON.parse(window.localStorage.getItem("cart"));
-  //   console.log(loadedStorage);
-  // }
-
   onChange(ev) {
     this.setState({
       ...this.state,
@@ -90,7 +79,7 @@ class WineDescriptionBeforeLogin extends Component {
   }
 
   render() {
-    const { wine } = this.props;
+    const { wine, alert } = this.props;
     return (
       <div>
         <div>
@@ -155,9 +144,10 @@ class WineDescriptionBeforeLogin extends Component {
                     />{" "}
                     <button
                       className="product__btn"
-                      onClick={() =>
-                        this.addToLocalStorage(`${this.state.quantity}`)
-                      }
+                      onClick={() => {
+                        this.addToLocalStorage(`${this.state.quantity}`);
+                        alert.success("added to cart!");
+                      }}
                     >
                       Add to Cart
                     </button>
@@ -199,4 +189,4 @@ const mapDispatch = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatch
-)(WineDescriptionBeforeLogin);
+)(withAlert()(WineDescriptionBeforeLogin));
