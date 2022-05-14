@@ -58,9 +58,10 @@ const About = () => {
               Josh Reyes<span>Software Engineer</span>
             </h2>
             <p>
-              Calvin: I'm a genius, but I'm a misunderstood genius. Hobbes:
-              What's misunderstood about you? Calvin: Nobody thinks I'm a
-              genius.
+              One of my dreams was to be the next Kobe Bryant. But being 5’8
+              with a jumpshot that lays more bricks than the Toll Brothers, I
+              realized I should stick to my other childhood dream of building
+              out the digital world.
             </p>
             <a
               href="https://www.linkedin.com/in/joshuacreyes/"
@@ -87,7 +88,7 @@ const About = () => {
             <p>
               Coming from a Chemistry background, I kept imagining redox
               reactions when I was working with React or Redux. Lately I've been
-              running more code than chemical reactions and I'm loving it! 
+              running more code than chemical reactions and I'm loving it!
               Cheers to new experiences!
             </p>
             <a
