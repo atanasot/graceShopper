@@ -1,36 +1,70 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {authenticate} from '../store'
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { authenticate } from "../store";
+import { Link } from "react-router-dom";
+import { useAlert } from "react-alert";
 
 /**
  * COMPONENT
  */
-const AuthForm = props => {
-  const {name, displayName, handleSubmit, error} = props
+const AuthForm = (props) => {
+  const alert = useAlert();
 
+  const { name, displayName, handleSubmit, error } = props;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
+    <div className="container1">
+      <div className="wrapper1">
+        <form onSubmit={handleSubmit} name={name} className="form">
+          <h1 className="h1">Login</h1>
+          <p>If you are already a member, easily log in</p>
+          <br></br>
           <label htmlFor="username">
-            <small>Username</small>
+            <input
+              name="username"
+              className="email"
+              type="text"
+              placeholder="Username"
+            />
           </label>
-          <input name="username" type="text" />
-        </div>
-        <div>
           <label htmlFor="password">
-            <small>Password</small>
+            <input
+              type="password"
+              name="password"
+              className="email"
+              placeholder="password"
+            />
           </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
+          <button
+            type="submit"
+            id="login-btn"
+            onClick={() => {
+              alert.success("welcome back!");
+            }}
+          >
+            {displayName}
+          </button>
+          <div className="or">
+            <hr />
+            <span className=".span">OR</span>
+            <hr />
+          </div>
+
+          <div className="register">
+            <p>If you don't have an account</p>
+            <button className="register-btn">
+              <Link to={"/signup"}>Register</Link>
+            </button>
+          </div>
+          {error && error.response && <div> {error.response.data} </div>}
+        </form>
+      </div>
+      <div className="main-img" />{" "}
     </div>
-  )
-}
+  );
+};
 
 /**
  * CONTAINER
@@ -39,33 +73,24 @@ const AuthForm = props => {
  *   function, and share the same Component. This is a good example of how we
  *   can stay DRY with interfaces that are very similar to each other!
  */
-const mapLogin = state => {
+const mapLogin = (state) => {
   return {
-    name: 'login',
-    displayName: 'Login',
-    error: state.auth.error
-  }
-}
+    name: "login",
+    displayName: "Login",
+    error: state.auth.error,
+  };
+};
 
-const mapSignup = state => {
-  return {
-    name: 'signup',
-    displayName: 'Sign Up',
-    error: state.auth.error
-  }
-}
-
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
     handleSubmit(evt) {
-      evt.preventDefault()
-      const formName = evt.target.name
-      const username = evt.target.username.value
-      const password = evt.target.password.value
-      dispatch(authenticate(username, password, formName))
-    }
-  }
-}
+      evt.preventDefault();
+      const formName = evt.target.name;
+      const username = evt.target.username.value;
+      const password = evt.target.password.value;
+      dispatch(authenticate(username, password, formName));
+    },
+  };
+};
 
-export const Login = connect(mapLogin, mapDispatch)(AuthForm)
-export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
+export const Login = connect(mapLogin, mapDispatch)(AuthForm);
