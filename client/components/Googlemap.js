@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+// import "dotenv/config";
+// import express from "express";
 
 export class GoogleMap extends Component {
   constructor(props) {
@@ -26,8 +28,6 @@ export class GoogleMap extends Component {
   };
 
   render() {
-    console.log(process.env.REACT_APP_GOOGLE_API_KEY);
-
     const mapStyles = {
       maxWidth: "450px",
       height: "350px",
@@ -55,5 +55,5 @@ export class GoogleMap extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "HIDE FROM NOW",
+  apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
 })(GoogleMap);

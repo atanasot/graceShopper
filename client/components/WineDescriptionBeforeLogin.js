@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import WineProductRelated from "./wineProductRelated";
 import { fetchLineItemsFromCartNotLoggedIn } from "../store/lineItems";
 import { withAlert } from "react-alert";
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert, { AlertProps } from "@mui/material/Alert";
 
 class WineDescriptionBeforeLogin extends Component {
   constructor(props) {
